@@ -8,8 +8,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public abstract class ThePrismatic2Card(int cost, CardType type, CardRarity rarity, TargetType target) :
-    CustomCardModel(cost, type, rarity, target)
+public abstract class ThePrismatic2Card(int cost, CardType type, CardRarity rarity, TargetType target, bool shouldShowInCardLibrary = true) :
+    CustomCardModel(cost, type, rarity, target, shouldShowInCardLibrary)
 {
     //Image size:
     //Normal art: 1000x760 (Using 500x380 should also work, it will simply be scaled.)

@@ -1,3 +1,5 @@
 {
-  
+  "THEPRISMATIC2-EXPOSED_POWER.description": "Exposed creatures take [blue]50%[/blue] more damage from non-Attack sources.",
+  "THEPRISMATIC2-EXPOSED_POWER.smartDescription": "Receive [blue]{DamageIncrease:percentMore()}%[/blue] more damage from non-Attack sources for [blue]{Amount}[/blue] {Amount:plural:turn|turns}.",
+  "THEPRISMATIC2-EXPOSED_POWER.title": "Exposed"
 }

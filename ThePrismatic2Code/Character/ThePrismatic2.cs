@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Relics;
+using ThePrismatic2.ThePrismatic2Code.Relics;
 
 namespace ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -22,20 +23,22 @@ public class ThePrismatic2 : PlaceholderCharacterModel
     public override IEnumerable<CardModel> StartingDeck =>
     [
         ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
-        ModelDb.Card<StrikeIronclad>(),
+        ModelDb.Card<StrikeSilent>(),
+        ModelDb.Card<StrikeRegent>(),
+        ModelDb.Card<StrikeNecrobinder>(),
         ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>(),
-        ModelDb.Card<DefendIronclad>()
+        ModelDb.Card<DefendSilent>(),
+        ModelDb.Card<DefendNecrobinder>(),
+        ModelDb.Card<DefendDefect>(),
+        ModelDb.Card<Zap>(),
+        ModelDb.Card<Venerate>(),
+        ModelDb.Card<Survivor>(),
+        ModelDb.Card<Bodyguard>()
     ];
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<BurningBlood>()
+        ModelDb.Relic<BurningRing>()
     ];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<ThePrismatic2CardPool>();
