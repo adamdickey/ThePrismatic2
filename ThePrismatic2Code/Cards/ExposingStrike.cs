@@ -38,6 +38,6 @@ public class ExposingStrike() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-
+        base.DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }
