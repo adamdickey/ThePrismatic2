@@ -1,4 +1,67 @@
 {
   "THEPRISMATIC2-EXPOSING_STRIKE.description": "Deal {Damage:diff()} damage.\nApply 2 [gold]Exposed[/gold].",
-  "THEPRISMATIC2-EXPOSING_STRIKE.title": "Exposing Strike"
+  "THEPRISMATIC2-EXPOSING_STRIKE.title": "Exposing Strike",
+
+  "THEPRISMATIC2-EXPOSING_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nApply 2 [gold]Exposed[/gold].",
+  "THEPRISMATIC2-EXPOSING_DEFEND.title": "Exposing Defend",
+
+  "THEPRISMATIC2-DOOMING_STRIKE.description": "Deal {Damage:diff()} damage.\nApply {DoomPower:diff()} [gold]Doom[/gold].",
+  "THEPRISMATIC2-DOOMING_STRIKE.title": "Dooming Strike",
+
+  "THEPRISMATIC2-DOOMING_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nApply {DoomPower:diff()} [gold]Doom[/gold].",
+  "THEPRISMATIC2-DOOMING_DEFEND.title": "Dooming Defend",
+
+  "THEPRISMATIC2-TOXIC_STRIKE.description": "Deal {Damage:diff()} damage.\nApply {PoisonPower:diff()} [gold]Poison[/gold].",
+  "THEPRISMATIC2-TOXIC_STRIKE.title": "Toxic Strike",
+
+  "THEPRISMATIC2-TOXIC_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nApply {PoisonPower:diff()} [gold]Poison[/gold].",
+  "THEPRISMATIC2-TOXIC_DEFEND.title": "Toxic Defend",
+
+  "THEPRISMATIC2-FLEETING_STRIKE.description": "Deal {Damage:diff()} damage.",
+  "THEPRISMATIC2-FLEETING_STRIKE.title": "Fleeting Strike",
+
+  "THEPRISMATIC2-FLEETING_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "THEPRISMATIC2-FLEETING_DEFEND.title": "Fleeting Defend",
+
+  "THEPRISMATIC2-BLADED_STRIKE.description": "Deal {Damage:diff()} damage.\nAdd 1 [gold]Shiv[/gold] into your [gold]Hand[/gold].",
+  "THEPRISMATIC2-BLADED_STRIKE.title": "Bladed Strike",
+
+  "THEPRISMATIC2-BLADED_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nAdd 1 [gold]Shiv[/gold] into your [gold]Hand[/gold].",
+  "THEPRISMATIC2-BLADED_DEFEND.title": "Bladed Defend",
+
+  "THEPRISMATIC2-GHOSTLY_STRIKE.description": "Deal {Damage:diff()} damage.\nAdd a [gold]Soul[/gold] into your [gold]Draw Pile[/gold].",
+  "THEPRISMATIC2-GHOSTLY_STRIKE.title": "Ghostly Strike",
+
+  "THEPRISMATIC2-GHOSTLY_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nAdd a [gold]Soul[/gold] into your [gold]Draw Pile[/gold].",
+  "THEPRISMATIC2-GHOSTLY_DEFEND.title": "Ghostly Defend",
+
+  "THEPRISMATIC2-LOOTING_STRIKE.description": "Deal {Damage:diff()} damage.\nDraw 1 card.\nDiscard 1 card.",
+  "THEPRISMATIC2-LOOTING_STRIKE.title": "Looting Strike",
+
+  "THEPRISMATIC2-LOOTING_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nDraw 1 card.\nDiscard 1 card.",
+  "THEPRISMATIC2-LOOTING_DEFEND.title": "Looting Defend",
+
+  "THEPRISMATIC2-CONCENTRATED_STRIKE.description": "Deal {Damage:diff()} damage.\nDiscard 1 card.",
+  "THEPRISMATIC2-CONCENTRATED_STRIKE.title": "Concentrated Strike",
+
+  "THEPRISMATIC2-CONCENTRATED_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nDiscard 1 card.",
+  "THEPRISMATIC2-CONCENTRATED_DEFEND.title": "Concentrated Defend",
+
+  "THEPRISMATIC2-CUNNING_STRIKE.description": "Deal {Damage:diff()} damage.",
+  "THEPRISMATIC2-CUNNING_STRIKE.title": "Cunning Strike",
+
+  "THEPRISMATIC2-CUNNING_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "THEPRISMATIC2-CUNNING_DEFEND.title": "Cunning Defend",
+
+  "THEPRISMATIC2-SHOCKING_STRIKE.description": "Deal {Damage:diff()} damage.\n[gold]Channel[/gold] 1 [gold]Lightning[/gold].",
+  "THEPRISMATIC2-SHOCKING_STRIKE.title": "Shocking Strike",
+
+  "THEPRISMATIC2-SHOCKING_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Channel[/gold] 1 [gold]Lightning[/gold].",
+  "THEPRISMATIC2-SHOCKING_DEFEND.title": "Shocking Defend",
+
+  "THEPRISMATIC2-RECKLESS_STRIKE.description": "Deal {Damage:diff()} damage.\nYou or [gold]Osty[/gold] lose 1 HP.",
+  "THEPRISMATIC2-RECKLESS_STRIKE.title": "Reckless Strike",
+
+  "THEPRISMATIC2-RECKLESS_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nYou or [gold]Osty[/gold] lose 1 HP.",
+  "THEPRISMATIC2-RECKLESS_DEFEND.title": "Reckless Defend"
 }
