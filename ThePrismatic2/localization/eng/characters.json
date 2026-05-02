@@ -7,10 +7,10 @@
   "THEPRISMATIC2-THE_PRISMATIC2.description": "An automaton with a Prismatic Gem core.\nAble to seamlessly combine fighting styles.",
   "THEPRISMATIC2-THE_PRISMATIC2.eventDeathPrevention": "Co-op survival line",
   "THEPRISMATIC2-THE_PRISMATIC2.goldMonologue": "Line spoken when obtaining a large amount of gold",
-  "THEPRISMATIC2-THE_PRISMATIC2.possessiveAdjective": "his/her/its",
-  "THEPRISMATIC2-THE_PRISMATIC2.pronounObject": "him/her/it",
-  "THEPRISMATIC2-THE_PRISMATIC2.pronounPossessive": "his/hers/its",
-  "THEPRISMATIC2-THE_PRISMATIC2.pronounSubject": "he/she/it",
+  "THEPRISMATIC2-THE_PRISMATIC2.possessiveAdjective": "its",
+  "THEPRISMATIC2-THE_PRISMATIC2.pronounObject": "it",
+  "THEPRISMATIC2-THE_PRISMATIC2.pronounPossessive": "its",
+  "THEPRISMATIC2-THE_PRISMATIC2.pronounSubject": "it",
   "THEPRISMATIC2-THE_PRISMATIC2.title": "The Prismatic",
   "THEPRISMATIC2-THE_PRISMATIC2.titleObject": "The Prismatic"
 }

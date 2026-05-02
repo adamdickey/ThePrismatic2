@@ -35,33 +35,46 @@ public class ThePrismatic2 : PlaceholderCharacterModel
         List<CardModel> strikes1 = [ModelDb.Card<ExposingStrike>(), ModelDb.Card<DoomingStrike>(), ModelDb.Card<ToxicStrike>()];
         List<CardModel> strikes2 = [ModelDb.Card<FleetingStrike>(), ModelDb.Card<BladedStrike>(), ModelDb.Card<GhostlyStrike>()];
         List<CardModel> strikes3 = [ModelDb.Card<LootingStrike>(), ModelDb.Card<ConcentratedStrike>(), ModelDb.Card<CunningStrike>()];
+        List<CardModel> strikes4 = [ModelDb.Card<ShockingStrike>(), ModelDb.Card<CosmicStrike>(), ModelDb.Card<LoopingStrike>()];
+        List<CardModel> strikes5 = [ModelDb.Card<RecklessStrike>(), ModelDb.Card<NecroStrike>(), ModelDb.Card<NecroStrike>()];
+        List<CardModel> strikes6 = [ModelDb.Card<StarryStrike>(), ModelDb.Card<CosmicStrike>(), ModelDb.Card<StarryStrike>()];
         List<CardModel> defends1 = [ModelDb.Card<ExposingDefend>(), ModelDb.Card<DoomingDefend>(), ModelDb.Card<ToxicDefend>()];
         List<CardModel> defends2 = [ModelDb.Card<FleetingDefend>(), ModelDb.Card<BladedDefend>(), ModelDb.Card<GhostlyDefend>()];
         List<CardModel> defends3 = [ModelDb.Card<LootingDefend>(), ModelDb.Card<ConcentratedDefend>(), ModelDb.Card<CunningDefend>()];
-        List<int> numList = [0, 1, 2];
-        List<List<CardModel>> strikes = [strikes1, strikes2, strikes3];
-        List<List<CardModel>> defends = [defends1, defends2, defends3];
-        numList.StableShuffle(Rng.Chaotic);
-        int strikeNum1 = numList[0];
-        int defendNum1 = numList[1];
-        int strikeNum2 = Rng.Chaotic.NextInt(1, 3);
-        int defendNum2 = Rng.Chaotic.NextInt(1, 3);
-        CardModel chosenStrike = strikes[strikeNum1][strikeNum2];
-        CardModel chosenDefend = defends[defendNum1][defendNum2];
-        IEnumerable<CardModel> startingDeck =
-        [
-            ModelDb.Card<StrikeIronclad>(),
-            ModelDb.Card<StrikeSilent>(),
-            ModelDb.Card<StrikeRegent>(),
-            ModelDb.Card<StrikeNecrobinder>(),
-            ModelDb.Card<DefendIronclad>(),
-            ModelDb.Card<DefendSilent>(),
-            ModelDb.Card<DefendNecrobinder>(),
-            ModelDb.Card<DefendDefect>(),
-            chosenStrike,
-            chosenDefend
-        ];
-        return startingDeck;
+        List<CardModel> defends4 = [ModelDb.Card<ShockingDefend>(), ModelDb.Card<CosmicDefend>(), ModelDb.Card<LoopingDefend>()];
+        List<CardModel> defends5 = [ModelDb.Card<RecklessDefend>(), ModelDb.Card<NecroDefend>(), ModelDb.Card<NecroDefend>()];
+        List<CardModel> defends6 = [ModelDb.Card<StarryDefend>(), ModelDb.Card<CosmicDefend>(), ModelDb.Card<StarryDefend>()];
+        List<List<CardModel>> strikes = [strikes1, strikes2, strikes3, strikes4, strikes5, strikes6];
+        List<List<CardModel>> defends = [defends1, defends2, defends3, defends4, defends5, defends6];
+        while (true)
+        {
+            List<int> numList = [0, 1, 2, 3, 4, 5];
+            numList.StableShuffle(Rng.Chaotic);
+            int strikeNum1 = numList[0];
+            int defendNum1 = numList[1];
+            int strikeNum2 = Rng.Chaotic.NextInt(0, 3);
+            int defendNum2 = Rng.Chaotic.NextInt(0, 3);
+            CardModel chosenStrike = strikes[strikeNum1][strikeNum2];
+            CardModel chosenDefend = defends[defendNum1][defendNum2];
+            if (chosenStrike is CosmicStrike & chosenDefend is CosmicDefend)
+            {
+                continue;
+            }
+            IEnumerable<CardModel> startingDeck = 
+            [
+                ModelDb.Card<StrikeIronclad>(), 
+                ModelDb.Card<StrikeSilent>(), 
+                ModelDb.Card<StrikeRegent>(), 
+                ModelDb.Card<StrikeNecrobinder>(), 
+                ModelDb.Card<DefendIronclad>(), 
+                ModelDb.Card<DefendSilent>(), 
+                ModelDb.Card<DefendNecrobinder>(), 
+                ModelDb.Card<DefendDefect>(), 
+                chosenStrike, 
+                chosenDefend
+            ];
+            return startingDeck;
+        }
     }
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

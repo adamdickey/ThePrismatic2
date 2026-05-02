@@ -1,0 +1,9 @@
+{
+  "THEPRISMATIC2-SOLAR_ORB.description": "Orb: Gives Stars when [gold]Channeled[/gold] and when [gold]Evoked[/gold].",
+  "THEPRISMATIC2-SOLAR_ORB.smartDescription": "When [gold]Channeled[/gold]: Gain {Passive:starIcons()}.\n[gold]Evoke[/gold]: Gain {Evoke:starIcons()}.",
+  "THEPRISMATIC2-SOLAR_ORB.title": "Solar",
+
+  "THEPRISMATIC2-VENOM_ORB.description": "Orb: Applies [gold]Poison[/gold] to ALL enemies for up to 3 turns.",
+  "THEPRISMATIC2-VENOM_ORB.smartDescription": "[gold]Passive:[/gold] At the end of turn, apply [blue]1[/blue] [gold]Poison[/gold] to ALL enemies and reduce this orb's value by [blue]1[/blue].\n[gold]Evoke:[/gold] Apply [blue]{Evoke}[/blue] [gold]Poison[/gold] to ALL enemies.",
+  "THEPRISMATIC2-VENOM_ORB.title": "Venom"
+}

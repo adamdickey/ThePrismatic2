@@ -63,5 +63,29 @@
   "THEPRISMATIC2-RECKLESS_STRIKE.title": "Reckless Strike",
 
   "THEPRISMATIC2-RECKLESS_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nYou or [gold]Osty[/gold] lose 1 HP.",
-  "THEPRISMATIC2-RECKLESS_DEFEND.title": "Reckless Defend"
+  "THEPRISMATIC2-RECKLESS_DEFEND.title": "Reckless Defend",
+
+  "THEPRISMATIC2-COSMIC_STRIKE.description": "Deal {Damage:diff()} damage.\n[gold]Channel[/gold] 1 [gold]Solar[/gold].",
+  "THEPRISMATIC2-COSMIC_STRIKE.title": "Cosmic Strike",
+  
+  "THEPRISMATIC2-COSMIC_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Channel[/gold] 1 [gold]Solar[/gold].",
+  "THEPRISMATIC2-COSMIC_DEFEND.title": "Cosmic Defend",
+  
+  "THEPRISMATIC2-LOOPING_STRIKE.description": "Deal {Damage:diff()} damage.\nTrigger the passive ability of your rightmost Orb.",
+  "THEPRISMATIC2-LOOPING_STRIKE.title": "Looping Strike",
+
+  "THEPRISMATIC2-LOOPING_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nTrigger the passive ability of your rightmost Orb.",
+  "THEPRISMATIC2-LOOPING_DEFEND.title": "Looping Defend",
+
+  "THEPRISMATIC2-NECRO_STRIKE.description": "[gold]Summon[/gold] {Summon:diff()}.\n[gold]Osty[/gold] deals {OstyDamage:diff()} damage.",
+  "THEPRISMATIC2-NECRO_STRIKE.title": "Necro-Strike",
+
+  "THEPRISMATIC2-NECRO_DEFEND.description": "[gold]Summon[/gold] {Summon:diff()}.\nGain {Block:diff()} [gold]Block[/gold].",
+  "THEPRISMATIC2-NECRO_DEFEND.title": "Necro-Defend",
+
+  "THEPRISMATIC2-STARRY_STRIKE.description": "Deal {Damage:diff()} damage.\nGain {Stars:starIcons()}.",
+  "THEPRISMATIC2-STARRY_STRIKE.title": "Starry Strike",
+
+  "THEPRISMATIC2-STARRY_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nGain {Stars:starIcons()}.",
+  "THEPRISMATIC2-STARRY_DEFEND.title": "Starry Defend"
 }
