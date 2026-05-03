@@ -35,7 +35,7 @@ public sealed class SolarOrb : CustomOrbModel
             .Instantiate<Node2D>(PackedScene.GenEditState.Disabled);
         new MegaSprite(dark.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
-        dark.Modulate = new Color(0.5f, 0.5f, 0.0f, 1.0f);
+        dark.Modulate = new Color(0.8f, 0.5f, 0.0f, 1.0f);
         dark.Scale = new Vector2(1.1f, 1.1f);
         container.AddChild(dark);
         // front layer: glass orb (bright yellow core)

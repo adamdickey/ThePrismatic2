@@ -59,10 +59,10 @@
   "THEPRISMATIC2-SHOCKING_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Channel[/gold] 1 [gold]Lightning[/gold].",
   "THEPRISMATIC2-SHOCKING_DEFEND.title": "Shocking Defend",
 
-  "THEPRISMATIC2-RECKLESS_STRIKE.description": "Deal {Damage:diff()} damage.\nYou or [gold]Osty[/gold] lose 1 HP.",
+  "THEPRISMATIC2-RECKLESS_STRIKE.description": "You or [gold]Osty[/gold] lose 1 HP.\nDeal {Damage:diff()} damage.",
   "THEPRISMATIC2-RECKLESS_STRIKE.title": "Reckless Strike",
 
-  "THEPRISMATIC2-RECKLESS_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nYou or [gold]Osty[/gold] lose 1 HP.",
+  "THEPRISMATIC2-RECKLESS_DEFEND.description": "You or [gold]Osty[/gold] lose 1 HP.\nGain {Block:diff()} [gold]Block[/gold].",
   "THEPRISMATIC2-RECKLESS_DEFEND.title": "Reckless Defend",
 
   "THEPRISMATIC2-COSMIC_STRIKE.description": "Deal {Damage:diff()} damage.\n[gold]Channel[/gold] 1 [gold]Solar[/gold].",

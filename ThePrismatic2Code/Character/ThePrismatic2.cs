@@ -56,7 +56,11 @@ public class ThePrismatic2 : PlaceholderCharacterModel
             int defendNum2 = Rng.Chaotic.NextInt(0, 3);
             CardModel chosenStrike = strikes[strikeNum1][strikeNum2];
             CardModel chosenDefend = defends[defendNum1][defendNum2];
-            if (chosenStrike is CosmicStrike & chosenDefend is CosmicDefend)
+            if (chosenStrike is CosmicStrike or StarryStrike & chosenDefend is CosmicDefend or StarryDefend)
+            {
+                continue;
+            }
+            if (chosenStrike is ShockingStrike or CosmicStrike or LoopingStrike & chosenDefend is ShockingDefend or CosmicDefend or LoopingDefend)
             {
                 continue;
             }
