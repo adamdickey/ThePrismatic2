@@ -5,7 +5,7 @@ ThePrismatic2.json::JSON::-1::1776544786::0::1::::<><><>0<>0<><>::
 ::res://bin/::1776545055
 ::res://bin/ExportRelease/::1776545055
 ::res://bin/ExportRelease/net9.0/::1776545055
-::res://bin/ExportRelease/net9.0/publish/::1777818943
+::res://bin/ExportRelease/net9.0/publish/::1777838563
 ThePrismatic2.deps.json::JSON::-1::1777734632::0::1::::<><><>0<>0<><>::
 ::res://ThePrismatic2/::1777739709
 mod_image.png::CompressedTexture2D::3839704962390075743::1776544440::1776545062::1::::<><><>0<>0<>cb305a347ff43869c9d438ea3cbc8b84<>res://.godot/imported/mod_image.png-6a0584a1ee7d76eaabad087c77dde317.ctex::
@@ -25,7 +25,7 @@ char_select_char_name.png::CompressedTexture2D::6640800809441695779::1776544440:
 char_select_char_name_locked.png::CompressedTexture2D::8256217605279791253::1776544440::1776545062::1::::<><><>0<>0<>edc290844822d894cef980567232bd35<>res://.godot/imported/char_select_char_name_locked.png-54c2dea6d0bd5e3419d22e6770ab227a.ctex::
 map_marker_char_name.png::CompressedTexture2D::2043537439961547447::1776544440::1776545062::1::::<><><>0<>0<>cce3bb4a748cfb4f131dc8a6e8e3adee<>res://.godot/imported/map_marker_char_name.png-61462cd53e374b258b2a4cdf753b3091.ctex::
 text_energy.png::CompressedTexture2D::624693977838718400::1776544440::1776545062::1::::<><><>0<>0<>efc4d27eb0a1cb838b585106c722e05a<>res://.godot/imported/text_energy.png-8d8aeedb7b5a46ba7c4da3a0c045d379.ctex::
-::res://ThePrismatic2/images/orbs/::1777821699
+::res://ThePrismatic2/images/orbs/::1777821725
 solar_orb.png::CompressedTexture2D::3796073013217254777::1777821699::1777821725::1::::<><><>0<>0<>c527849f4bc5df79c1f2cc877fc225b3<>res://.godot/imported/solar_orb.png-3f62ef77d843d21c3274ae5260c07d13.ctex::
 venom_orb.png::CompressedTexture2D::3796073013217254777::1776544440::1777741516::1::::<><><>0<>0<>db83bd0e0477a22fcd9fe4e7a4e7c937<>res://.godot/imported/venom_orb.png-51634e8089d249f9568c49c155a22069.ctex::
 ::res://ThePrismatic2/images/powers/::1776545062
@@ -51,7 +51,7 @@ static_hover_tips.json::JSON::-1::1776544440::0::1::::<><><>0<>0<><>::
 ::res://ThePrismatic2Code/Cards/::1777817186
 ::res://ThePrismatic2Code/Character/::1777817729
 ::res://ThePrismatic2Code/Extensions/::1776544452
-::res://ThePrismatic2Code/Orbs/::1777815589
+::res://ThePrismatic2Code/Orbs/::1777838560
 ::res://ThePrismatic2Code/Potions/::1776544440
 ::res://ThePrismatic2Code/Powers/::1777221740
 ::res://ThePrismatic2Code/Relics/::1777134405
