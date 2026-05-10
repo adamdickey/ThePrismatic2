@@ -22,7 +22,7 @@ public class ExposingDefend() : ThePrismatic2Card(1,
     protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
     {
         new BlockVar(5m, ValueProp.Move),
-        new PowerVar<ExposedPower>(2m)
+        new DynamicVar("Exposed", 2m)
     });
 
 
@@ -33,7 +33,7 @@ public class ExposingDefend() : ThePrismatic2Card(1,
         ArgumentNullException.ThrowIfNull(play.Target, "cardPlay.Target");
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, play);
-        await PowerCmd.Apply<ExposedPower>(play.Target, 2, base.Owner.Creature, this);
+        await PowerCmd.Apply<ExposedPower>(play.Target, base.DynamicVars["Exposed"].BaseValue, base.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

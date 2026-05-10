@@ -1,3 +1,7 @@
 {
-  
+  "DUALWIELD.description": "If [gold]Osty[/gold] is alive, he copies this Attack and any additional effects this Attack has. His copy deals half damage.",
+  "DUALWIELD.title": "Dual Wield",
+
+  "COSTLY.description": "[gold]Costly[/gold] cards cost 2 or more total {energyIcon()} and {starIcon()}.",
+  "COSTLY.title": "Costly"
 }

@@ -1,5 +1,29 @@
 {
   "THEPRISMATIC2-EXPOSED_POWER.description": "Exposed creatures take [blue]50%[/blue] more damage from non-Attack sources.",
   "THEPRISMATIC2-EXPOSED_POWER.smartDescription": "Receive [blue]{DamageIncrease:percentMore()}%[/blue] more damage from non-Attack sources for [blue]{Amount}[/blue] {Amount:plural:turn|turns}.",
-  "THEPRISMATIC2-EXPOSED_POWER.title": "Exposed"
+  "THEPRISMATIC2-EXPOSED_POWER.title": "Exposed",
+
+  "THEPRISMATIC2-CRIMSON_MANTLE2_POWER.description": "At the start of your turn, you or Osty lose HP and you gain [gold]Block[/gold].",
+  "THEPRISMATIC2-CRIMSON_MANTLE2_POWER.smartDescription": "At the start of your turn, [gold]Osty[/gold] loses [blue]{SelfDamage}[/blue] HP if he is alive, otherwise you lose [blue]{SelfDamage}[/blue] HP, then you gain [blue]{Amount}[/blue] [gold]Block[/gold].",
+  "THEPRISMATIC2-CRIMSON_MANTLE2_POWER.title": "Crimson Mantle",
+
+  "THEPRISMATIC2-DEMON_FORM2_POWER.description": "At the start of your turn, you and[gold]Osty[/gold] each gain [blue]2[/blue] [gold]Strength[/gold].",
+  "THEPRISMATIC2-DEMON_FORM2_POWER.smartDescription": "At the start of your turn, you and [gold]Osty[/gold] each gain [blue]{Amount}[/blue] [gold]Strength[/gold].",
+  "THEPRISMATIC2-DEMON_FORM2_POWER.title": "Demon Form",
+
+  "THEPRISMATIC2-COLOSSUS2_POWER.description": "You receive [blue]50%[/blue] less damage from enemies with [blue]2[/blue] or more debuffs this turn.",
+  "THEPRISMATIC2-COLOSSUS2_POWER.smartDescription": "You receive [blue]{DamageDecrease:percentLess()}%[/blue] less damage from enemies with [blue]2[/blue] or more debuffs {Amount:plural:this turn|for [blue]{}[/blue] turns}.",
+  "THEPRISMATIC2-COLOSSUS2_POWER.title": "Colossus",
+
+  "THEPRISMATIC2-FLAME_BARRIER2_POWER.description": "Whenever you are attacked this turn, Channel [blue]1[/blue] Magma.",
+  "THEPRISMATIC2-FLAME_BARRIER2_POWER.smartDescription": "Whenever you are attacked this turn, [gold]Channel[/gold] [blue]{Amount}[/blue] [gold]Magma[/gold].",
+  "THEPRISMATIC2-FLAME_BARRIER2_POWER.title": "Flame Barrier",
+
+  "THEPRISMATIC2-INFERNO2_POWER.description": "At the start of your turn, you or Osty lose [blue]1[/blue] HP. Whenever you lose HP on your turn, deal [blue]6[/blue] damage to ALL enemies.",
+  "THEPRISMATIC2-INFERNO2_POWER.smartDescription": "At the start of your turn, [gold]Osty[/gold] loses [blue]{SelfDamage}[/blue] HP if he is alive, otherwise you lose [blue]{SelfDamage}[/blue] HP. Whenever you or [gold]Osty[/gold] lose HP on your turn, deal [blue]{Amount}[/blue] damage to ALL enemies.",
+  "THEPRISMATIC2-INFERNO2_POWER.title": "Inferno",
+
+  "THEPRISMATIC2-JUGGLING2_POWER.description": "When you play your third card each turn that is an Attack or a Power, add a copy of it into your [gold]Hand[/gold].",
+  "THEPRISMATIC2-JUGGLING2_POWER.smartDescription": "When you play your third card each turn that is an Attack or a Power, add [blue]{Amount}[/blue] {Amount:plural:copy|copies} of it into your [gold]Hand[/gold].",
+  "THEPRISMATIC2-JUGGLING2_POWER.title": "Juggling"
 }

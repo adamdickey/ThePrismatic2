@@ -7,15 +7,14 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
 
 namespace ThePrismatic2.ThePrismatic2Code.Orbs;
 
 
-public sealed class VenomOrb : CustomOrbModel
+public sealed class MagmaOrb : CustomOrbModel
 {
-    public override Color DarkenedColor => new Color("2d6e2d");
-    public override string? CustomIconPath => "res://ThePrismatic2/images/orbs/venom_orb.png";
+    public override Color DarkenedColor => new Color("ffff00");
+    public override string? CustomIconPath => "res://ThePrismatic2/images/orbs/solar_orb.png";
     public override bool IncludeInRandomPool => true;
 
     // Reuse Dark Orb sounds - practical use of overrides
@@ -23,36 +22,32 @@ public sealed class VenomOrb : CustomOrbModel
     public override string? CustomEvokeSfx => "event:/sfx/characters/defect/defect_dark_evoke";
     public override string? CustomChannelSfx => "event:/sfx/characters/defect/defect_dark_channel";
 
-    private decimal _passiveVal = 2m;
-
-    public override decimal PassiveVal => ModifyOrbValue(_passiveVal);
-
-    public override decimal EvokeVal => PassiveVal * 2m;
+    public override decimal PassiveVal => ModifyOrbValue(2m);
+    public override decimal EvokeVal => ModifyOrbValue(5m);
 
     public override Node2D? CreateCustomSprite()
     {
         var container = new Node2D();
-        // back layer: dark orb (green tint)
+        // back layer: dark orb (dark red tint)
         string darkPath = SceneHelper.GetScenePath("orbs/orb_visuals/dark_orb");
         Node2D dark = PreloadManager.Cache.GetScene(darkPath)
             .Instantiate<Node2D>(PackedScene.GenEditState.Disabled);
         new MegaSprite(dark.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
-        dark.Modulate = _passiveVal <= 0m ? new Color(0.1f, 0.5f, 0.1f, 0.0f) : new Color(0.1f, 0.5f, 0.1f, 1.0f);
+        dark.Modulate = new Color(0.1f, 0.0f, 0.0f, 1.0f);
         dark.Scale = new Vector2(1.1f, 1.1f);
         container.AddChild(dark);
-        // front layer: glass orb (bright green core)
+        // front layer: glass orb (red core)
         string glassPath = SceneHelper.GetScenePath("orbs/orb_visuals/glass_orb");
         Node2D glass = PreloadManager.Cache.GetScene(glassPath)
             .Instantiate<Node2D>(PackedScene.GenEditState.Disabled);
         new MegaSprite(glass.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
-        glass.Modulate = _passiveVal <= 0m ? new Color(0.3f, 0.9f, 0.3f, 0.0f) : new Color(0.3f, 0.9f, 0.3f, 1.0f);
-        //glass.Modulate = new Color(0.3f, 0.9f, 0.3f, 1.0f);
+        glass.Modulate = new Color(1.0f, 0.0f, 0.0f, 1.0f);
         container.AddChild(glass);
         return container;
     }
-
+    
     public override async Task BeforeTurnEndOrbTrigger(PlayerChoiceContext choiceContext)
     {
         await Passive(choiceContext, null);
@@ -60,25 +55,19 @@ public sealed class VenomOrb : CustomOrbModel
 
     public override async Task Passive(PlayerChoiceContext choiceContext, Creature? target)
     {
-        List<Creature> targets = base.CombatState.HittableEnemies.Where((Creature e) => e.IsHittable).ToList();
-        decimal passiveVal = PassiveVal;
-        if (!(passiveVal <= 0m))
-        {
-            Trigger();
-            PlayPassiveSfx();
-            await PowerCmd.Apply<PoisonPower>(targets, _passiveVal, base.Owner.Creature, null);
-            _passiveVal = Math.Max(0m, _passiveVal - 1m);
-        }
+        Trigger();
+        await ApplyVigor(PassiveVal, target, choiceContext);
     }
 
     public override async Task<IEnumerable<Creature>> Evoke(PlayerChoiceContext playerChoiceContext)
     {
-        List<Creature> enemies = base.CombatState.HittableEnemies.Where((Creature e) => e.IsHittable).ToList();
-        if (EvokeVal <= 0m)
-        {
-            return Array.Empty<Creature>();
-        }
-        await PowerCmd.Apply<PoisonPower>(enemies, EvokeVal, base.Owner.Creature, null);
-        return enemies;
+        return await ApplyVigor(EvokeVal, null, playerChoiceContext);
+    }
+
+    private async Task<IEnumerable<Creature>> ApplyVigor(decimal value, Creature? target,
+        PlayerChoiceContext choiceContext)
+    {
+        await PowerCmd.Apply<VigorPower>(base.Owner.Creature, value, base.Owner.Creature, null);
+        return null;
     }
 }

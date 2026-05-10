@@ -1,0 +1,81 @@
+﻿using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.Nodes.Vfx;
+using MegaCrit.Sts2.Core.ValueProps;
+
+namespace ThePrismatic2.ThePrismatic2Code.Powers;
+
+public class Inferno2Power : ThePrismatic2Power
+{
+    
+    public override string CustomPackedIconPath => "res://.godot/imported/inferno_power.png-688562ad1f0eac4c8a606e5843a12d1b.s3tc.ctex";
+    public override string CustomBigIconPath => "res://.godot/imported/inferno_power.png-688562ad1f0eac4c8a606e5843a12d1b.s3tc.ctex";
+    
+    private const string _selfDamageKey = "SelfDamage";
+
+    public override PowerType Type => PowerType.Buff;
+
+    public override PowerStackType StackType => PowerStackType.Counter;
+
+    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar("SelfDamage", 0m, ValueProp.Unblockable | ValueProp.Unpowered));
+
+    public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
+    {
+        if (player == base.Owner.Player)
+        {
+            if (!Osty.CheckMissingWithAnim(player))
+            {
+                NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NFireSmokePuffVfx.Create(player.Osty));
+                await Cmd.CustomScaledWait(0.2f, 0.4f);
+                DamageVar damageVar = (DamageVar)base.DynamicVars["SelfDamage"];
+                await CreatureCmd.Damage(choiceContext, player.Osty, damageVar.BaseValue, damageVar.Props, base.Owner, null);
+            }
+            else
+            {
+                NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NFireSmokePuffVfx.Create(base.Owner));
+                await Cmd.CustomScaledWait(0.2f, 0.4f);
+                DamageVar damageVar = (DamageVar)base.DynamicVars["SelfDamage"];
+                await CreatureCmd.Damage(choiceContext, base.Owner, damageVar.BaseValue, damageVar.Props, base.Owner, null);
+            }
+            
+        }
+    }
+
+    public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
+    {
+        if (!Osty.CheckMissingWithAnim(base.Owner.Player))
+        {
+            if ((target != base.Owner && target != base.Owner.Player.Osty) || result.UnblockedDamage <= 0 || base.Owner.CombatState.CurrentSide != base.Owner.Side)
+            {
+                return;
+            }
+        }
+        else
+        {
+            if (target != base.Owner || result.UnblockedDamage <= 0 || base.Owner.CombatState.CurrentSide != base.Owner.Side)
+            {
+                return;
+            }
+        }
+        foreach (Creature hittableEnemy in base.CombatState.HittableEnemies)
+        {
+            NFireBurstVfx child = NFireBurstVfx.Create(hittableEnemy, 0.75f);
+            NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
+        }
+        await CreatureCmd.Damage(choiceContext, base.CombatState.HittableEnemies, base.Amount, ValueProp.Unpowered, base.Owner, null);
+    }
+
+    public void IncrementSelfDamage()
+    {
+        AssertMutable();
+        base.DynamicVars["SelfDamage"].BaseValue++;
+    }
+}

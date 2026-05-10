@@ -35,13 +35,13 @@ public class ThePrismatic2 : PlaceholderCharacterModel
         List<CardModel> strikes1 = [ModelDb.Card<ExposingStrike>(), ModelDb.Card<DoomingStrike>(), ModelDb.Card<ToxicStrike>()];
         List<CardModel> strikes2 = [ModelDb.Card<FleetingStrike>(), ModelDb.Card<BladedStrike>(), ModelDb.Card<GhostlyStrike>()];
         List<CardModel> strikes3 = [ModelDb.Card<LootingStrike>(), ModelDb.Card<ConcentratedStrike>(), ModelDb.Card<CunningStrike>()];
-        List<CardModel> strikes4 = [ModelDb.Card<ShockingStrike>(), ModelDb.Card<CosmicStrike>(), ModelDb.Card<LoopingStrike>()];
+        List<CardModel> strikes4 = [ModelDb.Card<ToxicStrike>(), ModelDb.Card<CosmicStrike>(), ModelDb.Card<LoopingStrike>()];
         List<CardModel> strikes5 = [ModelDb.Card<RecklessStrike>(), ModelDb.Card<NecroStrike>(), ModelDb.Card<NecroStrike>()];
         List<CardModel> strikes6 = [ModelDb.Card<StarryStrike>(), ModelDb.Card<CosmicStrike>(), ModelDb.Card<StarryStrike>()];
         List<CardModel> defends1 = [ModelDb.Card<ExposingDefend>(), ModelDb.Card<DoomingDefend>(), ModelDb.Card<ToxicDefend>()];
         List<CardModel> defends2 = [ModelDb.Card<FleetingDefend>(), ModelDb.Card<BladedDefend>(), ModelDb.Card<GhostlyDefend>()];
         List<CardModel> defends3 = [ModelDb.Card<LootingDefend>(), ModelDb.Card<ConcentratedDefend>(), ModelDb.Card<CunningDefend>()];
-        List<CardModel> defends4 = [ModelDb.Card<ShockingDefend>(), ModelDb.Card<CosmicDefend>(), ModelDb.Card<LoopingDefend>()];
+        List<CardModel> defends4 = [ModelDb.Card<ToxicDefend>(), ModelDb.Card<CosmicDefend>(), ModelDb.Card<LoopingDefend>()];
         List<CardModel> defends5 = [ModelDb.Card<RecklessDefend>(), ModelDb.Card<NecroDefend>(), ModelDb.Card<NecroDefend>()];
         List<CardModel> defends6 = [ModelDb.Card<StarryDefend>(), ModelDb.Card<CosmicDefend>(), ModelDb.Card<StarryDefend>()];
         List<List<CardModel>> strikes = [strikes1, strikes2, strikes3, strikes4, strikes5, strikes6];
@@ -61,6 +61,10 @@ public class ThePrismatic2 : PlaceholderCharacterModel
                 continue;
             }
             if (chosenStrike is ShockingStrike or CosmicStrike or LoopingStrike & chosenDefend is ShockingDefend or CosmicDefend or LoopingDefend)
+            {
+                continue;
+            }
+            if (chosenStrike is ToxicStrike or CosmicStrike or LoopingStrike & chosenDefend is ToxicDefend or CosmicDefend or LoopingDefend)
             {
                 continue;
             }

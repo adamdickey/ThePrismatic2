@@ -6,37 +6,33 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Extensions;
+using ThePrismatic2.ThePrismatic2Code.Orbs;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
-  
-  
-  
+
 public class ToxicDefend() : ThePrismatic2Card(1,
     CardType.Skill, CardRarity.Basic,
-    TargetType.AnyEnemy)
+    TargetType.Self)
 {
     public override string CustomPortraitPath => $"PrismaticDefend.png".BigCardImagePath();
     public override string PortraitPath => $"PrismaticDefend.png".CardImagePath();
     protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Defend };
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<PoisonPower>());
-
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
+    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(4m, ValueProp.Move));
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlyArray<IHoverTip>(new IHoverTip[2]
     {
-        new BlockVar(6m, ValueProp.Move),
-        new PowerVar<PoisonPower>(2m)
+        HoverTipFactory.Static(StaticHoverTip.Channeling),
+        HoverTipFactory.FromOrb<VenomOrb>()
     });
-
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        ArgumentNullException.ThrowIfNull(play.Target, "cardPlay.Target");
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, play);
-        await PowerCmd.Apply<PoisonPower>(play.Target, base.DynamicVars.Poison.BaseValue, base.Owner.Creature, this);
-        
+        await OrbCmd.Channel<VenomOrb>(choiceContext, base.Owner);
     }
 
     protected override void OnUpgrade()

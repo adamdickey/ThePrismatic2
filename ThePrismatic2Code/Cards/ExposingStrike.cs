@@ -21,7 +21,7 @@ public class ExposingStrike() : ThePrismatic2Card(1,
     protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
     {
         new DamageVar(6m, ValueProp.Move),
-        new PowerVar<ExposedPower>(2m)
+        new DynamicVar("Exposed", 2m)
     });
 
 
@@ -33,7 +33,7 @@ public class ExposingStrike() : ThePrismatic2Card(1,
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
             .WithHitFx("vfx/vfx_attack_slash", null, "slash_attack.mp3")
             .Execute(choiceContext);
-        await PowerCmd.Apply<ExposedPower>(play.Target, 2, base.Owner.Creature, this);
+        await PowerCmd.Apply<ExposedPower>(play.Target, base.DynamicVars["Exposed"].BaseValue, base.Owner.Creature, this);
         
     }
 

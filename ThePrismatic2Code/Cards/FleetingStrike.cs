@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Extensions;
+using CardKeyword = MegaCrit.Sts2.Core.Entities.Cards.CardKeyword;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 

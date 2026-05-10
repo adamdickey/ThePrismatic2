@@ -11,10 +11,10 @@
   "THEPRISMATIC2-DOOMING_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nApply {DoomPower:diff()} [gold]Doom[/gold].",
   "THEPRISMATIC2-DOOMING_DEFEND.title": "Dooming Defend",
 
-  "THEPRISMATIC2-TOXIC_STRIKE.description": "Deal {Damage:diff()} damage.\nApply {PoisonPower:diff()} [gold]Poison[/gold].",
+  "THEPRISMATIC2-TOXIC_STRIKE.description": "Deal {Damage:diff()} damage.\n[gold]Channel[/gold] 1 [gold]Solar[/gold].",
   "THEPRISMATIC2-TOXIC_STRIKE.title": "Toxic Strike",
 
-  "THEPRISMATIC2-TOXIC_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nApply {PoisonPower:diff()} [gold]Poison[/gold].",
+  "THEPRISMATIC2-TOXIC_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Channel[/gold] 1 [gold]Solar[/gold].",
   "THEPRISMATIC2-TOXIC_DEFEND.title": "Toxic Defend",
 
   "THEPRISMATIC2-FLEETING_STRIKE.description": "Deal {Damage:diff()} damage.",
@@ -87,5 +87,68 @@
   "THEPRISMATIC2-STARRY_STRIKE.title": "Starry Strike",
 
   "THEPRISMATIC2-STARRY_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nGain {Stars:starIcons()}.",
-  "THEPRISMATIC2-STARRY_DEFEND.title": "Starry Defend"
+  "THEPRISMATIC2-STARRY_DEFEND.title": "Starry Defend",
+
+  "THEPRISMATIC2-BASH2.description": "Deal {Damage:diff()} damage.\nApply {VulnerablePower:diff()} [gold]Vulnerable[/gold].\nApply {Exposed:diff()} [gold]Exposed[/gold].",
+  "THEPRISMATIC2-BASH2.title": "Bash",
+
+  "THEPRISMATIC2-BLOOD_WALL2.description": "[gold]Osty[/gold] loses {HpLoss:diff()} HP if he is alive, otherwise you lose {HpLoss:diff()} HP.\nGain {Block:diff()} [gold]Block[/gold].",
+  "THEPRISMATIC2-BLOOD_WALL2.title": "Blood Wall",
+
+  "THEPRISMATIC2-BLOODLETTING2.description": "[gold]Osty[/gold] loses {HpLoss:diff()} HP if he is alive, otherwise you lose {HpLoss:diff()} HP.\nGain {Energy:energyIcons()}.",
+  "THEPRISMATIC2-BLOODLETTING2.title": "Bloodletting",
+
+  "THEPRISMATIC2-BREAKTHROUGH2.description": "[gold]Osty[/gold] loses {HpLoss:diff()} HP if he is alive, otherwise you lose {HpLoss:diff()} HP.\nDeal {Damage:diff()} damage to ALL enemies.",
+  "THEPRISMATIC2-BREAKTHROUGH2.title": "Breakthrough",
+
+  "THEPRISMATIC2-BULLY2.description": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for each [gold]Vulnerable[/gold], [gold]Weak[/gold], and [gold]Exposed[/gold] on the enemy.",
+  "THEPRISMATIC2-BULLY2.title": "Bully",
+
+  "THEPRISMATIC2-BRAND2.description": "[gold]Osty[/gold] loses {HpLoss:diff()} HP if he is alive, otherwise you lose {HpLoss:diff()} HP.\n[gold]Exhaust[/gold] 1 card.\nYou and [gold]Osty[/gold] each gain {StrengthPower:diff()} [gold]Strength[/gold].",
+  "THEPRISMATIC2-BRAND2.title": "Brand",
+
+  "THEPRISMATIC2-CRIMSON_MANTLE2.description": "At the start of your turn, [gold]Osty[/gold] loses 1 HP if he is alive, otherwise you lose 1 HP, then you gain {CrimsonMantlePower:diff()} [gold]Block[/gold].",
+  "THEPRISMATIC2-CRIMSON_MANTLE2.title": "Crimson Mantle",
+
+  "THEPRISMATIC2-DEMON_FORM2.description": "At the start of your turn, you and [gold]Osty[/gold] each gain {StrengthPower:diff()} [gold]Strength[/gold].",
+  "THEPRISMATIC2-DEMON_FORM2.title": "Demon Form",
+
+  "THEPRISMATIC2-CASCADE2.description": "Discard your [gold]Hand[/gold].\nPlay the top X{IfUpgraded:show:+1} cards of your [gold]Draw Pile[/gold].",
+  "THEPRISMATIC2-CASCADE2.title": "Cascade",
+
+  "THEPRISMATIC2-COLOSSUS2.description": "Gain {Block:diff()} [gold]Block[/gold].\nYou receive 50% less damage from enemies with 2 or more debuffs this turn.",
+  "THEPRISMATIC2-COLOSSUS2.title": "Colossus",
+
+  "THEPRISMATIC2-CINDER2.description": "Deal {Damage:diff()} damage.\nA random card gains [gold]Ethereal[/gold].\nGain {Stars:starIcons()}.",
+  "THEPRISMATIC2-CINDER2.title": "Cinder",
+
+  "THEPRISMATIC2-DOMINATE2.description": "Apply {VulnerablePower:diff()} [gold]Vulnerable[/gold].\nGain {StrengthPerVulnerable:diff()} [gold]Strength[/gold] for each [gold]Vulnerable[/gold], [gold]Weak[/gold], and [gold]Exposed[/gold] on the enemy.",
+  "THEPRISMATIC2-DOMINATE2.title": "Dominate",
+
+  "THEPRISMATIC2-EVIL_EYE2.description": "Gain {Block:diff()} [gold]Block[/gold].\nGain another {Block:diff()} [gold]Block[/gold] if you have [gold]Exhausted[/gold], discarded, or created a card this turn.",
+  "THEPRISMATIC2-EVIL_EYE2.title": "Evil Eye",
+
+  "THEPRISMATIC2-FIGHT_ME2.description": "Deal {Damage:diff()} damage twice.\nYou and [gold]Osty[/gold] each gain {StrengthPower:diff()} [gold]Strength[/gold].\nThe enemy gains {EnemyStrength:diff()} [gold]Strength[/gold].",
+  "THEPRISMATIC2-FIGHT_ME2.title": "Fight Me!",
+
+  "THEPRISMATIC2-FLAME_BARRIER2.description": "Gain {Block:diff()} [gold]Block[/gold].\nWhenever you are attacked this turn, [gold]Channel[/gold] {DamageBack:diff()} [gold]Magma[/gold].",
+  "THEPRISMATIC2-FLAME_BARRIER2.title": "Flame Barrier",
+
+  "THEPRISMATIC2-FORGOTTEN_RITUAL2.description": "If you [gold]Exhausted[/gold], discarded, or created a card this turn, gain {Energy:energyIcons()}.",
+  "THEPRISMATIC2-FORGOTTEN_RITUAL2.title": "Forgotten Ritual",
+
+  "THEPRISMATIC2-HAVOC2.description": "Play the top card of your [gold]Draw Pile[/gold]. It gains [gold]Ethereal[/gold].",
+  "THEPRISMATIC2-HAVOC2.title": "Havoc",
+
+  "THEPRISMATIC2-HEMOKINESIS2.description": "[gold]Osty[/gold] loses {HpLoss:diff()} HP if he is alive, otherwise you lose {HpLoss:diff()} HP.\nDeal {Damage:diff()} damage.",
+  "THEPRISMATIC2-HEMOKINESIS2.title": "Hemokinesis",
+
+  "THEPRISMATIC2-INFERNO2.description": "At the start of your turn, you or [gold]Osty[/gold] lose 1 HP.\nWhenever you or [gold]Osty[/gold] lose HP on your turn, deal {InfernoPower:diff()} damage to ALL enemies.",
+  "THEPRISMATIC2-INFERNO2.title": "Inferno",
+
+  "THEPRISMATIC2-INFLAME2.description": "Gain {StrengthPower:diff()} [gold]Strength[/gold].\n[gold]Osty[/gold] gains {StrengthPower:diff()} [gold]Strength[/gold].",
+  "THEPRISMATIC2-INFLAME2.title": "Inflame",
+
+  "THEPRISMATIC2-JUGGLING2.description": "When you play your third card each turn that is an [gold]Attack[/gold] or a [gold]Power[/gold], add a copy of it into your [gold]Hand[/gold].",
+  "THEPRISMATIC2-JUGGLING2.title": "Juggling"
 }
