@@ -30,10 +30,12 @@ public class Dominate2() : ThePrismatic2Card(1,
         new DynamicVar("StrengthPerVulnerable", 1m)
     });
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlyArray<IHoverTip>(new IHoverTip[2]
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlyArray<IHoverTip>(new IHoverTip[4]
     {
         HoverTipFactory.FromPower<StrengthPower>(),
-        HoverTipFactory.FromPower<VulnerablePower>()
+        HoverTipFactory.FromPower<WeakPower>(),
+        HoverTipFactory.FromPower<VulnerablePower>(),
+        HoverTipFactory.FromPower<ExposedPower>()
     });
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

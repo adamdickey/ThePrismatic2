@@ -9,5 +9,9 @@
 
   "THEPRISMATIC2-MAGMA_ORB.description": "Orb: Gives [gold]Vigor[/gold].",
   "THEPRISMATIC2-MAGMA_ORB.smartDescription": "[gold]Passive:[/gold] At the end of turn, gain [blue]{Passive}[/blue] [gold]Vigor[/gold].\n[gold]Evoke:[/gold] Gain [blue]{Evoke}[/blue] [gold]Vigor[/gold].",
-  "THEPRISMATIC2-MAGMA_ORB.title": "Magma"
+  "THEPRISMATIC2-MAGMA_ORB.title": "Magma",
+
+  "THEPRISMATIC2-BONE_ORB.description": "Orb: Summons [gold]Osty[/gold].",
+  "THEPRISMATIC2-BONE_ORB.smartDescription": "[gold]Passive:[/gold] At the end of turn, [gold]Summon[/gold] [blue]{Passive}[/blue].\n[gold]Evoke:[/gold] [gold]Summon[/gold] [blue]{Evoke}[/blue].",
+  "THEPRISMATIC2-BONE_ORB.title": "Bone"
 }

@@ -25,5 +25,33 @@
 
   "THEPRISMATIC2-JUGGLING2_POWER.description": "When you play your third card each turn that is an Attack or a Power, add a copy of it into your [gold]Hand[/gold].",
   "THEPRISMATIC2-JUGGLING2_POWER.smartDescription": "When you play your third card each turn that is an Attack or a Power, add [blue]{Amount}[/blue] {Amount:plural:copy|copies} of it into your [gold]Hand[/gold].",
-  "THEPRISMATIC2-JUGGLING2_POWER.title": "Juggling"
+  "THEPRISMATIC2-JUGGLING2_POWER.title": "Juggling",
+
+  "THEPRISMATIC2-PYRE2_POWER.description": "At the start of your turn, gain [blue]1[/blue] [gold]Energy[/gold] and [gold]Channel[/gold] [blue]1[/blue] [gold]Magma[/gold].",
+  "THEPRISMATIC2-PYRE2_POWER.smartDescription": "At the start of your turn, gain {Amount:energyIcons()} and [gold]Channel[/gold] [blue]{Amount}[/blue] [gold]Magma[/gold].",
+  "THEPRISMATIC2-PYRE2_POWER.title": "Pyre",
+
+  "THEPRISMATIC2-RAGE2_POWER.description": "Whenever you play an Attack this turn, [gold]Summon[/gold] [blue]2[/blue].",
+  "THEPRISMATIC2-RAGE2_POWER.smartDescription": "Whenever you play an Attack this turn, [gold]Summon[/gold] [blue]{Amount}[/blue].",
+  "THEPRISMATIC2-RAGE2_POWER.title": "Rage",
+
+  "THEPRISMATIC2-RUPTURE2_POWER.description": "Whenever you or [gold]Osty[/gold] lose HP on your turn and whenever you play a Power, gain [blue]1[/blue] [gold]Strength[/gold].",
+  "THEPRISMATIC2-RUPTURE2_POWER.smartDescription": "Whenever you or [gold]Osty[/gold] lose HP on your turn and whenever you play a Power, gain [blue]{Amount}[/blue] [gold]Strength[/gold].",
+  "THEPRISMATIC2-RUPTURE2_POWER.title": "Rupture",
+
+  "THEPRISMATIC2-JUGGERNAUT2_POWER.description": "Whenever you [gold]Summon[/gold] or gain [gold]Block[/gold], deal [blue]5[/blue] damage to a random enemy.",
+  "THEPRISMATIC2-JUGGERNAUT2_POWER.smartDescription": "Whenever you [gold]Summon[/gold] or gain [gold]Block[/gold], deal [blue]{Amount}[/blue] damage to a random enemy.",
+  "THEPRISMATIC2-JUGGERNAUT2_POWER.title": "Juggernaut",
+
+  "THEPRISMATIC2-SETUP_STRIKE2_POWER.description": "You and [gold]Osty[/gold] each gain [gold]Strength[/gold] until the end of this turn.",
+  "THEPRISMATIC2-SETUP_STRIKE2_POWER.smartDescription": "You and [gold]Osty[/gold] each gain [blue]{Amount}[/blue] [gold]Strength[/gold] until the end of this turn.",
+  "THEPRISMATIC2-SETUP_STRIKE2_POWER.title": "Setup Strike",
+
+  "THEPRISMATIC2-UNMOVABLE2_POWER.description": "The first time you [gold]Summon[/gold] or gain [gold]Block[/gold] from a card each turn, double the amount gained.",
+  "THEPRISMATIC2-UNMOVABLE2_POWER.smartDescription": "The first {Amount:plural:time|[blue]{}[/blue] times} you [gold]Summon[/gold] or gain [gold]Block[/gold] from a card each turn, double the amount gained.",
+  "THEPRISMATIC2-UNMOVABLE2_POWER.title": "Unmovable",
+
+  "THEPRISMATIC2-VICIOUS2_POWER.description": "Whenever you apply [gold]Weak[/gold], [gold]Vulnerable[/gold], or [gold]Exposed[/gold], draw [blue]1[/blue] card.",
+  "THEPRISMATIC2-VICIOUS2_POWER.smartDescription": "Whenever you apply [gold]Weak[/gold], [gold]Vulnerable[/gold], or [gold]Exposed[/gold], draw [blue]{Amount}[/blue] {Amount:plural:card|cards}.",
+  "THEPRISMATIC2-VICIOUS2_POWER.title": "Vicious"
 }

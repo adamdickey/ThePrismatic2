@@ -11,10 +11,10 @@
   "THEPRISMATIC2-DOOMING_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nApply {DoomPower:diff()} [gold]Doom[/gold].",
   "THEPRISMATIC2-DOOMING_DEFEND.title": "Dooming Defend",
 
-  "THEPRISMATIC2-TOXIC_STRIKE.description": "Deal {Damage:diff()} damage.\n[gold]Channel[/gold] 1 [gold]Solar[/gold].",
+  "THEPRISMATIC2-TOXIC_STRIKE.description": "Deal {Damage:diff()} damage.\n[gold]Channel[/gold] 1 [gold]Venom[/gold].",
   "THEPRISMATIC2-TOXIC_STRIKE.title": "Toxic Strike",
 
-  "THEPRISMATIC2-TOXIC_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Channel[/gold] 1 [gold]Solar[/gold].",
+  "THEPRISMATIC2-TOXIC_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Channel[/gold] 1 [gold]Venom[/gold].",
   "THEPRISMATIC2-TOXIC_DEFEND.title": "Toxic Defend",
 
   "THEPRISMATIC2-FLEETING_STRIKE.description": "Deal {Damage:diff()} damage.",
@@ -101,7 +101,7 @@
   "THEPRISMATIC2-BREAKTHROUGH2.description": "[gold]Osty[/gold] loses {HpLoss:diff()} HP if he is alive, otherwise you lose {HpLoss:diff()} HP.\nDeal {Damage:diff()} damage to ALL enemies.",
   "THEPRISMATIC2-BREAKTHROUGH2.title": "Breakthrough",
 
-  "THEPRISMATIC2-BULLY2.description": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for each [gold]Vulnerable[/gold], [gold]Weak[/gold], and [gold]Exposed[/gold] on the enemy.",
+  "THEPRISMATIC2-BULLY2.description": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for each [gold]Weak[/gold], [gold]Vulnerable[/gold], and [gold]Exposed[/gold] on the enemy.",
   "THEPRISMATIC2-BULLY2.title": "Bully",
 
   "THEPRISMATIC2-BRAND2.description": "[gold]Osty[/gold] loses {HpLoss:diff()} HP if he is alive, otherwise you lose {HpLoss:diff()} HP.\n[gold]Exhaust[/gold] 1 card.\nYou and [gold]Osty[/gold] each gain {StrengthPower:diff()} [gold]Strength[/gold].",
@@ -122,7 +122,7 @@
   "THEPRISMATIC2-CINDER2.description": "Deal {Damage:diff()} damage.\nA random card gains [gold]Ethereal[/gold].\nGain {Stars:starIcons()}.",
   "THEPRISMATIC2-CINDER2.title": "Cinder",
 
-  "THEPRISMATIC2-DOMINATE2.description": "Apply {VulnerablePower:diff()} [gold]Vulnerable[/gold].\nGain {StrengthPerVulnerable:diff()} [gold]Strength[/gold] for each [gold]Vulnerable[/gold], [gold]Weak[/gold], and [gold]Exposed[/gold] on the enemy.",
+  "THEPRISMATIC2-DOMINATE2.description": "Apply {VulnerablePower:diff()} [gold]Vulnerable[/gold].\nGain {StrengthPerVulnerable:diff()} [gold]Strength[/gold] for each [gold]Weak[/gold], [gold]Vulnerable[/gold], and [gold]Exposed[/gold] on the enemy.",
   "THEPRISMATIC2-DOMINATE2.title": "Dominate",
 
   "THEPRISMATIC2-EVIL_EYE2.description": "Gain {Block:diff()} [gold]Block[/gold].\nGain another {Block:diff()} [gold]Block[/gold] if you have [gold]Exhausted[/gold], discarded, or created a card this turn.",
@@ -150,5 +150,68 @@
   "THEPRISMATIC2-INFLAME2.title": "Inflame",
 
   "THEPRISMATIC2-JUGGLING2.description": "When you play your third card each turn that is an [gold]Attack[/gold] or a [gold]Power[/gold], add a copy of it into your [gold]Hand[/gold].",
-  "THEPRISMATIC2-JUGGLING2.title": "Juggling"
+  "THEPRISMATIC2-JUGGLING2.title": "Juggling",
+
+  "THEPRISMATIC2-MOLTEN_FIST2.description": "Deal {Damage:diff()} damage.\nDouble the enemy's [gold]Weak[/gold], [gold]Vulnerable[/gold], and [gold]Exposed[/gold].",
+  "THEPRISMATIC2-MOLTEN_FIST2.title": "Molten Fist",
+
+  "THEPRISMATIC2-OFFERING2.description": "[gold]Osty[/gold] loses {HpLoss:diff()} HP if he is alive, otherwise you lose {HpLoss:diff()} HP.\nGain {Energy:energyIcons()}.\nDraw {Cards:diff()} cards.",
+  "THEPRISMATIC2-OFFERING2.title": "Offering",
+
+  "THEPRISMATIC2-PILLAGE2.description": "Deal {Damage:diff()} damage.\nDraw cards until you draw a non-Attack, non-0 {energyPrefix:energyIcons(1)} card.",
+  "THEPRISMATIC2-PILLAGE2.title": "Pillage",
+
+  "THEPRISMATIC2-POMMEL_STRIKE2.description": "Deal {Damage:diff()} damage.\nDraw {Cards:diff()} {Cards:plural:card|cards}.\nDiscard 1 card.",
+  "THEPRISMATIC2-POMMEL_STRIKE2.title": "Pommel Strike",
+
+  "THEPRISMATIC2-SHRUG_IT_OFF2.description": "Gain {Block:diff()} [gold]Block[/gold].\nDraw {Cards:diff()} card.\nDiscard 1 card.",
+  "THEPRISMATIC2-SHRUG_IT_OFF2.title": "Shrug It Off",
+
+  "THEPRISMATIC2-PYRE2.description": "At the start of your turn, gain {energyPrefix:energyIcons(1)} and [gold]Channel[/gold] 1 [gold]Magma[/gold].",
+  "THEPRISMATIC2-PYRE2.title": "Pyre",
+
+  "THEPRISMATIC2-RAGE2.description": "Whenever you play an Attack this turn, [gold]Summon[/gold] {Power:diff()}.",
+  "THEPRISMATIC2-RAGE2.title": "Rage",
+
+  "THEPRISMATIC2-RAMPAGE2.description": "Deal {Damage:diff()} damage.\nIncrease this card's damage by {Increase:diff()} this combat for each {singleStarIcon} you have.",
+  "THEPRISMATIC2-RAMPAGE2.title": "Rampage",
+
+  "THEPRISMATIC2-RUPTURE2.description": "Whenever you or [gold]Osty[/gold] lose HP on your turn and whenever you play a Power, gain {StrengthPower:diff()} [gold]Strength[/gold].",
+  "THEPRISMATIC2-RUPTURE2.title": "Rupture",
+
+  "THEPRISMATIC2-JUGGERNAUT2.description": "Whenever you [gold]Summon[/gold] or gain [gold]Block[/gold], deal {Juggernaut2Power:diff()} damage to a random enemy.",
+  "THEPRISMATIC2-JUGGERNAUT2.title": "Juggernaut",
+
+  "THEPRISMATIC2-SETUP_STRIKE2.description": "Deal {Damage:diff()} damage.\nYou and [gold]Osty[/gold] each gain {StrengthPower:diff()} [gold]Strength[/gold] this turn.",
+  "THEPRISMATIC2-SETUP_STRIKE2.title": "Setup Strike",
+
+  "THEPRISMATIC2-SPITE2.description": "Deal {Damage:diff()} damage.\nIf you or [gold]Osty[/gold] lost HP this turn, hits {Repeat:diff()} times.",
+  "THEPRISMATIC2-SPITE2.title": "Spite",
+
+  "THEPRISMATIC2-STOMP2.description": "Deal {Damage:diff()} damage to ALL enemies.\n[gold]Channel[/gold] 1 [gold]Glass[/gold].\nCosts 1 less {energyPrefix:energyIcons(1)} for each Attack played this turn.",
+  "THEPRISMATIC2-STOMP2.title": "Stomp",
+
+  "THEPRISMATIC2-STONE_ARMOR2.description": "Gain {PlatingPower:diff()} [gold]Plating[/gold].\n[gold]Channel[/gold] 1 [gold]Bone[/gold].",
+  "THEPRISMATIC2-STONE_ARMOR2.title": "Stone Armor",
+
+  "THEPRISMATIC2-TAUNT2.description": "Gain {Block:diff()} [gold]Block[/gold].\nApply {VulnerablePower:diff()} [gold]Vulnerable[/gold].\nApply {Exposed:diff()} [gold]Exposed[/gold].",
+  "THEPRISMATIC2-TAUNT2.title": "Taunt",
+
+  "THEPRISMATIC2-TEAR_ASUNDER2.description": "Deal {Damage:diff()} damage.\nHits an additional time for each time you or [gold]Osty[/gold] lost HP this combat.{InCombat:\n(Hits {CalculatedHits:diff()} {CalculatedHits:plural:time|times})|}",
+  "THEPRISMATIC2-TEAR_ASUNDER2.title": "Tear Asunder",
+
+  "THEPRISMATIC2-THUNDERCLAP2.description": "Deal {Damage:diff()} damage and apply {VulnerablePower:diff()} [gold]Vulnerable[/gold] to ALL enemies.\n[gold]Channel[/gold] 1 [gold]Lightning[/gold].",
+  "THEPRISMATIC2-THUNDERCLAP2.title": "Thunderclap",
+
+  "THEPRISMATIC2-TREMBLE2.description": "Apply {VulnerablePower:diff()} [gold]Vulnerable[/gold].\nApply {Exposed:diff()} [gold]Exposed[/gold].",
+  "THEPRISMATIC2-TREMBLE2.title": "Tremble",
+
+  "THEPRISMATIC2-UNMOVABLE2.description": "The first time you [gold]Summon[/gold] or gain [gold]Block[/gold] from a card each turn, double the amount gained.",
+  "THEPRISMATIC2-UNMOVABLE2.title": "Unmovable",
+
+  "THEPRISMATIC2-UPPERCUT2.description": "Deal {Damage:diff()} damage.\nApply {Power:diff()} [gold]Weak[/gold].\nApply {Power:diff()} [gold]Vulnerable[/gold].\nApply {Power:diff()} [gold]Exposed[/gold].",
+  "THEPRISMATIC2-UPPERCUT2.title": "Uppercut",
+
+  "THEPRISMATIC2-VICIOUS2.description": "Whenever you apply [gold]Weak[/gold], [gold]Vulnerable[/gold], or [gold]Exposed[/gold], draw {Cards:diff()} {Cards:plural:card|cards}.",
+  "THEPRISMATIC2-VICIOUS2.title": "Vicious"
 }
