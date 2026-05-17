@@ -213,5 +213,44 @@
   "THEPRISMATIC2-UPPERCUT2.title": "Uppercut",
 
   "THEPRISMATIC2-VICIOUS2.description": "Whenever you apply [gold]Weak[/gold], [gold]Vulnerable[/gold], or [gold]Exposed[/gold], draw {Cards:diff()} {Cards:plural:card|cards}.",
-  "THEPRISMATIC2-VICIOUS2.title": "Vicious"
+  "THEPRISMATIC2-VICIOUS2.title": "Vicious",
+
+  "THEPRISMATIC2-DISMANTLE2.description": "Deal {Damage:diff()} damage.\nIf the enemy has 2 or more unique debuffs, hits twice.",
+  "THEPRISMATIC2-DISMANTLE2.title": "Dismantle",
+
+  "THEPRISMATIC2-TWIN_STRIKE2.description": "Deal {Damage:diff()} damage twice.",
+  "THEPRISMATIC2-TWIN_STRIKE2.title": "Twin Strike",
+
+  "THEPRISMATIC2-BLUDGEON2.description": "Costs {energyPrefix:energyIcons(1)} less for each other [gold]Costly[/gold] card played this turn.\nDeal {Damage:diff()} damage.",
+  "THEPRISMATIC2-BLUDGEON2.title": "Bludgeon",
+
+  "THEPRISMATIC2-BODY_SLAM2.description": "Deal damage equal to your [gold]Block[/gold] plus [gold]Osty's[/gold] current HP.{InCombat:\n(Deals {CalculatedDamage:diff()} damage)|}",
+  "THEPRISMATIC2-BODY_SLAM2.title": "Body Slam",
+
+  "THEPRISMATIC2-EXPECT_A_FIGHT2.description": "Gain {energyPrefix:energyIcons(1)} for each other [gold]Costly[/gold] card and/or Attack in your [gold]Hand[/gold].\nYou cannot gain additional {energyPrefix:energyIcons(1)} this turn.{InCombat:\n(Gain {CalculatedEnergy:energyIcons()})|}",
+  "THEPRISMATIC2-EXPECT_A_FIGHT2.title": "Expect a Fight",
+
+  "THEPRISMATIC2-DRUM_OF_BATTLE2.description": "Draw {Cards:diff()} cards.\nWhen this card is [gold]Exhausted[/gold], gain {Energy:energyIcons()}.",
+  "THEPRISMATIC2-DRUM_OF_BATTLE2.title": "Drum of Battle",
+
+  "THEPRISMATIC2-HELLRAISER2.description": "Whenever you draw a card containing “Strike” or an Attack with [gold]Cunning[/gold], it is played against a random enemy.",
+  "THEPRISMATIC2-HELLRAISER2.title": "Hellraiser",
+
+  "THEPRISMATIC2-INFERNAL_BLADE2.description": "Add a random Attack into your [gold]Hand[/gold].\nIt gains [gold]Ethereal[/gold].\nIt's free to play this turn.",
+  "THEPRISMATIC2-INFERNAL_BLADE2.title": "Infernal Blade",
+
+  "THEPRISMATIC2-PERFECTED_STRIKE2.description": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for ALL your cards that have [gold]Cunning[/gold] or contain “Strike”.",
+  "THEPRISMATIC2-PERFECTED_STRIKE2.title": "Perfected Strike",
+
+  "THEPRISMATIC2-CRUELTY2.description": "Enemies take an additional {CrueltyPower:diff()}% damage for each unique debuff they have.",
+  "THEPRISMATIC2-CRUELTY2.title": "Cruelty",
+
+  "THEPRISMATIC2-ACCURACY2.description": "0 Energy Attacks deal {AccuracyPower:diff()} additional damage.",
+  "THEPRISMATIC2-ACCURACY2.title": "Accuracy",
+
+  "THEPRISMATIC2-ANTICIPATE2.description": "Gain {DexterityPower:diff()} [gold]Dexterity[/gold] and {Focus:diff()} [gold]Focus[/gold] this turn.",
+  "THEPRISMATIC2-ANTICIPATE2.title": "Anticipate",
+
+  "THEPRISMATIC2-ASSASSINATE2.description": "Deal {Damage:diff()} damage.\nApply {VulnerablePower:diff()} [gold]Vulnerable[/gold].\nApply {VulnerablePower:diff()} [gold]Exposed[/gold].",
+  "THEPRISMATIC2-ASSASSINATE2.title": "Assassinate"
 }

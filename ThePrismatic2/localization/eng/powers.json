@@ -1,6 +1,6 @@
 {
-  "THEPRISMATIC2-EXPOSED_POWER.description": "Exposed creatures take [blue]50%[/blue] more damage from non-Attack sources.",
-  "THEPRISMATIC2-EXPOSED_POWER.smartDescription": "Receive [blue]{DamageIncrease:percentMore()}%[/blue] more damage from non-Attack sources for [blue]{Amount}[/blue] {Amount:plural:turn|turns}.",
+  "THEPRISMATIC2-EXPOSED_POWER.description": "Exposed creatures take [blue]50%[/blue] more damage from non-Attack sources and receive [blue]50%[/blue] more [gold]Doom[/gold].",
+  "THEPRISMATIC2-EXPOSED_POWER.smartDescription": "Receive [blue]{DamageIncrease:percentMore()}%[/blue] more damage from non-Attack sources and receive [blue]{DamageIncrease:percentMore()}%[/blue] more [gold]Doom[/gold] for [blue]{Amount}[/blue] {Amount:plural:turn|turns}.",
   "THEPRISMATIC2-EXPOSED_POWER.title": "Exposed",
 
   "THEPRISMATIC2-CRIMSON_MANTLE2_POWER.description": "At the start of your turn, you or Osty lose HP and you gain [gold]Block[/gold].",
@@ -53,5 +53,21 @@
 
   "THEPRISMATIC2-VICIOUS2_POWER.description": "Whenever you apply [gold]Weak[/gold], [gold]Vulnerable[/gold], or [gold]Exposed[/gold], draw [blue]1[/blue] card.",
   "THEPRISMATIC2-VICIOUS2_POWER.smartDescription": "Whenever you apply [gold]Weak[/gold], [gold]Vulnerable[/gold], or [gold]Exposed[/gold], draw [blue]{Amount}[/blue] {Amount:plural:card|cards}.",
-  "THEPRISMATIC2-VICIOUS2_POWER.title": "Vicious"
+  "THEPRISMATIC2-VICIOUS2_POWER.title": "Vicious",
+
+  "THEPRISMATIC2-HELLRAISER2_POWER.description": "Whenever you draw a card containing \"Strike\" or an Attack with [gold]Cunning[/gold], it is played against a random enemy.",
+  "THEPRISMATIC2-HELLRAISER2_POWER.smartDescription": "Whenever you draw a card containing \"Strike\" or an Attack with [gold]Cunning[/gold], it is played against a random enemy.",
+  "THEPRISMATIC2-HELLRAISER2_POWER.title": "Hellraiser",
+
+  "THEPRISMATIC2-CRUELTY2_POWER.description": "Debuffed enemies take additional damage.",
+  "THEPRISMATIC2-CRUELTY2_POWER.smartDescription": "Enemies take an additional [blue]{Amount}%[/blue] damage for each unique debuff they have.",
+  "THEPRISMATIC2-CRUELTY2_POWER.title": "Cruelty",
+
+  "THEPRISMATIC2-ACCURACY2_POWER.description": "[blue]0[/blue] Energy Attacks deal additional damage.",
+  "THEPRISMATIC2-ACCURACY2_POWER.smartDescription": "[blue]0[/blue] Energy Attacks deal [blue]{Amount}[/blue] additional damage.",
+  "THEPRISMATIC2-ACCURACY2_POWER.title": "Accuracy",
+
+  "THEPRISMATIC2-ANTICIPATE_FOCUS_POWER.description": "Gain [gold]Focus[/gold] until the end of this turn.",
+  "THEPRISMATIC2-ANTICIPATE_FOCUS_POWER.smartDescription": "Gain [blue]{Amount}[/blue] [gold]Focus[/gold] until the end of this turn.",
+  "THEPRISMATIC2-ANTICIPATE_FOCUS_POWER.title": "Anticipate"
 }

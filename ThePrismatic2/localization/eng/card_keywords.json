@@ -1,7 +1,13 @@
 {
-  "DUALWIELD.description": "If [gold]Osty[/gold] is alive, he copies this Attack and any additional effects this Attack has. His copy deals half damage.",
-  "DUALWIELD.title": "Dual Wield",
+  "THEPRISMATIC2-DUALWIELD.description": "If [gold]Osty[/gold] is alive, he copies this Attack and any additional effects this Attack has. His copy deals half damage.",
+  "THEPRISMATIC2-DUALWIELD.title": "Dual Wield",
 
-  "COSTLY.description": "[gold]Costly[/gold] cards cost 2 or more total {energyIcon()} and {starIcon()}.",
-  "COSTLY.title": "Costly"
+  "THEPRISMATIC2-COSTLY.description": "[gold]Costly[/gold] cards cost 2 or more total Energy and Stars.",
+  "THEPRISMATIC2-COSTLY.title": "Costly",
+
+  "THEPRISMATIC2-CUNNING.description": "If this card is [gold]Exhausted[/gold] or discarded from your [gold]Hand[/gold] before the end of your turn, play it for free.",
+  "THEPRISMATIC2-CUNNING.title": "Cunning",
+
+  "THEPRISMATIC2-STARBOUND.description": "If you don’t have enough Energy to play this card, use Stars instead of Energy. If you don’t have enough Stars to play this card, use Energy instead of Stars.",
+  "THEPRISMATIC2-STARBOUND.title": "Starbound"
 }

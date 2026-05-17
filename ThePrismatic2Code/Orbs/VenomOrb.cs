@@ -66,7 +66,7 @@ public sealed class VenomOrb : CustomOrbModel
         {
             Trigger();
             PlayPassiveSfx();
-            await PowerCmd.Apply<PoisonPower>(targets, _passiveVal, base.Owner.Creature, null);
+            await PowerCmd.Apply<PoisonPower>(targets, PassiveVal, base.Owner.Creature, null);
             _passiveVal = Math.Max(0m, _passiveVal - 1m);
         }
     }

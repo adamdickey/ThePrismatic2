@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace ThePrismatic2.ThePrismatic2Code.Powers;
@@ -33,6 +34,21 @@ public class ExposedPower : ThePrismatic2Power
         }
         decimal num = base.DynamicVars["DamageIncrease"].BaseValue;
         return num;
+    }
+    
+    public override decimal ModifyPowerAmountGiven(PowerModel power, Creature giver, decimal amount, Creature? target, CardModel? cardSource)
+    {
+        if (target != null)
+        {
+            if (target.Powers.Contains(this))
+            {
+                if (power is DoomPower)
+                {
+                    return amount * 1.5m;
+                } 
+            }
+        }
+        return amount;
     }
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)

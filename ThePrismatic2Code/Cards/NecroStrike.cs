@@ -16,7 +16,7 @@ public class NecroStrike() : ThePrismatic2Card(1,
 {
     public override string CustomPortraitPath => $"PrismaticStrike.png".BigCardImagePath();
     public override string PortraitPath => $"PrismaticStrike.png".CardImagePath();
-    protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Strike };
+    protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Strike, CardTag.OstyAttack };
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.SummonDynamic, base.DynamicVars.Summon));
 
@@ -27,9 +27,7 @@ public class NecroStrike() : ThePrismatic2Card(1,
     });
 
 
-    protected override async Task OnPlay(
-        PlayerChoiceContext choiceContext,
-        CardPlay play)
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target, "cardPlay.Target");
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
@@ -44,6 +42,6 @@ public class NecroStrike() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Damage.UpgradeValueBy(3m);
+        base.DynamicVars.OstyDamage.UpgradeValueBy(3m);
     }
 }
