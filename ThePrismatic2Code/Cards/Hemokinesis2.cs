@@ -17,7 +17,7 @@ public class Hemokinesis2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/hemokinesis.png-97acd5accd58a4400c33490c4b808c57.ctex";
     public override string PortraitPath => "res://.godot/imported/hemokinesis.png-97acd5accd58a4400c33490c4b808c57.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
     {
         new HpLossVar(2m),
         new DamageVar(15m, ValueProp.Move)
@@ -25,22 +25,22 @@ public class Hemokinesis2() : ThePrismatic2Card(1,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-        if (!Osty.CheckMissingWithAnim(base.Owner))
+        ArgumentNullException.ThrowIfNull(cardPlay.Target);
+        if (!Osty.CheckMissingWithAnim(Owner))
         {
-            await CreatureCmd.Damage(choiceContext, base.Owner.Osty, base.DynamicVars.HpLoss.BaseValue, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
+            await CreatureCmd.Damage(choiceContext, Owner.Osty, DynamicVars.HpLoss.BaseValue, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
         }
         else
         {
-            await CreatureCmd.Damage(choiceContext, base.Owner.Creature, base.DynamicVars.HpLoss.BaseValue, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
+            await CreatureCmd.Damage(choiceContext, Owner.Creature, DynamicVars.HpLoss.BaseValue, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
         }
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_bloody_impact")
             .Execute(choiceContext);
     }
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Damage.UpgradeValueBy(5m);
+        DynamicVars.Damage.UpgradeValueBy(5m);
     }
 }

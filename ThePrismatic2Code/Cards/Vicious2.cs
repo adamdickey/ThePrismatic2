@@ -20,7 +20,7 @@ public class Vicious2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/vicious.png-16476ed09a4669a4552fcb0c1bee3be0.ctex";
     public override string PortraitPath => "res://.godot/imported/vicious.png-16476ed09a4669a4552fcb0c1bee3be0.ctex";
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlyArray<IHoverTip>(
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>(
         new IHoverTip[3]
         {
             HoverTipFactory.FromPower<WeakPower>(),
@@ -28,16 +28,16 @@ public class Vicious2() : ThePrismatic2Card(1,
             HoverTipFactory.FromPower<ExposedPower>()
         });
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new CardsVar(1));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new CardsVar(1));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<Vicious2Power>(base.Owner.Creature, base.DynamicVars.Cards.BaseValue, base.Owner.Creature, this);
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await PowerCmd.Apply<Vicious2Power>(Owner.Creature, DynamicVars.Cards.BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Cards.UpgradeValueBy(1m);
+        DynamicVars.Cards.UpgradeValueBy(1m);
     }
 }

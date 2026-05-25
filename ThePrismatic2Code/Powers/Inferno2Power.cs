@@ -25,25 +25,25 @@ public class Inferno2Power : ThePrismatic2Power
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar("SelfDamage", 0m, ValueProp.Unblockable | ValueProp.Unpowered));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar("SelfDamage", 0m, ValueProp.Unblockable | ValueProp.Unpowered));
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
-        if (player == base.Owner.Player)
+        if (player == Owner.Player)
         {
             if (!Osty.CheckMissingWithAnim(player))
             {
                 NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NFireSmokePuffVfx.Create(player.Osty));
                 await Cmd.CustomScaledWait(0.2f, 0.4f);
-                DamageVar damageVar = (DamageVar)base.DynamicVars["SelfDamage"];
-                await CreatureCmd.Damage(choiceContext, player.Osty, damageVar.BaseValue, damageVar.Props, base.Owner, null);
+                DamageVar damageVar = (DamageVar)DynamicVars["SelfDamage"];
+                await CreatureCmd.Damage(choiceContext, player.Osty, damageVar.BaseValue, damageVar.Props, Owner, null);
             }
             else
             {
-                NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NFireSmokePuffVfx.Create(base.Owner));
+                NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NFireSmokePuffVfx.Create(Owner));
                 await Cmd.CustomScaledWait(0.2f, 0.4f);
-                DamageVar damageVar = (DamageVar)base.DynamicVars["SelfDamage"];
-                await CreatureCmd.Damage(choiceContext, base.Owner, damageVar.BaseValue, damageVar.Props, base.Owner, null);
+                DamageVar damageVar = (DamageVar)DynamicVars["SelfDamage"];
+                await CreatureCmd.Damage(choiceContext, Owner, damageVar.BaseValue, damageVar.Props, Owner, null);
             }
             
         }
@@ -51,31 +51,31 @@ public class Inferno2Power : ThePrismatic2Power
 
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (!Osty.CheckMissingWithAnim(base.Owner.Player))
+        if (!Osty.CheckMissingWithAnim(Owner.Player))
         {
-            if ((target != base.Owner && target != base.Owner.Player.Osty) || result.UnblockedDamage <= 0 || base.Owner.CombatState.CurrentSide != base.Owner.Side)
+            if ((target != Owner && target != Owner.Player.Osty) || result.UnblockedDamage <= 0 || Owner.CombatState.CurrentSide != Owner.Side)
             {
                 return;
             }
         }
         else
         {
-            if (target != base.Owner || result.UnblockedDamage <= 0 || base.Owner.CombatState.CurrentSide != base.Owner.Side)
+            if (target != Owner || result.UnblockedDamage <= 0 || Owner.CombatState.CurrentSide != Owner.Side)
             {
                 return;
             }
         }
-        foreach (Creature hittableEnemy in base.CombatState.HittableEnemies)
+        foreach (Creature hittableEnemy in CombatState.HittableEnemies)
         {
             NFireBurstVfx child = NFireBurstVfx.Create(hittableEnemy, 0.75f);
             NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
         }
-        await CreatureCmd.Damage(choiceContext, base.CombatState.HittableEnemies, base.Amount, ValueProp.Unpowered, base.Owner, null);
+        await CreatureCmd.Damage(choiceContext, CombatState.HittableEnemies, Amount, ValueProp.Unpowered, Owner, null);
     }
 
     public void IncrementSelfDamage()
     {
         AssertMutable();
-        base.DynamicVars["SelfDamage"].BaseValue++;
+        DynamicVars["SelfDamage"].BaseValue++;
     }
 }

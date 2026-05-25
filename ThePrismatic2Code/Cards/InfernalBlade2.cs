@@ -22,15 +22,15 @@ public class InfernalBlade2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/infernal_blade.png-7e47fc1efa296bbf5fff81d7c5262a77.ctex";
     public override string PortraitPath => "res://.godot/imported/infernal_blade.png-7e47fc1efa296bbf5fff81d7c5262a77.ctex";
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new global::_003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Ethereal));
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Ethereal));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        CardModel cardModel = CardFactory.GetDistinctForCombat(base.Owner, from c in base.Owner.Character.CardPool.GetUnlockedCards(base.Owner.UnlockState, base.Owner.RunState.CardMultiplayerConstraint)
+        CardModel cardModel = CardFactory.GetDistinctForCombat(Owner, from c in Owner.Character.CardPool.GetUnlockedCards(Owner.UnlockState, Owner.RunState.CardMultiplayerConstraint)
             where c.Type == CardType.Attack
-            select c, 1, base.Owner.RunState.Rng.CombatCardGeneration).FirstOrDefault();
+            select c, 1, Owner.RunState.Rng.CombatCardGeneration).FirstOrDefault();
         if (cardModel != null)
         {
             cardModel.SetToFreeThisTurn();
@@ -41,6 +41,6 @@ public class InfernalBlade2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        base.EnergyCost.UpgradeBy(-1);
+        EnergyCost.UpgradeBy(-1);
     }
 }

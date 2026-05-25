@@ -20,7 +20,7 @@ public class Unmovable2() : ThePrismatic2Card(2,
     public override string CustomPortraitPath => "res://.godot/imported/unmovable.png-2a501a9619b6d09a82ac58cd84f1eddb.ctex";
     public override string PortraitPath => "res://.godot/imported/unmovable.png-2a501a9619b6d09a82ac58cd84f1eddb.ctex";
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlyArray<IHoverTip>(
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>(
         new IHoverTip[2]
         {
             HoverTipFactory.Static(StaticHoverTip.Block),
@@ -29,13 +29,13 @@ public class Unmovable2() : ThePrismatic2Card(2,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        NPowerUpVfx.CreateNormal(base.Owner.Creature);
-        await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<Unmovable2Power>(base.Owner.Creature, 1m, base.Owner.Creature, this);
+        NPowerUpVfx.CreateNormal(Owner.Creature);
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await PowerCmd.Apply<Unmovable2Power>(Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        base.EnergyCost.UpgradeBy(-1);
+        EnergyCost.UpgradeBy(-1);
     }
 }

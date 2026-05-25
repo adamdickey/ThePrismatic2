@@ -35,7 +35,7 @@ public class Hellraiser2Power : ThePrismatic2Power
 
     public override async Task AfterCardDrawnEarly(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
-        if (card.Owner.Creature == base.Owner && (card.Tags.Contains(CardTag.Strike) || (card.Keywords.Contains(Extensions.Keywords.Cunning) && card.Type == CardType.Attack)) && !base.Owner.CombatState.HittableEnemies.All((Creature c) => c.ShowsInfiniteHp))
+        if (card.Owner.Creature == Owner && (card.Tags.Contains(CardTag.Strike) || (card.Keywords.Contains(Extensions.Keywords.Cunning) && card.Type == CardType.Attack)) && !Owner.CombatState.HittableEnemies.All((Creature c) => c.ShowsInfiniteHp))
         {
             AutoplayingCards.Add(card);
             await CardCmd.AutoPlay(choiceContext, card, null);

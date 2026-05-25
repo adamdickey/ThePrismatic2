@@ -19,35 +19,35 @@ public class Bludgeon2() : ThePrismatic2Card(3,
     public override string CustomPortraitPath => "res://.godot/imported/bludgeon.png-46e9e5632a8dbd63cc2066c4317184cd.ctex";
     public override string PortraitPath => "res://.godot/imported/bludgeon.png-46e9e5632a8dbd63cc2066c4317184cd.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(32m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(32m, ValueProp.Move));
     
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new global::_003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Costly);
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Costly);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+        ArgumentNullException.ThrowIfNull(cardPlay.Target);
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
             .Execute(choiceContext);
     }
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Damage.UpgradeValueBy(10m);
+        DynamicVars.Damage.UpgradeValueBy(10m);
     }
     
     public override async Task AfterCardEnteredCombat(CardModel card)
     {
-        if (card == this && !base.IsClone)
+        if (card == this && !IsClone)
         {
-            int amount = CombatManager.Instance.History.CardPlaysFinished.Count((CardPlayFinishedEntry e) => e.CardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, e.CardPlay.Card.CurrentStarCost) >= 2 && e.CardPlay.Card.Owner == base.Owner && e.HappenedThisTurn(base.CombatState));
+            int amount = CombatManager.Instance.History.CardPlaysFinished.Count((CardPlayFinishedEntry e) => e.CardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, e.CardPlay.Card.CurrentStarCost) >= 2 && e.CardPlay.Card.Owner == Owner && e.HappenedThisTurn(CombatState));
             ReduceCostBy(amount);
         }
     }
 
     public override async Task BeforeCardPlayed(CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner == base.Owner && cardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, cardPlay.Card.CurrentStarCost) >= 2)
+        if (cardPlay.Card.Owner == Owner && cardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, cardPlay.Card.CurrentStarCost) >= 2)
         {
             ReduceCostBy(1);
         }
@@ -55,6 +55,6 @@ public class Bludgeon2() : ThePrismatic2Card(3,
 
     private void ReduceCostBy(int amount)
     {
-        base.EnergyCost.AddThisTurn(-amount);
+        EnergyCost.AddThisTurn(-amount);
     }
 }

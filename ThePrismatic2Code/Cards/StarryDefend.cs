@@ -18,7 +18,7 @@ public class StarryDefend() : ThePrismatic2Card(1,
     public override string PortraitPath => $"PrismaticDefend.png".CardImagePath();
     protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Defend };
     
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
     {
         new BlockVar(6m, ValueProp.Move),
         new StarsVar(1)
@@ -28,13 +28,13 @@ public class StarryDefend() : ThePrismatic2Card(1,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, play);
-        await PlayerCmd.GainStars(base.DynamicVars.Stars.BaseValue, base.Owner);
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play);
+        await PlayerCmd.GainStars(DynamicVars.Stars.BaseValue, Owner);
     }
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

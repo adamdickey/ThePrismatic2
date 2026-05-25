@@ -21,31 +21,31 @@ public class CrimsonMantle2Power : ThePrismatic2Power
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.Block));
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.Block));
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar("SelfDamage", 0m, ValueProp.Unblockable | ValueProp.Unpowered));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar("SelfDamage", 0m, ValueProp.Unblockable | ValueProp.Unpowered));
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
-        if (player == base.Owner.Player)
+        if (player == Owner.Player)
         {
             Flash();
-            DamageVar damageVar = (DamageVar)base.DynamicVars["SelfDamage"];
+            DamageVar damageVar = (DamageVar)DynamicVars["SelfDamage"];
             if (!Osty.CheckMissingWithAnim(player))
             {
-                await CreatureCmd.Damage(choiceContext, player.Osty, damageVar.BaseValue, damageVar.Props, base.Owner, null);
+                await CreatureCmd.Damage(choiceContext, player.Osty, damageVar.BaseValue, damageVar.Props, Owner, null);
             }
             else
             {
-                await CreatureCmd.Damage(choiceContext, base.Owner, damageVar.BaseValue, damageVar.Props, base.Owner, null);
+                await CreatureCmd.Damage(choiceContext, Owner, damageVar.BaseValue, damageVar.Props, Owner, null);
             }
-            await CreatureCmd.GainBlock(base.Owner, base.Amount, ValueProp.Unpowered, null);
+            await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered, null);
         }
     }
 
     public void IncrementSelfDamage()
     {
         AssertMutable();
-        base.DynamicVars["SelfDamage"].BaseValue++;
+        DynamicVars["SelfDamage"].BaseValue++;
     }
 }

@@ -17,16 +17,16 @@ public class Cruelty2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/cruelty.png-8091e432794aa573e1230cb0e6d193f7.ctex";
     public override string PortraitPath => "res://.godot/imported/cruelty.png-8091e432794aa573e1230cb0e6d193f7.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<CrueltyPower>(25m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<CrueltyPower>(25m));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<Cruelty2Power>(base.Owner.Creature, base.DynamicVars["CrueltyPower"].BaseValue, base.Owner.Creature, this);
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await PowerCmd.Apply<Cruelty2Power>(Owner.Creature, DynamicVars["CrueltyPower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars["CrueltyPower"].UpgradeValueBy(15m);
+        DynamicVars["CrueltyPower"].UpgradeValueBy(15m);
     }
 }

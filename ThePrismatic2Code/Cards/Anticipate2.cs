@@ -18,29 +18,27 @@ public class Anticipate2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/anticipate.png-42f2136f7095fe73788485df07f25453.ctex";
     public override string PortraitPath => "res://.godot/imported/anticipate.png-42f2136f7095fe73788485df07f25453.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new PowerVar<DexterityPower>(2m),
         new DynamicVar("Focus", 1m)
-    });
+    ]);
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlyArray<IHoverTip>(new IHoverTip[2]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<DexterityPower>(),
         HoverTipFactory.FromPower<FocusPower>()
-    });
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<AnticipatePower>(base.Owner.Creature, base.DynamicVars.Dexterity.BaseValue, base.Owner.Creature, this);
-        await PowerCmd.Apply<FocusPower>(base.Owner.Creature, base.DynamicVars["Focus"].BaseValue, base.Owner.Creature, this);
-        await PowerCmd.Apply<AnticipateFocusPower>(base.Owner.Creature, base.DynamicVars["Focus"].BaseValue, base.Owner.Creature, this);
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await PowerCmd.Apply<AnticipatePower>(Owner.Creature, DynamicVars.Dexterity.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<FocusPower>(Owner.Creature, DynamicVars["Focus"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<AnticipateFocusPower>(Owner.Creature, DynamicVars["Focus"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Dexterity.UpgradeValueBy(1m);
-        base.DynamicVars["Focus"].UpgradeValueBy(1m);
+        DynamicVars.Dexterity.UpgradeValueBy(1m);
+        DynamicVars["Focus"].UpgradeValueBy(1m);
     }
 }

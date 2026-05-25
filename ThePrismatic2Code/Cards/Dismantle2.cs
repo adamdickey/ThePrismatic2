@@ -21,30 +21,30 @@ public class Dismantle2() : ThePrismatic2Card(1,
 
         
     protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.OstyAttack };
-    protected override bool ShouldGlowGoldInternal => base.CombatState.HittableEnemies.Any((Creature e) => e.Powers.Count(power => power.Type == PowerType.Debuff) >=2) || !Osty.CheckMissingWithAnim(base.Owner);
+    protected override bool ShouldGlowGoldInternal => CombatState.HittableEnemies.Any((Creature e) => e.Powers.Count(power => power.Type == PowerType.Debuff) >=2) || !Osty.CheckMissingWithAnim(Owner);
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(
         new DynamicVar[2]
         {
             new DamageVar(6m, ValueProp.Move),
             new OstyDamageVar(3m, ValueProp.Move)
         });
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new global::_003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.DualWield);
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.DualWield);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
+        ArgumentNullException.ThrowIfNull(cardPlay.Target);
         int hitCount = !(cardPlay.Target.Powers.Count(power => power.Type == PowerType.Debuff) >= 2) ? 1 : 2;
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(hitCount).FromCard(this)
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(hitCount).FromCard(this)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_blunt", null, "heavy_attack.mp3")
             .Execute(choiceContext);
-        if (!Osty.CheckMissingWithAnim(base.Owner))
+        if (!Osty.CheckMissingWithAnim(Owner))
         {
-            ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
+            ArgumentNullException.ThrowIfNull(cardPlay.Target);
             hitCount = !(cardPlay.Target.Powers.Count(power => power.Type == PowerType.Debuff) >= 2) ? 1 : 2;
-            await DamageCmd.Attack(base.DynamicVars.OstyDamage.BaseValue).FromOsty(base.Owner.Osty, this)
+            await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this)
                 .WithHitCount(hitCount)
                 .Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
@@ -54,7 +54,7 @@ public class Dismantle2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Damage.UpgradeValueBy(2m);
-        base.DynamicVars.OstyDamage.UpgradeValueBy(1m);
+        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.OstyDamage.UpgradeValueBy(1m);
     }
 }

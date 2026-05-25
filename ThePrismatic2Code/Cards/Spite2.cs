@@ -19,9 +19,9 @@ public class Spite2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/spite.png-c6a5e29af3ec6f7f0b922009f7a78f43.ctex";
     public override string PortraitPath => "res://.godot/imported/spite.png-c6a5e29af3ec6f7f0b922009f7a78f43.ctex";
 
-    protected override bool ShouldGlowGoldInternal => LostHpThisTurn(base.Owner.Creature);
+    protected override bool ShouldGlowGoldInternal => LostHpThisTurn(Owner.Creature);
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
     {
         new DamageVar(5m, ValueProp.Move),
         new RepeatVar(2)
@@ -29,9 +29,9 @@ public class Spite2() : ThePrismatic2Card(0,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-        int hitCount = ((!LostHpThisTurn(base.Owner.Creature)) ? 1 : base.DynamicVars.Repeat.IntValue);
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(hitCount).FromCard(this)
+        ArgumentNullException.ThrowIfNull(cardPlay.Target);
+        int hitCount = ((!LostHpThisTurn(Owner.Creature)) ? 1 : DynamicVars.Repeat.IntValue);
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(hitCount).FromCard(this)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
@@ -39,7 +39,7 @@ public class Spite2() : ThePrismatic2Card(0,
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Repeat.UpgradeValueBy(1m);
+        DynamicVars.Repeat.UpgradeValueBy(1m);
     }
 
     private static bool LostHpThisTurn(Creature creature)

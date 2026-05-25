@@ -19,16 +19,16 @@ public class Tremble2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/tremble.png-60c5361f3fd50a991fd54859433d2a2f.ctex";
     public override string PortraitPath => "res://.godot/imported/tremble.png-60c5361f3fd50a991fd54859433d2a2f.ctex";
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new global::_003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(
         new DynamicVar[2]
         {
             new PowerVar<VulnerablePower>(2m),
             new DynamicVar("Exposed", 2m)
         });
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlyArray<IHoverTip>(
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>(
         new IHoverTip[2]
         {
             HoverTipFactory.FromPower<VulnerablePower>(),
@@ -37,15 +37,15 @@ public class Tremble2() : ThePrismatic2Card(1,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-        await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, base.DynamicVars.Vulnerable.BaseValue, base.Owner.Creature, this);
-        await PowerCmd.Apply<ExposedPower>(cardPlay.Target, base.DynamicVars["Exposed"].BaseValue, base.Owner.Creature, this);
+        ArgumentNullException.ThrowIfNull(cardPlay.Target);
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, DynamicVars.Vulnerable.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<ExposedPower>(cardPlay.Target, DynamicVars["Exposed"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Vulnerable.UpgradeValueBy(1m);
-        base.DynamicVars["Exposed"].UpgradeValueBy(1m);
+        DynamicVars.Vulnerable.UpgradeValueBy(1m);
+        DynamicVars["Exposed"].UpgradeValueBy(1m);
     }
 }

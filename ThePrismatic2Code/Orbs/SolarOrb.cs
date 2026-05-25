@@ -60,13 +60,13 @@ public sealed class SolarOrb : CustomOrbModel
         if (orb == this)
         {
             Trigger();
-            await PlayerCmd.GainStars(PassiveVal, base.Owner);
+            await PlayerCmd.GainStars(PassiveVal, Owner);
         }
     }
     
     public override async Task<IEnumerable<Creature>> Evoke(PlayerChoiceContext choiceContext)
     {
-        await PlayerCmd.GainStars(EvokeVal, base.Owner);
-        return new global::_003C_003Ez__ReadOnlySingleElementList<Creature>(base.Owner.Creature);
+        await PlayerCmd.GainStars(EvokeVal, Owner);
+        return new _003C_003Ez__ReadOnlySingleElementList<Creature>(Owner.Creature);
     }
 }

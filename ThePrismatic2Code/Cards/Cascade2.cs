@@ -20,13 +20,13 @@ public class Cascade2() : ThePrismatic2Card(-1,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        IEnumerable<CardModel> enumerable = PileType.Hand.GetPile(base.Owner).Cards.ToList();
+        IEnumerable<CardModel> enumerable = PileType.Hand.GetPile(Owner).Cards.ToList();
         await CardCmd.Discard(choiceContext, enumerable);
         int num = ResolveEnergyXValue();
-        if (base.IsUpgraded)
+        if (IsUpgraded)
         {
             num++;
         }
-        await CardPileCmd.AutoPlayFromDrawPile(choiceContext, base.Owner, num, CardPilePosition.Top, forceExhaust: false);
+        await CardPileCmd.AutoPlayFromDrawPile(choiceContext, Owner, num, CardPilePosition.Top, forceExhaust: false);
     }
 }

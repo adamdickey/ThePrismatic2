@@ -27,9 +27,9 @@ public class Stomp2() : ThePrismatic2Card(3,
     public override string CustomPortraitPath => "res://.godot/imported/stomp.png-9aac0da66ce194d4ae3678059f67ad08.ctex";
     public override string PortraitPath => "res://.godot/imported/stomp.png-9aac0da66ce194d4ae3678059f67ad08.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(12m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(12m, ValueProp.Move));
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlyArray<IHoverTip>(new IHoverTip[2]
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>(new IHoverTip[2]
     {
         HoverTipFactory.Static(StaticHoverTip.Channeling),
         HoverTipFactory.FromOrb<GlassOrb>()
@@ -37,20 +37,20 @@ public class Stomp2() : ThePrismatic2Card(3,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.AttackAnimDelay);
-        foreach (Creature hittableEnemy in base.CombatState.HittableEnemies)
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.AttackAnimDelay);
+        foreach (Creature hittableEnemy in CombatState.HittableEnemies)
         {
             NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NSpikeSplashVfx.Create(hittableEnemy));
         }
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState)
             .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
             .Execute(choiceContext);
-        await OrbCmd.Channel<GlassOrb>(choiceContext, base.Owner);
+        await OrbCmd.Channel<GlassOrb>(choiceContext, Owner);
     }
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 
     public override Task AfterCardEnteredCombat(CardModel card)
@@ -59,18 +59,18 @@ public class Stomp2() : ThePrismatic2Card(3,
         {
             return Task.CompletedTask;
         }
-        if (base.IsClone)
+        if (IsClone)
         {
             return Task.CompletedTask;
         }
-        int amount = CombatManager.Instance.History.CardPlaysFinished.Count((CardPlayFinishedEntry e) => e.CardPlay.Card.Type == CardType.Attack && e.CardPlay.Card.Owner == base.Owner && e.HappenedThisTurn(base.CombatState));
+        int amount = CombatManager.Instance.History.CardPlaysFinished.Count((CardPlayFinishedEntry e) => e.CardPlay.Card.Type == CardType.Attack && e.CardPlay.Card.Owner == Owner && e.HappenedThisTurn(CombatState));
         ReduceCostBy(amount);
         return Task.CompletedTask;
     }
 
     public override Task BeforeCardPlayed(CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner != base.Owner)
+        if (cardPlay.Card.Owner != Owner)
         {
             return Task.CompletedTask;
         }
@@ -84,6 +84,6 @@ public class Stomp2() : ThePrismatic2Card(3,
 
     private void ReduceCostBy(int amount)
     {
-        base.EnergyCost.AddThisTurn(-amount);
+        EnergyCost.AddThisTurn(-amount);
     }
 }

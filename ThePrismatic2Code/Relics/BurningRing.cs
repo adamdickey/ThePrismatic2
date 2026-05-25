@@ -15,7 +15,7 @@ public sealed class BurningRing() : ThePrismatic2Relic
 
     public override bool TryModifyCardRewardOptions(Player player, List<CardCreationResult> options, CardCreationOptions creationOptions)
     {
-        if (base.Owner != player)
+        if (Owner != player)
         {
             return false;
         }
@@ -39,7 +39,7 @@ public sealed class BurningRing() : ThePrismatic2Relic
             return false;
         }
         CardCreationOptions options2 = new CardCreationOptions(enumerable, CardCreationSource.Other, creationOptions.RarityOdds).WithFlags(CardCreationFlags.NoModifyHooks | CardCreationFlags.NoCardPoolModifications);
-        CardModel cardModel = CardFactory.CreateForReward(base.Owner, 1, options2).FirstOrDefault()?.Card;
+        CardModel? cardModel = CardFactory.CreateForReward(Owner, 1, options2).FirstOrDefault()?.Card;
         if (cardModel != null)
         {
             CardCreationResult cardCreationResult = new CardCreationResult(cardModel);

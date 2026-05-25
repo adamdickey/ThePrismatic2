@@ -29,7 +29,7 @@ public class Rupture2Power : ThePrismatic2Power
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<StrengthPower>());
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<StrengthPower>());
 
     protected override object InitInternalData()
     {
@@ -38,51 +38,51 @@ public class Rupture2Power : ThePrismatic2Power
 
     public override Task BeforeCardPlayed(CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner.Creature != base.Owner)
+        if (cardPlay.Card.Owner.Creature != Owner)
         {
             return Task.CompletedTask;
         }
-        if (base.CombatState.CurrentSide != base.Owner.Side)
+        if (CombatState.CurrentSide != Owner.Side)
         {
             return Task.CompletedTask;
         }
         GetInternalData<Data>().playedCards.Add(cardPlay.Card, 0);
         if (cardPlay.Card.Type == CardType.Power)
         {
-            PowerCmd.Apply<StrengthPower>(base.Owner, base.Amount, base.Owner, null);
+            PowerCmd.Apply<StrengthPower>(Owner, Amount, Owner, null);
         }
         return Task.CompletedTask;
     }
     
     public override Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (target == base.Owner.Player.Osty && base.CombatState.CurrentSide == base.Owner.Side)
+        if (target == Owner.Player.Osty && CombatState.CurrentSide == Owner.Side)
         {
-            PowerCmd.Apply<StrengthPower>(base.Owner, base.Amount, base.Owner, null);
+            PowerCmd.Apply<StrengthPower>(Owner, Amount, Owner, null);
         }
         return Task.CompletedTask;
     }
 
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (target == base.Owner && result.UnblockedDamage > 0 && base.CombatState.CurrentSide == base.Owner.Side)
+        if (target == Owner && result.UnblockedDamage > 0 && CombatState.CurrentSide == Owner.Side)
         {
             if (cardSource == null || !GetInternalData<Data>().playedCards.ContainsKey(cardSource))
             {
-                await PowerCmd.Apply<StrengthPower>(base.Owner, base.Amount, base.Owner, null);
+                await PowerCmd.Apply<StrengthPower>(Owner, Amount, Owner, null);
             }
             else
             {
-                GetInternalData<Data>().playedCards[cardSource] += base.Amount;
+                GetInternalData<Data>().playedCards[cardSource] += Amount;
             }
         }
     }
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner.Creature == base.Owner && GetInternalData<Data>().playedCards.Remove(cardPlay.Card, out var value))
+        if (cardPlay.Card.Owner.Creature == Owner && GetInternalData<Data>().playedCards.Remove(cardPlay.Card, out var value))
         {
-            await PowerCmd.Apply<StrengthPower>(base.Owner, value, base.Owner, null);
+            await PowerCmd.Apply<StrengthPower>(Owner, value, Owner, null);
         }
     }
 }

@@ -20,11 +20,11 @@ public class ExposedPower : ThePrismatic2Power
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("DamageIncrease", 1.5m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("DamageIncrease", 1.5m));
 
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (target != base.Owner)
+        if (target != Owner)
         {
             return 1m;
         }
@@ -32,7 +32,7 @@ public class ExposedPower : ThePrismatic2Power
         {
             return 1m;
         }
-        decimal num = base.DynamicVars["DamageIncrease"].BaseValue;
+        decimal num = DynamicVars["DamageIncrease"].BaseValue;
         return num;
     }
     

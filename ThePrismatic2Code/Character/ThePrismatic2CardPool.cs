@@ -102,7 +102,7 @@ public class ThePrismatic2CardPool : CustomCardPoolModel
 			ModelDb.Card<PrimalForce>(),
 			ModelDb.Card<Pyre2>(),
 			ModelDb.Card<Rage2>(),
-			ModelDb.Card<Rampage2>(),
+			ModelDb.Card<Rampage>(),
 			ModelDb.Card<Rupture2>(),
 			ModelDb.Card<SecondWind>(),
 			ModelDb.Card<SetupStrike2>(),

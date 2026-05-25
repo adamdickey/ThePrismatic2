@@ -22,15 +22,15 @@ public class Dominate2() : ThePrismatic2Card(1,
 
     private const string _strengthPerVulnerableKey = "StrengthPerVulnerable";
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new global::_003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
     {
         new PowerVar<VulnerablePower>(1m),
         new DynamicVar("StrengthPerVulnerable", 1m)
     });
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlyArray<IHoverTip>(new IHoverTip[4]
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>(new IHoverTip[4]
     {
         HoverTipFactory.FromPower<StrengthPower>(),
         HoverTipFactory.FromPower<WeakPower>(),
@@ -40,15 +40,15 @@ public class Dominate2() : ThePrismatic2Card(1,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-        await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, base.DynamicVars["VulnerablePower"].BaseValue, base.Owner.Creature, this);
+        ArgumentNullException.ThrowIfNull(cardPlay.Target);
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, DynamicVars["VulnerablePower"].BaseValue, Owner.Creature, this);
         int num = (cardPlay.Target.GetPower<VulnerablePower>()?.Amount??0)+(cardPlay.Target.GetPower<WeakPower>()?.Amount??0)+(cardPlay.Target.GetPower<ExposedPower>()?.Amount??0);
-        await PowerCmd.Apply<StrengthPower>(base.Owner.Creature, num, base.Owner.Creature, this);
+        await PowerCmd.Apply<StrengthPower>(Owner.Creature, num, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars["VulnerablePower"].UpgradeValueBy(1m);
+        DynamicVars["VulnerablePower"].UpgradeValueBy(1m);
     }
 }

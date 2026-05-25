@@ -18,24 +18,24 @@ public class Pillage2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/pillage.png-9475f145aae61baa022477bc4d606e3a.ctex";
     public override string PortraitPath => "res://.godot/imported/pillage.png-9475f145aae61baa022477bc4d606e3a.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(6m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(6m, ValueProp.Move));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+        ArgumentNullException.ThrowIfNull(cardPlay.Target);
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
         CardModel cardModel;
         do
         {
-            cardModel = await CardPileCmd.Draw(choiceContext, base.Owner);
+            cardModel = await CardPileCmd.Draw(choiceContext, Owner);
         }
-        while (cardModel != null && (cardModel.Type == CardType.Attack || cardModel.EnergyCost.GetWithModifiers(CostModifiers.Local) == 0) && CardPile.GetCards(base.Owner, PileType.Hand).Count() < 10);
+        while (cardModel != null && (cardModel.Type == CardType.Attack || cardModel.EnergyCost.GetWithModifiers(CostModifiers.Local) == 0) && CardPile.GetCards(Owner, PileType.Hand).Count() < 10);
     }
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

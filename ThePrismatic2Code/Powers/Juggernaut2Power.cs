@@ -20,28 +20,28 @@ public class Juggernaut2Power : ThePrismatic2Power
 
     public override async Task AfterBlockGained(Creature creature, decimal amount, ValueProp props, CardModel? cardSource)
     {
-        if (!(amount <= 0m) && creature == base.Owner)
+        if (!(amount <= 0m) && creature == Owner)
         {
-            IReadOnlyList<Creature> hittableEnemies = base.CombatState.HittableEnemies;
+            IReadOnlyList<Creature> hittableEnemies = CombatState.HittableEnemies;
             if (hittableEnemies.Count != 0)
             {
-                Creature target = base.Owner.Player.RunState.Rng.CombatTargets.NextItem(hittableEnemies);
+                Creature target = Owner.Player.RunState.Rng.CombatTargets.NextItem(hittableEnemies);
                 Flash();
-                await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), target, base.Amount, ValueProp.Unpowered, base.Owner, null);
+                await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), target, Amount, ValueProp.Unpowered, Owner, null);
             }
         }
     }
     
     public override Task AfterSummon(PlayerChoiceContext choiceContext, Player summoner, decimal amount)
     {
-        if (!(amount <= 0m) && summoner == base.Owner.Player)
+        if (!(amount <= 0m) && summoner == Owner.Player)
         {
-            IReadOnlyList<Creature> hittableEnemies = base.CombatState.HittableEnemies;
+            IReadOnlyList<Creature> hittableEnemies = CombatState.HittableEnemies;
             if (hittableEnemies.Count != 0)
             {
-                Creature target = base.Owner.Player.RunState.Rng.CombatTargets.NextItem(hittableEnemies);
+                Creature target = Owner.Player.RunState.Rng.CombatTargets.NextItem(hittableEnemies);
                 Flash();
-                CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), target, base.Amount, ValueProp.Unpowered, base.Owner, null);
+                CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), target, Amount, ValueProp.Unpowered, Owner, null);
             }
         }
         return Task.CompletedTask;

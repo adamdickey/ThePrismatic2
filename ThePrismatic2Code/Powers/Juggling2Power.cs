@@ -32,14 +32,14 @@ public class Juggling2Power : ThePrismatic2Power
 
     public override Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
-        GetInternalData<Data>().attacksPlayedThisTurn = CombatManager.Instance.History.CardPlaysStarted.Count((CardPlayStartedEntry e) => e.CardPlay.Card.Type == CardType.Attack && e.CardPlay.Card.Owner.Creature == base.Owner && e.HappenedThisTurn(base.CombatState));
-        GetInternalData<Data>().powersPlayedThisTurn = CombatManager.Instance.History.CardPlaysStarted.Count((CardPlayStartedEntry e) => e.CardPlay.Card.Type == CardType.Power && e.CardPlay.Card.Owner.Creature == base.Owner && e.HappenedThisTurn(base.CombatState));
+        GetInternalData<Data>().attacksPlayedThisTurn = CombatManager.Instance.History.CardPlaysStarted.Count((CardPlayStartedEntry e) => e.CardPlay.Card.Type == CardType.Attack && e.CardPlay.Card.Owner.Creature == Owner && e.HappenedThisTurn(CombatState));
+        GetInternalData<Data>().powersPlayedThisTurn = CombatManager.Instance.History.CardPlaysStarted.Count((CardPlayStartedEntry e) => e.CardPlay.Card.Type == CardType.Power && e.CardPlay.Card.Owner.Creature == Owner && e.HappenedThisTurn(CombatState));
         return Task.CompletedTask;
     }
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner != base.Owner.Player || (cardPlay.Card.Type != CardType.Attack && cardPlay.Card.Type != CardType.Power))
+        if (cardPlay.Card.Owner != Owner.Player || (cardPlay.Card.Type != CardType.Attack && cardPlay.Card.Type != CardType.Power))
         {
             return;
         }
@@ -50,12 +50,12 @@ public class Juggling2Power : ThePrismatic2Power
         }
         else
         {
-            GetInternalData<Data>().powersPlayedThisTurn = CombatManager.Instance.History.CardPlaysStarted.Count((CardPlayStartedEntry e) => e.CardPlay.Card.Type == CardType.Power && e.CardPlay.Card.Owner.Creature == base.Owner && e.HappenedThisTurn(base.CombatState));
+            GetInternalData<Data>().powersPlayedThisTurn = CombatManager.Instance.History.CardPlaysStarted.Count((CardPlayStartedEntry e) => e.CardPlay.Card.Type == CardType.Power && e.CardPlay.Card.Owner.Creature == Owner && e.HappenedThisTurn(CombatState));
         }
         if (GetInternalData<Data>().attacksPlayedThisTurn + GetInternalData<Data>().powersPlayedThisTurn == 3)
         {
             Flash();
-            for (int i = 0; i < base.Amount; i++)
+            for (int i = 0; i < Amount; i++)
             {
                 CardModel card = cardPlay.Card.CreateClone();
                 await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, addedByPlayer: true);
@@ -65,7 +65,7 @@ public class Juggling2Power : ThePrismatic2Power
 
     public override Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (side == base.Owner.Side)
+        if (side == Owner.Side)
         {
             GetInternalData<Data>().attacksPlayedThisTurn = 0;
             GetInternalData<Data>().powersPlayedThisTurn = 0;

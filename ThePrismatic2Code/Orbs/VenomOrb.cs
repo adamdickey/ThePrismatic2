@@ -7,6 +7,9 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.Nodes.Combat;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace ThePrismatic2.ThePrismatic2Code.Orbs;
@@ -60,25 +63,34 @@ public sealed class VenomOrb : CustomOrbModel
 
     public override async Task Passive(PlayerChoiceContext choiceContext, Creature? target)
     {
-        List<Creature> targets = base.CombatState.HittableEnemies.Where((Creature e) => e.IsHittable).ToList();
+        List<Creature> targets = CombatState.HittableEnemies.Where((Creature e) => e.IsHittable).ToList();
         decimal passiveVal = PassiveVal;
         if (!(passiveVal <= 0m))
         {
             Trigger();
             PlayPassiveSfx();
-            await PowerCmd.Apply<PoisonPower>(targets, PassiveVal, base.Owner.Creature, null);
+            await PowerCmd.Apply<PoisonPower>(targets, PassiveVal, Owner.Creature, null);
             _passiveVal = Math.Max(0m, _passiveVal - 1m);
         }
     }
 
     public override async Task<IEnumerable<Creature>> Evoke(PlayerChoiceContext playerChoiceContext)
     {
-        List<Creature> enemies = base.CombatState.HittableEnemies.Where((Creature e) => e.IsHittable).ToList();
+        List<Creature> enemies = CombatState.HittableEnemies.Where((Creature e) => e.IsHittable).ToList();
         if (EvokeVal <= 0m)
         {
             return Array.Empty<Creature>();
         }
-        await PowerCmd.Apply<PoisonPower>(enemies, EvokeVal, base.Owner.Creature, null);
+        foreach (Creature hittableEnemy in CombatState.HittableEnemies)
+        {
+            NCreature nCreature = NCombatRoom.Instance?.GetCreatureNode(hittableEnemy);
+            if (nCreature != null)
+            {
+                NGaseousImpactVfx child = NGaseousImpactVfx.Create(nCreature.VfxSpawnPosition, new Color("83eb85"));
+                NCombatRoom.Instance.CombatVfxContainer.AddChildSafely(child);
+            }
+        }
+        await PowerCmd.Apply<PoisonPower>(enemies, EvokeVal, Owner.Creature, null);
         return enemies;
     }
 }

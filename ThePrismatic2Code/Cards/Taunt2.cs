@@ -21,14 +21,14 @@ public class Taunt2() : ThePrismatic2Card(1,
 
     public override bool GainsBlock => true;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[3]
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[3]
     {
         new BlockVar(7m, ValueProp.Move),
         new PowerVar<VulnerablePower>(1m),
         new DynamicVar("Exposed", 1m)
     });
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlyArray<IHoverTip>(
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>(
         new IHoverTip[2]
         {
             HoverTipFactory.FromPower<VulnerablePower>(),
@@ -37,17 +37,17 @@ public class Taunt2() : ThePrismatic2Card(1,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-        await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, cardPlay);
-        await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, base.DynamicVars.Vulnerable.BaseValue, base.Owner.Creature, this);
-        await PowerCmd.Apply<ExposedPower>(cardPlay.Target, base.DynamicVars["Exposed"].BaseValue, base.Owner.Creature, this);
+        ArgumentNullException.ThrowIfNull(cardPlay.Target);
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
+        await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, DynamicVars.Vulnerable.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<ExposedPower>(cardPlay.Target, DynamicVars["Exposed"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Block.UpgradeValueBy(1m);
-        base.DynamicVars.Vulnerable.UpgradeValueBy(1m);
-        base.DynamicVars["Exposed"].UpgradeValueBy(1m);
+        DynamicVars.Block.UpgradeValueBy(1m);
+        DynamicVars.Vulnerable.UpgradeValueBy(1m);
+        DynamicVars["Exposed"].UpgradeValueBy(1m);
     }
 }

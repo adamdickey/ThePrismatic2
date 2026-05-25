@@ -16,16 +16,16 @@ public class Havoc2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/havoc.png-5dd1330148ff0718766297ef54d47fbb.ctex";
     public override string PortraitPath => "res://.godot/imported/havoc.png-5dd1330148ff0718766297ef54d47fbb.ctex";
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Ethereal));
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Ethereal));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        CardCmd.ApplyKeyword(PileType.Draw.GetPile(base.Owner).Cards.FirstOrDefault(), CardKeyword.Ethereal);
-        await CardPileCmd.AutoPlayFromDrawPile(choiceContext, base.Owner, 1, CardPilePosition.Top, forceExhaust: false);
+        CardCmd.ApplyKeyword(PileType.Draw.GetPile(Owner).Cards.FirstOrDefault(), CardKeyword.Ethereal);
+        await CardPileCmd.AutoPlayFromDrawPile(choiceContext, Owner, 1, CardPilePosition.Top, forceExhaust: false);
     }
 
     protected override void OnUpgrade()
     {
-        base.EnergyCost.UpgradeBy(-1);
+        EnergyCost.UpgradeBy(-1);
     }
 }

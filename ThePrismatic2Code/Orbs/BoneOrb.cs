@@ -56,12 +56,12 @@ public sealed class BoneOrb : CustomOrbModel
     public override async Task Passive(PlayerChoiceContext choiceContext, Creature? target)
     {
         Trigger();
-        await OstyCmd.Summon(choiceContext, base.Owner, PassiveVal, this);
+        await OstyCmd.Summon(choiceContext, Owner, PassiveVal, this);
     }
 
     public override async Task<IEnumerable<Creature>> Evoke(PlayerChoiceContext playerChoiceContext)
     {
-        await OstyCmd.Summon(playerChoiceContext, base.Owner, EvokeVal, this);
+        await OstyCmd.Summon(playerChoiceContext, Owner, EvokeVal, this);
         return null;
     }
 }

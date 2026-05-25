@@ -23,7 +23,7 @@ public class Pyre2Power : ThePrismatic2Power
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlyArray<IHoverTip>(new IHoverTip[3]
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>(new IHoverTip[3]
     {
         HoverTipFactory.ForEnergy(this),
         HoverTipFactory.Static(StaticHoverTip.Channeling),
@@ -32,21 +32,21 @@ public class Pyre2Power : ThePrismatic2Power
 
     public override async Task AfterEnergyReset(Player player)
     {
-        if (player == base.Owner.Player)
+        if (player == Owner.Player)
         {
-            for (int i = 0; i < base.Amount; i++)
+            for (int i = 0; i < Amount; i++)
             {
-                await OrbCmd.Channel<MagmaOrb>(new ThrowingPlayerChoiceContext(), base.Owner.Player);
+                await OrbCmd.Channel<MagmaOrb>(new ThrowingPlayerChoiceContext(), Owner.Player);
             }
         }
     }
 
     public override decimal ModifyMaxEnergy(Player player, decimal amount)
     {
-        if (player != base.Owner.Player)
+        if (player != Owner.Player)
         {
             return amount;
         }
-        return amount + (decimal)base.Amount;
+        return amount + (decimal)Amount;
     }
 }

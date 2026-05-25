@@ -20,7 +20,7 @@ public class Unmovable2Power : ThePrismatic2Power
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlyArray<IHoverTip>(
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>(
         new IHoverTip[2]
         {
             HoverTipFactory.Static(StaticHoverTip.SummonStatic),
@@ -29,13 +29,13 @@ public class Unmovable2Power : ThePrismatic2Power
     
     public override decimal ModifySummonAmount(Player summoner, decimal amount, AbstractModel? source)
     {
-        if (source != null && summoner != base.Owner.Player)
+        if (source != null && summoner != Owner.Player)
         {
             return amount;
         }
-        int num = CombatManager.Instance.History.Entries.OfType<BlockGainedEntry>().Count((BlockGainedEntry e) => e.HappenedThisTurn(base.CombatState) && e.Actor.Player == summoner && e.Props.IsCardOrMonsterMove() && e.CardPlay.Card != source)
-            + CombatManager.Instance.History.Entries.OfType<SummonedEntry>().Count((SummonedEntry e) => e.HappenedThisTurn(base.CombatState)  && e.Actor.Player == summoner);
-        if (num >= base.Amount)
+        int num = CombatManager.Instance.History.Entries.OfType<BlockGainedEntry>().Count((BlockGainedEntry e) => e.HappenedThisTurn(CombatState) && e.Actor.Player == summoner && e.Props.IsCardOrMonsterMove() && e.CardPlay.Card != source)
+            + CombatManager.Instance.History.Entries.OfType<SummonedEntry>().Count((SummonedEntry e) => e.HappenedThisTurn(CombatState)  && e.Actor.Player == summoner);
+        if (num >= Amount)
         {
             return amount;
         }
@@ -52,13 +52,13 @@ public class Unmovable2Power : ThePrismatic2Power
         {
             return 1m;
         }
-        if (cardSource != null && cardSource.Owner.Creature != base.Owner)
+        if (cardSource != null && cardSource.Owner.Creature != Owner)
         {
             return 1m;
         }
-        int num = CombatManager.Instance.History.Entries.OfType<BlockGainedEntry>().Count((BlockGainedEntry e) => e.HappenedThisTurn(base.CombatState) && e.Actor == target && e.Props.IsCardOrMonsterMove() && e.CardPlay != cardPlay)
-                  + CombatManager.Instance.History.Entries.OfType<SummonedEntry>().Count((SummonedEntry e) => e.HappenedThisTurn(base.CombatState)  && e.Actor == target);
-        if (num >= base.Amount)
+        int num = CombatManager.Instance.History.Entries.OfType<BlockGainedEntry>().Count((BlockGainedEntry e) => e.HappenedThisTurn(CombatState) && e.Actor == target && e.Props.IsCardOrMonsterMove() && e.CardPlay != cardPlay)
+                  + CombatManager.Instance.History.Entries.OfType<SummonedEntry>().Count((SummonedEntry e) => e.HappenedThisTurn(CombatState)  && e.Actor == target);
+        if (num >= Amount)
         {
             return 1m;
         }

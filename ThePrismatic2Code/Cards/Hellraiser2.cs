@@ -22,21 +22,21 @@ public class Hellraiser2() : ThePrismatic2Card(2,
 
     protected override IEnumerable<string> ExtraRunAssetPaths => NHellraiserVfx.AssetPaths;
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Cunning));
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Cunning));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<Hellraiser2Power>(base.Owner.Creature, 1m, base.Owner.Creature, this);
+        await PowerCmd.Apply<Hellraiser2Power>(Owner.Creature, 1m, Owner.Creature, this);
     }
 
     public override async Task OnEnqueuePlayVfx(Creature? target)
     {
-        NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NHellraiserVfx.Create(base.Owner.Creature));
-        await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
+        NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NHellraiserVfx.Create(Owner.Creature));
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
     }
 
     protected override void OnUpgrade()
     {
-        base.EnergyCost.UpgradeBy(-1);
+        EnergyCost.UpgradeBy(-1);
     }
 }

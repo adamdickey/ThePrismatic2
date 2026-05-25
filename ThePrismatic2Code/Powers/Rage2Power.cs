@@ -17,19 +17,19 @@ public class Rage2Power : ThePrismatic2Power
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new global::_003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.SummonStatic));
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.SummonStatic));
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner == base.Owner.Player && cardPlay.Card.Type == CardType.Attack)
+        if (cardPlay.Card.Owner == Owner.Player && cardPlay.Card.Type == CardType.Attack)
         {
-            await OstyCmd.Summon(context, base.Owner.Player, base.Amount, this);
+            await OstyCmd.Summon(context, Owner.Player, Amount, this);
         }
     }
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (side == base.Owner.Side)
+        if (side == Owner.Side)
         {
             await PowerCmd.Remove(this);
         }

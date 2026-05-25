@@ -21,7 +21,7 @@ public class PerfectedStrike2() : ThePrismatic2Card(2,
 
     protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Strike };
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[3]
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[3]
     {
         new CalculationBaseVar(6m),
         new ExtraDamageVar(2m),
@@ -30,8 +30,8 @@ public class PerfectedStrike2() : ThePrismatic2Card(2,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-        await DamageCmd.Attack(base.DynamicVars.CalculatedDamage).FromCard(this).Targeting(cardPlay.Target)
+        ArgumentNullException.ThrowIfNull(cardPlay.Target);
+        await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx(null, null, "heavy_attack.mp3")
             .WithHitVfxNode((Creature t) => NBigSlashVfx.Create(t))
             .WithHitVfxNode((Creature t) => NBigSlashImpactVfx.Create(t))
@@ -40,6 +40,6 @@ public class PerfectedStrike2() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.ExtraDamage.UpgradeValueBy(1m);
+        DynamicVars.ExtraDamage.UpgradeValueBy(1m);
     }
 }

@@ -67,7 +67,7 @@ public sealed class MagmaOrb : CustomOrbModel
     private async Task<IEnumerable<Creature>> ApplyVigor(decimal value, Creature? target,
         PlayerChoiceContext choiceContext)
     {
-        await PowerCmd.Apply<VigorPower>(base.Owner.Creature, value, base.Owner.Creature, null);
+        await PowerCmd.Apply<VigorPower>(Owner.Creature, value, Owner.Creature, null);
         return null;
     }
 }

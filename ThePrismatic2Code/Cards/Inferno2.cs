@@ -20,16 +20,16 @@ public class Inferno2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/inferno.png-69f23aaa7cb8231fa2b455955f8896e0.ctex";
     public override string PortraitPath => "res://.godot/imported/inferno.png-69f23aaa7cb8231fa2b455955f8896e0.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<InfernoPower>(6m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<InfernoPower>(6m));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-        (await PowerCmd.Apply<Inferno2Power>(base.Owner.Creature, base.DynamicVars["InfernoPower"].BaseValue, base.Owner.Creature, this))?.IncrementSelfDamage();
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        (await PowerCmd.Apply<Inferno2Power>(Owner.Creature, DynamicVars["InfernoPower"].BaseValue, Owner.Creature, this))?.IncrementSelfDamage();
     }
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars["InfernoPower"].UpgradeValueBy(3m);
+        DynamicVars["InfernoPower"].UpgradeValueBy(3m);
     }
 }

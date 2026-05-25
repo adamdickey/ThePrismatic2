@@ -1,0 +1,42 @@
+﻿using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.Powers;
+using ThePrismatic2.ThePrismatic2Code.Character;
+using ThePrismatic2.ThePrismatic2Code.Orbs;
+using ThePrismatic2.ThePrismatic2Code.Powers;
+
+namespace ThePrismatic2.ThePrismatic2Code.Cards;
+
+[Pool(typeof(ThePrismatic2CardPool))]
+public class CorrosiveWave2() : ThePrismatic2Card(1, 
+    CardType.Skill, CardRarity.Rare, 
+    TargetType.Self)
+{
+    public override string CustomPortraitPath => "res://.godot/imported/corrosive_wave.png-115fc3d4ce0def75ba590325e9101ba5.ctex";
+    public override string PortraitPath => "res://.godot/imported/corrosive_wave.png-115fc3d4ce0def75ba590325e9101ba5.ctex";
+
+    private const string _powerKey = "CorrosiveWave";
+
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("CorrosiveWave", 1m));
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>(new IHoverTip[3]
+    {
+        HoverTipFactory.Static(StaticHoverTip.Channeling),
+        HoverTipFactory.FromOrb<VenomOrb>(),
+        HoverTipFactory.FromPower<PoisonPower>()
+    });
+
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        if (IsUpgraded)
+        {
+            await PowerCmd.Apply<CorrosiveWaveFocusPower>(Owner.Creature, 1, Owner.Creature, this);
+        }
+        await PowerCmd.Apply<CorrosiveWave2Power>(Owner.Creature, DynamicVars["CorrosiveWave"].BaseValue, Owner.Creature, this);
+    }
+}

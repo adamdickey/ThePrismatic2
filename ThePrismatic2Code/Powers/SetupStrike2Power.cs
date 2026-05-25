@@ -66,7 +66,7 @@ public class SetupStrike2Power : ThePrismatic2Power
 
 	public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
 	{
-		if (!(amount == (decimal)base.Amount) && power == this)
+		if (!(amount == (decimal)Amount) && power == this)
 		{
 			if (_shouldIgnoreNextInstance)
 			{
@@ -74,21 +74,20 @@ public class SetupStrike2Power : ThePrismatic2Power
 			}
 			else
 			{
-				await PowerCmd.Apply<StrengthPower>(base.Owner, (decimal)Sign * amount, applier, cardSource, silent: true);
-				await PowerCmd.Apply<CalcifyPower>(base.Owner, (decimal)Sign * amount, applier, cardSource, silent: true);
+				await PowerCmd.Apply<StrengthPower>(Owner, (decimal)Sign * amount, applier, cardSource, silent: true);
+				await PowerCmd.Apply<CalcifyPower>(Owner, (decimal)Sign * amount, applier, cardSource, silent: true);
 			}
 		}
 	}
 
 	public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
 	{
-		if (side == base.Owner.Side)
+		if (side == Owner.Side)
 		{
 			Flash();
 			await PowerCmd.Remove(this);
-			await PowerCmd.Apply<StrengthPower>(base.Owner, -Sign * base.Amount, base.Owner, null);
-			await PowerCmd.Apply<CalcifyPower>(base.Owner, -Sign * base.Amount, base.Owner, null);
-			
+			await PowerCmd.Apply<StrengthPower>(Owner, -Sign * Amount, Owner, null);
+			await PowerCmd.Apply<CalcifyPower>(Owner, -Sign * Amount, Owner, null);
 		}
 	}
 }

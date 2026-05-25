@@ -20,18 +20,18 @@ public class FlameBarrier2Power : ThePrismatic2Power
 
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult _, ValueProp props, Creature? dealer, CardModel? __)
     {
-        if (target == base.Owner && props.IsPoweredAttack())
+        if (target == Owner && props.IsPoweredAttack())
         {
             for (int i=0; i < this.Amount; i++)
             {
-                await OrbCmd.Channel<MagmaOrb>(choiceContext, base.Owner.Player);
+                await OrbCmd.Channel<MagmaOrb>(choiceContext, Owner.Player);
             }
         }
     }
 
     public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (base.Owner.Side != side)
+        if (Owner.Side != side)
         {
             await PowerCmd.Remove(this);
         }

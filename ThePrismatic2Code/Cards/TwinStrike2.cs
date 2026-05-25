@@ -17,29 +17,29 @@ public class TwinStrike2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/twin_strike.png-26ca59bc7d2150979a9d5769964c7ed9.ctex";
     public override string PortraitPath => "res://.godot/imported/twin_strike.png-26ca59bc7d2150979a9d5769964c7ed9.ctex";
 
-    protected override bool ShouldGlowGoldInternal => !Osty.CheckMissingWithAnim(base.Owner);
+    protected override bool ShouldGlowGoldInternal => !Osty.CheckMissingWithAnim(Owner);
 
-    protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Strike, CardTag.OstyAttack };
+    protected override HashSet<CardTag> CanonicalTags => [ CardTag.Strike, CardTag.OstyAttack ];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new global::_003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
     {
         new DamageVar(4m, ValueProp.Move),
         new OstyDamageVar(2m, ValueProp.Move)
     });
     
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new global::_003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.DualWield);
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.DualWield);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(2).FromCard(this)
+        ArgumentNullException.ThrowIfNull(cardPlay.Target);
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(2).FromCard(this)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-        if (!Osty.CheckMissingWithAnim(base.Owner))
+        if (!Osty.CheckMissingWithAnim(Owner))
         {
-            ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
-            await DamageCmd.Attack(base.DynamicVars.OstyDamage.BaseValue).FromOsty(base.Owner.Osty, this)
+            ArgumentNullException.ThrowIfNull(cardPlay.Target);
+            await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this)
                 .WithHitCount(2)
                 .Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_blunt")
@@ -49,7 +49,7 @@ public class TwinStrike2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Damage.UpgradeValueBy(2m);
-        base.DynamicVars.OstyDamage.UpgradeValueBy(1m);
+        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.OstyDamage.UpgradeValueBy(1m);
     }
 }
