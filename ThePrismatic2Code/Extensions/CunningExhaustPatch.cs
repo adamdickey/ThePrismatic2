@@ -17,6 +17,7 @@ public static class CunningExhaustPatch
             if (card.Keywords.Contains(Keywords.Cunning))
             {
                 await CardCmd.AutoPlay(choiceContext, card, null, AutoPlayType.SlyDiscard);
+                await CardPileCmd.Add(card, PileType.Exhaust);
             }
         }
     }

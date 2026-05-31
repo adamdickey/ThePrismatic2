@@ -121,5 +121,41 @@
 
   "THEPRISMATIC2-TRACKING2_POWER.description": "Enemies with [blue]2[/blue] or more unique debuffs take [blue]2[/blue] times more damage from Attacks.",
   "THEPRISMATIC2-TRACKING2_POWER.smartDescription": "Enemies with [blue]2[/blue] or more unique debuffs take [blue]{Amount}[/blue] times more damage from Attacks.",
-  "THEPRISMATIC2-TRACKING2_POWER.title": "Tracking"
+  "THEPRISMATIC2-TRACKING2_POWER.title": "Tracking",
+
+  "THEPRISMATIC2-BLACK_HOLE2_POWER.description": "Whenever you spend or gain {singleStarIcon}, [gold]Forge[/gold], or [gold]Summon[/gold], deal [blue]3[/blue] damage to ALL enemies.",
+  "THEPRISMATIC2-BLACK_HOLE2_POWER.smartDescription": "Whenever you spend or gain {singleStarIcon}, [gold]Forge[/gold], or [gold]Summon[/gold], deal [blue]{Amount}[/blue] damage to ALL enemies.",
+  "THEPRISMATIC2-BLACK_HOLE2_POWER.title": "Black Hole",
+
+  "THEPRISMATIC2-CHILD_OF_THE_STARS2_POWER.description": "Gain [blue]1[/blue] [gold]Block[/gold] for each {singleStarIcon} spent. Gain [blue]1[/blue] [gold]Block[/gold] for each [gold]Orb Evoked[/gold].",
+  "THEPRISMATIC2-CHILD_OF_THE_STARS2_POWER.smartDescription": "Gain [blue]{Amount}[/blue] [gold]Block[/gold] for each {singleStarIcon} spent and each [gold]Orb Evoked[/gold].",
+  "THEPRISMATIC2-CHILD_OF_THE_STARS2_POWER.title": "Child of the Stars",
+
+  "THEPRISMATIC2-CONQUEROR2_POWER.description": "[gold]Costly[/gold] Attacks deal double damage to the enemy this turn.",
+  "THEPRISMATIC2-CONQUEROR2_POWER.smartDescription": "[gold]Costly[/gold] Attacks deal double damage to [gold]{OwnerName}[/gold] {Amount:plural:this turn|for the next [blue]{}[/blue] turns}.",
+  "THEPRISMATIC2-CONQUEROR2_POWER.title": "Conqueror",
+
+  "THEPRISMATIC2-FURNACE2_POWER.description": "At the start of your turn and whenever you play a Power, [gold]Channel[/gold] [blue]1[/blue] [gold]Iron[/gold].",
+  "THEPRISMATIC2-FURNACE2_POWER.smartDescription": "At the start of your turn and whenever you play a Power, [gold]Channel[/gold] [blue]{Amount}[/blue] [gold]Iron[/gold].",
+  "THEPRISMATIC2-FURNACE2_POWER.title": "Furnace",
+
+  "THEPRISMATIC2-HAMMER_TIME2_POWER.description": "Whenever you [gold]Forge[/gold], all allies [gold]Forge[/gold] as well. Whenever a player plays an Attack, [gold]Forge[/gold] [blue]2[/blue].",
+  "THEPRISMATIC2-HAMMER_TIME2_POWER.smartDescription": "Whenever you [gold]Forge[/gold], all allies [gold]Forge[/gold] as well. Whenever a player plays an Attack, [gold]Forge[/gold] [blue]{Amount}[/blue].",
+  "THEPRISMATIC2-HAMMER_TIME2_POWER.title": "Hammer Time",
+
+  "THEPRISMATIC2-MONARCHS_GAZE2_POWER.description": "Whenever you or [gold]Osty[/gold] attack an enemy, it loses [blue]1[/blue] [gold]Strength[/gold] this turn.",
+  "THEPRISMATIC2-MONARCHS_GAZE2_POWER.smartDescription": "Whenever you or [gold]Osty[/gold] attack an enemy, it loses [blue]{Amount}[/blue] [gold]Strength[/gold] this turn.",
+  "THEPRISMATIC2-MONARCHS_GAZE2_POWER.title": "Monarch's Gaze",
+
+  "THEPRISMATIC2-PARRY2_POWER.description": "Whenever you play a [gold]Costly[/gold] Attack, gain [blue]8[/blue] [gold]Block[/gold].",
+  "THEPRISMATIC2-PARRY2_POWER.smartDescription": "Whenever you play a [gold]Costly[/gold] Attack, gain [blue]{Amount}[/blue] [gold]Block[/gold].",
+  "THEPRISMATIC2-PARRY2_POWER.title": "Parry",
+
+  "THEPRISMATIC2-SPECTRUM_SHIFT2_POWER.description": "At the start of your turn, [gold]Transform[/gold] [blue]1[/blue] card in your [gold]Hand[/gold] into a random Colorless card.",
+  "THEPRISMATIC2-SPECTRUM_SHIFT2_POWER.smartDescription": "At the start of your turn, [gold]Transform[/gold] [blue]{Amount}[/blue] {Amount:plural:card|cards} in your [gold]Hand[/gold] into {Amount:plural:a random|random} Colorless {Amount:plural:card|cards}.",
+  "THEPRISMATIC2-SPECTRUM_SHIFT2_POWER.title": "Spectrum Shift",
+
+  "THEPRISMATIC2-VENERATE_POWER.description": "Gain [gold]Focus[/gold] until the end of this turn.",
+  "THEPRISMATIC2-VENERATE_POWER.smartDescription": "Gain [blue]{Amount}[/blue] [gold]Focus[/gold] until the end of this turn.",
+  "THEPRISMATIC2-VENERATE_POWER.title": "Venerate"
 }

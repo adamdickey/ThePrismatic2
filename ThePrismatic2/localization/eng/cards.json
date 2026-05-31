@@ -293,7 +293,7 @@
   "THEPRISMATIC2-FLICK_FLACK2.description": "Deal {Damage:diff()} damage to ALL enemies.\nGain {Stars:starIcons()}.",
   "THEPRISMATIC2-FLICK_FLACK2.title": "Flick-Flack",
 
-  "THEPRISMATIC2-GRAND_FINALE2.description": "If X is at least twice the number of cards in your [gold]Draw Pile[/gold], deal {Damage:diff()} damage to ALL enemies.",
+  "THEPRISMATIC2-GRAND_FINALE2.description": "Deal {Damage:diff()} damage to ALL enemies.\nCosts {Stars:starIcons()} more for each card in your [gold]Draw Pile[/gold].",
   "THEPRISMATIC2-GRAND_FINALE2.title": "Grand Finale",
 
   "THEPRISMATIC2-HAZE2.description": "Gain {Focus:diff()} [gold]Focus[/gold] this turn.\n[gold]Channel[/gold] 1 [gold]Venom[/gold].",
@@ -369,5 +369,142 @@
   "THEPRISMATIC2-TRACKING2.title": "Tracking",
 
   "THEPRISMATIC2-UP_MY_SLEEVE2.description": "Add {Cards:diff()} [gold]{Cards:plural:Shiv|Shivs}[/gold] into your [gold]Hand[/gold].\nReduce this card's cost by 1.",
-  "THEPRISMATIC2-UP_MY_SLEEVE2.title": "Up My Sleeve"
+  "THEPRISMATIC2-UP_MY_SLEEVE2.title": "Up My Sleeve",
+
+  "THEPRISMATIC2-BEGONE2.description": "Exhaust 1 card.\nAdd a [gold]{IfUpgraded:show:Minion Strike+|Minion Strike}[/gold] into your [gold]Hand[/gold].",
+  "THEPRISMATIC2-BEGONE2.title": "BEGONE!",
+
+  "THEPRISMATIC2-BIG_BANG2.description": "Draw {Cards:diff()} {Cards:plural:card|cards}.\nGain {Energy:energyIcons()}.\n[gold]Channel[/gold] 1 [gold]Solar[/gold].\n[gold]Channel[/gold] 1 [gold]Iron[/gold].",
+  "THEPRISMATIC2-BIG_BANG2.title": "Big Bang",
+
+  "THEPRISMATIC2-BLACK_HOLE2.description": "Whenever you spend or gain {singleStarIcon}, [gold]Forge[/gold], or [gold]Summon[/gold], deal {BlackHolePower:diff()} damage to ALL enemies.",
+  "THEPRISMATIC2-BLACK_HOLE2.title": "Black Hole",
+
+  "THEPRISMATIC2-BOMBARDMENT2.description": "Deal {Damage:diff()} damage.\nAt the start of your turn, if this is in your [gold]Exhaust Pile[/gold], play it.",
+  "THEPRISMATIC2-BOMBARDMENT2.title": "Bombardment",
+
+  "THEPRISMATIC2-BULWARK2.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Summon[/gold] {Summon:diff()}.\n[gold]Channel[/gold] {Iron:diff()} [gold]Iron[/gold].",
+  "THEPRISMATIC2-BULWARK2.title": "Bulwark",
+
+  "THEPRISMATIC2-BUNDLE_OF_JOY2.description": "Choose up to {Cards:diff()} cards in your [gold]Hand[/gold] to [gold]Transform[/gold] into random Colorless cards.",
+  "THEPRISMATIC2-BUNDLE_OF_JOY2.title": "Bundle of Joy",
+
+  "THEPRISMATIC2-CELESTIAL_MIGHT2.description": "Deal {Damage:diff()} damage {Repeat:diff()} {Repeat:plural:time|times}.",
+  "THEPRISMATIC2-CELESTIAL_MIGHT2.title": "Celestial Might",
+
+  "THEPRISMATIC2-CHARGE2.description": "[gold]Exhaust[/gold] {Cards:diff()} {Cards:plural:card|cards} from your [gold]Draw Pile[/gold].\nAdd {Cards:diff()} [gold]{Cards:plural:{IfUpgraded:show:Minion Dive Bomb+|Minion Dive Bomb}[/gold]|{IfUpgraded:show:Minion Dive Bombs+|Minion Dive Bombs}[/gold]} into your [gold]Draw Pile[/gold].",
+  "THEPRISMATIC2-CHARGE2.title": "CHARGE!!",
+
+  "THEPRISMATIC2-CHILD_OF_THE_STARS2.description": "Whenever you spend {singleStarIcon}, gain {BlockForStars:diff()} [gold]Block[/gold] for each {singleStarIcon} spent.\nWhenever you [gold]Evoke[/gold] an [gold]Orb[/gold], gain {BlockForStars:diff()} [gold]Block[/gold].",
+  "THEPRISMATIC2-CHILD_OF_THE_STARS2.title": "Child of the Stars",
+
+  "THEPRISMATIC2-CLOAK_OF_STARS2.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Summon[/gold] {Summon:diff()}.",
+  "THEPRISMATIC2-CLOAK_OF_STARS2.title": "Cloak of Stars",
+
+  "THEPRISMATIC2-FORGET.description": "Discard {Cards:diff()} {Cards:plural:card|cards}.",
+  "THEPRISMATIC2-FORGET.title": "Forget",
+
+  "THEPRISMATIC2-COLLISION_COURSE2.description": "Deal {Damage:diff()} damage.\nAdd a [gold]Forget[/gold] into your [gold]Hand[/gold].",
+  "THEPRISMATIC2-COLLISION_COURSE2.title": "Collision Course",
+
+  "THEPRISMATIC2-CONQUEROR2.description": "[gold]Forge[/gold] {Forge:diff()}.\n[gold]Costly[/gold] Attacks deal double damage to the enemy this turn.",
+  "THEPRISMATIC2-CONQUEROR2.title": "Conqueror",
+
+  "THEPRISMATIC2-CRASH_LANDING2.description": "Deal {Damage:diff()} damage to ALL enemies.\nFill your [gold]Hand[/gold] with [gold]Forgets[/gold].",
+  "THEPRISMATIC2-CRASH_LANDING2.title": "Crash Landing",
+
+  "THEPRISMATIC2-CRESCENT_SPEAR2.description": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for ALL your [gold]Costly[/gold] cards.",
+  "THEPRISMATIC2-CRESCENT_SPEAR2.title": "Crescent Spear",
+
+  "THEPRISMATIC2-FALLING_STAR2.description": "Deal {Damage:diff()} damage.\nApply {WeakPower:diff()} [gold]Weak[/gold].\nApply {VulnerablePower:diff()} [gold]Vulnerable[/gold].\nApply {Exposed:diff()} [gold]Exposed[/gold].",
+  "THEPRISMATIC2-FALLING_STAR2.title": "Falling Star",
+
+  "THEPRISMATIC2-FURNACE2.description": "{IfUpgraded:show:[gold]Channel[/gold] 1 [gold]Iron[/gold].\n}At the start of your turn and whenever you play another Power, [gold]Channel[/gold] 1 [gold]Iron[/gold].",
+  "THEPRISMATIC2-FURNACE2.title": "Furnace",
+
+  "THEPRISMATIC2-GAMMA_BLAST2.description": "Deal {Damage:diff()} damage.\nApply {WeakPower:diff()} [gold]Weak[/gold].\nApply {VulnerablePower:diff()} [gold]Vulnerable[/gold].\nApply {Exposed:diff()} [gold]Exposed[/gold].",
+  "THEPRISMATIC2-GAMMA_BLAST2.title": "Gamma Blast",
+
+  "THEPRISMATIC2-GATHER_LIGHT2.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Summon[/gold] {Summon:diff()}.\nGain {Stars:starIcons()}.",
+  "THEPRISMATIC2-GATHER_LIGHT2.title": "Gather Light",
+
+  "THEPRISMATIC2-GLITTERSTREAM2.description": "Gain {Block:diff()} [gold]Block[/gold] and \n[gold]Summon[/gold] {Summon:diff()}.\nNext turn, gain {BlockNextTurn:diff()} [gold]Block[/gold] and [gold]Summon[/gold] {SummonNextTurn:diff()}.",
+  "THEPRISMATIC2-GLITTERSTREAM2.title": "Glitterstream",
+
+  "THEPRISMATIC2-GLOW2.description": "[gold]Channel[/gold] 1 [gold]Solar[/gold].\nDraw {Cards:diff()} {Cards:plural:card|cards}.",
+  "THEPRISMATIC2-GLOW2.title": "Glow",
+
+  "THEPRISMATIC2-GUARDS2.description": "[gold]Exhaust[/gold] any number of cards in your [gold]Hand[/gold].\nAdd that many [gold]{IfUpgraded:show:Minion Sacrifices+|Minion Sacrifices}[/gold] into your [gold]Hand[/gold].",
+  "THEPRISMATIC2-GUARDS2.selectionScreenPrompt": "Choose cards to [gold]Exhaust[/gold].",
+  "THEPRISMATIC2-GUARDS2.title": "GUARDS!!!",
+
+  "THEPRISMATIC2-GUIDING_STAR2.description": "Deal {Damage:diff()} damage.\nAdd a [gold]Soul{IfUpgraded:show:+|}[/gold] into your [gold]Hand[/gold].",
+  "THEPRISMATIC2-GUIDING_STAR2.title": "Guiding Star",
+
+  "THEPRISMATIC2-HAMMER_TIME2.description": "Whenever you [gold]Forge[/gold], all allies [gold]Forge[/gold] as well.\nWhenever a player plays an Attack, [gold]Forge[/gold] {Forge:diff()}.",
+  "THEPRISMATIC2-HAMMER_TIME2.title": "Hammer Time",
+
+  "THEPRISMATIC2-HEIRLOOM_HAMMER2.description": "Deal {Damage:diff()} damage.\nChoose a card in your [gold]Hand[/gold]. Add an [gold]Upgraded[/gold] copy of that card into your [gold]Hand[/gold].",
+  "THEPRISMATIC2-HEIRLOOM_HAMMER2.selectionScreenPrompt": "Choose a Card to copy.",
+  "THEPRISMATIC2-HEIRLOOM_HAMMER2.title": "Heirloom Hammer",
+
+  "THEPRISMATIC2-HIDDEN_CACHE2.description": "[gold]Channel[/gold] 1 [gold]Solar[/gold].\nNext turn, gain {StarNextTurnPower:starIcons()}.",
+  "THEPRISMATIC2-HIDDEN_CACHE2.title": "Hidden Cache",
+
+  "THEPRISMATIC2-I_AM_INVINCIBLE2.description": "Gain {Block:diff()} [gold]Block[/gold].\nAt the end of your turn, if this is on top of your [gold]Draw Pile[/gold] or in your [gold]Exhaust Pile[/gold], play it.",
+  "THEPRISMATIC2-I_AM_INVINCIBLE2.title": "I Am Invincible",
+
+  "THEPRISMATIC2-KNOCKOUT_BLOW2.description": "Deal {Damage:diff()} damage.\nIf this kills an enemy, gain {Orbs:diff()} Orb Slots and [gold]Channel[/gold] {Orbs:diff()} [gold]Solar[/gold].",
+  "THEPRISMATIC2-KNOCKOUT_BLOW2.title": "Knockout Blow",
+
+  "THEPRISMATIC2-MANIFEST_AUTHORITY2.description": "Gain {Block:diff()} [gold]Block[/gold].\nChoose a card in your [gold]Hand[/gold] to [gold]Transform[/gold] into a random{IfUpgraded:show: [gold]Upgraded[/gold]} Colorless card.",
+  "THEPRISMATIC2-MANIFEST_AUTHORITY2.title": "Manifest Authority",
+
+  "THEPRISMATIC2-MONARCHS_GAZE2.description": "Whenever you or [gold]Osty[/gold] attack an enemy, it loses {StrengthLoss:diff()} [gold]Strength[/gold] this turn.",
+  "THEPRISMATIC2-MONARCHS_GAZE2.title": "Monarch's Gaze",
+
+  "THEPRISMATIC2-NEUTRON_AEGIS2.description": "Gain {PlatingPower:diff()} [gold]Plating[/gold].\n[gold]Channel[/gold] {Bone:diff()} [gold]Bone[/gold].",
+  "THEPRISMATIC2-NEUTRON_AEGIS2.title": "Neutron Aegis",
+
+  "THEPRISMATIC2-PARRY2.description": "Whenever you play a [gold]Costly[/gold] Attack, gain {ParryPower:diff()} [gold]Block[/gold].",
+  "THEPRISMATIC2-PARRY2.title": "Parry",
+
+  "THEPRISMATIC2-PARTICLE_WALL2.description": "Gain {Block:diff()} [gold]Block[/gold].\nDiscard 1 card.\nReturn this card to your [gold]Hand[/gold].",
+  "THEPRISMATIC2-PARTICLE_WALL2.title": "Particle Wall",
+
+  "THEPRISMATIC2-QUASAR2.description": "Choose 1 of 3 random{IfUpgraded:show: [gold]Upgraded[/gold]|} Colorless cards.\nChoose a card in your [gold]Hand[/gold] to [gold]Transform[/gold] into the chosen card.",
+  "THEPRISMATIC2-QUASAR2.title": "Quasar",
+
+  "THEPRISMATIC2-RADIATE2.description": "Deal {Damage:diff()} damage to ALL enemies for each {Stars:starIcons()} gained this turn and each debuff on enemies.{InCombat:\n(Hits {CalculatedHits:diff()} {CalculatedHits:plural:time|times})|}",
+  "THEPRISMATIC2-RADIATE2.title": "Radiate",
+
+  "THEPRISMATIC2-REFINE_BLADE2.description": "[gold]Forge[/gold] {Forge:diff()}.\n[gold]Channel[/gold] 1 [gold]Iron[/gold].\nNext turn, gain {energyPrefix:energyIcons(1)}.",
+  "THEPRISMATIC2-REFINE_BLADE2.title": "Refine Blade",
+
+  "THEPRISMATIC2-ROYAL_GAMBLE2.description": "Discard your [gold]Hand[/gold],\nthen draw that many cards.\nGain {singleStarIcon} for each card discarded.",
+  "THEPRISMATIC2-ROYAL_GAMBLE2.title": "Royal Gamble",
+
+  "THEPRISMATIC2-SEVEN_STARS2.description": "Deal {Damage:diff()} damage to ALL enemies {Repeat:plural:{} time|{} times}.\nCosts {singleStarIcon} less for each unique Orb type [gold]Channeled[/gold] this combat.",
+  "THEPRISMATIC2-SEVEN_STARS2.title": "Seven Stars",
+
+  "THEPRISMATIC2-SHINING_STRIKE2.description": "Deal {Damage:diff()} damage.\nGain {Stars:starIcons()}.\nPut this card on top of your [gold]Draw Pile[/gold].",
+  "THEPRISMATIC2-SHINING_STRIKE2.title": "Shining Strike",
+
+  "THEPRISMATIC2-SOLAR_STRIKE2.description": "Deal {Damage:diff()} damage.\nDiscard 1 card.\nGain {Stars:starIcons()} equal to the discarded card's {energyPrefix:energyIcons(1)} cost.",
+  "THEPRISMATIC2-SOLAR_STRIKE2.title": "Solar Strike",
+
+  "THEPRISMATIC2-SPECTRUM_SHIFT2.description": "At the start of your turn, [gold]Transform[/gold] 1 card in your [gold]Hand[/gold] into a random Colorless card.",
+  "THEPRISMATIC2-SPECTRUM_SHIFT2.title": "Spectrum Shift",
+
+  "THEPRISMATIC2-STARDUST2.description": "Deal {Damage:diff()} damage to a random enemy X times.",
+  "THEPRISMATIC2-STARDUST2.title": "Stardust",
+
+  "THEPRISMATIC2-SUMMON_FORTH2.description": "Put [gold]Sovereign Blade[/gold] and another random [gold]Costly[/gold] card into your [gold]Hand[/gold] from anywhere.\n[gold]Forge[/gold] {Forge:diff()}.",
+  "THEPRISMATIC2-SUMMON_FORTH2.title": "Summon Forth",
+
+  "THEPRISMATIC2-TERRAFORMING2.description": "Gain {VigorPower:diff()} [gold]Vigor[/gold].\n[gold]Channel[/gold] 1 [gold]Magma[/gold].",
+  "THEPRISMATIC2-TERRAFORMING2.title": "Terraforming",
+
+  "THEPRISMATIC2-VENERATE2.description": "Gain {Focus:diff()} [gold]Focus[/gold] this turn.\n[gold]Channel[/gold] 1 [gold]Solar[/gold].",
+  "THEPRISMATIC2-VENERATE2.title": "Venerate"
 }
