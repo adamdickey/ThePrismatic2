@@ -16,6 +16,8 @@ public class CrescentSpear2() : ThePrismatic2Card(1,
 {
     public override string CustomPortraitPath => "res://.godot/imported/crescent_spear.png-3279a30b22efd1b8083834954af2268c.ctex";
     public override string PortraitPath => "res://.godot/imported/crescent_spear.png-3279a30b22efd1b8083834954af2268c.ctex";
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     public override int CanonicalStarCost => 1;
     

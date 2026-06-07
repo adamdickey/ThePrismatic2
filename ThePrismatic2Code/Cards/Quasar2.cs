@@ -20,6 +20,8 @@ public class Quasar2() : ThePrismatic2Card(0,
     public override string PortraitPath => "res://.godot/imported/quasar.png-7bc37e81f4414a6a5e14f44900fff71d.ctex";
 
     public override int CanonicalStarCost => 2;
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

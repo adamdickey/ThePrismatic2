@@ -1,5 +1,4 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
@@ -28,17 +27,16 @@ public class ForgottenRitual2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new EnergyVar(3));
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>(new IHoverTip[2]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         EnergyHoverTip,
         HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
-    });
+    ]);
 
     protected override IEnumerable<string> ExtraRunAssetPaths => NGroundFireVfx.AssetPaths;
 
-    private bool WasCardExhaustedThisTurn => CombatManager.Instance.History.Entries.OfType<CardExhaustedEntry>().Any((CardExhaustedEntry e) => e.HappenedThisTurn(CombatState) && e.Card.Owner == Owner);
-    private bool WasCardDiscardedThisTurn => CombatManager.Instance.History.Entries.OfType<CardDiscardedEntry>().Any((CardDiscardedEntry e) => e.HappenedThisTurn(CombatState) && e.Card.Owner == Owner);
-    private bool WasCardCreatedThisTurn => CombatManager.Instance.History.Entries.OfType<CardGeneratedEntry>().Any((CardGeneratedEntry e) => e.HappenedThisTurn(CombatState) && e.Card.Owner == Owner);
+    private bool WasCardExhaustedThisTurn => CombatManager.Instance.History.Entries.OfType<CardExhaustedEntry>().Any(e => e.HappenedThisTurn(CombatState) && e.Card.Owner == Owner);
+    private bool WasCardDiscardedThisTurn => CombatManager.Instance.History.Entries.OfType<CardDiscardedEntry>().Any(e => e.HappenedThisTurn(CombatState) && e.Card.Owner == Owner);
+    private bool WasCardCreatedThisTurn => CombatManager.Instance.History.Entries.OfType<CardGeneratedEntry>().Any(e => e.HappenedThisTurn(CombatState) && e.Card.Owner == Owner);
 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

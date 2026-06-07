@@ -18,12 +18,11 @@ public class Offering2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/offering.png-eb65babce2d26210a331fd6657ad3a40.ctex";
     public override string PortraitPath => "res://.godot/imported/offering.png-eb65babce2d26210a331fd6657ad3a40.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[3]
-    	{
-    		new HpLossVar(6m),
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+	    new HpLossVar(6m),
     		new EnergyVar(2),
     		new CardsVar(3)
-    	});
+    ]);
     
     	public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
     
@@ -31,7 +30,7 @@ public class Offering2() : ThePrismatic2Card(0,
     
     	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     	{
-    		if (!Osty.CheckMissingWithAnim(Owner))
+    		if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
 			{
 				await CreatureCmd.Damage(choiceContext, Owner.Osty, DynamicVars.HpLoss.BaseValue, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
 			}

@@ -157,5 +157,25 @@
 
   "THEPRISMATIC2-VENERATE_POWER.description": "Gain [gold]Focus[/gold] until the end of this turn.",
   "THEPRISMATIC2-VENERATE_POWER.smartDescription": "Gain [blue]{Amount}[/blue] [gold]Focus[/gold] until the end of this turn.",
-  "THEPRISMATIC2-VENERATE_POWER.title": "Venerate"
+  "THEPRISMATIC2-VENERATE_POWER.title": "Venerate",
+
+  "THEPRISMATIC2-GENESIS2_POWER.description": "Your Powers have [gold]Starbound[/gold]. At the start of your turn, [gold]Channel[/gold] [blue]1[/blue] [gold]Solar[/gold].",
+  "THEPRISMATIC2-GENESIS2_POWER.smartDescription": "Your Powers have [gold]Starbound[/gold]. At the start of your turn, [gold]Channel[/gold] [blue]{Amount}[/blue] [gold]Solar[/gold].",
+  "THEPRISMATIC2-GENESIS2_POWER.title": "Genesis",
+
+  "THEPRISMATIC2-MASTER_PLANNER2_POWER.description": "When you play a Skill, it gains [gold]Starbound[/gold] and [gold]Cunning[/gold].",
+  "THEPRISMATIC2-MASTER_PLANNER2_POWER.smartDescription": "When you play a Skill, it gains [gold]Starbound[/gold] and [gold]Cunning[/gold].",
+  "THEPRISMATIC2-MASTER_PLANNER2_POWER.title": "Master Planner",
+
+  "THEPRISMATIC2-COUNTDOWN2_POWER.description": "At the start of your turn, apply [blue]3[/blue] [gold]Poison[/gold] and [blue]3[/blue] [gold]Doom[/gold] to a random enemy.",
+  "THEPRISMATIC2-COUNTDOWN2_POWER.smartDescription": "At the start of your turn, apply [blue]{Amount}[/blue] [gold]Poison[/gold] and [blue]{Amount}[/blue] [gold]Doom[/gold] to a random enemy.",
+  "THEPRISMATIC2-COUNTDOWN2_POWER.title": "Countdown",
+
+  "THEPRISMATIC2-DANSE_MACABRE2_POWER.description": "Whenever you play a [gold]Costly[/gold] card or a Power, gain [blue]7[/blue] [gold]Block[/gold].",
+  "THEPRISMATIC2-DANSE_MACABRE2_POWER.smartDescription": "Whenever you play a [gold]Costly[/gold] card or a Power, gain [blue]{Amount}[/blue] [gold]Block[/gold].",
+  "THEPRISMATIC2-DANSE_MACABRE2_POWER.title": "Danse Macabre",
+
+  "THEPRISMATIC2-DEVOUR_LIFE2_POWER.description": "Whenever you play a 0 [gold]Energy[/gold] Skill, [gold]Summon[/gold] [blue]1[/blue].",
+  "THEPRISMATIC2-DEVOUR_LIFE2_POWER.smartDescription": "Whenever you play a 0 {energyPrefix:energyIcons(1)} Skill, [gold]Summon[/gold] [blue]{Amount}[/blue].",
+  "THEPRISMATIC2-DEVOUR_LIFE2_POWER.title": "Devour Life"
 }

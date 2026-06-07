@@ -1,0 +1,37 @@
+﻿using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using ThePrismatic2.ThePrismatic2Code.Character;
+
+namespace ThePrismatic2.ThePrismatic2Code.Cards;
+
+[Pool(typeof(ThePrismatic2CardPool))]
+public class TheSmith2() : ThePrismatic2Card(1, 
+    CardType.Skill, CardRarity.Rare, 
+    TargetType.Self)
+{
+    public override string CustomPortraitPath => "res://.godot/imported/the_smith.png-a61b6999e97bf60de2237dfb87a703a5.ctex";
+    public override string PortraitPath => "res://.godot/imported/the_smith.png-a61b6999e97bf60de2237dfb87a703a5.ctex";
+    
+    public override int CanonicalStarCost => 4;
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
+
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new ForgeVar(30));
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => HoverTipFactory.FromForge();
+
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await ForgeCmd.Forge(DynamicVars.Forge.IntValue, Owner, this);
+    }
+
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Forge.UpgradeValueBy(10m);
+    }
+}

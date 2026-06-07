@@ -19,6 +19,8 @@ public class NeutronAegis2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/neutron_aegis.png-90162bc99ef1db85dde85e045e07878e.ctex";
 
     public override int CanonicalStarCost => 5;
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<PlatingPower>(),

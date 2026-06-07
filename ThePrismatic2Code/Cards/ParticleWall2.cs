@@ -21,6 +21,8 @@ public class ParticleWall2() : ThePrismatic2Card(0,
     public override int CanonicalStarCost => 2;
 
     public override bool GainsBlock => true;
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(9m, ValueProp.Move));
 

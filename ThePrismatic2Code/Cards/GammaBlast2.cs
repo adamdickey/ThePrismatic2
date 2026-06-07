@@ -20,6 +20,8 @@ public class GammaBlast2() : ThePrismatic2Card(0,
     public override string PortraitPath => "res://.godot/imported/gamma_blast.png-4d4500e67b0bf6222c6aa40911bab63f.ctex";
 
     public override int CanonicalStarCost => 3;
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<WeakPower>(),

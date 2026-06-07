@@ -8,6 +8,6 @@
   "THEPRISMATIC2-CUNNING.description": "If this card is [gold]Exhausted[/gold] or discarded from your [gold]Hand[/gold] before the end of your turn, play it for free.",
   "THEPRISMATIC2-CUNNING.title": "Cunning",
 
-  "THEPRISMATIC2-STARBOUND.description": "If you don’t have enough Energy to play this card, use Stars instead of Energy. If you don’t have enough Stars to play this card, use Energy instead of Stars.",
+  "THEPRISMATIC2-STARBOUND.description": "Stars can be used in place of Energy and Energy can be used in place of Stars when playing this card.",
   "THEPRISMATIC2-STARBOUND.title": "Starbound"
 }

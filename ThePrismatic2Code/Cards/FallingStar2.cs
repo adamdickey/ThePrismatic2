@@ -20,6 +20,8 @@ public class FallingStar2() : ThePrismatic2Card(0,
     public override string PortraitPath => "res://.godot/imported/falling_star.png-b1d4c5a2991a796492bf499660a50cc4.ctex";
 
     public override int CanonicalStarCost => 2;
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(6m, ValueProp.Move),

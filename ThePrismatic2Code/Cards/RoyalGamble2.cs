@@ -17,7 +17,10 @@ public class RoyalGamble2() : ThePrismatic2Card(0,
 
     public override int CanonicalStarCost => 3;
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlyArray<CardKeyword>([
+        CardKeyword.Exhaust,
+        Extensions.Keywords.Starbound
+        ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

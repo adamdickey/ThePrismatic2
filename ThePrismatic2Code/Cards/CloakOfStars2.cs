@@ -16,6 +16,8 @@ public class CloakOfStars2() : ThePrismatic2Card(0,
 {
     public override string CustomPortraitPath => "res://.godot/imported/cloak_of_stars.png-a7b5e03209361e94f142100de1c185d1.ctex";
     public override string PortraitPath => "res://.godot/imported/cloak_of_stars.png-a7b5e03209361e94f142100de1c185d1.ctex";
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     public override int CanonicalStarCost => 1;
 

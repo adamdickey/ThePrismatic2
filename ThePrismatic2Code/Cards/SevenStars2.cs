@@ -23,6 +23,8 @@ public class SevenStars2() : ThePrismatic2Card(2,
     public override int CanonicalStarCost => 7;
 
     private List<Type> _orbsChanneled = new();
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(5m, ValueProp.Move),

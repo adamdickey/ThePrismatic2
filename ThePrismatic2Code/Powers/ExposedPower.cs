@@ -13,8 +13,6 @@ namespace ThePrismatic2.ThePrismatic2Code.Powers;
   
 public class ExposedPower : ThePrismatic2Power
 {
-    
-    private const string _damageIncrease = "DamageIncrease";
 
     public override PowerType Type => PowerType.Debuff;
 
@@ -33,20 +31,28 @@ public class ExposedPower : ThePrismatic2Power
             return 1m;
         }
         decimal num = DynamicVars["DamageIncrease"].BaseValue;
+        PowerModel? debilitatePower = target.GetPower<DebilitatePower>();
+        if (debilitatePower != null)
+        {
+            return 2m;
+        }
         return num;
     }
     
     public override decimal ModifyPowerAmountGiven(PowerModel power, Creature giver, decimal amount, Creature? target, CardModel? cardSource)
     {
-        if (target != null)
+        if (target == null || !target.Powers.Contains(this))
         {
-            if (target.Powers.Contains(this))
+            return amount;
+        }
+        if (power is DoomPower)
+        {
+            PowerModel? debilitatePower = target.GetPower<DebilitatePower>();
+            if (debilitatePower != null)
             {
-                if (power is DoomPower)
-                {
-                    return amount * 1.5m;
-                } 
+                return amount * 2m;
             }
+            return amount * 1.5m;
         }
         return amount;
     }

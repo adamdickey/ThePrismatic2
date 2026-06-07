@@ -27,10 +27,10 @@ public class Radiate2() : ThePrismatic2Card(0,
             new CalculationBaseVar(0m),
             new CalculationExtraVar(1m),
             new CalculatedVar("CalculatedHits").WithMultiplier((card, _) => (from e in CombatManager.Instance.History.Entries.OfType<StarsModifiedEntry>()
-                    where e.HappenedThisTurn(card.CombatState) && e.Amount > 0 && e.Actor == card.Owner.Creature
-                    select e).Sum(e => e.Amount) +(from e in CombatManager.Instance.History.Entries.OfType<PowerReceivedEntry>()
+                where e.HappenedThisTurn(card.CombatState) && e.Amount > 0 && e.Actor == card.Owner.Creature
+                select e).Sum(e => e.Amount) + (from e in CombatManager.Instance.History.Entries.OfType<PowerReceivedEntry>()
                 where e.HappenedThisTurn(card.CombatState) && e.Amount > 0 && e.Actor != card.Owner.Creature && e.Power.Type == PowerType.Debuff && e.Applier == card.Owner.Creature
-                select e).Sum(e => e.Amount)) 
+                select e).Count())
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

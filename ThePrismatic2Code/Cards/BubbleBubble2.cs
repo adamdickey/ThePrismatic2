@@ -2,7 +2,6 @@
 using Godot;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -24,30 +23,28 @@ public class BubbleBubble2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/bubble_bubble.png-125cb0b9a1c0e99d59d54aa37df57c4f.ctex";
     public override string PortraitPath => "res://.godot/imported/bubble_bubble.png-125cb0b9a1c0e99d59d54aa37df57c4f.ctex";
 
-    protected override bool ShouldGlowGoldInternal => CombatState?.HittableEnemies.Any((Creature e) => e.HasPower<PoisonPower>() || e.HasPower<DoomPower>()) ?? false;
+    protected override bool ShouldGlowGoldInternal => CombatState?.HittableEnemies.Any(e => e.HasPower<PoisonPower>() || e.HasPower<DoomPower>()) ?? false;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>(new IHoverTip[2]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<PoisonPower>(),
         HoverTipFactory.FromPower<DoomPower>()
-    });
+    ]);
 
     protected override IEnumerable<string> ExtraRunAssetPaths => NSmokePuffVfx.AssetPaths;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new PowerVar<PoisonPower>(6m),
         new PowerVar<DoomPower>(15m)
-    });
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        NCreature nCreature = NCombatRoom.Instance?.GetCreatureNode(cardPlay.Target);
+        NCreature? nCreature = NCombatRoom.Instance?.GetCreatureNode(cardPlay.Target);
         if (nCreature != null)
         {
-            NGaseousImpactVfx child = NGaseousImpactVfx.Create(nCreature.VfxSpawnPosition, new Color("83eb85"));
-            NCombatRoom.Instance.CombatVfxContainer.AddChildSafely(child);
+            NGaseousImpactVfx? child = NGaseousImpactVfx.Create(nCreature.VfxSpawnPosition, new Color("83eb85"));
+            NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
         }
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         
