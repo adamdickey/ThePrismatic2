@@ -14,8 +14,6 @@ public class CrimsonMantle2Power : ThePrismatic2Power
     
     public override string CustomPackedIconPath => "res://.godot/imported/crimson_mantle_power.png-042f8d3cf6d623188943f1fc6a3c9c47.s3tc.ctex";
     public override string CustomBigIconPath => "res://.godot/imported/crimson_mantle_power.png-042f8d3cf6d623188943f1fc6a3c9c47.s3tc.ctex";
-    
-    private const string _selfDamageKey = "SelfDamage";
 
     public override PowerType Type => PowerType.Buff;
 
@@ -31,7 +29,7 @@ public class CrimsonMantle2Power : ThePrismatic2Power
         {
             Flash();
             DamageVar damageVar = (DamageVar)DynamicVars["SelfDamage"];
-            if (!Osty.CheckMissingWithAnim(player))
+            if (!Osty.CheckMissingWithAnim(player) && player.Osty != null)
             {
                 await CreatureCmd.Damage(choiceContext, player.Osty, damageVar.BaseValue, damageVar.Props, Owner, null);
             }

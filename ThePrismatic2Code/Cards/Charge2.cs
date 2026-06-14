@@ -36,12 +36,13 @@ public class Charge2() : ThePrismatic2Card(1,
         }
         foreach (CardModel unused in list)
         {
-            CardModel card = CombatState.CreateCard<MinionDiveBomb>(Owner);
+            CardModel? card = CombatState?.CreateCard<MinionDiveBomb>(Owner);
             if (IsUpgraded)
             {
-                CardCmd.Upgrade(card);
+                if (card != null) CardCmd.Upgrade(card);
             }
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, addedByPlayer: true));
+
+            if (card != null) CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, addedByPlayer: true));
         }
     }
 }

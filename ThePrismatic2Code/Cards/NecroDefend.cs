@@ -15,15 +15,14 @@ public class NecroDefend() : ThePrismatic2Card(1,
 {
     public override string CustomPortraitPath => $"PrismaticDefend.png".BigCardImagePath();
     public override string PortraitPath => $"PrismaticDefend.png".CardImagePath();
-    protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Defend };
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon));
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new BlockVar(5m, ValueProp.Move),
         new SummonVar(2m)
-    });
+    ]);
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

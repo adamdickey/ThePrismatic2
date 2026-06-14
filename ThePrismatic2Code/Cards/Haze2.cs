@@ -7,8 +7,6 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -45,17 +43,18 @@ public class Haze2() : ThePrismatic2Card(3,
 
     private void SpawnVfx()
     {
-        Node node = NCombatRoom.Instance?.CombatVfxContainer;
+        Node? node = NCombatRoom.Instance?.CombatVfxContainer;
         if (node == null)
         {
             return;
         }
-        NSmokyVignetteVfx child = NSmokyVignetteVfx.Create(new Color(0.8f, 0.8f, 0.3f, 0.66f), new Color(0f, 4f, 0f, 0.33f));
+        NSmokyVignetteVfx? child = NSmokyVignetteVfx.Create(new Color(0.8f, 0.8f, 0.3f, 0.66f), new Color(0f, 4f, 0f, 0.33f));
         node.AddChildSafely(child);
-        foreach (Creature hittableEnemy in CombatState.HittableEnemies)
-        {
-            node.AddChildSafely(NSmokePuffVfx.Create(hittableEnemy, NSmokePuffVfx.SmokePuffColor.Green));
-        }
+        if (CombatState != null)
+            foreach (Creature hittableEnemy in CombatState.HittableEnemies)
+            {
+                node.AddChildSafely(NSmokePuffVfx.Create(hittableEnemy, NSmokePuffVfx.SmokePuffColor.Green));
+            }
     }
 
     protected override void OnUpgrade()

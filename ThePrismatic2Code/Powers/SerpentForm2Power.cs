@@ -15,7 +15,7 @@ public class SerpentForm2Power : ThePrismatic2Power
     
     private class Data
     {
-        public readonly Dictionary<CardModel, int> amountsForPlayedCards = new();
+        public readonly Dictionary<CardModel, int> AmountsForPlayedCards = new();
     }
 
     public override PowerType Type => PowerType.Buff;
@@ -33,19 +33,22 @@ public class SerpentForm2Power : ThePrismatic2Power
         {
             return Task.CompletedTask;
         }
-        GetInternalData<Data>().amountsForPlayedCards.Add(cardPlay.Card, Amount);
+        GetInternalData<Data>().AmountsForPlayedCards.Add(cardPlay.Card, Amount);
         return Task.CompletedTask;
     }
 
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner == Owner.Player && GetInternalData<Data>().amountsForPlayedCards.Remove(cardPlay.Card, out var damage) && damage > 0)
+        if (cardPlay.Card.Owner == Owner.Player && GetInternalData<Data>().AmountsForPlayedCards.Remove(cardPlay.Card, out var damage) && damage > 0)
         {
             await Cmd.CustomScaledWait(0.1f, 0.2f);
-            Creature creature = Owner.Player.RunState.Rng.CombatTargets.NextItem(Owner.CombatState.HittableEnemies);
-            if (creature != null)
+            if (Owner.CombatState != null)
             {
-                await PowerCmd.Apply<DoomPower>(creature, damage, Owner, null);
+                Creature? creature = Owner.Player.RunState.Rng.CombatTargets.NextItem(Owner.CombatState.HittableEnemies);
+                if (creature != null)
+                {
+                    await PowerCmd.Apply<DoomPower>(creature, damage, Owner, null);
+                }
             }
         }
     }

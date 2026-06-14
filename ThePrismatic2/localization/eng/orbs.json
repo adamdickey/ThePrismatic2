@@ -17,5 +17,9 @@
 
   "THEPRISMATIC2-IRON_ORB.description": "Orb: Forges the [gold]Sovereign Blade[/gold].",
   "THEPRISMATIC2-IRON_ORB.smartDescription": "[gold]Passive:[/gold] At the end of turn, [gold]Forge[/gold] [blue]{Passive}[/blue].\n[gold]Evoke:[/gold] [gold]Forge[/gold] [blue]{Evoke}[/blue].",
-  "THEPRISMATIC2-IRON_ORB.title": "Iron"
+  "THEPRISMATIC2-IRON_ORB.title": "Iron",
+
+  "THEPRISMATIC2-GLOOM_ORB.description": "Orb: When [gold]Evoked[/gold], deals damage and applies [gold]Doom[/gold] to the enemy with the least HP. Increases damage and [gold]Doom[/gold] every turn.",
+  "THEPRISMATIC2-GLOOM_ORB.smartDescription": "[gold]Passive:[/gold] At the end of turn, increase this Orb's damage and [gold]Doom[/gold] by [blue]{Passive}[/blue].\n[gold]Evoke:[/gold] Deal [blue]{Evoke}[/blue] damage and apply [blue]{Evoke}[/blue] [gold]Doom[/gold] to the enemy with the lowest HP.",
+  "THEPRISMATIC2-GLOOM_ORB.title": "Gloom"
 }

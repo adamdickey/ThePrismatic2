@@ -37,7 +37,7 @@ public class Inflame2() : ThePrismatic2Card(1,
 
     public override async Task OnEnqueuePlayVfx(Creature? target)
     {
-        if (!Osty.CheckMissingWithAnim(Owner))
+        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
         {
             NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NGroundFireVfx.Create(Owner.Osty));
         }

@@ -1,7 +1,6 @@
 ﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
@@ -35,7 +34,7 @@ public class Hellraiser2Power : ThePrismatic2Power
 
     public override async Task AfterCardDrawnEarly(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
-        if (card.Owner.Creature == Owner && (card.Tags.Contains(CardTag.Strike) || (card.Keywords.Contains(Extensions.Keywords.Cunning) && card.Type == CardType.Attack)) && !Owner.CombatState.HittableEnemies.All((Creature c) => c.ShowsInfiniteHp))
+        if (card.Owner.Creature == Owner && (card.Tags.Contains(CardTag.Strike) || (card.Keywords.Contains(Extensions.Keywords.Cunning) && card.Type == CardType.Attack)) && Owner.CombatState != null && !Owner.CombatState.HittableEnemies.All(c => c.ShowsInfiniteHp))
         {
             AutoplayingCards.Add(card);
             await CardCmd.AutoPlay(choiceContext, card, null);
@@ -54,8 +53,12 @@ public class Hellraiser2Power : ThePrismatic2Power
         {
             return Task.CompletedTask;
         }
-        command.WithHitFx("vfx/hellraiser_attack_vfx", command.HitSfx, command.TmpHitSfx).WithAttackerAnim("Cast", command.Attacker.Player.Character.CastAnimDelay).SpawningHitVfxOnEachCreature()
-            .WithHitVfxSpawnedAtBase();
+
+        if (command.Attacker is { Player: not null })
+            command.WithHitFx("vfx/hellraiser_attack_vfx", command.HitSfx, command.TmpHitSfx)
+                .WithAttackerAnim("Cast", command.Attacker.Player.Character.CastAnimDelay)
+                .SpawningHitVfxOnEachCreature()
+                .WithHitVfxSpawnedAtBase();
         return Task.CompletedTask;
     }
 }

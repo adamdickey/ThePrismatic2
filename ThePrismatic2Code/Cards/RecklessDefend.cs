@@ -24,7 +24,7 @@ public class RecklessDefend() : ThePrismatic2Card(0,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        if (!Osty.CheckMissingWithAnim(Owner))
+        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
         {
             VfxCmd.PlayOnCreatureCenter(Owner.Osty, "vfx/vfx_bloody_impact");
             await CreatureCmd.Damage(choiceContext, Owner.Osty, 1, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);

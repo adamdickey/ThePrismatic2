@@ -1,5 +1,4 @@
 ﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -17,8 +16,6 @@ public class Expertise2() : ThePrismatic2Card(1,
 {
     public override string CustomPortraitPath => "res://.godot/imported/expertise.png-06f1cd9ff165af60413927e39a04ef5c.ctex";
     public override string PortraitPath => "res://.godot/imported/expertise.png-06f1cd9ff165af60413927e39a04ef5c.ctex";
-    
-    private const string _calculatedStarsKey = "CalculatedStars";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
             new CardsVar(6),
@@ -35,12 +32,16 @@ public class Expertise2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         decimal baseValue = DynamicVars.Cards.BaseValue;
-        int count = Owner.PlayerCombatState.Hand.Cards.Count;
-        decimal starCount = Math.Max(0m, Math.Floor((decimal)(count / 2)));
-        await PlayerCmd.GainStars(starCount, Owner);
+        if (Owner.PlayerCombatState != null)
+        {
+            int count = Owner.PlayerCombatState.Hand.Cards.Count;
+            // ReSharper disable once PossibleLossOfFraction
+            decimal starCount = Math.Max(0m, count/2);
+            await PlayerCmd.GainStars(starCount, Owner);
         
-        decimal count2 = Math.Max(0m, baseValue - count);
-        await CardPileCmd.Draw(choiceContext, count2, Owner);
+            decimal count2 = Math.Max(0m, baseValue - count);
+            await CardPileCmd.Draw(choiceContext, count2, Owner);
+        }
     }
 
     protected override void OnUpgrade()

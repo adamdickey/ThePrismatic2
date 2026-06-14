@@ -16,15 +16,14 @@ public class NecroStrike() : ThePrismatic2Card(1,
 {
     public override string CustomPortraitPath => $"PrismaticStrike.png".BigCardImagePath();
     public override string PortraitPath => $"PrismaticStrike.png".CardImagePath();
-    protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Strike, CardTag.OstyAttack };
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike, CardTag.OstyAttack];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon));
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new OstyDamageVar(6m, ValueProp.Move),
         new SummonVar(2m)
-    });
+    ]);
 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -32,7 +31,7 @@ public class NecroStrike() : ThePrismatic2Card(1,
         ArgumentNullException.ThrowIfNull(play.Target);
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
-        if (!Osty.CheckMissingWithAnim(Owner))
+        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
         {
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this).Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")

@@ -4,10 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
-using ThePrismatic2.ThePrismatic2Code.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -25,7 +23,7 @@ public class EscapePlan2() : ThePrismatic2Card(0,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        CardModel cardModel = (await CardPileCmd.Draw(choiceContext, 1m, Owner)).FirstOrDefault();
+        CardModel? cardModel = (await CardPileCmd.Draw(choiceContext, 1m, Owner)).FirstOrDefault();
         if (cardModel != null && (cardModel.Type == CardType.Skill || cardModel.EnergyCost.Canonical == 0))
         {
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);

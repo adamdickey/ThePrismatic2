@@ -31,7 +31,7 @@ public class ExposedPower : ThePrismatic2Power
             return 1m;
         }
         decimal num = DynamicVars["DamageIncrease"].BaseValue;
-        PowerModel? debilitatePower = target.GetPower<DebilitatePower>();
+        PowerModel? debilitatePower = target.GetPower<Debilitate2Power>();
         if (debilitatePower != null)
         {
             return 2m;
@@ -47,7 +47,7 @@ public class ExposedPower : ThePrismatic2Power
         }
         if (power is DoomPower)
         {
-            PowerModel? debilitatePower = target.GetPower<DebilitatePower>();
+            PowerModel? debilitatePower = target.GetPower<Debilitate2Power>();
             if (debilitatePower != null)
             {
                 return amount * 2m;

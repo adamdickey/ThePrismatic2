@@ -28,18 +28,16 @@ public class BouncingFlask2() : ThePrismatic2Card(2,
 
     private readonly Color _vfxTint = new Color("83eb85");
 
-	protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[3]
-	{
+	protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
 		new PowerVar<PoisonPower>(2m),
 		new PowerVar<DoomPower>(2m),
 		new RepeatVar(3)
-	});
+	]);
 
-	protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>(new IHoverTip[2]
-	{
+	protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
 		HoverTipFactory.FromPower<PoisonPower>(),
 		HoverTipFactory.FromPower<DoomPower>()
-	});
+	]);
 
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
@@ -47,34 +45,38 @@ public class BouncingFlask2() : ThePrismatic2Card(2,
 		Vector2 lastPos = Vector2.Zero;
 		for (int i = 0; i < DynamicVars.Repeat.IntValue; i++)
 		{
-			Creature enemy = Owner.RunState.Rng.CombatTargets.NextItem(CombatState.HittableEnemies);
-			if (enemy == null)
+			if (CombatState != null)
 			{
-				continue;
-			}
-			if (TestMode.IsOff)
-			{
-				if (i == 0)
+				Creature? enemy = Owner.RunState.Rng.CombatTargets.NextItem(CombatState.HittableEnemies);
+				if (enemy == null)
 				{
-					lastPos = NCombatRoom.Instance.GetCreatureNode(Owner.Creature).VfxSpawnPosition;
+					continue;
 				}
-				NCreature targetNode = NCombatRoom.Instance.GetCreatureNode(enemy);
-				if (targetNode != null)
+				if (TestMode.IsOff)
 				{
-					NItemThrowVfx child = NItemThrowVfx.Create(lastPos, targetNode.GetBottomOfHitbox(), ModelDb.Potion<PoisonPotion>().Image);
-					NCombatRoom.Instance.CombatVfxContainer.AddChildSafely(child);
-					lastPos = targetNode.VfxSpawnPosition;
-					await Cmd.Wait(0.5f);
-					NSplashVfx child2 = NSplashVfx.Create(targetNode.VfxSpawnPosition, _vfxTint);
-					NCombatRoom.Instance.CombatVfxContainer.AddChildSafely(child2);
-					NLiquidOverlayVfx child3 = NLiquidOverlayVfx.Create(enemy, _vfxTint);
-					NCombatRoom.Instance.CombatVfxContainer.AddChildSafely(child3);
-					NGaseousImpactVfx child4 = NGaseousImpactVfx.Create(targetNode.VfxSpawnPosition, _vfxTint);
-					NCombatRoom.Instance.CombatVfxContainer.AddChildSafely(child4);
+					if (i == 0)
+					{
+						if (NCombatRoom.Instance != null)
+							lastPos = NCombatRoom.Instance.GetCreatureNode(Owner.Creature)!.VfxSpawnPosition;
+					}
+					NCreature? targetNode = NCombatRoom.Instance?.GetCreatureNode(enemy);
+					if (targetNode != null)
+					{
+						NItemThrowVfx? child = NItemThrowVfx.Create(lastPos, targetNode.GetBottomOfHitbox(), ModelDb.Potion<PoisonPotion>().Image);
+						NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
+						lastPos = targetNode.VfxSpawnPosition;
+						await Cmd.Wait(0.5f);
+						NSplashVfx? child2 = NSplashVfx.Create(targetNode.VfxSpawnPosition, _vfxTint);
+						NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child2);
+						NLiquidOverlayVfx? child3 = NLiquidOverlayVfx.Create(enemy, _vfxTint);
+						NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child3);
+						NGaseousImpactVfx? child4 = NGaseousImpactVfx.Create(targetNode.VfxSpawnPosition, _vfxTint);
+						NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child4);
+					}
 				}
+				await PowerCmd.Apply<PoisonPower>(enemy, DynamicVars.Poison.BaseValue, Owner.Creature, this);
+				await PowerCmd.Apply<DoomPower>(enemy, DynamicVars.Doom.BaseValue, Owner.Creature, this);
 			}
-			await PowerCmd.Apply<PoisonPower>(enemy, DynamicVars.Poison.BaseValue, Owner.Creature, this);
-			await PowerCmd.Apply<DoomPower>(enemy, DynamicVars.Doom.BaseValue, Owner.Creature, this);
 		}
 	}
 

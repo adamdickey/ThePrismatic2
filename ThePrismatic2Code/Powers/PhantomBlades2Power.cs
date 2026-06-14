@@ -43,10 +43,11 @@ public class PhantomBlades2Power : ThePrismatic2Power
 
     public override Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
-        foreach (CardModel item in Owner.Player.PlayerCombatState.AllCards.Where(c => c.EnergyCost.Canonical == 0 && c.Type == CardType.Attack))
-        {
-            CardCmd.ApplyKeyword(item, CardKeyword.Retain);
-        }
+        if (Owner.Player is { PlayerCombatState: not null })
+            foreach (CardModel item in Owner.Player.PlayerCombatState.AllCards.Where(c => c.EnergyCost.Canonical == 0 && c.Type == CardType.Attack))
+            {
+                CardCmd.ApplyKeyword(item, CardKeyword.Retain);
+            }
         return Task.CompletedTask;
     }
 

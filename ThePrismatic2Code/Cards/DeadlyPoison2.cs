@@ -1,5 +1,4 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -26,17 +25,16 @@ public class DeadlyPoison2() : ThePrismatic2Card(1,
     
     	protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<PoisonPower>(3m));
     
-    	protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>(new IHoverTip[3]
-	    {
+    	protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
 		    HoverTipFactory.FromPower<PoisonPower>(),
 		    HoverTipFactory.Static(StaticHoverTip.Channeling),
 		    HoverTipFactory.FromOrb<VenomOrb>()
-	    });
+	    ]);
     
     	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     	{
     		ArgumentNullException.ThrowIfNull(cardPlay.Target);
-    		NPoisonImpactVfx child = NPoisonImpactVfx.Create(cardPlay.Target);
+    		NPoisonImpactVfx? child = NPoisonImpactVfx.Create(cardPlay.Target);
     		NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
     		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
     		await PowerCmd.Apply<PoisonPower>(cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);

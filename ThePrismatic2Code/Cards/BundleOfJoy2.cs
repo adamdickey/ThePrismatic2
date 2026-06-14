@@ -4,7 +4,6 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
@@ -29,8 +28,11 @@ public class BundleOfJoy2() : ThePrismatic2Card(1,
         List<CardModel> list = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, 0, (int)DynamicVars.Cards.BaseValue), context: choiceContext, player: Owner, filter: null, source: this)).ToList();
         foreach (CardModel item in list)
         {
-            CardModel distinctForCombat = CardFactory.GetDistinctForCombat(Owner, ModelDb.CardPool<ColorlessCardPool>().GetUnlockedCards(Owner.UnlockState, RunState.CardMultiplayerConstraint), 1, Owner.RunState.Rng.CombatCardGeneration).FirstOrDefault();
-            if (distinctForCombat != null) await CardCmd.Transform(item, distinctForCombat);
+            if (RunState != null)
+            {
+                CardModel? distinctForCombat = CardFactory.GetDistinctForCombat(Owner, ModelDb.CardPool<ColorlessCardPool>().GetUnlockedCards(Owner.UnlockState, RunState.CardMultiplayerConstraint), 1, Owner.RunState.Rng.CombatCardGeneration).FirstOrDefault();
+                if (distinctForCombat != null) await CardCmd.Transform(item, distinctForCombat);
+            }
         }
     }
 

@@ -21,11 +21,10 @@ public class Spite2() : ThePrismatic2Card(0,
 
     protected override bool ShouldGlowGoldInternal => LostHpThisTurn(Owner.Creature);
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(5m, ValueProp.Move),
         new RepeatVar(2)
-    });
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -44,6 +43,6 @@ public class Spite2() : ThePrismatic2Card(0,
 
     private static bool LostHpThisTurn(Creature creature)
     {
-        return CombatManager.Instance.History.Entries.OfType<DamageReceivedEntry>().Any((DamageReceivedEntry e) => e.HappenedThisTurn(creature.CombatState) && (e.Receiver == creature || e.Receiver == creature.Player.Osty) && e.Result.UnblockedDamage > 0);
+        return CombatManager.Instance.History.Entries.OfType<DamageReceivedEntry>().Any(e => e.HappenedThisTurn(creature.CombatState) && (e.Receiver == creature || e.Receiver == creature.Player?.Osty) && e.Result.UnblockedDamage > 0);
     }
 }

@@ -29,14 +29,17 @@ public class StormOfSteel2() : ThePrismatic2Card(1,
         await CardCmd.Discard(choiceContext, enumerable);
         await Cmd.CustomScaledWait(0f, 0.25f);
         await PlayerCmd.GainStars(DynamicVars.Stars.BaseValue*handSize, Owner);
-        IEnumerable<CardModel> enumerable2 = await Shiv.CreateInHand(Owner, handSize, CombatState);
-        if (!IsUpgraded)
+        if (CombatState != null)
         {
-            return;
-        }
-        foreach (CardModel item in enumerable2)
-        {
-            CardCmd.Upgrade(item);
+            IEnumerable<CardModel> enumerable2 = await Shiv.CreateInHand(Owner, handSize, CombatState);
+            if (!IsUpgraded)
+            {
+                return;
+            }
+            foreach (CardModel item in enumerable2)
+            {
+                CardCmd.Upgrade(item);
+            }
         }
     }
 }

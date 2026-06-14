@@ -16,7 +16,7 @@ public class GhostlyDefend() : ThePrismatic2Card(1,
 {
     public override string CustomPortraitPath => $"PrismaticDefend.png".BigCardImagePath();
     public override string PortraitPath => $"PrismaticDefend.png".CardImagePath();
-    protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Defend };
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(5m, ValueProp.Move));
     
@@ -28,7 +28,7 @@ public class GhostlyDefend() : ThePrismatic2Card(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play);
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Soul.Create(Owner, 1, CombatState), PileType.Draw, addedByPlayer: true, CardPilePosition.Random));
+        if (CombatState != null) CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Soul.Create(Owner, 1, CombatState), PileType.Draw, addedByPlayer: true, CardPilePosition.Random));
     }
 
     protected override void OnUpgrade()

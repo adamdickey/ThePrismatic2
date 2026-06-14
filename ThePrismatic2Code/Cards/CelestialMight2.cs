@@ -32,7 +32,7 @@ public class CelestialMight2() : ThePrismatic2Card(2,
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_starry_impact", null, "blunt_attack.mp3")
             .Execute(choiceContext);
-        if (!Osty.CheckMissingWithAnim(Owner))
+        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
         {
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this).WithHitCount(DynamicVars.Repeat.IntValue)
                 .Targeting(cardPlay.Target)

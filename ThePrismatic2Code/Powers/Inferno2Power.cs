@@ -18,8 +18,6 @@ public class Inferno2Power : ThePrismatic2Power
     
     public override string CustomPackedIconPath => "res://.godot/imported/inferno_power.png-688562ad1f0eac4c8a606e5843a12d1b.s3tc.ctex";
     public override string CustomBigIconPath => "res://.godot/imported/inferno_power.png-688562ad1f0eac4c8a606e5843a12d1b.s3tc.ctex";
-    
-    private const string _selfDamageKey = "SelfDamage";
 
     public override PowerType Type => PowerType.Buff;
 
@@ -31,7 +29,7 @@ public class Inferno2Power : ThePrismatic2Power
     {
         if (player == Owner.Player)
         {
-            if (!Osty.CheckMissingWithAnim(player))
+            if (!Osty.CheckMissingWithAnim(player) && player.Osty != null)
             {
                 NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NFireSmokePuffVfx.Create(player.Osty));
                 await Cmd.CustomScaledWait(0.2f, 0.4f);
@@ -51,23 +49,23 @@ public class Inferno2Power : ThePrismatic2Power
 
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (!Osty.CheckMissingWithAnim(Owner.Player))
+        if (Owner.Player != null && !Osty.CheckMissingWithAnim(Owner.Player))
         {
-            if ((target != Owner && target != Owner.Player.Osty) || result.UnblockedDamage <= 0 || Owner.CombatState.CurrentSide != Owner.Side)
+            if (Owner.CombatState != null && ((target != Owner && target != Owner.Player.Osty) || result.UnblockedDamage <= 0 || Owner.CombatState.CurrentSide != Owner.Side))
             {
                 return;
             }
         }
         else
         {
-            if (target != Owner || result.UnblockedDamage <= 0 || Owner.CombatState.CurrentSide != Owner.Side)
+            if (Owner.CombatState != null && (target != Owner || result.UnblockedDamage <= 0 || Owner.CombatState.CurrentSide != Owner.Side))
             {
                 return;
             }
         }
         foreach (Creature hittableEnemy in CombatState.HittableEnemies)
         {
-            NFireBurstVfx child = NFireBurstVfx.Create(hittableEnemy, 0.75f);
+            NFireBurstVfx? child = NFireBurstVfx.Create(hittableEnemy, 0.75f);
             NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
         }
         await CreatureCmd.Damage(choiceContext, CombatState.HittableEnemies, Amount, ValueProp.Unpowered, Owner, null);

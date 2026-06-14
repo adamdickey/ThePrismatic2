@@ -1,0 +1,63 @@
+﻿using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
+using ThePrismatic2.ThePrismatic2Code.Character;
+using ThePrismatic2.ThePrismatic2Code.Orbs;
+
+namespace ThePrismatic2.ThePrismatic2Code.Cards;
+
+[Pool(typeof(ThePrismatic2CardPool))]
+public class Null2() : ThePrismatic2Card(2, 
+    CardType.Attack, CardRarity.Uncommon, 
+    TargetType.AnyEnemy)
+{
+    public override string CustomPortraitPath => "res://.godot/imported/null.png-6270afc0d80f91fba49a1491f0887b7f.ctex";
+    public override string PortraitPath => "res://.godot/imported/null.png-6270afc0d80f91fba49a1491f0887b7f.ctex";
+
+    protected override bool ShouldGlowGoldInternal => !Osty.CheckMissingWithAnim(Owner);
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.DualWield);
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromPower<WeakPower>(),
+        HoverTipFactory.Static(StaticHoverTip.Channeling),
+        HoverTipFactory.FromOrb<GloomOrb>(),
+        HoverTipFactory.FromPower<DoomPower>()
+    ]);
+
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new DamageVar(6m, ValueProp.Move),
+        new PowerVar<WeakPower>(1m)
+    ]);
+
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        ArgumentNullException.ThrowIfNull(cardPlay.Target);
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
+        await PowerCmd.Apply<WeakPower>(cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
+        await OrbCmd.Channel<GloomOrb>(choiceContext, Owner);
+        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
+        {
+            ArgumentNullException.ThrowIfNull(cardPlay.Target);
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue/2).FromOsty(Owner.Osty, this).Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
+                .Execute(choiceContext);
+            await PowerCmd.Apply<WeakPower>(cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
+            await OrbCmd.Channel<GloomOrb>(choiceContext, Owner);
+        }
+    }
+
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.Weak.UpgradeValueBy(1m);
+    }
+}

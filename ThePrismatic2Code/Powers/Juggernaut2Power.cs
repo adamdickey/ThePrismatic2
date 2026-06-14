@@ -25,9 +25,12 @@ public class Juggernaut2Power : ThePrismatic2Power
             IReadOnlyList<Creature> hittableEnemies = CombatState.HittableEnemies;
             if (hittableEnemies.Count != 0)
             {
-                Creature target = Owner.Player.RunState.Rng.CombatTargets.NextItem(hittableEnemies);
-                Flash();
-                await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), target, Amount, ValueProp.Unpowered, Owner, null);
+                if (Owner.Player != null)
+                {
+                    Creature? target = Owner.Player.RunState.Rng.CombatTargets.NextItem(hittableEnemies);
+                    Flash();
+                    if (target != null) await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), target, Amount, ValueProp.Unpowered, Owner, null);
+                }
             }
         }
     }
@@ -39,9 +42,9 @@ public class Juggernaut2Power : ThePrismatic2Power
             IReadOnlyList<Creature> hittableEnemies = CombatState.HittableEnemies;
             if (hittableEnemies.Count != 0)
             {
-                Creature target = Owner.Player.RunState.Rng.CombatTargets.NextItem(hittableEnemies);
+                Creature? target = Owner.Player.RunState.Rng.CombatTargets.NextItem(hittableEnemies);
                 Flash();
-                CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), target, Amount, ValueProp.Unpowered, Owner, null);
+                if (target != null) CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), target, Amount, ValueProp.Unpowered, Owner, null);
             }
         }
         return Task.CompletedTask;

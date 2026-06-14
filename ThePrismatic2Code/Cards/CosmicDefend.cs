@@ -17,7 +17,7 @@ public class CosmicDefend() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => $"PrismaticDefend.png".BigCardImagePath();
     public override string PortraitPath => $"PrismaticDefend.png".CardImagePath();
     
-    protected override HashSet<CardTag> CanonicalTags => new() { CardTag.Defend };
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(4m, ValueProp.Move));
     

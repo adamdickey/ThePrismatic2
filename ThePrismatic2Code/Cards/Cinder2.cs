@@ -1,8 +1,6 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -22,11 +20,10 @@ public class Cinder2() : ThePrismatic2Card(2,
     public override string PortraitPath => "res://.godot/imported/cinder.png-d24a89aa723f13b62a5fd061b1faf93f.ctex";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(
-        new DynamicVar[2]
-        {
-            new DamageVar(15m, ValueProp.Move),
-            new StarsVar(2),
-        });
+    [
+        new DamageVar(15m, ValueProp.Move),
+            new StarsVar(2)
+    ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Ethereal));
 
@@ -34,10 +31,10 @@ public class Cinder2() : ThePrismatic2Card(2,
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
-            .WithHitVfxNode((Creature t) => NFireBurstVfx.Create(t, 0.75f))
+            .WithHitVfxNode(t => NFireBurstVfx.Create(t, 0.75f))
             .Execute(choiceContext);
         CardPile pile = PileType.Hand.GetPile(Owner);
-        CardModel cardModel = Owner.RunState.Rng.CombatCardSelection.NextItem(pile.Cards);
+        CardModel? cardModel = Owner.RunState.Rng.CombatCardSelection.NextItem(pile.Cards);
         if (cardModel != null)
         {
             CardCmd.ApplyKeyword(cardModel, CardKeyword.Ethereal);

@@ -13,37 +13,35 @@ namespace ThePrismatic2.ThePrismatic2Code.Orbs;
 
 public sealed class MagmaOrb : CustomOrbModel
 {
-    public override Color DarkenedColor => new Color("ffff00");
-    public override string? CustomIconPath => "res://ThePrismatic2/images/orbs/solar_orb.png";
+    public override Color DarkenedColor => new("ffff00");
+    public override string CustomIconPath => "res://ThePrismatic2/images/orbs/solar_orb.png";
     public override bool IncludeInRandomPool => true;
 
     // Reuse Dark Orb sounds - practical use of overrides
-    public override string? CustomPassiveSfx => "event:/sfx/characters/defect/defect_dark_passive";
-    public override string? CustomEvokeSfx => "event:/sfx/characters/defect/defect_dark_evoke";
-    public override string? CustomChannelSfx => "event:/sfx/characters/defect/defect_dark_channel";
+    public override string CustomPassiveSfx => "event:/sfx/characters/defect/defect_dark_passive";
+    public override string CustomEvokeSfx => "event:/sfx/characters/defect/defect_dark_evoke";
+    public override string CustomChannelSfx => "event:/sfx/characters/defect/defect_dark_channel";
 
     public override decimal PassiveVal => ModifyOrbValue(2m);
     public override decimal EvokeVal => ModifyOrbValue(5m);
 
-    public override Node2D? CreateCustomSprite()
+    public override Node2D CreateCustomSprite()
     {
         var container = new Node2D();
-        // back layer: dark orb (dark red tint)
         string darkPath = SceneHelper.GetScenePath("orbs/orb_visuals/dark_orb");
         Node2D dark = PreloadManager.Cache.GetScene(darkPath)
-            .Instantiate<Node2D>(PackedScene.GenEditState.Disabled);
+            .Instantiate<Node2D>();
         new MegaSprite(dark.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
-        dark.Modulate = new Color(0.1f, 0.0f, 0.0f, 1.0f);
+        dark.Modulate = new Color(0.1f, 0.0f, 0.0f);
         dark.Scale = new Vector2(1.1f, 1.1f);
         container.AddChild(dark);
-        // front layer: glass orb (red core)
         string glassPath = SceneHelper.GetScenePath("orbs/orb_visuals/glass_orb");
         Node2D glass = PreloadManager.Cache.GetScene(glassPath)
-            .Instantiate<Node2D>(PackedScene.GenEditState.Disabled);
+            .Instantiate<Node2D>();
         new MegaSprite(glass.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
-        glass.Modulate = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+        glass.Modulate = new Color(1.0f, 0.0f, 0.0f);
         container.AddChild(glass);
         return container;
     }
@@ -56,18 +54,17 @@ public sealed class MagmaOrb : CustomOrbModel
     public override async Task Passive(PlayerChoiceContext choiceContext, Creature? target)
     {
         Trigger();
-        await ApplyVigor(PassiveVal, target, choiceContext);
+        await ApplyVigor(PassiveVal);
     }
 
     public override async Task<IEnumerable<Creature>> Evoke(PlayerChoiceContext playerChoiceContext)
     {
-        return await ApplyVigor(EvokeVal, null, playerChoiceContext);
+        return await ApplyVigor(EvokeVal);
     }
 
-    private async Task<IEnumerable<Creature>> ApplyVigor(decimal value, Creature? target,
-        PlayerChoiceContext choiceContext)
+    private async Task<IEnumerable<Creature>> ApplyVigor(decimal value)
     {
         await PowerCmd.Apply<VigorPower>(Owner.Creature, value, Owner.Creature, null);
-        return null;
+        return Array.Empty<Creature>();
     }
 }

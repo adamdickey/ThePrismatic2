@@ -10,21 +10,20 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
-using MegaCrit.Sts2.Core.ValueProps;
 
 namespace ThePrismatic2.ThePrismatic2Code.Orbs;
 
 
 public sealed class VenomOrb : CustomOrbModel
 {
-    public override Color DarkenedColor => new Color("2d6e2d");
-    public override string? CustomIconPath => "res://ThePrismatic2/images/orbs/venom_orb.png";
+    public override Color DarkenedColor => new("2d6e2d");
+    public override string CustomIconPath => "res://ThePrismatic2/images/orbs/venom_orb.png";
     public override bool IncludeInRandomPool => true;
 
     // Reuse Dark Orb sounds - practical use of overrides
-    public override string? CustomPassiveSfx => "event:/sfx/characters/defect/defect_dark_passive";
-    public override string? CustomEvokeSfx => "event:/sfx/characters/defect/defect_dark_evoke";
-    public override string? CustomChannelSfx => "event:/sfx/characters/defect/defect_dark_channel";
+    public override string CustomPassiveSfx => "event:/sfx/characters/defect/defect_dark_passive";
+    public override string CustomEvokeSfx => "event:/sfx/characters/defect/defect_dark_evoke";
+    public override string CustomChannelSfx => "event:/sfx/characters/defect/defect_dark_channel";
 
     private decimal _passiveVal = 2m;
 
@@ -32,26 +31,23 @@ public sealed class VenomOrb : CustomOrbModel
 
     public override decimal EvokeVal => PassiveVal * 2m;
 
-    public override Node2D? CreateCustomSprite()
+    public override Node2D CreateCustomSprite()
     {
         var container = new Node2D();
-        // back layer: dark orb (green tint)
         string darkPath = SceneHelper.GetScenePath("orbs/orb_visuals/dark_orb");
         Node2D dark = PreloadManager.Cache.GetScene(darkPath)
-            .Instantiate<Node2D>(PackedScene.GenEditState.Disabled);
+            .Instantiate<Node2D>();
         new MegaSprite(dark.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
-        dark.Modulate = _passiveVal <= 0m ? new Color(0.1f, 0.5f, 0.1f, 0.0f) : new Color(0.1f, 0.5f, 0.1f, 1.0f);
+        dark.Modulate = _passiveVal <= 0m ? new Color(0.1f, 0.5f, 0.1f, 0.0f) : new Color(0.1f, 0.5f, 0.1f);
         dark.Scale = new Vector2(1.1f, 1.1f);
         container.AddChild(dark);
-        // front layer: glass orb (bright green core)
         string glassPath = SceneHelper.GetScenePath("orbs/orb_visuals/glass_orb");
         Node2D glass = PreloadManager.Cache.GetScene(glassPath)
-            .Instantiate<Node2D>(PackedScene.GenEditState.Disabled);
+            .Instantiate<Node2D>();
         new MegaSprite(glass.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
-        glass.Modulate = _passiveVal <= 0m ? new Color(0.3f, 0.9f, 0.3f, 0.0f) : new Color(0.3f, 0.9f, 0.3f, 1.0f);
-        //glass.Modulate = new Color(0.3f, 0.9f, 0.3f, 1.0f);
+        glass.Modulate = _passiveVal <= 0m ? new Color(0.3f, 0.9f, 0.3f, 0.0f) : new Color(0.3f, 0.9f, 0.3f);
         container.AddChild(glass);
         return container;
     }
@@ -63,7 +59,7 @@ public sealed class VenomOrb : CustomOrbModel
 
     public override async Task Passive(PlayerChoiceContext choiceContext, Creature? target)
     {
-        List<Creature> targets = CombatState.HittableEnemies.Where((Creature e) => e.IsHittable).ToList();
+        List<Creature> targets = CombatState.HittableEnemies.Where(e => e.IsHittable).ToList();
         decimal passiveVal = PassiveVal;
         if (!(passiveVal <= 0m))
         {
@@ -76,18 +72,18 @@ public sealed class VenomOrb : CustomOrbModel
 
     public override async Task<IEnumerable<Creature>> Evoke(PlayerChoiceContext playerChoiceContext)
     {
-        List<Creature> enemies = CombatState.HittableEnemies.Where((Creature e) => e.IsHittable).ToList();
+        List<Creature> enemies = CombatState.HittableEnemies.Where(e => e.IsHittable).ToList();
         if (EvokeVal <= 0m)
         {
             return Array.Empty<Creature>();
         }
         foreach (Creature hittableEnemy in CombatState.HittableEnemies)
         {
-            NCreature nCreature = NCombatRoom.Instance?.GetCreatureNode(hittableEnemy);
+            NCreature? nCreature = NCombatRoom.Instance?.GetCreatureNode(hittableEnemy);
             if (nCreature != null)
             {
-                NGaseousImpactVfx child = NGaseousImpactVfx.Create(nCreature.VfxSpawnPosition, new Color("83eb85"));
-                NCombatRoom.Instance.CombatVfxContainer.AddChildSafely(child);
+                NGaseousImpactVfx? child = NGaseousImpactVfx.Create(nCreature.VfxSpawnPosition, new Color("83eb85"));
+                NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
             }
         }
         await PowerCmd.Apply<PoisonPower>(enemies, EvokeVal, Owner.Creature, null);

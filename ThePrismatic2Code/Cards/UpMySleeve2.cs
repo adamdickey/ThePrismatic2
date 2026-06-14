@@ -4,7 +4,6 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -44,7 +43,7 @@ public class UpMySleeve2() : ThePrismatic2Card(3,
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         for (int i = 0; i < DynamicVars.Cards.IntValue; i++)
         {
-            await Shiv.CreateInHand(Owner, CombatState);
+            if (CombatState != null) await Shiv.CreateInHand(Owner, CombatState);
             await Cmd.Wait(0.1f);
         }
         TimesPlayedThisCombat++;

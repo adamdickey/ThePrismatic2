@@ -25,8 +25,11 @@ public class Predator2() : ThePrismatic2Card(2,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-        List<Soul> list = Soul.Create(Owner, 2, CombatState).ToList();
-        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(list, PileType.Draw, addedByPlayer: true, CardPilePosition.Random));
+        if (CombatState != null)
+        {
+            List<Soul> list = Soul.Create(Owner, 2, CombatState).ToList();
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(list, PileType.Draw, addedByPlayer: true, CardPilePosition.Random));
+        }
     }
 
     protected override void OnUpgrade()

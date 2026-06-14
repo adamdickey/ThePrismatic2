@@ -1,7 +1,6 @@
 ﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -20,15 +19,14 @@ public class Dismantle2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/dismantle.png-77949299fe0992ea6455964b08284672.ctex";
 
         
-    protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.OstyAttack };
-    protected override bool ShouldGlowGoldInternal => CombatState.HittableEnemies.Any((Creature e) => e.Powers.Count(power => power.Type == PowerType.Debuff) >=2) || !Osty.CheckMissingWithAnim(Owner);
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.OstyAttack];
+    protected override bool ShouldGlowGoldInternal => CombatState != null && (CombatState.HittableEnemies.Any(e => e.Powers.Count(power => power.Type == PowerType.Debuff) >= 2) || !Osty.CheckMissingWithAnim(Owner));
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(
-        new DynamicVar[2]
-        {
-            new DamageVar(6m, ValueProp.Move),
+    [
+        new DamageVar(6m, ValueProp.Move),
             new OstyDamageVar(3m, ValueProp.Move)
-        });
+    ]);
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.DualWield);
 
@@ -40,7 +38,7 @@ public class Dismantle2() : ThePrismatic2Card(1,
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_blunt", null, "heavy_attack.mp3")
             .Execute(choiceContext);
-        if (!Osty.CheckMissingWithAnim(Owner))
+        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
         {
             ArgumentNullException.ThrowIfNull(cardPlay.Target);
             hitCount = !(cardPlay.Target.Powers.Count(power => power.Type == PowerType.Debuff) >= 2) ? 1 : 2;

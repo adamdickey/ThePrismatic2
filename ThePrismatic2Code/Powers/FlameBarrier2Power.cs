@@ -22,9 +22,9 @@ public class FlameBarrier2Power : ThePrismatic2Power
     {
         if (target == Owner && props.IsPoweredAttack())
         {
-            for (int i=0; i < this.Amount; i++)
+            for (int i=0; i < Amount; i++)
             {
-                await OrbCmd.Channel<MagmaOrb>(choiceContext, Owner.Player);
+                if (Owner.Player != null) await OrbCmd.Channel<MagmaOrb>(choiceContext, Owner.Player);
             }
         }
     }

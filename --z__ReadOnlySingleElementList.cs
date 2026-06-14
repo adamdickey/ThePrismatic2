@@ -2,9 +2,9 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 
 [CompilerGenerated]
-internal sealed class _003C_003Ez__ReadOnlySingleElementList<T> : IEnumerable, ICollection, IList, IEnumerable<T>, IReadOnlyCollection<T>, IReadOnlyList<T>, ICollection<T>, IList<T>
+internal sealed class _003C_003Ez__ReadOnlySingleElementList<T> : IList, IReadOnlyList<T>, IList<T>
 {
-	private sealed class Enumerator : IDisposable, IEnumerator, IEnumerator<T>
+	private sealed class Enumerator : IEnumerator<T>
 	{
 		[CompilerGenerated]
 		private readonly T _item;
@@ -12,7 +12,14 @@ internal sealed class _003C_003Ez__ReadOnlySingleElementList<T> : IEnumerable, I
 		[CompilerGenerated]
 		private bool _moveNextCalled;
 
-		object IEnumerator.Current => _item;
+		object IEnumerator.Current
+		{
+			get
+			{
+				if (_item != null) return _item;
+				return 0;
+			}
+		}
 
 		T IEnumerator<T>.Current => _item;
 
@@ -130,12 +137,12 @@ internal sealed class _003C_003Ez__ReadOnlySingleElementList<T> : IEnumerable, I
 
 	bool IList.Contains(object? value)
 	{
-		return EqualityComparer<T>.Default.Equals(_item, (T)value);
+		return EqualityComparer<T>.Default.Equals(_item, (T)value!);
 	}
 
 	int IList.IndexOf(object? value)
 	{
-		if (!EqualityComparer<T>.Default.Equals(_item, (T)value))
+		if (!EqualityComparer<T>.Default.Equals(_item, (T)value!))
 		{
 			return -1;
 		}

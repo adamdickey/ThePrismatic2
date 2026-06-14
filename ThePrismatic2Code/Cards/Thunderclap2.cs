@@ -19,26 +19,29 @@ public class Thunderclap2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/thunderclap.png-ed38bf075b72e974ed05bcedf74c96ac.ctex";
     public override string PortraitPath => "res://.godot/imported/thunderclap.png-ed38bf075b72e974ed05bcedf74c96ac.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(3m, ValueProp.Move),
         new PowerVar<VulnerablePower>(1m)
-    });
+    ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>(
-        new IHoverTip[3]
-        {
-            HoverTipFactory.FromPower<VulnerablePower>(),
+    [
+        HoverTipFactory.FromPower<VulnerablePower>(),
             HoverTipFactory.Static(StaticHoverTip.Channeling),
             HoverTipFactory.FromOrb<LightningOrb>()
-        });
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState)
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
-        await PowerCmd.Apply<VulnerablePower>(CombatState.HittableEnemies, DynamicVars.Vulnerable.BaseValue, Owner.Creature, this);
+        if (CombatState != null)
+        {
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState)
+                .WithHitFx("vfx/vfx_attack_slash")
+                .Execute(choiceContext);
+            await PowerCmd.Apply<VulnerablePower>(CombatState.HittableEnemies, DynamicVars.Vulnerable.BaseValue,
+                Owner.Creature, this);
+        }
+
         await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
     }
 

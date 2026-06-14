@@ -17,7 +17,7 @@ public class Speedster2Power : ThePrismatic2Power
 
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
-        if (!fromHandDraw && card.Owner.Creature == Owner && card.Owner.Creature.CombatState.CurrentSide == card.Owner.Creature.Side)
+        if (!fromHandDraw && card.Owner.Creature == Owner && card.Owner.Creature.CombatState != null && card.Owner.Creature.CombatState.CurrentSide == card.Owner.Creature.Side)
         {
             VfxCmd.PlayOnCreatureCenters(CombatState.HittableEnemies, "vfx/vfx_attack_slash");
             SfxCmd.Play("slash_attack.mp3");

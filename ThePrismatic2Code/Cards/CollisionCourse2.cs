@@ -27,7 +27,7 @@ public class CollisionCourse2() : ThePrismatic2Card(0,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
             .Execute(choiceContext);
-        await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<Forget>(Owner), PileType.Hand, addedByPlayer: true);
+        if (CombatState != null) await CardPileCmd.AddGeneratedCardToCombat(CombatState.CreateCard<Forget>(Owner), PileType.Hand, addedByPlayer: true);
         await Cmd.Wait(0.5f);
     }
 

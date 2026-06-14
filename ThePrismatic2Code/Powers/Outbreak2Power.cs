@@ -50,7 +50,9 @@ public class Outbreak2Power : ThePrismatic2Power
             {
                 InvokeDisplayAmountChanged();
                 Flash();
-                await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), Owner.CombatState.HittableEnemies, Amount, ValueProp.Unpowered, Owner, null);
+                if (Owner.CombatState != null)
+                    await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), Owner.CombatState.HittableEnemies,
+                        Amount, ValueProp.Unpowered, Owner, null);
                 data.TimesPoisoned %= 3;
             }
             InvokeDisplayAmountChanged();

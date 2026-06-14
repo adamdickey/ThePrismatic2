@@ -24,6 +24,13 @@ public static class StarboundPatch
 
         if (card.CombatState != null && card.Keywords.Contains(Keywords.Starbound))
         {
+            if (playerEnergy >= cardEnergy && playerStars >= cardStars)
+            {
+                card.EnergyCost.SetThisCombat(cardEnergy);
+                card.SetStarCostThisCombat(cardStars);
+                reason = UnplayableReason.None;
+                return;
+            }
             if (playerEnergy < cardEnergy && playerEnergy + playerStars >= cardCost)
             {
                 card.EnergyCost.SetThisTurn(playerEnergy);
@@ -34,12 +41,6 @@ public static class StarboundPatch
             {
                 card.EnergyCost.SetThisTurn(cardCost - playerStars);
                 card.SetStarCostThisTurn(playerStars);
-                reason = UnplayableReason.None;
-            }
-            if (playerEnergy >= cardEnergy && playerStars >= cardStars)
-            {
-                card.EnergyCost.SetThisCombat(cardEnergy);
-                card.SetStarCostThisCombat(cardStars);
                 reason = UnplayableReason.None;
             }
         }

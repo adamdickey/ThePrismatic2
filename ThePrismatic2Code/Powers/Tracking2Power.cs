@@ -24,7 +24,7 @@ public class Tracking2Power : ThePrismatic2Power
         {
             return 1m;
         }
-        if (dealer != Owner && !Owner.Pets.Contains<Creature>(dealer))
+        if (dealer != Owner && dealer != null && !Owner.Pets.Contains(dealer))
         {
             return 1m;
         }

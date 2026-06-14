@@ -42,7 +42,7 @@ public class LeadingStrike2() : ThePrismatic2Card(1,
             if (CombatState != null) await Shiv.CreateInHand(Owner, CombatState);
             await Cmd.Wait(0.25f);
         }
-        if (!Osty.CheckMissingWithAnim(Owner))
+        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
         {
             ArgumentNullException.ThrowIfNull(cardPlay.Target);
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this)
