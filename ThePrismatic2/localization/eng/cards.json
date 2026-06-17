@@ -584,6 +584,9 @@
   "THEPRISMATIC2-THE_SMITH2.description": "[gold]Forge[/gold] {Forge:diff()}.",
   "THEPRISMATIC2-THE_SMITH2.title": "The Smith",
 
+  "THEPRISMATIC2-WROUGHT_IN_WAR2.description": "Deal {Damage:diff()} damage.\n[gold]Forge[/gold] {Forge:diff()}.\n[gold]Channel[/gold] 1 [gold]Magma[/gold].",
+  "THEPRISMATIC2-WROUGHT_IN_WAR2.title": "Wrought in War",
+
   "THEPRISMATIC2-AFTERLIFE2.description": "[gold]Summon[/gold] {Summon:diff()}.\n[gold]Channel[/gold] 1 [gold]Bone[/gold].",
   "THEPRISMATIC2-AFTERLIFE2.title": "Afterlife",
 
@@ -601,6 +604,9 @@
 
   "THEPRISMATIC2-BURY2.description": "Deal {Damage:diff()} damage.\nCosts 1 less {energyPrefix:energyIcons(1)} for each other [gold]Costly[/gold] card in your [gold]Hand[/gold].",
   "THEPRISMATIC2-BURY2.title": "Bury",
+
+  "THEPRISMATIC2-CALCIFY2.description": "[gold]Osty's[/gold] attacks deal {CalcifyPower:diff()} additional damage.",
+  "THEPRISMATIC2-CALCIFY2.title": "Calcify",
 
   "THEPRISMATIC2-COUNTDOWN2.description": "At the start of your turn, apply {CountdownPower:diff()} [gold]Poison[/gold] and {CountdownPower:diff()} [gold]Doom[/gold] to a random enemy.",
   "THEPRISMATIC2-COUNTDOWN2.title": "Countdown",
@@ -628,6 +634,9 @@
 
   "THEPRISMATIC2-DRAIN_POWER2.description": "Deal {Damage:diff()} damage.\n[gold]Upgrade[/gold] {Cards:diff()} random {Cards:plural:card|cards} in your [gold]Discard Pile[/gold].",
   "THEPRISMATIC2-DRAIN_POWER2.title": "Drain Power",
+
+  "THEPRISMATIC2-EIDOLON2.description": "[gold]Exhaust[/gold] your [gold]Hand[/gold].\nIf 9 cards were [gold]Exhausted[/gold] this way, gain 1 [gold]Intangible[/gold].",
+  "THEPRISMATIC2-EIDOLON2.title": "Eidolon",
 
   "THEPRISMATIC2-FEAR2.description": "Deal {Damage:diff()} damage.\nApply {VulnerablePower:diff()} [gold]Vulnerable[/gold].\nApply {Exposed:diff()} [gold]Exposed[/gold].",
   "THEPRISMATIC2-FEAR2.title": "Fear",
@@ -707,6 +716,9 @@
 
   "THEPRISMATIC2-SPIRIT_OF_ASH2.description": "Whenever you play an [gold]Ethereal[/gold] card or a Colorless card, gain {BlockOnExhaust:diff()} [gold]Block[/gold].",
   "THEPRISMATIC2-SPIRIT_OF_ASH2.title": "Spirit of Ash",
+
+  "THEPRISMATIC2-SPUR2.description": "[gold]Summon[/gold] {CalculatedSummon:diff()}.\n[gold]Summons[/gold] {CalculationExtra:diff()} more for each other card in your [gold]Hand[/gold] with [gold]Retain[/gold].",
+  "THEPRISMATIC2-SPUR2.title": "Spur",
 
   "THEPRISMATIC2-SQUEEZE2.description": "[gold]Summon[/gold] {Summon:diff()}.\n[gold]Osty[/gold] deals {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for ALL your other [gold]Osty[/gold] Attacks and {singleStarIcon} cost cards.",
   "THEPRISMATIC2-SQUEEZE2.title": "Squeeze",
@@ -798,6 +810,9 @@
   "THEPRISMATIC2-LEAP2.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Summon[/gold] {Summon:diff()}.",
   "THEPRISMATIC2-LEAP2.title": "Leap",
 
+  "THEPRISMATIC2-LOOP2.description": "At the start of your turn, gain {singleStarIcon} and trigger the passive ability of your rightmost Orb{IfUpgraded:show: 2 times}.",
+  "THEPRISMATIC2-LOOP2.title": "Loop",
+
   "THEPRISMATIC2-MACHINE_LEARNING2.description": "At the start of your turn, add a [gold]Soul[/gold] into your [gold]Draw Pile[/gold].",
   "THEPRISMATIC2-MACHINE_LEARNING2.title": "Machine Learning",
 
@@ -811,5 +826,47 @@
   "THEPRISMATIC2-OVERCLOCK2.title": "Overclock",
 
   "THEPRISMATIC2-RAINBOW2.description": "Gain {Repeat:diff()} Orb Slots.\n[gold]Channel[/gold] 1 [gold]Magma[/gold], 1 [gold]Solar[/gold],\n1 [gold]Lightning[/gold], 1 [gold]Venom[/gold],\n1 [gold]Frost[/gold], and 1 [gold]Gloom[/gold].",
-  "THEPRISMATIC2-RAINBOW2.title": "Rainbow"
+  "THEPRISMATIC2-RAINBOW2.title": "Rainbow",
+
+  "THEPRISMATIC2-REFRACT2.description": "Deal {Damage:diff()} damage twice.\n[gold]Channel[/gold] {Repeat:diff()} [gold]Glass[/gold].",
+  "THEPRISMATIC2-REFRACT2.title": "Refract",
+
+  "THEPRISMATIC2-ROCKET_PUNCH2.description": "Deal {Damage:diff()} damage.\nDraw {Cards:diff()} {Cards:plural:card|cards}.\nWhenever you create a card, reduce this card's cost to 0 {energyPrefix:energyIcons(1)} until played.",
+  "THEPRISMATIC2-ROCKET_PUNCH2.title": "Rocket Punch",
+
+  "THEPRISMATIC2-SHADOW_SHIELD2.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Summon[/gold] {Summon:diff()}.\n[gold]Channel[/gold] 1 [gold]Gloom[/gold].",
+  "THEPRISMATIC2-SHADOW_SHIELD2.title": "Shadow Shield",
+
+  "THEPRISMATIC2-SMOKESTACK2.description": "Whenever you create a card, deal {SmokestackPower:diff()} damage to ALL enemies.",
+  "THEPRISMATIC2-SMOKESTACK2.title": "Smokestack",
+
+  "THEPRISMATIC2-SPINNER2.description": "{IfUpgraded:show:[gold]Channel[/gold] 1 random Orb.\n|}At the start of your turn, [gold]Channel[/gold] 1 random Orb.",
+  "THEPRISMATIC2-SPINNER2.title": "Spinner",
+
+  "THEPRISMATIC2-SWEEPING_BEAM2.description": "Deal {Damage:diff()} damage to ALL enemies.\nDraw {Cards:diff()} {Cards:plural:card|cards}.\nGain {Stars:starIcons()}.",
+  "THEPRISMATIC2-SWEEPING_BEAM2.title": "Sweeping Beam",
+
+  "THEPRISMATIC2-SYNCHRONIZE2.description": "[gold]Forge[/gold] {Forge:diff()} and gain {Focus:diff()} [gold]Focus[/gold] this turn for each unique Orb you have.{InCombat:\n({CalculatedFocus:diff()} unique Orbs)|}",
+  "THEPRISMATIC2-SYNCHRONIZE2.title": "Synchronize",
+  
+  "THEPRISMATIC2-TEMPEST2.description": "[gold]Channel[/gold] {IfUpgraded:show:X+1|X} [gold]Lightning[/gold].",
+  "THEPRISMATIC2-TEMPEST2.title": "Tempest",
+
+  "THEPRISMATIC2-TESLA_COIL2.description": "Deal {Damage:diff()} damage.\nTrigger {Repeat:diff()} random Orbs against the enemy.",
+  "THEPRISMATIC2-TESLA_COIL2.title": "Tesla Coil",
+
+  "THEPRISMATIC2-THUNDER2.description": "Whenever you [gold]Evoke[/gold] an Orb, deal {ThunderPower:diff()} damage to a random enemy.",
+  "THEPRISMATIC2-THUNDER2.title": "Thunder",
+
+  "THEPRISMATIC2-TRASH_TO_TREASURE2.description": "Whenever you create a card, [gold]Channel[/gold] 1 random Orb.",
+  "THEPRISMATIC2-TRASH_TO_TREASURE2.title": "Trash to Treasure",
+
+  "THEPRISMATIC2-UPROAR2.description": "Deal {Damage:diff()} damage twice.\nPlay a random Attack from your [gold]Draw Pile[/gold].",
+  "THEPRISMATIC2-UPROAR2.title": "Uproar",
+
+  "THEPRISMATIC2-VOLTAIC2.description": "[gold]Channel Lightning[/gold] equal to the Orbs already [gold]Channeled[/gold] this combat.{InCombat:\n([gold]Channel[/gold] {CalculatedChannels:diff()} [gold]Lightning[/gold])|}",
+  "THEPRISMATIC2-VOLTAIC2.title": "Voltaic",
+
+  "THEPRISMATIC2-ZAP2.description": "[gold]Channel[/gold] 1 [gold]Lightning[/gold].\n[gold]Channel[/gold] 1 [gold]Magma[/gold].",
+  "THEPRISMATIC2-ZAP2.title": "Zap"
 }

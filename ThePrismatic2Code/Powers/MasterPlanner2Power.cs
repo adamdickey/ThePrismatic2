@@ -24,6 +24,11 @@ public class MasterPlanner2Power : ThePrismatic2Power
         {
             return Task.CompletedTask;
         }
+
+        if (cardPlay.Card.Keywords.Contains(CardKeyword.Exhaust) || cardPlay.Card.ExhaustOnNextPlay)
+        {
+            return Task.CompletedTask;
+        }
         Flash();
         CardCmd.ApplyKeyword(cardPlay.Card, Extensions.Keywords.Cunning);
         CardCmd.ApplyKeyword(cardPlay.Card, Extensions.Keywords.Starbound);

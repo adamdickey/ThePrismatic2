@@ -21,11 +21,10 @@ public class Envenom2Power : ThePrismatic2Power
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<DoomPower>(0m));
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>(new IHoverTip[2]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<PoisonPower>(),
-        HoverTipFactory.FromPower<DoomPower>(),
-    });
+        HoverTipFactory.FromPower<DoomPower>()
+    ]);
     
     public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {

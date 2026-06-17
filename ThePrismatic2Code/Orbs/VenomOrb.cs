@@ -17,7 +17,7 @@ namespace ThePrismatic2.ThePrismatic2Code.Orbs;
 public sealed class VenomOrb : CustomOrbModel
 {
     public override Color DarkenedColor => new("2d6e2d");
-    public override string CustomIconPath => "res://ThePrismatic2/images/orbs/venom_orb.png";
+    public override string CustomIconPath => "res://.godot/imported/dark_orb.png-5f06b12b25c362f6d903a63dbe2e565f.ctex";
     public override bool IncludeInRandomPool => true;
 
     // Reuse Dark Orb sounds - practical use of overrides
@@ -40,7 +40,6 @@ public sealed class VenomOrb : CustomOrbModel
         new MegaSprite(dark.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
         dark.Modulate = _passiveVal <= 0m ? new Color(0.1f, 0.5f, 0.1f, 0.0f) : new Color(0.1f, 0.5f, 0.1f);
-        dark.Scale = new Vector2(1.1f, 1.1f);
         container.AddChild(dark);
         string glassPath = SceneHelper.GetScenePath("orbs/orb_visuals/glass_orb");
         Node2D glass = PreloadManager.Cache.GetScene(glassPath)
@@ -48,6 +47,7 @@ public sealed class VenomOrb : CustomOrbModel
         new MegaSprite(glass.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
         glass.Modulate = _passiveVal <= 0m ? new Color(0.3f, 0.9f, 0.3f, 0.0f) : new Color(0.3f, 0.9f, 0.3f);
+        glass.Scale = new Vector2(0.9f, 0.9f);
         container.AddChild(glass);
         return container;
     }

@@ -247,7 +247,27 @@
   "THEPRISMATIC2-ITERATION2_POWER.smartDescription": "The first time you create a card or draw a Status each turn, draw [blue]{Amount}[/blue] {Amount:plural:card|cards}.",
   "THEPRISMATIC2-ITERATION2_POWER.title": "Iteration",
 
+  "THEPRISMATIC2-LOOP2_POWER.description": "At the start of your turn, gain 1 Star and trigger the passive ability of your next Orb.",
+  "THEPRISMATIC2-LOOP2_POWER.smartDescription": "At the start of your turn, gain {Stars:starIcons()} and trigger the passive ability of your next Orb [blue]{Amount}[/blue] {Amount:plural:time|times}.",
+  "THEPRISMATIC2-LOOP2_POWER.title": "Loop",
+
   "THEPRISMATIC2-MACHINE_LEARNING2_POWER.description": "At the start of your turn, add a [gold]Soul[/gold] into your [gold]Draw Pile[/gold].",
   "THEPRISMATIC2-MACHINE_LEARNING2_POWER.smartDescription": "At the start of your turn, add [blue]{Amount}[/blue] [gold]{Amount:plural:Soul|Souls}[/gold] into your [gold]Draw Pile[/gold].",
-  "THEPRISMATIC2-MACHINE_LEARNING2_POWER.title": "Machine Learning"
+  "THEPRISMATIC2-MACHINE_LEARNING2_POWER.title": "Machine Learning",
+
+  "THEPRISMATIC2-SMOKESTACK2_POWER.description": "Whenever you create a card, deal damage to ALL enemies.",
+  "THEPRISMATIC2-SMOKESTACK2_POWER.smartDescription": "Whenever you create a card, deal [blue]{Amount}[/blue] damage to ALL enemies.",
+  "THEPRISMATIC2-SMOKESTACK2_POWER.title": "Smokestack",
+
+  "THEPRISMATIC2-SPINNER2_POWER.description": "At the start of your turn, [gold]Channel[/gold] [blue]1[/blue] random Orb.",
+  "THEPRISMATIC2-SPINNER2_POWER.smartDescription": "At the start of your turn, [gold]Channel[/gold] [blue]{Amount}[/blue] random {Amount:plural:Orb|Orbs}.",
+  "THEPRISMATIC2-SPINNER2_POWER.title": "Spinner",
+
+  "THEPRISMATIC2-THUNDER2_POWER.description": "Whenever you [gold]Evoke[/gold] an Orb, deal [blue]8[/blue] damage to a random enemy.",
+  "THEPRISMATIC2-THUNDER2_POWER.smartDescription": "Whenever you [gold]Evoke[/gold] an Orb, deal [blue]{Amount}[/blue] damage to a random enemy.",
+  "THEPRISMATIC2-THUNDER2_POWER.title": "Thunder",
+
+  "THEPRISMATIC2-TRASH_TO_TREASURE2_POWER.description": "Whenever you create a card, [gold]Channel[/gold] [blue]1[/blue] random Orb.",
+  "THEPRISMATIC2-TRASH_TO_TREASURE2_POWER.smartDescription": "Whenever you create a card, [gold]Channel[/gold] {Amount:plural:[blue]{}[/blue] random Orb|[blue]{}[/blue] random Orbs}.",
+  "THEPRISMATIC2-TRASH_TO_TREASURE2_POWER.title": "Trash to Treasure"
 }

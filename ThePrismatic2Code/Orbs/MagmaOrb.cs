@@ -13,8 +13,8 @@ namespace ThePrismatic2.ThePrismatic2Code.Orbs;
 
 public sealed class MagmaOrb : CustomOrbModel
 {
-    public override Color DarkenedColor => new("ffff00");
-    public override string CustomIconPath => "res://ThePrismatic2/images/orbs/solar_orb.png";
+    public override Color DarkenedColor => new("800000");
+    public override string CustomIconPath => "res://.godot/imported/dark_orb.png-5f06b12b25c362f6d903a63dbe2e565f.ctex";
     public override bool IncludeInRandomPool => true;
 
     // Reuse Dark Orb sounds - practical use of overrides
@@ -34,14 +34,14 @@ public sealed class MagmaOrb : CustomOrbModel
         new MegaSprite(dark.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
         dark.Modulate = new Color(0.1f, 0.0f, 0.0f);
-        dark.Scale = new Vector2(1.1f, 1.1f);
         container.AddChild(dark);
         string glassPath = SceneHelper.GetScenePath("orbs/orb_visuals/glass_orb");
         Node2D glass = PreloadManager.Cache.GetScene(glassPath)
             .Instantiate<Node2D>();
         new MegaSprite(glass.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
-        glass.Modulate = new Color(1.0f, 0.0f, 0.0f);
+        glass.Modulate = new Color(0.9f, 0.0f, 0.0f);
+        glass.Scale = new Vector2(0.9f, 0.9f);
         container.AddChild(glass);
         return container;
     }
