@@ -27,7 +27,7 @@ public class DanseMacabre2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<DanseMacabre2Power>(Owner.Creature, DynamicVars["DanseMacabrePower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<DanseMacabre2Power>(choiceContext, Owner.Creature, DynamicVars["DanseMacabrePower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

@@ -40,7 +40,7 @@ public class Outbreak2Power : ThePrismatic2Power
         return new Data();
     }
 
-    public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (applier == Owner && !(amount <= 0m) && power is PoisonPower or DoomPower)
         {

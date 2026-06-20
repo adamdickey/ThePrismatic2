@@ -1,5 +1,4 @@
 ﻿using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -17,8 +16,8 @@ public class Juggling2Power : ThePrismatic2Power
     
     private class Data
     {
-        public int attacksPlayedThisTurn;
-        public int powersPlayedThisTurn;
+        public int AttacksPlayedThisTurn;
+        public int PowersPlayedThisTurn;
     }
 
     public override PowerType Type => PowerType.Buff;
@@ -32,8 +31,8 @@ public class Juggling2Power : ThePrismatic2Power
 
     public override Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
-        GetInternalData<Data>().attacksPlayedThisTurn = CombatManager.Instance.History.CardPlaysStarted.Count((CardPlayStartedEntry e) => e.CardPlay.Card.Type == CardType.Attack && e.CardPlay.Card.Owner.Creature == Owner && e.HappenedThisTurn(CombatState));
-        GetInternalData<Data>().powersPlayedThisTurn = CombatManager.Instance.History.CardPlaysStarted.Count((CardPlayStartedEntry e) => e.CardPlay.Card.Type == CardType.Power && e.CardPlay.Card.Owner.Creature == Owner && e.HappenedThisTurn(CombatState));
+        GetInternalData<Data>().AttacksPlayedThisTurn = CombatManager.Instance.History.CardPlaysStarted.Count(e => e.CardPlay.Card.Type == CardType.Attack && e.CardPlay.Card.Owner.Creature == Owner && e.HappenedThisTurn(CombatState));
+        GetInternalData<Data>().PowersPlayedThisTurn = CombatManager.Instance.History.CardPlaysStarted.Count(e => e.CardPlay.Card.Type == CardType.Power && e.CardPlay.Card.Owner.Creature == Owner && e.HappenedThisTurn(CombatState));
         return Task.CompletedTask;
     }
 
@@ -46,29 +45,29 @@ public class Juggling2Power : ThePrismatic2Power
 
         if (cardPlay.Card.Type == CardType.Attack)
         {
-            GetInternalData<Data>().attacksPlayedThisTurn++;
+            GetInternalData<Data>().AttacksPlayedThisTurn++;
         }
         else
         {
-            GetInternalData<Data>().powersPlayedThisTurn = CombatManager.Instance.History.CardPlaysStarted.Count((CardPlayStartedEntry e) => e.CardPlay.Card.Type == CardType.Power && e.CardPlay.Card.Owner.Creature == Owner && e.HappenedThisTurn(CombatState));
+            GetInternalData<Data>().PowersPlayedThisTurn = CombatManager.Instance.History.CardPlaysStarted.Count(e => e.CardPlay.Card.Type == CardType.Power && e.CardPlay.Card.Owner.Creature == Owner && e.HappenedThisTurn(CombatState));
         }
-        if (GetInternalData<Data>().attacksPlayedThisTurn + GetInternalData<Data>().powersPlayedThisTurn == 3)
+        if (GetInternalData<Data>().AttacksPlayedThisTurn + GetInternalData<Data>().PowersPlayedThisTurn == 3)
         {
             Flash();
             for (int i = 0; i < Amount; i++)
             {
                 CardModel card = cardPlay.Card.CreateClone();
-                await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, addedByPlayer: true);
+                await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner.Player);
             }
         }
     }
 
-    public override Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
         if (side == Owner.Side)
         {
-            GetInternalData<Data>().attacksPlayedThisTurn = 0;
-            GetInternalData<Data>().powersPlayedThisTurn = 0;
+            GetInternalData<Data>().AttacksPlayedThisTurn = 0;
+            GetInternalData<Data>().PowersPlayedThisTurn = 0;
         }
         return Task.CompletedTask;
     }

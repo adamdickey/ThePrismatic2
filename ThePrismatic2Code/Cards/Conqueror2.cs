@@ -28,7 +28,7 @@ public class Conqueror2() : ThePrismatic2Card(1,
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await ForgeCmd.Forge(DynamicVars.Forge.IntValue, Owner, this);
-        await PowerCmd.Apply<Conqueror2Power>(cardPlay.Target, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<Conqueror2Power>(choiceContext, cardPlay.Target, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

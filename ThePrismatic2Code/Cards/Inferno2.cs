@@ -25,7 +25,7 @@ public class Inferno2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        (await PowerCmd.Apply<Inferno2Power>(Owner.Creature, DynamicVars["InfernoPower"].BaseValue, Owner.Creature, this))?.IncrementSelfDamage();
+        (await PowerCmd.Apply<Inferno2Power>(choiceContext, Owner.Creature, DynamicVars["InfernoPower"].BaseValue, Owner.Creature, this))?.IncrementSelfDamage();
     }
 
     protected override void OnUpgrade()

@@ -28,7 +28,7 @@ public class Venerate2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<VeneratePower>(Owner.Creature, DynamicVars["Focus"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<VeneratePower>(choiceContext, Owner.Creature, DynamicVars["Focus"].BaseValue, Owner.Creature, this);
         await OrbCmd.Channel<SolarOrb>(choiceContext, Owner);
     }
 

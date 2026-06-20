@@ -38,7 +38,7 @@ public class ConsumingShadow2() : ThePrismatic2Card(2,
         {
             await OrbCmd.Channel<GloomOrb>(choiceContext, Owner);
         }
-        await PowerCmd.Apply<ConsumingShadow2Power>(Owner.Creature, DynamicVars["ConsumingShadowPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<ConsumingShadow2Power>(choiceContext, Owner.Creature, DynamicVars["ConsumingShadowPower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

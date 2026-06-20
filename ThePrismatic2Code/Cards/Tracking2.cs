@@ -20,11 +20,11 @@ public class Tracking2() : ThePrismatic2Card(2,
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         if (Owner.Creature.HasPower<Tracking2Power>())
         {
-            await PowerCmd.Apply<Tracking2Power>(Owner.Creature, 1m, Owner.Creature, this);
+            await PowerCmd.Apply<Tracking2Power>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
         }
         else
         {
-            await PowerCmd.Apply<Tracking2Power>(Owner.Creature, 2m, Owner.Creature, this);
+            await PowerCmd.Apply<Tracking2Power>(choiceContext, Owner.Creature, 2m, Owner.Creature, this);
         }
     }
 

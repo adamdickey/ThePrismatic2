@@ -37,7 +37,7 @@ public class HowlFromBeyond2() : ThePrismatic2Card(3,
                 .Execute(choiceContext);
     }
 
-    public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, CombatState combatState)
+    public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
     {
         CardPile? pile = Pile;
         if (pile is { Type: PileType.Exhaust } && player == Owner)

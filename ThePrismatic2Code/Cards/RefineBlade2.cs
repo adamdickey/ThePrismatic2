@@ -34,7 +34,7 @@ public class RefineBlade2() : ThePrismatic2Card(1,
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await ForgeCmd.Forge(DynamicVars.Forge.IntValue, Owner, this);
         await OrbCmd.Channel<IronOrb>(choiceContext, Owner);
-        await PowerCmd.Apply<EnergyNextTurnPower>(Owner.Creature, DynamicVars.Energy.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<EnergyNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Energy.BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

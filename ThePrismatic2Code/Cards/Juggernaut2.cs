@@ -17,19 +17,17 @@ public class Juggernaut2() : ThePrismatic2Card(2,
     public override string CustomPortraitPath => "res://.godot/imported/juggernaut.png-f6a86f0580ca5b611e7b339d95829bf7.ctex";
     public override string PortraitPath => "res://.godot/imported/juggernaut.png-f6a86f0580ca5b611e7b339d95829bf7.ctex";
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>(
-        new IHoverTip[2]
-        {
-            HoverTipFactory.Static(StaticHoverTip.Block),
-            HoverTipFactory.Static(StaticHoverTip.SummonStatic)
-        });
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.Static(StaticHoverTip.Block),
+        HoverTipFactory.Static(StaticHoverTip.SummonStatic)
+    ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<Juggernaut2Power>(5m));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<Juggernaut2Power>(Owner.Creature, DynamicVars["Juggernaut2Power"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Juggernaut2Power>(choiceContext, Owner.Creature, DynamicVars["Juggernaut2Power"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

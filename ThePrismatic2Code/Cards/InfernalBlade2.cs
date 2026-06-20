@@ -30,7 +30,7 @@ public class InfernalBlade2() : ThePrismatic2Card(1,
         {
             cardModel.SetToFreeThisTurn();
             cardModel.AddKeyword(CardKeyword.Ethereal);
-            await CardPileCmd.AddGeneratedCardToCombat(cardModel, PileType.Hand, addedByPlayer: true);
+            await CardPileCmd.AddGeneratedCardToCombat(cardModel, PileType.Hand, Owner);
         }
     }
 

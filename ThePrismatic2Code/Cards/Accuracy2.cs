@@ -22,7 +22,7 @@ public class Accuracy2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<Accuracy2Power>(Owner.Creature, DynamicVars["AccuracyPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Accuracy2Power>(choiceContext, Owner.Creature, DynamicVars["AccuracyPower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

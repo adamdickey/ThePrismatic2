@@ -39,7 +39,7 @@ public class FlameBarrier2() : ThePrismatic2Card(2,
         NFireBurningVfx? child = NFireBurningVfx.Create(Owner.Creature, 0.75f, goingRight: false);
         NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        await PowerCmd.Apply<FlameBarrier2Power>(Owner.Creature, DynamicVars["DamageBack"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<FlameBarrier2Power>(choiceContext, Owner.Creature, DynamicVars["DamageBack"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

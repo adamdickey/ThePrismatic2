@@ -15,8 +15,8 @@ public class FightThrough2() : ThePrismatic2Card(1,
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.Self)
 {
-    public override string CustomPortraitPath => "res://.godot/imported/fight_through.png-57812f9277ad87a62478b4f854903c86.ctex";
-    public override string PortraitPath => "res://.godot/imported/fight_through.png-57812f9277ad87a62478b4f854903c86.ctex";
+    public override string CustomPortraitPath => "res://.godot/imported/fight_through.png-e4ba0f42451357b6b5b88436405da559.ctex";
+    public override string PortraitPath => "res://.godot/imported/fight_through.png-e4ba0f42451357b6b5b88436405da559.ctex";
     
     public override bool GainsBlock => true;
 
@@ -31,7 +31,7 @@ public class FightThrough2() : ThePrismatic2Card(1,
         {
             CardModel? card = CombatState?.CreateCard<Forget>(Owner);
             if (card != null)
-                CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Discard, addedByPlayer: true));
+                CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Discard, Owner));
         }
     }
 

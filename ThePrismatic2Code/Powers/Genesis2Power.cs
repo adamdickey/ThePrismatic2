@@ -25,7 +25,7 @@ public class Genesis2Power : ThePrismatic2Power
         HoverTipFactory.FromOrb<SolarOrb>()
     ]);
     
-    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (!(power is Genesis2Power))
         {

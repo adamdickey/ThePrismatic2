@@ -34,7 +34,7 @@ public class SicEm2Power : ThePrismatic2Power
         }
     }
 
-    public override async Task AfterSideTurnStartLate(CombatSide side, CombatState combatState)
+    public override async Task AfterSideTurnStartLate(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
         if (side == Owner.Side)
         {

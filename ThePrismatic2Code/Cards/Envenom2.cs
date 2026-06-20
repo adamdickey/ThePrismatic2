@@ -29,7 +29,7 @@ public class Envenom2() : ThePrismatic2Card(2,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<Envenom2Power>(Owner.Creature, DynamicVars["EnvenomPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Envenom2Power>(choiceContext, Owner.Creature, DynamicVars["EnvenomPower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

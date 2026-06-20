@@ -14,8 +14,8 @@ public class Synchronize2() : ThePrismatic2Card(1,
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.Self)
 {
-    public override string CustomPortraitPath => "res://.godot/imported/synchronize.png-eab089a330b6bfaf96bb39a8e1b9c82d.ctex";
-    public override string PortraitPath => "res://.godot/imported/synchronize.png-eab089a330b6bfaf96bb39a8e1b9c82d.ctex";
+    public override string CustomPortraitPath => "res://.godot/imported/synchronize.png-24826618afcfde4513d1246835349d1b.ctex";
+    public override string PortraitPath => "res://.godot/imported/synchronize.png-24826618afcfde4513d1246835349d1b.ctex";
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips
     {
@@ -41,7 +41,7 @@ public class Synchronize2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<SynchronizePower>(Owner.Creature, ((CalculatedVar)DynamicVars["CalculatedFocus"]).Calculate(cardPlay.Target) * DynamicVars["Focus"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<SynchronizePower>(choiceContext, Owner.Creature, ((CalculatedVar)DynamicVars["CalculatedFocus"]).Calculate(cardPlay.Target) * DynamicVars["Focus"].BaseValue, Owner.Creature, this);
         await ForgeCmd.Forge(((CalculatedVar)DynamicVars["CalculatedFocus"]).Calculate(cardPlay.Target) * DynamicVars["Forge"].BaseValue, Owner, this);
     }
 

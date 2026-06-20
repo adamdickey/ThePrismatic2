@@ -37,7 +37,7 @@ public class HeirloomHammer2() : ThePrismatic2Card(2,
             {
                 CardModel card = selection.CreateClone();
                 CardCmd.Upgrade(card);
-                await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, addedByPlayer: true);
+                await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner);
             }
         }
     }

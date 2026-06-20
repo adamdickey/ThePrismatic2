@@ -38,9 +38,9 @@ public class FightMe2() : ThePrismatic2Card(2,
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_blunt", null, "heavy_attack.mp3")
             .Execute(choiceContext);
-        await PowerCmd.Apply<StrengthPower>(Owner.Creature, DynamicVars["StrengthPower"].BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<CalcifyPower>(Owner.Creature, DynamicVars["StrengthPower"].BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<StrengthPower>(cardPlay.Target, DynamicVars["EnemyStrength"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, DynamicVars["StrengthPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<CalcifyPower>(choiceContext, Owner.Creature, DynamicVars["StrengthPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<StrengthPower>(choiceContext, cardPlay.Target, DynamicVars["EnemyStrength"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

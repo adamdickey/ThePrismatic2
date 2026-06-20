@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -14,8 +16,9 @@ public class Abrasive2() : ThePrismatic2Card(3,
     CardType.Power, CardRarity.Rare, 
     TargetType.Self)
 {
-    public override string CustomPortraitPath => "res://.godot/imported/abrasive.png-fa7cc1a57cc18a9973def2f3a574994a.ctex";
-    public override string PortraitPath => "res://.godot/imported/abrasive.png-fa7cc1a57cc18a9973def2f3a574994a.ctex";
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
+    public override string CustomPortraitPath => "res://.godot/imported/abrasive.png-50aa9f22ce7701adc7b7059c901a8353.ctex";
+    public override string PortraitPath => "res://.godot/imported/abrasive.png-50aa9f22ce7701adc7b7059c901a8353.ctex";
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<DexterityPower>(),
@@ -35,8 +38,8 @@ public class Abrasive2() : ThePrismatic2Card(3,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<DexterityPower>(Owner.Creature, DynamicVars.Dexterity.BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<ThornsPower>(Owner.Creature, DynamicVars["ThornsPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<DexterityPower>(choiceContext, Owner.Creature, DynamicVars.Dexterity.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<ThornsPower>(choiceContext, Owner.Creature, DynamicVars["ThornsPower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

@@ -37,13 +37,13 @@ public class Flechettes2() : ThePrismatic2Card(1,
                 .Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_slash", null, "dagger_throw.mp3")
                 .Execute(choiceContext);
-            await PowerCmd.Apply<DoomPower>(cardPlay.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<DoomPower>(choiceContext, cardPlay.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this);
         } 
         //await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount((int)((CalculatedVar)DynamicVars["CalculatedHits"]).Calculate(cardPlay.Target)).FromCard(this)
         //    .Targeting(cardPlay.Target)
         //    .WithHitFx("vfx/vfx_attack_slash", null, "dagger_throw.mp3")
         //    .Execute(choiceContext);
-        //await PowerCmd.Apply<DoomPower>(cardPlay.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this);
+        //await PowerCmd.Apply<DoomPower>(choiceContext, cardPlay.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

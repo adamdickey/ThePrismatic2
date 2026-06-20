@@ -1,6 +1,7 @@
 ﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -31,9 +32,9 @@ public class RocketPunch2() : ThePrismatic2Card(2,
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
     }
 
-    public override Task AfterCardGeneratedForCombat(CardModel card, bool addedByPlayer)
+    public override Task AfterCardGeneratedForCombat(CardModel card, Player? creator)
     {
-        if (!addedByPlayer)
+        if (creator != Owner)
         {
             return Task.CompletedTask;
         }

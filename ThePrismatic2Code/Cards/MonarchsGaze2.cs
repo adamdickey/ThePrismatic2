@@ -25,7 +25,7 @@ public class MonarchsGaze2() : ThePrismatic2Card(3,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<MonarchsGaze2Power>(Owner.Creature, DynamicVars["StrengthLoss"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<MonarchsGaze2Power>(choiceContext, Owner.Creature, DynamicVars["StrengthLoss"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

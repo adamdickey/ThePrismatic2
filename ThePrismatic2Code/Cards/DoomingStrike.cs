@@ -34,7 +34,7 @@ public class DoomingStrike() : ThePrismatic2Card(1,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
             .WithHitFx("vfx/vfx_attack_slash", null, "slash_attack.mp3")
             .Execute(choiceContext);
-        await PowerCmd.Apply<DoomPower>(play.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<DoomPower>(choiceContext, play.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this);
         
     }
 

@@ -54,17 +54,17 @@ public sealed class MagmaOrb : CustomOrbModel
     public override async Task Passive(PlayerChoiceContext choiceContext, Creature? target)
     {
         Trigger();
-        await ApplyVigor(PassiveVal);
+        await ApplyVigor(choiceContext, PassiveVal);
     }
 
     public override async Task<IEnumerable<Creature>> Evoke(PlayerChoiceContext playerChoiceContext)
     {
-        return await ApplyVigor(EvokeVal);
+        return await ApplyVigor(playerChoiceContext, EvokeVal);
     }
 
-    private async Task<IEnumerable<Creature>> ApplyVigor(decimal value)
+    private async Task<IEnumerable<Creature>> ApplyVigor(PlayerChoiceContext choiceContext, decimal value)
     {
-        await PowerCmd.Apply<VigorPower>(Owner.Creature, value, Owner.Creature, null);
+        await PowerCmd.Apply<VigorPower>(choiceContext, Owner.Creature, value, Owner.Creature, null);
         return Array.Empty<Creature>();
     }
 }

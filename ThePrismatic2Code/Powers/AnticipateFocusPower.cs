@@ -1,5 +1,6 @@
 ﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
@@ -17,13 +18,13 @@ public class AnticipateFocusPower : ThePrismatic2Power
 
     public override bool AllowNegative => true;
     
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
         if (side == Owner.Side)
         {
             Flash();
             await PowerCmd.Remove(this);
-            await PowerCmd.Apply<FocusPower>(Owner, -Amount, Owner, null);
+            await PowerCmd.Apply<FocusPower>(choiceContext, Owner, -Amount, Owner, null);
         }
     }
     

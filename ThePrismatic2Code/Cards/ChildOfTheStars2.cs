@@ -26,7 +26,7 @@ public class ChildOfTheStars2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<ChildOfTheStars2Power>(Owner.Creature, DynamicVars["BlockForStars"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<ChildOfTheStars2Power>(choiceContext, Owner.Creature, DynamicVars["BlockForStars"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

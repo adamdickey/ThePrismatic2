@@ -29,7 +29,7 @@ public class Rage2() : ThePrismatic2Card(0,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<Rage2Power>(Owner.Creature, DynamicVars["Power"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Rage2Power>(choiceContext, Owner.Creature, DynamicVars["Power"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

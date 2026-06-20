@@ -58,8 +58,8 @@ public class Hyperbeam2() : ThePrismatic2Card(2,
                     }
                 })
                 .Execute(choiceContext);
-        await PowerCmd.Apply<StrengthPower>(Owner.Creature, -DynamicVars["StrengthPower"].BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<FocusPower>(Owner.Creature, -DynamicVars["FocusPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, -DynamicVars["StrengthPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<FocusPower>(choiceContext, Owner.Creature, -DynamicVars["FocusPower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

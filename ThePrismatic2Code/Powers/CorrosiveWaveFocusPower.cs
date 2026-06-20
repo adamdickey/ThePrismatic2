@@ -52,11 +52,11 @@ public class CorrosiveWaveFocusPower : ThePrismatic2Power
 		}
 		else
 		{
-			await PowerCmd.Apply<FocusPower>(target, Sign * amount, applier, cardSource, silent: true);
+			await PowerCmd.Apply<FocusPower>(new ThrowingPlayerChoiceContext(), target, Sign * amount, applier, cardSource, silent: true);
 		}
 	}
 
-	public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+	public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
 	{
 		if (amount != Amount && power == this)
 		{
@@ -66,18 +66,18 @@ public class CorrosiveWaveFocusPower : ThePrismatic2Power
 			}
 			else
 			{
-				await PowerCmd.Apply<FocusPower>(Owner, Sign * amount, applier, cardSource, silent: true);
+				await PowerCmd.Apply<FocusPower>(new ThrowingPlayerChoiceContext(), Owner, Sign * amount, applier, cardSource, silent: true);
 			}
 		}
 	}
 
-	public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+	public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
 	{
 		if (side == Owner.Side)
 		{
 			Flash();
 			await PowerCmd.Remove(this);
-			await PowerCmd.Apply<FocusPower>(Owner, -Sign * Amount, Owner, null);
+			await PowerCmd.Apply<FocusPower>(choiceContext, Owner, -Sign * Amount, Owner, null);
 		}
 	}
 }

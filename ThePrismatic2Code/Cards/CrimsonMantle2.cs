@@ -29,7 +29,7 @@ public class CrimsonMantle2() : ThePrismatic2Card(1,
     {
         NPowerUpVfx.CreateNormal(Owner.Creature);
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        (await PowerCmd.Apply<CrimsonMantle2Power>(Owner.Creature, DynamicVars["CrimsonMantlePower"].BaseValue, Owner.Creature, this))?.IncrementSelfDamage();
+        (await PowerCmd.Apply<CrimsonMantle2Power>(choiceContext, Owner.Creature, DynamicVars["CrimsonMantlePower"].BaseValue, Owner.Creature, this))?.IncrementSelfDamage();
     }
 
     protected override void OnUpgrade()

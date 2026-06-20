@@ -33,7 +33,7 @@ public class KnockoutBlow2() : ThePrismatic2Card(3,
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         if ((await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
-                .Execute(choiceContext)).Results.Any(r => r.WasTargetKilled))
+                .Execute(choiceContext)).Results.SelectMany(r => r).Any(r => r.WasTargetKilled))
         {
             await OrbCmd.AddSlots(Owner, (int)DynamicVars["Orbs"].BaseValue);
             for (int i = 0; i < DynamicVars["Orbs"].BaseValue; i++)

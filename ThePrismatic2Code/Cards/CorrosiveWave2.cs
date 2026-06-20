@@ -19,24 +19,21 @@ public class CorrosiveWave2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/corrosive_wave.png-115fc3d4ce0def75ba590325e9101ba5.ctex";
     public override string PortraitPath => "res://.godot/imported/corrosive_wave.png-115fc3d4ce0def75ba590325e9101ba5.ctex";
 
-    private const string _powerKey = "CorrosiveWave";
-
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("CorrosiveWave", 1m));
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>(new IHoverTip[3]
-    {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Channeling),
         HoverTipFactory.FromOrb<VenomOrb>(),
         HoverTipFactory.FromPower<PoisonPower>()
-    });
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         if (IsUpgraded)
         {
-            await PowerCmd.Apply<CorrosiveWaveFocusPower>(Owner.Creature, 1, Owner.Creature, this);
+            await PowerCmd.Apply<CorrosiveWaveFocusPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
         }
-        await PowerCmd.Apply<CorrosiveWave2Power>(Owner.Creature, DynamicVars["CorrosiveWave"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<CorrosiveWave2Power>(choiceContext, Owner.Creature, DynamicVars["CorrosiveWave"].BaseValue, Owner.Creature, this);
     }
 }

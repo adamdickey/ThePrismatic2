@@ -29,14 +29,14 @@ public class Accelerant2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<AccelerantPower>(Owner.Creature, DynamicVars["Accelerant"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<AccelerantPower>(choiceContext, Owner.Creature, DynamicVars["Accelerant"].BaseValue, Owner.Creature, this);
         if (Owner.HasPower<Accelerant2Power>())
         {
-            await PowerCmd.Apply<Accelerant2Power>(Owner.Creature, DynamicVars["Accelerant"].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<Accelerant2Power>(choiceContext, Owner.Creature, DynamicVars["Accelerant"].BaseValue, Owner.Creature, this);
         }
         else
         {
-            await PowerCmd.Apply<Accelerant2Power>(Owner.Creature, DynamicVars["Accelerant"].BaseValue+1, Owner.Creature, this);
+            await PowerCmd.Apply<Accelerant2Power>(choiceContext, Owner.Creature, DynamicVars["Accelerant"].BaseValue+1, Owner.Creature, this);
         }
     }
 

@@ -39,8 +39,8 @@ public class Fear2() : ThePrismatic2Card(1,
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.AttackAnimDelay);
-        await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, DynamicVars.Vulnerable.BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<ExposedPower>(cardPlay.Target, DynamicVars["Exposed"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, DynamicVars.Vulnerable.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<ExposedPower>(choiceContext, cardPlay.Target, DynamicVars["Exposed"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

@@ -37,7 +37,7 @@ public class ExpectAFight2() : ThePrismatic2Card(2,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await PlayerCmd.GainEnergy(((CalculatedVar)DynamicVars["CalculatedEnergy"]).Calculate(cardPlay.Target), Owner);
-        await PowerCmd.Apply<NoEnergyGainPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<NoEnergyGainPower>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

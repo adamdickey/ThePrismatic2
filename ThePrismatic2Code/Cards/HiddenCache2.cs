@@ -32,7 +32,7 @@ public class HiddenCache2() : ThePrismatic2Card(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await OrbCmd.Channel<SolarOrb>(choiceContext, Owner);
-        await PowerCmd.Apply<StarNextTurnPower>(Owner.Creature, DynamicVars["StarNextTurnPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<StarNextTurnPower>(choiceContext, Owner.Creature, DynamicVars["StarNextTurnPower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

@@ -25,7 +25,7 @@ public class SwordSage2() : ThePrismatic2Card(3,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<SwordSage2Power>(Owner.Creature, DynamicVars["SwordSagePower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<SwordSage2Power>(choiceContext, Owner.Creature, DynamicVars["SwordSagePower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

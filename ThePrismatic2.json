@@ -2,10 +2,11 @@
   "id": "ThePrismatic2",
   "name": "The Prismatic",
   "author": "Dr. Monty, KarateFire11",
-  "description": "Slay the Spire 2 character mod created from a template for use with BaseLib",
+  "description": "Adds The Prismatic to the game.",
   "version": "v0.0.0",
   "has_pck": true,
   "has_dll": true,
-  "dependencies": ["BaseLib"],
+  "min_game_version": "0.107.0",
+  "dependencies": [{"id": "BaseLib", "min_version": "3.1.2"}],
   "affects_gameplay": true
 }

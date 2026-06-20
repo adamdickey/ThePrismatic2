@@ -21,6 +21,6 @@ public class MachineLearning2Power : ThePrismatic2Power
 
     public override async Task AfterPlayerTurnStartEarly(PlayerChoiceContext choiceContext, Player player)
     {
-        if (Owner.Player != null) CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Soul.Create(Owner.Player, Amount, CombatState), PileType.Draw, addedByPlayer: true, CardPilePosition.Random));
+        if (Owner.Player != null) CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Soul.Create(Owner.Player, Amount, CombatState), PileType.Draw, Owner.Player, CardPilePosition.Random));
     }
 }

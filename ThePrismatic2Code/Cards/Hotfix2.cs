@@ -21,8 +21,10 @@ public class Hotfix2() : ThePrismatic2Card(0,
     {
         get
         {
-            List<IHoverTip> list = new List<IHoverTip>();
-            list.Add(HoverTipFactory.FromPower<FocusPower>());
+            List<IHoverTip> list =
+            [
+                HoverTipFactory.FromPower<FocusPower>()
+            ];
             list.AddRange(HoverTipFactory.FromForge());
             return new _003C_003Ez__ReadOnlyList<IHoverTip>(list);
         }
@@ -38,7 +40,7 @@ public class Hotfix2() : ThePrismatic2Card(0,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<HotfixPower>(Owner.Creature, DynamicVars["FocusPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<HotfixPower>(choiceContext, Owner.Creature, DynamicVars["FocusPower"].BaseValue, Owner.Creature, this);
         await ForgeCmd.Forge(DynamicVars.Forge.BaseValue, Owner, this);
     }
 

@@ -37,7 +37,7 @@ public class CrashLanding2() : ThePrismatic2Card(1,
                 list.Add(CombatState.CreateCard<Forget>(Owner));
             }
 
-            await CardPileCmd.AddGeneratedCardsToCombat(list, PileType.Hand, addedByPlayer: true);
+            await CardPileCmd.AddGeneratedCardsToCombat(list, PileType.Hand, Owner);
         }
     }
 

@@ -38,8 +38,8 @@ public class Bash2() : ThePrismatic2Card(2,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
             .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
             .Execute(choiceContext);
-        await PowerCmd.Apply<VulnerablePower>(play.Target, DynamicVars.Vulnerable.BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<ExposedPower>(play.Target, DynamicVars["Exposed"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target, DynamicVars.Vulnerable.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<ExposedPower>(choiceContext, play.Target, DynamicVars["Exposed"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

@@ -55,8 +55,8 @@
   "THEPRISMATIC2-VICIOUS2_POWER.smartDescription": "Whenever you apply [gold]Weak[/gold], [gold]Vulnerable[/gold], and/or [gold]Exposed[/gold], draw [blue]{Amount}[/blue] {Amount:plural:card|cards}.",
   "THEPRISMATIC2-VICIOUS2_POWER.title": "Vicious",
 
-  "THEPRISMATIC2-HELLRAISER2_POWER.description": "Whenever you draw a card containing \"Strike\" or an Attack with [gold]Cunning[/gold], it is played against a random enemy.",
-  "THEPRISMATIC2-HELLRAISER2_POWER.smartDescription": "Whenever you draw a card containing \"Strike\" or an Attack with [gold]Cunning[/gold], it is played against a random enemy.",
+  "THEPRISMATIC2-HELLRAISER2_POWER.description": "Whenever you draw a card containing \"Strike\" or [gold]Sovereign Blade[/gold], it is played against a random enemy.",
+  "THEPRISMATIC2-HELLRAISER2_POWER.smartDescription": "Whenever you draw a card containing \"Strike\" or [gold]Sovereign Blade[/gold], it is played against a random enemy.",
   "THEPRISMATIC2-HELLRAISER2_POWER.title": "Hellraiser",
 
   "THEPRISMATIC2-CRUELTY2_POWER.description": "Debuffed enemies take additional damage.",

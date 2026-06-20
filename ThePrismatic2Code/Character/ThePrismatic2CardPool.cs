@@ -164,7 +164,7 @@ public class ThePrismatic2CardPool : CustomCardPoolModel
 			ModelDb.Card<Flanking>(),
 			ModelDb.Card<Flechettes2>(),
 			ModelDb.Card<FlickFlack2>(),
-			ModelDb.Card<FollowThrough>(),
+			ModelDb.Card<Scare>(),
 			ModelDb.Card<Footwork>(),
 			ModelDb.Card<GrandFinale2>(),
 			ModelDb.Card<HandTrick>(),

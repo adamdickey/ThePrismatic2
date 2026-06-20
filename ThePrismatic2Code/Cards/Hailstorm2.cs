@@ -15,8 +15,8 @@ public class Hailstorm2() : ThePrismatic2Card(1,
     CardType.Power, CardRarity.Uncommon, 
     TargetType.Self)
 {
-    public override string CustomPortraitPath => "res://.godot/imported/hailstorm.png-853c38cf9deb429a442d6ca7b496b45e.ctex";
-    public override string PortraitPath => "res://.godot/imported/hailstorm.png-853c38cf9deb429a442d6ca7b496b45e.ctex";
+    public override string CustomPortraitPath => "res://.godot/imported/hailstorm.png-0c0a393e4a0ca2d1381df4af6754de53.ctex";
+    public override string PortraitPath => "res://.godot/imported/hailstorm.png-0c0a393e4a0ca2d1381df4af6754de53.ctex";
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.Channeling));
 
@@ -25,7 +25,7 @@ public class Hailstorm2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<Hailstorm2Power>(Owner.Creature, DynamicVars["HailstormPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Hailstorm2Power>(choiceContext, Owner.Creature, DynamicVars["HailstormPower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

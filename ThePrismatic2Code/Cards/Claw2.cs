@@ -29,7 +29,7 @@ public class Claw2() : ThePrismatic2Card(0,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitVfxNode(t => NScratchVfx.Create(t, goingRight: true))
             .Execute(choiceContext);
-        await PowerCmd.Apply<Accuracy2Power>(Owner.Creature, DynamicVars["Accuracy2Power"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Accuracy2Power>(choiceContext, Owner.Creature, DynamicVars["Accuracy2Power"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

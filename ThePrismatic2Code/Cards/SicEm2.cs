@@ -40,7 +40,7 @@ public class SicEm2() : ThePrismatic2Card(1,
                 .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
                 .Execute(choiceContext);
         }
-        await PowerCmd.Apply<SicEm2Power>(cardPlay.Target, DynamicVars["SicEmPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<SicEm2Power>(choiceContext, cardPlay.Target, DynamicVars["SicEmPower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

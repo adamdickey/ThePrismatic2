@@ -28,7 +28,7 @@ public class Predator2() : ThePrismatic2Card(2,
         if (CombatState != null)
         {
             List<Soul> list = Soul.Create(Owner, 2, CombatState).ToList();
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(list, PileType.Draw, addedByPlayer: true, CardPilePosition.Random));
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(list, PileType.Draw, Owner, CardPilePosition.Random));
         }
     }
 

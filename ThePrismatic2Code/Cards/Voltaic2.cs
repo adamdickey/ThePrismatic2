@@ -16,8 +16,8 @@ public class Voltaic2() : ThePrismatic2Card(3,
     CardType.Skill, CardRarity.Rare, 
     TargetType.Self)
 {
-    public override string CustomPortraitPath => "res://.godot/imported/voltaic.png-586bef7eb87c5dc106d4a6e779ec1a65.ctex";
-    public override string PortraitPath => "res://.godot/imported/voltaic.png-586bef7eb87c5dc106d4a6e779ec1a65.ctex";
+    public override string CustomPortraitPath => "res://.godot/imported/voltaic.png-cc3cfbf4de140f5c357ae3e894800e52.ctex";
+    public override string PortraitPath => "res://.godot/imported/voltaic.png-cc3cfbf4de140f5c357ae3e894800e52.ctex";
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Channeling),

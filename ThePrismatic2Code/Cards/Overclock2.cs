@@ -33,7 +33,7 @@ public class Overclock2() : ThePrismatic2Card(0,
         for (int i = 0; i < 2; i++)
         {
             CardModel? card = CombatState?.CreateCard<Forget>(Owner);
-            if (card != null) CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Discard, addedByPlayer: true));
+            if (card != null) CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Discard, Owner));
         }
         await Cmd.Wait(0.5f);
     }

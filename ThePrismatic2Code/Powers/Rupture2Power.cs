@@ -45,7 +45,7 @@ public class Rupture2Power : ThePrismatic2Power
         GetInternalData<Data>().PlayedCards.Add(cardPlay.Card, 0);
         if (cardPlay.Card.Type == CardType.Power)
         {
-            PowerCmd.Apply<StrengthPower>(Owner, Amount, Owner, null);
+            PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Owner, Amount, Owner, null);
         }
         return Task.CompletedTask;
     }
@@ -54,7 +54,7 @@ public class Rupture2Power : ThePrismatic2Power
     {
         if (Owner.Player != null && target == Owner.Player.Osty && CombatState.CurrentSide == Owner.Side)
         {
-            PowerCmd.Apply<StrengthPower>(Owner, Amount, Owner, null);
+            PowerCmd.Apply<StrengthPower>(choiceContext, Owner, Amount, Owner, null);
         }
         return Task.CompletedTask;
     }
@@ -65,7 +65,7 @@ public class Rupture2Power : ThePrismatic2Power
         {
             if (cardSource == null || !GetInternalData<Data>().PlayedCards.ContainsKey(cardSource))
             {
-                await PowerCmd.Apply<StrengthPower>(Owner, Amount, Owner, null);
+                await PowerCmd.Apply<StrengthPower>(choiceContext, Owner, Amount, Owner, null);
             }
             else
             {
@@ -78,7 +78,7 @@ public class Rupture2Power : ThePrismatic2Power
     {
         if (cardPlay.Card.Owner.Creature == Owner && GetInternalData<Data>().PlayedCards.Remove(cardPlay.Card, out var value))
         {
-            await PowerCmd.Apply<StrengthPower>(Owner, value, Owner, null);
+            await PowerCmd.Apply<StrengthPower>(context, Owner, value, Owner, null);
         }
     }
 }

@@ -30,7 +30,7 @@ public class BoostAway2() : ThePrismatic2Card(0,
         if (CombatState != null)
         {
             CardModel card = CombatState.CreateCard<Forget>(Owner);
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Discard, addedByPlayer: true));
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Discard, Owner));
         }
 
         await Cmd.Wait(0.5f);

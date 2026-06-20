@@ -2,6 +2,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
 
@@ -21,7 +22,7 @@ public class Countdown2Power : ThePrismatic2Power
         HoverTipFactory.FromPower<DoomPower>()
     ]);
 
-    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
         if (side == Owner.Side)
         {
@@ -29,8 +30,8 @@ public class Countdown2Power : ThePrismatic2Power
             Creature? creature = Owner.Player?.RunState.Rng.CombatTargets.NextItem(CombatState.HittableEnemies);
             if (creature != null)
             {
-                await PowerCmd.Apply<PoisonPower>(creature, Amount, Owner, null);
-                await PowerCmd.Apply<DoomPower>(creature, Amount, Owner, null);
+                await PowerCmd.Apply<PoisonPower>(new ThrowingPlayerChoiceContext(), creature, Amount, Owner, null);
+                await PowerCmd.Apply<DoomPower>(new ThrowingPlayerChoiceContext(), creature, Amount, Owner, null);
             }
         }
     }

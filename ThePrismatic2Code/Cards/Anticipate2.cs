@@ -31,9 +31,9 @@ public class Anticipate2() : ThePrismatic2Card(0,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<AnticipatePower>(Owner.Creature, DynamicVars.Dexterity.BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<FocusPower>(Owner.Creature, DynamicVars["Focus"].BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<AnticipateFocusPower>(Owner.Creature, DynamicVars["Focus"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<AnticipatePower>(choiceContext, Owner.Creature, DynamicVars.Dexterity.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<FocusPower>(choiceContext, Owner.Creature, DynamicVars["Focus"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<AnticipateFocusPower>(choiceContext, Owner.Creature, DynamicVars["Focus"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

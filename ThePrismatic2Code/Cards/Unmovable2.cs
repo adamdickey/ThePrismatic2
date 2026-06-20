@@ -31,7 +31,7 @@ public class Unmovable2() : ThePrismatic2Card(2,
     {
         NPowerUpVfx.CreateNormal(Owner.Creature);
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<Unmovable2Power>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<Unmovable2Power>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

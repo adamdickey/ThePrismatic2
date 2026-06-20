@@ -34,7 +34,7 @@ public class Begone2() : ThePrismatic2Card(1,
                 CardCmd.Upgrade(cardModel2);
             }
             await CardCmd.Exhaust(choiceContext, cardModel);
-            await CardPileCmd.AddGeneratedCardToCombat(cardModel2, PileType.Hand, addedByPlayer: true);
+            await CardPileCmd.AddGeneratedCardToCombat(cardModel2, PileType.Hand, Owner);
         }
     }
 }

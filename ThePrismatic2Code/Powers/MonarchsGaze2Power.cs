@@ -21,7 +21,7 @@ public class MonarchsGaze2Power : ThePrismatic2Power
     {
         if (Owner.Player != null && (dealer == Owner || dealer == Owner.Player.Osty) && props.IsPoweredAttack())
         {
-            await PowerCmd.Apply<MonarchsGazeStrengthDownPower>(target, Amount, Owner, null);
+            await PowerCmd.Apply<MonarchsGazeStrengthDownPower>(choiceContext, target, Amount, Owner, null);
         }
     }
 }

@@ -36,7 +36,7 @@ public class GunkUp2() : ThePrismatic2Card(1,
             .Execute(choiceContext);
         CardModel? card = CombatState?.CreateCard<Forget>(Owner);
         if (card != null)
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Discard, addedByPlayer: true));
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Discard, Owner));
         await Cmd.Wait(0.5f);
     }
 

@@ -44,8 +44,8 @@ public class Expose2() : ThePrismatic2Card(0,
         {
             await PowerCmd.Remove<ArtifactPower>(cardPlay.Target);
         }
-        await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, vulnAmount, Owner.Creature, this);
-        await PowerCmd.Apply<ExposedPower>(cardPlay.Target, exposedAmount, Owner.Creature, this);
+        await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, vulnAmount, Owner.Creature, this);
+        await PowerCmd.Apply<ExposedPower>(choiceContext, cardPlay.Target, exposedAmount, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

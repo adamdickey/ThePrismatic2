@@ -52,7 +52,7 @@ public class Eidolon2() : ThePrismatic2Card(2,
 			    }
 			    if (exhaustedCount >= 9)
 			    {
-				    await PowerCmd.Apply<IntangiblePower>(Owner.Creature, 1m, Owner.Creature, this);
+				    await PowerCmd.Apply<IntangiblePower>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
 			    }
 		    }
 	    }

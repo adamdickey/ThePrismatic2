@@ -59,14 +59,14 @@ public class SetupStrike2Power : ThePrismatic2Power
 		}
 		else
 		{
-			await PowerCmd.Apply<StrengthPower>(target, (decimal)Sign * amount, applier, cardSource, silent: true);
-			await PowerCmd.Apply<CalcifyPower>(target, (decimal)Sign * amount, applier, cardSource, silent: true);
+			await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), target, Sign * amount, applier, cardSource, silent: true);
+			await PowerCmd.Apply<CalcifyPower>(new ThrowingPlayerChoiceContext(), target, Sign * amount, applier, cardSource, silent: true);
 		}
 	}
 
-	public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+	public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
 	{
-		if (!(amount == (decimal)Amount) && power == this)
+		if (amount != Amount && power == this)
 		{
 			if (_shouldIgnoreNextInstance)
 			{
@@ -74,20 +74,20 @@ public class SetupStrike2Power : ThePrismatic2Power
 			}
 			else
 			{
-				await PowerCmd.Apply<StrengthPower>(Owner, (decimal)Sign * amount, applier, cardSource, silent: true);
-				await PowerCmd.Apply<CalcifyPower>(Owner, (decimal)Sign * amount, applier, cardSource, silent: true);
+				await PowerCmd.Apply<StrengthPower>(choiceContext, Owner, Sign * amount, applier, cardSource, silent: true);
+				await PowerCmd.Apply<CalcifyPower>(choiceContext, Owner, Sign * amount, applier, cardSource, silent: true);
 			}
 		}
 	}
 
-	public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+	public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
 	{
 		if (side == Owner.Side)
 		{
 			Flash();
 			await PowerCmd.Remove(this);
-			await PowerCmd.Apply<StrengthPower>(Owner, -Sign * Amount, Owner, null);
-			await PowerCmd.Apply<CalcifyPower>(Owner, -Sign * Amount, Owner, null);
+			await PowerCmd.Apply<StrengthPower>(choiceContext, Owner, -Sign * Amount, Owner, null);
+			await PowerCmd.Apply<CalcifyPower>(choiceContext, Owner, -Sign * Amount, Owner, null);
 		}
 	}
 }

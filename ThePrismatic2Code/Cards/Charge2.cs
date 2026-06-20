@@ -42,7 +42,7 @@ public class Charge2() : ThePrismatic2Card(1,
                 if (card != null) CardCmd.Upgrade(card);
             }
 
-            if (card != null) CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, addedByPlayer: true));
+            if (card != null) CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, Owner));
         }
     }
 }

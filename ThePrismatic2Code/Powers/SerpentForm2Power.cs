@@ -47,7 +47,7 @@ public class SerpentForm2Power : ThePrismatic2Power
                 Creature? creature = Owner.Player.RunState.Rng.CombatTargets.NextItem(Owner.CombatState.HittableEnemies);
                 if (creature != null)
                 {
-                    await PowerCmd.Apply<DoomPower>(creature, damage, Owner, null);
+                    await PowerCmd.Apply<DoomPower>(context, creature, damage, Owner, null);
                 }
             }
         }

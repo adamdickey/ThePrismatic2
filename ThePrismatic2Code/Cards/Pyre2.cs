@@ -32,7 +32,7 @@ public class Pyre2() : ThePrismatic2Card(2,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<Pyre2Power>(Owner.Creature, DynamicVars.Energy.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Pyre2Power>(choiceContext, Owner.Creature, DynamicVars.Energy.BaseValue, Owner.Creature, this);
     }
 
     public override async Task OnEnqueuePlayVfx(Creature? target)

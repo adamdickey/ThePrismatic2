@@ -36,8 +36,8 @@ public class Debilitate2() : ThePrismatic2Card(1,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-        await PowerCmd.Apply<DebilitatePower>(cardPlay.Target, DynamicVars["DebilitatePower"].BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<Debilitate2Power>(cardPlay.Target, DynamicVars["DebilitatePower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<DebilitatePower>(choiceContext, cardPlay.Target, DynamicVars["DebilitatePower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Debilitate2Power>(choiceContext, cardPlay.Target, DynamicVars["DebilitatePower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

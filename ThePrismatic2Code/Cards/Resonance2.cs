@@ -30,11 +30,11 @@ public class Resonance2() : ThePrismatic2Card(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         int intValue = DynamicVars["StrengthPower"].IntValue;
-        await PowerCmd.Apply<StrengthPower>(Owner.Creature, intValue, Owner.Creature, this);
+        await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, intValue, Owner.Creature, this);
         if (CombatState != null)
             foreach (Creature hittableEnemy in CombatState.HittableEnemies)
             {
-                await PowerCmd.Apply<StrengthPower>(hittableEnemy, -1m, Owner.Creature, this);
+                await PowerCmd.Apply<StrengthPower>(choiceContext, hittableEnemy, -1m, Owner.Creature, this);
             }
     }
 

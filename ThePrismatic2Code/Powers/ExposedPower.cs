@@ -39,7 +39,7 @@ public class ExposedPower : ThePrismatic2Power
         return num;
     }
     
-    public override decimal ModifyPowerAmountGiven(PowerModel power, Creature giver, decimal amount, Creature? target, CardModel? cardSource)
+    public override decimal ModifyPowerAmountGivenMultiplicative(PowerModel power, Creature giver, decimal amount, Creature? target, CardModel? cardSource)
     {
         if (target == null || !target.Powers.Contains(this))
         {
@@ -57,7 +57,7 @@ public class ExposedPower : ThePrismatic2Power
         return amount;
     }
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
         if (side == CombatSide.Enemy)
         {

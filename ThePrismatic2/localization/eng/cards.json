@@ -173,7 +173,7 @@
   "THEPRISMATIC2-RAGE2.description": "Whenever you play an Attack this turn, [gold]Summon[/gold] {Power:diff()}.",
   "THEPRISMATIC2-RAGE2.title": "Rage",
 
-  "THEPRISMATIC2-RUPTURE2.description": "Whenever you or [gold]Osty[/gold] lose HP on your turn and whenever you play another Power, gain {StrengthPower:diff()} [gold]Strength[/gold].",
+  "THEPRISMATIC2-RUPTURE2.description": "Whenever you or [gold]Osty[/gold] lose HP on your turn and whenever you play a Power, gain {StrengthPower:diff()} [gold]Strength[/gold].",
   "THEPRISMATIC2-RUPTURE2.title": "Rupture",
 
   "THEPRISMATIC2-JUGGERNAUT2.description": "Whenever you [gold]Summon[/gold] or gain [gold]Block[/gold], deal {Juggernaut2Power:diff()} damage to a random enemy.",
@@ -230,7 +230,7 @@
   "THEPRISMATIC2-DRUM_OF_BATTLE2.description": "Draw {Cards:diff()} cards.\nWhen this card is [gold]Exhausted[/gold], gain {Energy:energyIcons()}.",
   "THEPRISMATIC2-DRUM_OF_BATTLE2.title": "Drum of Battle",
 
-  "THEPRISMATIC2-HELLRAISER2.description": "Whenever you draw a card containing “Strike” or an Attack with [gold]Cunning[/gold], it is played against a random enemy.",
+  "THEPRISMATIC2-HELLRAISER2.description": "Whenever you draw a card containing “Strike” or [gold]Sovereign Blade[/gold], it is played against a random enemy.",
   "THEPRISMATIC2-HELLRAISER2.title": "Hellraiser",
 
   "THEPRISMATIC2-INFERNAL_BLADE2.description": "Add a random Attack into your [gold]Hand[/gold].\nIt gains [gold]Ethereal[/gold].\nIt's free to play this turn.",
@@ -266,7 +266,7 @@
   "THEPRISMATIC2-BUBBLE_BUBBLE2.description": "If the enemy has [gold]Poison[/gold], apply {DoomPower:diff()} [gold]Doom[/gold].\nIf the enemy has [gold]Doom[/gold], apply {PoisonPower:diff()} [gold]Poison[/gold].",
   "THEPRISMATIC2-BUBBLE_BUBBLE2.title": "Bubble Bubble",
 
-  "THEPRISMATIC2-CORROSIVE_WAVE2.description": "{IfUpgraded:show:Gain 1 [gold]Focus[/gold] this turn.\n|}Whenever you draw a card this turn, [gold]Channel[/gold] {CorrosiveWave:diff()} [gold]Venom[/gold].",
+  "THEPRISMATIC2-CORROSIVE_WAVE2.description": "{IfUpgraded:show:Gain 1 [gold]Focus[/gold] this turn.\n|} Whenever you draw a card this turn, [gold]Channel[/gold] {CorrosiveWave:diff()} [gold]Venom[/gold].",
   "THEPRISMATIC2-CORROSIVE_WAVE2.title": "Corrosive Wave",
 
   "THEPRISMATIC2-DEADLY_POISON2.description": "Apply {PoisonPower:diff()} [gold]Poison[/gold].\n[gold]Channel[/gold] 1 [gold]Venom[/gold].",
@@ -302,7 +302,7 @@
   "THEPRISMATIC2-HAZE2.description": "Gain {Focus:diff()} [gold]Focus[/gold] this turn.\n[gold]Channel[/gold] 1 [gold]Venom[/gold].",
   "THEPRISMATIC2-HAZE2.title": "Haze",
 
-  "THEPRISMATIC2-INFINITE_BLADES2.description": "At the start of your turn and whenever you play another Power, add 1 [gold]Shiv[/gold] into your [gold]Hand[/gold].",
+  "THEPRISMATIC2-INFINITE_BLADES2.description": "At the start of your turn and whenever you play a Power, add 1 [gold]Shiv[/gold] into your [gold]Hand[/gold].",
   "THEPRISMATIC2-INFINITE_BLADES2.title": "Infinite Blades",
 
   "THEPRISMATIC2-KNIFE_TRAP2.description": "{IfUpgraded:show:[gold]Upgrade[/gold] and play|Play} every Colorless card in your [gold]Exhaust Pile[/gold] on the enemy.{InCombat:\n(Plays {CalculatedCards:diff()} {CalculatedCards:plural:card|cards})|}",
@@ -365,7 +365,7 @@
   "THEPRISMATIC2-SURVIVOR2.description": "Gain {Block:diff()} [gold]Block[/gold].\nDiscard 1 card.\nIf a Status or Curse is discarded, [gold]Exhaust[/gold] it and draw 1 card.",
   "THEPRISMATIC2-SURVIVOR2.title": "Survivor",
   
-  "THEPRISMATIC2-TOOLS_OF_THE_TRADE2.description": "At the start of your turn and whenever you play another Power, draw 1 card and discard 1 card.",
+  "THEPRISMATIC2-TOOLS_OF_THE_TRADE2.description": "At the start of your turn and whenever you play a Power, draw 1 card and discard 1 card.",
   "THEPRISMATIC2-TOOLS_OF_THE_TRADE2.title": "Tools of the Trade",
 
   "THEPRISMATIC2-TRACKING2.description": "Enemies with 2 or more unique debuffs take double damage from Attacks.",
@@ -422,7 +422,7 @@
   "THEPRISMATIC2-FALLING_STAR2.description": "Deal {Damage:diff()} damage.\nApply {WeakPower:diff()} [gold]Weak[/gold].\nApply {VulnerablePower:diff()} [gold]Vulnerable[/gold].\nApply {Exposed:diff()} [gold]Exposed[/gold].",
   "THEPRISMATIC2-FALLING_STAR2.title": "Falling Star",
 
-  "THEPRISMATIC2-FURNACE2.description": "{IfUpgraded:show:[gold]Channel[/gold] 1 [gold]Iron[/gold].\n}At the start of your turn and whenever you play another Power, [gold]Channel[/gold] 1 [gold]Iron[/gold].",
+  "THEPRISMATIC2-FURNACE2.description": "{IfUpgraded:show:[gold]Channel[/gold] 1 [gold]Iron[/gold].\n}At the start of your turn and whenever you play a Power, [gold]Channel[/gold] 1 [gold]Iron[/gold].",
   "THEPRISMATIC2-FURNACE2.title": "Furnace",
 
   "THEPRISMATIC2-GAMMA_BLAST2.description": "Deal {Damage:diff()} damage.\nApply {WeakPower:diff()} [gold]Weak[/gold].\nApply {VulnerablePower:diff()} [gold]Vulnerable[/gold].\nApply {Exposed:diff()} [gold]Exposed[/gold].",

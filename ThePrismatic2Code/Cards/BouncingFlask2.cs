@@ -74,8 +74,8 @@ public class BouncingFlask2() : ThePrismatic2Card(2,
 						NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child4);
 					}
 				}
-				await PowerCmd.Apply<PoisonPower>(enemy, DynamicVars.Poison.BaseValue, Owner.Creature, this);
-				await PowerCmd.Apply<DoomPower>(enemy, DynamicVars.Doom.BaseValue, Owner.Creature, this);
+				await PowerCmd.Apply<PoisonPower>(choiceContext, enemy, DynamicVars.Poison.BaseValue, Owner.Creature, this);
+				await PowerCmd.Apply<DoomPower>(choiceContext, enemy, DynamicVars.Doom.BaseValue, Owner.Creature, this);
 			}
 		}
 	}

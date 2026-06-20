@@ -58,11 +58,11 @@ public class BubbleBubble2() : ThePrismatic2Card(1,
         }
         if (cardPlay.Target.HasPower<PoisonPower>())
         {
-            await PowerCmd.Apply<DoomPower>(cardPlay.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<DoomPower>(choiceContext, cardPlay.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this);
         }
         if (hasDoom)
         {
-            await PowerCmd.Apply<PoisonPower>(cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<PoisonPower>(choiceContext, cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
         }
     }
 

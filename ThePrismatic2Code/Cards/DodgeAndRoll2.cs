@@ -24,18 +24,17 @@ public class DodgeAndRoll2() : ThePrismatic2Card(1,
         HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon)
     ]);
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new BlockVar(4m, ValueProp.Move),
         new SummonVar(1m)
-    });
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         decimal amount = await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
         await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, Owner.Character);
-        await PowerCmd.Apply<BlockNextTurnPower>(Owner.Creature, amount, Owner.Creature, this);
-        await PowerCmd.Apply<SummonNextTurnPower>(Owner.Creature, DynamicVars.Summon.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<BlockNextTurnPower>(choiceContext, Owner.Creature, amount, Owner.Creature, this);
+        await PowerCmd.Apply<SummonNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Summon.BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

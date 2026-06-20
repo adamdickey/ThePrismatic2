@@ -30,6 +30,6 @@ public class Spinner2() : ThePrismatic2Card(1,
     		{
 			    await OrbCmd.Channel(choiceContext, OrbModel.GetRandomOrb(Owner.RunState.Rng.CombatOrbGeneration).ToMutable(), Owner);
     		}
-    		await PowerCmd.Apply<Spinner2Power>(Owner.Creature, DynamicVars["SpinnerPower"].BaseValue, Owner.Creature, this);
+    		await PowerCmd.Apply<Spinner2Power>(choiceContext, Owner.Creature, DynamicVars["SpinnerPower"].BaseValue, Owner.Creature, this);
     	}
 }

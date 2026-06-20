@@ -21,7 +21,7 @@ public class Speedster2() : ThePrismatic2Card(2,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<Speedster2Power>(Owner.Creature, DynamicVars["SpeedsterPower"].IntValue, Owner.Creature, this);
+        await PowerCmd.Apply<Speedster2Power>(choiceContext, Owner.Creature, DynamicVars["SpeedsterPower"].IntValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

@@ -37,7 +37,7 @@ public class Haze2() : ThePrismatic2Card(3,
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         SpawnVfx();
         await Cmd.CustomScaledWait(0.2f, 0.4f);
-        await PowerCmd.Apply<Haze2Power>(Owner.Creature, DynamicVars["Focus"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Haze2Power>(choiceContext, Owner.Creature, DynamicVars["Focus"].BaseValue, Owner.Creature, this);
         await OrbCmd.Channel<VenomOrb>(choiceContext, Owner);
     }
 

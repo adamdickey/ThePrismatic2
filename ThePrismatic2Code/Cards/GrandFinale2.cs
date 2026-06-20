@@ -53,7 +53,7 @@ public class GrandFinale2() : ThePrismatic2Card(0,
         return Task.CompletedTask;
     }
     
-    public override Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, CombatState combatState)
+    public override Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
     {
         UpdateCost();
         return Task.CompletedTask;

@@ -31,7 +31,7 @@ public class Veilpiercer2() : ThePrismatic2Card(1,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-        await PowerCmd.Apply<Veilpiercer2Power>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<Veilpiercer2Power>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

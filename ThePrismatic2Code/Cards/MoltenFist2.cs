@@ -45,17 +45,17 @@ public class MoltenFist2() : ThePrismatic2Card(1,
         int num = (cardPlay.Target.IsAlive ? cardPlay.Target.GetPowerAmount<VulnerablePower>() : 0);
         if (num > 0)
         {
-            await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, num, Owner.Creature, this);
+            await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, num, Owner.Creature, this);
         }
         num = (cardPlay.Target.IsAlive ? cardPlay.Target.GetPowerAmount<WeakPower>() : 0);
         if (num > 0)
         {
-            await PowerCmd.Apply<WeakPower>(cardPlay.Target, num, Owner.Creature, this);
+            await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, num, Owner.Creature, this);
         }
         num = (cardPlay.Target.IsAlive ? cardPlay.Target.GetPowerAmount<ExposedPower>() : 0);
         if (num > 0)
         {
-            await PowerCmd.Apply<ExposedPower>(cardPlay.Target, num, Owner.Creature, this);
+            await PowerCmd.Apply<ExposedPower>(choiceContext, cardPlay.Target, num, Owner.Creature, this);
         }
     }
 

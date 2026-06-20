@@ -37,7 +37,7 @@ public class NoEscape2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await PowerCmd.Apply<DoomPower>(cardPlay.Target, ((CalculatedVar)DynamicVars["CalculatedDebuffs"]).Calculate(cardPlay.Target), Owner.Creature, this);
+        await PowerCmd.Apply<DoomPower>(choiceContext, cardPlay.Target, ((CalculatedVar)DynamicVars["CalculatedDebuffs"]).Calculate(cardPlay.Target), Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

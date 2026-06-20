@@ -37,14 +37,14 @@ public class FocusedStrike2() : ThePrismatic2Card(1,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-        await PowerCmd.Apply<FocusedStrikePower>(Owner.Creature, DynamicVars["FocusPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<FocusedStrikePower>(choiceContext, Owner.Creature, DynamicVars["FocusPower"].BaseValue, Owner.Creature, this);
         if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
         {
             ArgumentNullException.ThrowIfNull(cardPlay.Target);
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
                 .Execute(choiceContext);
-            await PowerCmd.Apply<FocusedStrikePower>(Owner.Creature, DynamicVars["FocusPower"].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<FocusedStrikePower>(choiceContext, Owner.Creature, DynamicVars["FocusPower"].BaseValue, Owner.Creature, this);
         }
     }
 

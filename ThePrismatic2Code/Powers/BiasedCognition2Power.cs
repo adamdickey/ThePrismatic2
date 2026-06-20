@@ -1,6 +1,8 @@
 ﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models.Powers;
 
@@ -20,13 +22,13 @@ public class BiasedCognition2Power : ThePrismatic2Power
         HoverTipFactory.FromPower<StrengthPower>()
     ]);
 
-    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
         if (side == Owner.Side)
         {
             Flash();
-            await PowerCmd.Apply<FocusPower>(Owner, -Amount, Owner, null);
-            await PowerCmd.Apply<StrengthPower>(Owner, -Amount, Owner, null);
+            await PowerCmd.Apply<FocusPower>(new ThrowingPlayerChoiceContext(), Owner, -Amount, Owner, null);
+            await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Owner, -Amount, Owner, null);
         }
     }
 }

@@ -24,7 +24,7 @@ public class Deflect2() : ThePrismatic2Card(0,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        await PowerCmd.Apply<DeflectPower>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<DeflectPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

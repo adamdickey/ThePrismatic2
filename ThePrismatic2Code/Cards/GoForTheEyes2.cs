@@ -52,7 +52,7 @@ public class GoForTheEyes2() : ThePrismatic2Card(0,
             .Execute(choiceContext);
         if (cardPlay.Target.Monster is { IntendsToAttack: true })
         {
-            await PowerCmd.Apply<WeakPower>(cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
         }
 
         if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
@@ -63,7 +63,7 @@ public class GoForTheEyes2() : ThePrismatic2Card(0,
                 .Execute(choiceContext);
             if (cardPlay.Target.Monster is { IntendsToAttack: true })
             {
-                await PowerCmd.Apply<WeakPower>(cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
+                await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
             }
         }
     }

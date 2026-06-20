@@ -32,7 +32,7 @@ public class Furnace2() : ThePrismatic2Card(1,
         {
             await OrbCmd.Channel<IronOrb>(choiceContext, Owner);
         }
-        await PowerCmd.Apply<Furnace2Power>(Owner.Creature, DynamicVars.Forge.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Furnace2Power>(choiceContext, Owner.Creature, DynamicVars.Forge.BaseValue, Owner.Creature, this);
     }
 
 }

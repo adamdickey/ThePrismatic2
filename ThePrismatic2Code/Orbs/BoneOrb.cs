@@ -32,14 +32,14 @@ public sealed class BoneOrb : CustomOrbModel
         new MegaSprite(dark.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
         dark.Modulate = new Color(0.15f, 0.15f, 0.15f);
+        dark.Scale = new Vector2(1.1f, 1.1f);
         container.AddChild(dark);
         string glassPath = SceneHelper.GetScenePath("orbs/orb_visuals/glass_orb");
         Node2D glass = PreloadManager.Cache.GetScene(glassPath)
             .Instantiate<Node2D>();
         new MegaSprite(glass.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
-        glass.Modulate = new Color(0.95f, 0.95f, 0.95f);
-        glass.Scale = new Vector2(0.9f, 0.9f);
+        glass.Modulate = new Color(0.65f, 0.65f, 0.65f);
         container.AddChild(glass);
         return container;
     }

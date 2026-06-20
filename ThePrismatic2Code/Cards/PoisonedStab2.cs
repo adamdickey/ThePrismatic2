@@ -34,10 +34,10 @@ public class PoisonedStab2() : ThePrismatic2Card(1,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_dramatic_stab")
             .Execute(choiceContext);
-        await PowerCmd.Apply<PoisonPower>(cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<PoisonPower>(choiceContext, cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
         if (cardPlay.Target.HasPower<PoisonPower>())
         {
-            await PowerCmd.Apply<DoomPower>(cardPlay.Target, cardPlay.Target.GetPowerAmount<PoisonPower>(), Owner.Creature, this);
+            await PowerCmd.Apply<DoomPower>(choiceContext, cardPlay.Target, cardPlay.Target.GetPowerAmount<PoisonPower>(), Owner.Creature, this);
         }
     }
 

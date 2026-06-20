@@ -45,7 +45,7 @@ public class DyingStar2() : ThePrismatic2Card(1,
                 .Execute(choiceContext);
             foreach (Creature enemy in enemies)
             {
-                await PowerCmd.Apply<DyingStarPower>(enemy, DynamicVars["StrengthLoss"].BaseValue, Owner.Creature, this);
+                await PowerCmd.Apply<DyingStarPower>(choiceContext, enemy, DynamicVars["StrengthLoss"].BaseValue, Owner.Creature, this);
                 VfxCmd.PlayOnCreature(enemy, "vfx/vfx_attack_slash");
             }
         }

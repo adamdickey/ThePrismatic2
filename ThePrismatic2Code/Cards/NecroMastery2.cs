@@ -32,7 +32,7 @@ public class NecroMastery2() : ThePrismatic2Card(2,
         {
             await OrbCmd.Channel<BoneOrb>(choiceContext, Owner);
         }
-        await PowerCmd.Apply<NecroMastery2Power>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<NecroMastery2Power>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

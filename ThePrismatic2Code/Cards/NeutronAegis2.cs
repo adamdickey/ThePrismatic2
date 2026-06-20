@@ -35,7 +35,7 @@ public class NeutronAegis2() : ThePrismatic2Card(1,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<PlatingPower>(Owner.Creature, DynamicVars["PlatingPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<PlatingPower>(choiceContext, Owner.Creature, DynamicVars["PlatingPower"].BaseValue, Owner.Creature, this);
         for (int i = 0; i < DynamicVars["Bone"].BaseValue; i++)
         {
             await OrbCmd.Channel<BoneOrb>(choiceContext, Owner);

@@ -33,7 +33,7 @@ public class ExposingDefend() : ThePrismatic2Card(1,
         ArgumentNullException.ThrowIfNull(play.Target);
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play);
-        await PowerCmd.Apply<ExposedPower>(play.Target, DynamicVars["Exposed"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<ExposedPower>(choiceContext, play.Target, DynamicVars["Exposed"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

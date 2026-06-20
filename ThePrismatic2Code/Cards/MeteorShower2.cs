@@ -43,11 +43,11 @@ public class MeteorShower2() : ThePrismatic2Card(0,
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState)
                 .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
                 .Execute(choiceContext);
-            await PowerCmd.Apply<WeakPower>(CombatState.HittableEnemies, DynamicVars.Weak.BaseValue, Owner.Creature,
+            await PowerCmd.Apply<WeakPower>(choiceContext, CombatState.HittableEnemies, DynamicVars.Weak.BaseValue, Owner.Creature,
                 this);
-            await PowerCmd.Apply<VulnerablePower>(CombatState.HittableEnemies, DynamicVars.Vulnerable.BaseValue,
+            await PowerCmd.Apply<VulnerablePower>(choiceContext, CombatState.HittableEnemies, DynamicVars.Vulnerable.BaseValue,
                 Owner.Creature, this);
-            await PowerCmd.Apply<ExposedPower>(CombatState.HittableEnemies, DynamicVars["Exposed"].BaseValue,
+            await PowerCmd.Apply<ExposedPower>(choiceContext, CombatState.HittableEnemies, DynamicVars["Exposed"].BaseValue,
                 Owner.Creature, this);
         }
     }

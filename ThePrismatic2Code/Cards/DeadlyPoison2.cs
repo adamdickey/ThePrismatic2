@@ -37,7 +37,7 @@ public class DeadlyPoison2() : ThePrismatic2Card(1,
     		NPoisonImpactVfx? child = NPoisonImpactVfx.Create(cardPlay.Target);
     		NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
     		await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-    		await PowerCmd.Apply<PoisonPower>(cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
+    		await PowerCmd.Apply<PoisonPower>(choiceContext, cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
 			await OrbCmd.Channel<VenomOrb>(choiceContext, Owner);
     	}
     

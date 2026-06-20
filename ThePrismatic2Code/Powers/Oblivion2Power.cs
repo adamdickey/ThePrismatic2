@@ -31,7 +31,7 @@ public class Oblivion2Power : ThePrismatic2Power
     	return new Data();
     }
     
-    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
 	    if (power == this)
 	    {
@@ -59,12 +59,12 @@ public class Oblivion2Power : ThePrismatic2Power
     	if (GetInternalData<Data>().AmountsForPlayedCards.Remove(cardPlay.Card, out var value))
     	{
     		Flash();
-    		await PowerCmd.Apply<PoisonPower>(Owner, value, Applier, null);
-			await PowerCmd.Apply<DoomPower>(Owner, DynamicVars.Doom.BaseValue, Applier, null);
+    		await PowerCmd.Apply<PoisonPower>(context, Owner, value, Applier, null);
+			await PowerCmd.Apply<DoomPower>(context, Owner, DynamicVars.Doom.BaseValue, Applier, null);
     	}
     }
 
-    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
     	if (side == CombatSide.Player)
     	{

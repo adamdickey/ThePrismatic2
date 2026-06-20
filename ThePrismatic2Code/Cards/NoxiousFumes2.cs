@@ -29,6 +29,6 @@ public class NoxiousFumes2() : ThePrismatic2Card(1,
         {
             await OrbCmd.Channel<VenomOrb>(choiceContext, Owner);
         }
-        await PowerCmd.Apply<NoxiousFumes2Power>(Owner.Creature, 1, Owner.Creature, this);
+        await PowerCmd.Apply<NoxiousFumes2Power>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
     }
 }

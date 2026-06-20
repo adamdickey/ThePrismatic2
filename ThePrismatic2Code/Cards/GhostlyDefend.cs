@@ -28,7 +28,7 @@ public class GhostlyDefend() : ThePrismatic2Card(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play);
-        if (CombatState != null) CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Soul.Create(Owner, 1, CombatState), PileType.Draw, addedByPlayer: true, CardPilePosition.Random));
+        if (CombatState != null) CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(Soul.Create(Owner, 1, CombatState), PileType.Draw, Owner, CardPilePosition.Random));
     }
 
     protected override void OnUpgrade()

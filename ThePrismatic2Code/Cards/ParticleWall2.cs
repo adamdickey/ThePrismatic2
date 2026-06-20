@@ -38,12 +38,12 @@ public class ParticleWall2() : ThePrismatic2Card(0,
         
     }
 
-    protected override PileType GetResultPileType()
+    protected override PileType GetResultPileTypeForCardPlay()
     {
-        PileType resultPileType = base.GetResultPileType();
-        if (resultPileType != PileType.Discard)
+        PileType resultPileTypeForCardPlay = base.GetResultPileTypeForCardPlay();
+        if (resultPileTypeForCardPlay != PileType.Discard)
         {
-            return resultPileType;
+            return resultPileTypeForCardPlay;
         }
         return PileType.Hand;
     }

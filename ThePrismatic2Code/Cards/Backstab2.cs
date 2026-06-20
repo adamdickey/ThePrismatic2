@@ -37,7 +37,7 @@ public class Backstab2() : ThePrismatic2Card(0,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_dramatic_stab")
             .Execute(choiceContext);
-        await PowerCmd.Apply<ExposedPower>(cardPlay.Target, DynamicVars["Exposed"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<ExposedPower>(choiceContext, cardPlay.Target, DynamicVars["Exposed"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

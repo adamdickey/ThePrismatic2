@@ -16,8 +16,8 @@ public class Spite2() : ThePrismatic2Card(0,
     CardType.Attack, CardRarity.Uncommon, 
     TargetType.AnyEnemy)
 {
-    public override string CustomPortraitPath => "res://.godot/imported/spite.png-c6a5e29af3ec6f7f0b922009f7a78f43.ctex";
-    public override string PortraitPath => "res://.godot/imported/spite.png-c6a5e29af3ec6f7f0b922009f7a78f43.ctex";
+    public override string CustomPortraitPath => "res://.godot/imported/spite.png-27163cb5fc50b091314d1ce54b94bf5a.ctex";
+    public override string PortraitPath => "res://.godot/imported/spite.png-27163cb5fc50b091314d1ce54b94bf5a.ctex";
 
     protected override bool ShouldGlowGoldInternal => LostHpThisTurn(Owner.Creature);
 

@@ -26,7 +26,7 @@ public class Envenom2Power : ThePrismatic2Power
         HoverTipFactory.FromPower<DoomPower>()
     ]);
     
-    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (power == this)
         {
@@ -39,8 +39,8 @@ public class Envenom2Power : ThePrismatic2Power
     {
         if (dealer == Owner && props.IsPoweredAttack() && result.UnblockedDamage > 0)
         {
-            await PowerCmd.Apply<PoisonPower>(target, Amount, Owner, null);
-            await PowerCmd.Apply<DoomPower>(target, DynamicVars.Doom.BaseValue, Owner, null);
+            await PowerCmd.Apply<PoisonPower>(choiceContext, target, Amount, Owner, null);
+            await PowerCmd.Apply<DoomPower>(choiceContext, target, DynamicVars.Doom.BaseValue, Owner, null);
         }
     }
 }

@@ -38,8 +38,8 @@ public class Glitterstream2() : ThePrismatic2Card(2,
             decimal summonNextTurnAmount = Hook.ModifySummonAmount(CombatState, Owner, summonVar.BaseValue, this);
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
             await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
-            await PowerCmd.Apply<BlockNextTurnPower>(Owner.Creature, blockNextTurnAmount, Owner.Creature, this);
-            await PowerCmd.Apply<SummonNextTurnPower>(Owner.Creature, summonNextTurnAmount, Owner.Creature, this);
+            await PowerCmd.Apply<BlockNextTurnPower>(choiceContext, Owner.Creature, blockNextTurnAmount, Owner.Creature, this);
+            await PowerCmd.Apply<SummonNextTurnPower>(choiceContext, Owner.Creature, summonNextTurnAmount, Owner.Creature, this);
         }
     }
 

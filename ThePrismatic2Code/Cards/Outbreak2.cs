@@ -30,7 +30,7 @@ public class Outbreak2() : ThePrismatic2Card(1,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<Outbreak2Power>(Owner.Creature, DynamicVars["OutbreakPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Outbreak2Power>(choiceContext, Owner.Creature, DynamicVars["OutbreakPower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

@@ -26,7 +26,7 @@ public class Hellraiser2() : ThePrismatic2Card(2,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<Hellraiser2Power>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<Hellraiser2Power>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
     }
 
     public override async Task OnEnqueuePlayVfx(Creature? target)

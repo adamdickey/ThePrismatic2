@@ -28,7 +28,7 @@ public class Sneaky2() : ThePrismatic2Card(2,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<SneakyPower>(Owner.Creature, DynamicVars["SneakyPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<SneakyPower>(choiceContext, Owner.Creature, DynamicVars["SneakyPower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

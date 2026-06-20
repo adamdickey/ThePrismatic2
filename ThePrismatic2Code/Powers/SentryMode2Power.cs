@@ -21,7 +21,7 @@ public class SentryMode2Power : ThePrismatic2Power
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<SweepingGaze>());
 
-    public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, CombatState combatState)
+    public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
     {
         if (player == Owner.Player)
         {
@@ -29,7 +29,7 @@ public class SentryMode2Power : ThePrismatic2Power
             {
                 await OstyCmd.Summon(choiceContext, Owner.Player, 1, this);
                 CardModel card = combatState.CreateCard<SweepingGaze>(Owner.Player);
-                await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, addedByPlayer: true);
+                await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner.Player);
             }
         }
     }

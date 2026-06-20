@@ -41,9 +41,9 @@ public class Uppercut2() : ThePrismatic2Card(2,
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
         int amount = DynamicVars["Power"].IntValue;
-        await PowerCmd.Apply<WeakPower>(cardPlay.Target, amount, Owner.Creature, this);
-        await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, amount, Owner.Creature, this);
-        await PowerCmd.Apply<ExposedPower>(cardPlay.Target, amount, Owner.Creature, this);
+        await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, amount, Owner.Creature, this);
+        await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, amount, Owner.Creature, this);
+        await PowerCmd.Apply<ExposedPower>(choiceContext, cardPlay.Target, amount, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

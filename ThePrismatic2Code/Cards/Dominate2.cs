@@ -36,9 +36,9 @@ public class Dominate2() : ThePrismatic2Card(1,
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, DynamicVars["VulnerablePower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, DynamicVars["VulnerablePower"].BaseValue, Owner.Creature, this);
         int num = (cardPlay.Target.GetPower<VulnerablePower>()?.Amount??0)+(cardPlay.Target.GetPower<WeakPower>()?.Amount??0)+(cardPlay.Target.GetPower<ExposedPower>()?.Amount??0);
-        await PowerCmd.Apply<StrengthPower>(Owner.Creature, num, Owner.Creature, this);
+        await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, num, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

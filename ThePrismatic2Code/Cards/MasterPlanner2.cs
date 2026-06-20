@@ -24,7 +24,7 @@ public class MasterPlanner2() : ThePrismatic2Card(2,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<MasterPlanner2Power>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<MasterPlanner2Power>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

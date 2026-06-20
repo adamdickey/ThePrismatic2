@@ -79,7 +79,7 @@ public sealed class GloomOrb : CustomOrbModel
             return Array.Empty<Creature>();
         }
         await CreatureCmd.Damage(playerChoiceContext, weakestEnemy, EvokeVal, ValueProp.Unpowered, Owner.Creature);
-        await PowerCmd.Apply<DoomPower>(weakestEnemy, EvokeVal, Owner.Creature, null);
+        await PowerCmd.Apply<DoomPower>(playerChoiceContext, weakestEnemy, EvokeVal, Owner.Creature, null);
         return new _003C_003Ez__ReadOnlySingleElementList<Creature>(weakestEnemy);
     }
 }
