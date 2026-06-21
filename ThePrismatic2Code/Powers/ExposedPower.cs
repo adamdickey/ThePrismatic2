@@ -43,14 +43,14 @@ public class ExposedPower : ThePrismatic2Power
     {
         if (target == null || !target.Powers.Contains(this) || power is not DoomPower)
         {
-            return amount;
+            return 1m;
         }
         PowerModel? debilitatePower = target.GetPower<Debilitate2Power>();
         if (debilitatePower != null && power is DoomPower)
         {
-            return amount * 2m;
+            return 2m;
         }
-        return amount;
+        return DynamicVars["DamageIncrease"].BaseValue;
     }
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
