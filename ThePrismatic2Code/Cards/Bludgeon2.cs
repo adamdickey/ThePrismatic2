@@ -20,9 +20,7 @@ public class Bludgeon2() : ThePrismatic2Card(3,
     public override string CustomPortraitPath => "res://.godot/imported/bludgeon.png-46e9e5632a8dbd63cc2066c4317184cd.ctex";
     public override string PortraitPath => "res://.godot/imported/bludgeon.png-46e9e5632a8dbd63cc2066c4317184cd.ctex";
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        HoverTipFactory.FromKeyword(Extensions.Keywords.Costly),
-    ]);
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Costly));
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(32m, ValueProp.Move));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

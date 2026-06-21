@@ -44,7 +44,7 @@ public class SevenStars2() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars.Damage.UpgradeValueBy(2m);
     }
     
     public override Task AfterCardEnteredCombat(CardModel card)

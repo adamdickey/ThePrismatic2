@@ -18,9 +18,9 @@ public class CunningDefend() : ThePrismatic2Card(1,
     
     protected override HashSet<CardTag> CanonicalTags => new HashSet<CardTag> { CardTag.Defend };
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(7m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(6m, ValueProp.Move));
     
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Sly);
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Cunning);
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

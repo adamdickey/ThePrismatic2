@@ -31,7 +31,7 @@ public class Invoke2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PlayerCmd.GainStars(DynamicVars.Stars.BaseValue, Owner);
+        await PowerCmd.Apply<StarNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Stars.BaseValue, Owner.Creature, this);
         await PowerCmd.Apply<SummonNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Summon.IntValue, Owner.Creature, this);
         await PowerCmd.Apply<EnergyNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Energy.IntValue, Owner.Creature, this);
     }
@@ -40,6 +40,5 @@ public class Invoke2() : ThePrismatic2Card(1,
     {
         DynamicVars.Stars.UpgradeValueBy(1m);
         DynamicVars.Summon.UpgradeValueBy(1m);
-        DynamicVars.Energy.UpgradeValueBy(1m);
     }
 }

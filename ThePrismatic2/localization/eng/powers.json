@@ -269,5 +269,13 @@
 
   "THEPRISMATIC2-TRASH_TO_TREASURE2_POWER.description": "Whenever you create a card, [gold]Channel[/gold] [blue]1[/blue] random Orb.",
   "THEPRISMATIC2-TRASH_TO_TREASURE2_POWER.smartDescription": "Whenever you create a card, [gold]Channel[/gold] {Amount:plural:[blue]{}[/blue] random Orb|[blue]{}[/blue] random Orbs}.",
-  "THEPRISMATIC2-TRASH_TO_TREASURE2_POWER.title": "Trash to Treasure"
+  "THEPRISMATIC2-TRASH_TO_TREASURE2_POWER.title": "Trash to Treasure",
+
+  "THEPRISMATIC2-SEEKING_EDGE2_POWER.description": "Whenever you play a [gold]Costly[/gold] Attack on a single enemy, play it on each other enemy.",
+  "THEPRISMATIC2-SEEKING_EDGE2_POWER.smartDescription": "Whenever you play a [gold]Costly[/gold] Attack on a single enemy, play it on each other enemy.",
+  "THEPRISMATIC2-SEEKING_EDGE2_POWER.title": "Seeking Edge",
+
+  "THEPRISMATIC2-FAN_OF_KNIVES2_POWER.description": "Whenever you play a 0 Energy Attack on a single enemy, play it on each other enemy.",
+  "THEPRISMATIC2-FAN_OF_KNIVES2_POWER.smartDescription": "Whenever you play a 0 {energyPrefix:energyIcons(1)} Attack on a single enemy, play it on each other enemy.",
+  "THEPRISMATIC2-FAN_OF_KNIVES2_POWER.title": "Fan of Knives"
 }

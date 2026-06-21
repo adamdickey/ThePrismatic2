@@ -22,7 +22,10 @@ public class Snap2() : ThePrismatic2Card(1,
 
     protected override HashSet<CardTag> CanonicalTags => [ CardTag.OstyAttack ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Retain));
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromKeyword(CardKeyword.Retain),
+        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon)
+    ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new SummonVar(1m),

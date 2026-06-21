@@ -41,18 +41,14 @@ public class ExposedPower : ThePrismatic2Power
     
     public override decimal ModifyPowerAmountGivenMultiplicative(PowerModel power, Creature giver, decimal amount, Creature? target, CardModel? cardSource)
     {
-        if (target == null || !target.Powers.Contains(this))
+        if (target == null || !target.Powers.Contains(this) || power is not DoomPower)
         {
             return amount;
         }
-        if (power is DoomPower)
+        PowerModel? debilitatePower = target.GetPower<Debilitate2Power>();
+        if (debilitatePower != null && power is DoomPower)
         {
-            PowerModel? debilitatePower = target.GetPower<Debilitate2Power>();
-            if (debilitatePower != null)
-            {
-                return amount * 2m;
-            }
-            return amount * 1.5m;
+            return amount * 2m;
         }
         return amount;
     }

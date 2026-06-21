@@ -19,6 +19,8 @@ public class FocusedStrike2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/focused_strike.png-6d0b82dd2220002aec192333cbd31ac8.ctex";
     public override string PortraitPath => "res://.godot/imported/focused_strike.png-6d0b82dd2220002aec192333cbd31ac8.ctex";
     
+    protected override bool ShouldGlowGoldInternal => !Osty.CheckMissingWithAnim(Owner);
+    
     protected override HashSet<CardTag> CanonicalTags => [ CardTag.Strike, CardTag.OstyAttack ];
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.DualWield);

@@ -653,7 +653,7 @@
   "THEPRISMATIC2-HIGH_FIVE2.description": "[gold]Summon[/gold] 1.\n[gold]Osty[/gold] deals {OstyDamage:diff()} damage\nand applies {VulnerablePower:diff()} [gold]Vulnerable[/gold]\nto ALL enemies.",
   "THEPRISMATIC2-HIGH_FIVE2.title": "High Five",
 
-  "THEPRISMATIC2-INVOKE2.description": "Gain {Stars:starIcons()}.\nNext turn, [gold]Summon[/gold] {Summon:diff()} and gain {Energy:energyIcons()}.",
+  "THEPRISMATIC2-INVOKE2.description": "Next turn, [gold]Summon[/gold] {Summon:diff()}, gain {Stars:starIcons()}, and gain {Energy:energyIcons()}.",
   "THEPRISMATIC2-INVOKE2.title": "Invoke",
 
   "THEPRISMATIC2-MELANCHOLY2.description": "Gain {Block:diff()} [gold]Block[/gold].\nReduce this card's cost by {Energy:energyIcons()} whenever ANYONE dies or you or [gold]Osty[/gold] lose HP from a card.",
@@ -868,5 +868,11 @@
   "THEPRISMATIC2-VOLTAIC2.title": "Voltaic",
 
   "THEPRISMATIC2-ZAP2.description": "[gold]Channel[/gold] 1 [gold]Lightning[/gold].\n[gold]Channel[/gold] 1 [gold]Magma[/gold].",
-  "THEPRISMATIC2-ZAP2.title": "Zap"
+  "THEPRISMATIC2-ZAP2.title": "Zap",
+
+  "THEPRISMATIC2-SEEKING_EDGE2.description": "[gold]Forge[/gold] {Forge:diff()}.\nWhenever you play a [gold]Costly[/gold] Attack on a single enemy, play it on each other enemy.",
+  "THEPRISMATIC2-SEEKING_EDGE2.title": "Seeking Edge",
+
+  "THEPRISMATIC2-FAN_OF_KNIVES2.description": "Whenever you play a 0 {energyPrefix:energyIcons(1)} Attack on a single enemy, play it on each other enemy.\nAdd {Shivs:diff()} [gold]Shivs[/gold] into your [gold]Hand[/gold].",
+  "THEPRISMATIC2-FAN_OF_KNIVES2.title": "Fan of Knives"
 }

@@ -24,11 +24,10 @@ public class Stardust2() : ThePrismatic2Card(0,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (CombatState != null)
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(ResolveStarXValue()).FromCard(this)
-                .TargetingRandomOpponents(CombatState)
-                .WithHitFx("vfx/vfx_starry_impact")
-                .Execute(choiceContext);
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(ResolveStarXValue()).FromCard(this)
+            .TargetingRandomOpponents(CombatState!)
+            .WithHitFx("vfx/vfx_starry_impact")
+            .Execute(choiceContext);
     }
 
     protected override void OnUpgrade()
