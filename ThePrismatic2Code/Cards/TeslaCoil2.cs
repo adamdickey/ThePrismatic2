@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -14,6 +15,7 @@ public class TeslaCoil2() : ThePrismatic2Card(0,
     CardType.Attack, CardRarity.Uncommon, 
     TargetType.AnyEnemy)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/tesla_coil.png-1a3be4ec7ac2ecaa46db0f4a60a01990.ctex";
     public override string PortraitPath => "res://.godot/imported/tesla_coil.png-1a3be4ec7ac2ecaa46db0f4a60a01990.ctex";
 

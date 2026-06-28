@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
@@ -14,6 +15,7 @@ public class DrumOfBattle2() : ThePrismatic2Card(1,
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/drum_of_battle.png-17d414e562deb6a6057b9a9cafdde247.ctex";
     public override string PortraitPath => "res://.godot/imported/drum_of_battle.png-17d414e562deb6a6057b9a9cafdde247.ctex";
 
@@ -24,7 +26,7 @@ public class DrumOfBattle2() : ThePrismatic2Card(1,
         new EnergyVar(2)
     ]);
     
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Cunning);
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Sly);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

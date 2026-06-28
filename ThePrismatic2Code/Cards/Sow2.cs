@@ -3,6 +3,8 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -14,6 +16,7 @@ public class Sow2() : ThePrismatic2Card(1,
     CardType.Attack, CardRarity.Common, 
     TargetType.AllEnemies)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/sow.png-03e28ee2f7f7dd3325b41fcf8f4ef6e2.ctex";
     public override string PortraitPath => "res://.godot/imported/sow.png-03e28ee2f7f7dd3325b41fcf8f4ef6e2.ctex";
     

@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -15,6 +16,7 @@ public class PommelStrike2() : ThePrismatic2Card(1,
     CardType.Attack, CardRarity.Common, 
     TargetType.AnyEnemy)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/pommel_strike.png-13c4383e8d6a3cde8f6fb931a5aa03b1.ctex";
     public override string PortraitPath => "res://.godot/imported/pommel_strike.png-13c4383e8d6a3cde8f6fb931a5aa03b1.ctex";
 

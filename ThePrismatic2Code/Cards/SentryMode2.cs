@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Powers;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -16,6 +18,7 @@ public class SentryMode2() : ThePrismatic2Card(2,
     CardType.Power, CardRarity.Rare, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/sentry_mode.png-a0f0c333de24ca72c40f24a6e16044ed.ctex";
     public override string PortraitPath => "res://.godot/imported/sentry_mode.png-a0f0c333de24ca72c40f24a6e16044ed.ctex";
     

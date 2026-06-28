@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -15,6 +16,7 @@ public class Eidolon2() : ThePrismatic2Card(2,
     CardType.Skill, CardRarity.Rare, 
     TargetType.Self)
 {
+	public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/eidolon.png-fab3ce75c381ad1515a4377e891db72c.ctex";
     public override string PortraitPath => "res://.godot/imported/eidolon.png-fab3ce75c381ad1515a4377e891db72c.ctex";
     

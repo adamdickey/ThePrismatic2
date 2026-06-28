@@ -5,6 +5,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -17,6 +19,7 @@ public class Rupture2() : ThePrismatic2Card(1,
     CardType.Power, CardRarity.Uncommon, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/rupture.png-d28f8713ae0d99f2fb12197b881489b3.ctex";
     public override string PortraitPath => "res://.godot/imported/rupture.png-d28f8713ae0d99f2fb12197b881489b3.ctex";
 

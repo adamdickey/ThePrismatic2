@@ -6,6 +6,8 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -17,6 +19,7 @@ public class BlightStrike2() : ThePrismatic2Card(1,
     CardType.Attack, CardRarity.Common, 
     TargetType.AnyEnemy)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/blight_strike.png-6e116b75c204fd8e94b1bf3deb1d063f.ctex";
     public override string PortraitPath => "res://.godot/imported/blight_strike.png-6e116b75c204fd8e94b1bf3deb1d063f.ctex";
     

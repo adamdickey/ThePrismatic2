@@ -1,13 +1,11 @@
 ﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -18,8 +16,6 @@ public class Colossus2Power : ThePrismatic2Power
     
     public override string CustomPackedIconPath => "res://.godot/imported/colossus_power.png-8f38438c443223e1fe3e0948a33ded77.s3tc.ctex";
     public override string CustomBigIconPath => "res://.godot/imported/colossus_power.png-8f38438c443223e1fe3e0948a33ded77.s3tc.ctex";
-    
-    private const string _damageDecreaseKey = "DamageDecrease";
 
     public override PowerType Type => PowerType.Buff;
 
@@ -44,8 +40,8 @@ public class Colossus2Power : ThePrismatic2Power
             return 1m;
         }
 
-        int num_debuffs = dealer.Powers.Count(power => power.TypeForCurrentAmount == PowerType.Debuff);
-        if (num_debuffs < 2)
+        int numDebuffs = dealer.Powers.Count(power => power.TypeForCurrentAmount == PowerType.Debuff);
+        if (numDebuffs < 2)
         {
             return 1m;
         }

@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using ThePrismatic2.ThePrismatic2Code.Character;
 using ThePrismatic2.ThePrismatic2Code.Powers;
@@ -11,10 +13,11 @@ using ThePrismatic2.ThePrismatic2Code.Powers;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class MonarchsGaze2() : ThePrismatic2Card(3, 
+public class MonarchsGaze2() : ThePrismatic2Card(2, 
     CardType.Power, CardRarity.Rare, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/monarchs_gaze.png-f2304e74e0ee8adc909945e9196ea428.ctex";
     public override string PortraitPath => "res://.godot/imported/monarchs_gaze.png-f2304e74e0ee8adc909945e9196ea428.ctex";
 

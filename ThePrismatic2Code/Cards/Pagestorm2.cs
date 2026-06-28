@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using ThePrismatic2.ThePrismatic2Code.Character;
 using ThePrismatic2.ThePrismatic2Code.Powers;
 
@@ -14,6 +16,7 @@ public class Pagestorm2() : ThePrismatic2Card(1,
     CardType.Power, CardRarity.Uncommon, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/pagestorm.png-7c0b38e66afb7614d85dea8a55d96210.ctex";
     public override string PortraitPath => "res://.godot/imported/pagestorm.png-7c0b38e66afb7614d85dea8a55d96210.ctex";
     

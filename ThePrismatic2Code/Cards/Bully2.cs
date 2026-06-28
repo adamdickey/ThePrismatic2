@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -19,7 +20,7 @@ public class Bully2() : ThePrismatic2Card(0,
     CardType.Attack, CardRarity.Uncommon, 
     TargetType.AnyEnemy)
 {
-    
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/bully.png-4dfc6b5d2d20ce38614b8ba082aa152b.ctex";
     public override string PortraitPath => "res://.godot/imported/bully.png-4dfc6b5d2d20ce38614b8ba082aa152b.ctex";
 

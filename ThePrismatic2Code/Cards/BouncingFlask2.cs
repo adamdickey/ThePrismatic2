@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Potions;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Combat;
@@ -23,6 +24,7 @@ public class BouncingFlask2() : ThePrismatic2Card(2,
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.RandomEnemy)
 {
+	public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/bouncing_flask.png-54c2b34c19221c30edf4900ff58824e2.ctex";
     public override string PortraitPath => "res://.godot/imported/bouncing_flask.png-54c2b34c19221c30edf4900ff58824e2.ctex";
 

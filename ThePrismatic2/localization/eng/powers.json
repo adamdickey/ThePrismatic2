@@ -3,7 +3,7 @@
   "THEPRISMATIC2-EXPOSED_POWER.smartDescription": "Receive [blue]{DamageIncrease:percentMore()}%[/blue] more damage from non-Attack sources and receive [blue]{DamageIncrease:percentMore()}%[/blue] more [gold]Doom[/gold] for [blue]{Amount}[/blue] {Amount:plural:turn|turns}.",
   "THEPRISMATIC2-EXPOSED_POWER.title": "Exposed",
 
-  "THEPRISMATIC2-CRIMSON_MANTLE2_POWER.description": "At the start of your turn, you or Osty lose HP and you gain [gold]Block[/gold].",
+  "THEPRISMATIC2-CRIMSON_MANTLE2_POWER.description": "At the start of your turn, you or [gold]Osty[/gold] lose HP and you gain [gold]Block[/gold].",
   "THEPRISMATIC2-CRIMSON_MANTLE2_POWER.smartDescription": "At the start of your turn, [gold]Osty[/gold] loses [blue]{SelfDamage}[/blue] HP if he is alive, otherwise you lose [blue]{SelfDamage}[/blue] HP, then you gain [blue]{Amount}[/blue] [gold]Block[/gold].",
   "THEPRISMATIC2-CRIMSON_MANTLE2_POWER.title": "Crimson Mantle",
 
@@ -19,7 +19,7 @@
   "THEPRISMATIC2-FLAME_BARRIER2_POWER.smartDescription": "Whenever you are attacked this turn, [gold]Channel[/gold] [blue]{Amount}[/blue] [gold]Magma[/gold].",
   "THEPRISMATIC2-FLAME_BARRIER2_POWER.title": "Flame Barrier",
 
-  "THEPRISMATIC2-INFERNO2_POWER.description": "At the start of your turn, you or Osty lose [blue]1[/blue] HP. Whenever you lose HP on your turn, deal [blue]6[/blue] damage to ALL enemies.",
+  "THEPRISMATIC2-INFERNO2_POWER.description": "At the start of your turn, you or [gold]Osty[/gold] lose [blue]1[/blue] HP. Whenever you lose HP on your turn, deal [blue]6[/blue] damage to ALL enemies.",
   "THEPRISMATIC2-INFERNO2_POWER.smartDescription": "At the start of your turn, [gold]Osty[/gold] loses [blue]{SelfDamage}[/blue] HP if he is alive, otherwise you lose [blue]{SelfDamage}[/blue] HP. Whenever you or [gold]Osty[/gold] lose HP on your turn, deal [blue]{Amount}[/blue] damage to ALL enemies.",
   "THEPRISMATIC2-INFERNO2_POWER.title": "Inferno",
 
@@ -155,8 +155,8 @@
   "THEPRISMATIC2-PARRY2_POWER.smartDescription": "Whenever you play a [gold]Costly[/gold] Attack, gain [blue]{Amount}[/blue] [gold]Block[/gold].",
   "THEPRISMATIC2-PARRY2_POWER.title": "Parry",
 
-  "THEPRISMATIC2-SPECTRUM_SHIFT2_POWER.description": "At the start of your turn, [gold]Transform[/gold] [blue]1[/blue] card in your [gold]Hand[/gold] into a random Colorless card.",
-  "THEPRISMATIC2-SPECTRUM_SHIFT2_POWER.smartDescription": "At the start of your turn, [gold]Transform[/gold] [blue]{Amount}[/blue] {Amount:plural:card|cards} in your [gold]Hand[/gold] into {Amount:plural:a random|random} Colorless {Amount:plural:card|cards}.",
+  "THEPRISMATIC2-SPECTRUM_SHIFT2_POWER.description": "At the start of your turn, [gold]Exhaust[/gold] [blue]1[/blue] card and add [blue]1[/blue] random Colorless card into your [gold]Hand[/gold].",
+  "THEPRISMATIC2-SPECTRUM_SHIFT2_POWER.smartDescription": "At the start of your turn, [gold]Exhaust[/gold] [blue]{Amount}[/blue] {Amount:plural:card|cards} and add [blue]{Amount}[/blue] random Colorless {Amount:plural:card|cards} into your [gold]Hand[/gold].",
   "THEPRISMATIC2-SPECTRUM_SHIFT2_POWER.title": "Spectrum Shift",
 
   "THEPRISMATIC2-SWORD_SAGE2_POWER.description": "[gold]Costly[/gold] Attacks are played an extra time.",
@@ -277,5 +277,13 @@
 
   "THEPRISMATIC2-FAN_OF_KNIVES2_POWER.description": "Whenever you play a 0 Energy Attack on a single enemy, play it on each other enemy.",
   "THEPRISMATIC2-FAN_OF_KNIVES2_POWER.smartDescription": "Whenever you play a 0 {energyPrefix:energyIcons(1)} Attack on a single enemy, play it on each other enemy.",
-  "THEPRISMATIC2-FAN_OF_KNIVES2_POWER.title": "Fan of Knives"
+  "THEPRISMATIC2-FAN_OF_KNIVES2_POWER.title": "Fan of Knives",
+
+  "THEPRISMATIC2-TERRAFORMING_POWER.description": "Gain [gold]Focus[/gold] until the end of this turn.",
+  "THEPRISMATIC2-TERRAFORMING_POWER.smartDescription": "Gain [blue]{Amount}[/blue] [gold]Focus[/gold] until the end of this turn.",
+  "THEPRISMATIC2-TERRAFORMING_POWER.title": "Terraforming",
+
+  "THEPRISMATIC2-CALCIFY2_POWER.description": "[gold]Osty's Dual Wield[/gold] Attacks deal damage equal to the base Attack's damage.",
+  "THEPRISMATIC2-CALCIFY2_POWER.smartDescription": "[gold]Osty's Dual Wield[/gold] Attacks deal damage equal to the base Attack's damage.",
+  "THEPRISMATIC2-CALCIFY2_POWER.title": "Calcify"
 }

@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -15,15 +17,16 @@ public class Glitterstream2() : ThePrismatic2Card(2,
     CardType.Skill, CardRarity.Common, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/glitterstream.png-5a5e6cbc4af9d766342dfc7e0aeacf60.ctex";
     public override string PortraitPath => "res://.godot/imported/glitterstream.png-5a5e6cbc4af9d766342dfc7e0aeacf60.ctex";
 
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new BlockVar(9m, ValueProp.Move),
+        new BlockVar(8m, ValueProp.Move),
         new SummonVar(2m),
-        new BlockVar("BlockNextTurn", 3m, ValueProp.Move),
+        new BlockVar("BlockNextTurn", 2m, ValueProp.Move),
         new SummonVar("SummonNextTurn", 2m)
     ]);
 
@@ -47,7 +50,5 @@ public class Glitterstream2() : ThePrismatic2Card(2,
     {
         DynamicVars.Block.UpgradeValueBy(2m);
         DynamicVars["BlockNextTurn"].UpgradeValueBy(1m);
-        DynamicVars.Summon.UpgradeValueBy(1m);
-        DynamicVars["SummonNextTurn"].UpgradeValueBy(1m);
     }
 }

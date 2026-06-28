@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -14,6 +16,7 @@ public class Devastate2() : ThePrismatic2Card(1,
     CardType.Attack, CardRarity.Uncommon, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/devastate.png-5a8afa63739e1780605788b495d7fc14.ctex";
     public override string PortraitPath => "res://.godot/imported/devastate.png-5a8afa63739e1780605788b495d7fc14.ctex";
 

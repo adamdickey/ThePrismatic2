@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
@@ -21,7 +22,7 @@ public class Brand2() : ThePrismatic2Card(0,
     CardType.Skill, CardRarity.Rare, 
     TargetType.Self)
 {
-    
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/brand.png-01334706eb3eb94488272bbcf82bdbe7.ctex";
     public override string PortraitPath => "res://.godot/imported/brand.png-01334706eb3eb94488272bbcf82bdbe7.ctex";
 

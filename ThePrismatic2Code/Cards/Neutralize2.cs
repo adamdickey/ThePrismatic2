@@ -5,6 +5,8 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
@@ -21,6 +23,7 @@ public class Neutralize2() : ThePrismatic2Card(0,
     CardType.Attack, CardRarity.Common, 
     TargetType.AnyEnemy)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/neutralize.png-b17223f8945b3a8f6bb51d1d97cec152.ctex";
     public override string PortraitPath => "res://.godot/imported/neutralize.png-b17223f8945b3a8f6bb51d1d97cec152.ctex";
 

@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -14,6 +15,7 @@ public class Reap2() : ThePrismatic2Card(3,
     CardType.Attack, CardRarity.Common, 
     TargetType.AnyEnemy)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/reap.png-e4ffbdae7991268a1d2e5971010912e2.ctex";
     public override string PortraitPath => "res://.godot/imported/reap.png-e4ffbdae7991268a1d2e5971010912e2.ctex";
     
@@ -61,6 +63,6 @@ public class Reap2() : ThePrismatic2Card(3,
     private void UpdateCost()
     {
         int retainCards = PileType.Hand.GetPile(Owner).Cards.Count(card => card != this && card.ShouldRetainThisTurn);
-        EnergyCost.SetUntilPlayed(EnergyCost.Canonical - retainCards);
+        EnergyCost.SetUntilPlayed(EnergyCost.Canonical - Math.Min(1, retainCards));
     }
 }

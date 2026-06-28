@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
@@ -21,6 +22,7 @@ public class GuidingStar2() : ThePrismatic2Card(1,
     CardType.Attack, CardRarity.Common, 
     TargetType.AnyEnemy)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/guiding_star.png-741b1b575fa11bbd6ddd29ccec79744e.ctex";
     public override string PortraitPath => "res://.godot/imported/guiding_star.png-741b1b575fa11bbd6ddd29ccec79744e.ctex";
 

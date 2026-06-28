@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -18,6 +19,7 @@ public class HelixDrill2() : ThePrismatic2Card(0,
     CardType.Attack, CardRarity.Rare, 
     TargetType.AnyEnemy)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/helix_drill.png-003a037e58198943fa90d7c99290149f.ctex";
     public override string PortraitPath => "res://.godot/imported/helix_drill.png-003a037e58198943fa90d7c99290149f.ctex";
 

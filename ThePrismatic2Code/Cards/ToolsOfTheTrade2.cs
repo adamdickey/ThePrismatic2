@@ -2,6 +2,8 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using ThePrismatic2.ThePrismatic2Code.Character;
 using ThePrismatic2.ThePrismatic2Code.Powers;
 
@@ -12,6 +14,7 @@ public class ToolsOfTheTrade2() : ThePrismatic2Card(1,
     CardType.Power, CardRarity.Rare, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/tools_of_the_trade.png-2f457bab729e6227bb6fe0cde9b87dd7.ctex";
     public override string PortraitPath => "res://.godot/imported/tools_of_the_trade.png-2f457bab729e6227bb6fe0cde9b87dd7.ctex";
 

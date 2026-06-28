@@ -5,6 +5,8 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -19,6 +21,7 @@ public class FlameBarrier2() : ThePrismatic2Card(2,
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/flame_barrier.png-85d06cb864938452880c9d700dc0f17d.ctex";
     public override string PortraitPath => "res://.godot/imported/flame_barrier.png-85d06cb864938452880c9d700dc0f17d.ctex";
 

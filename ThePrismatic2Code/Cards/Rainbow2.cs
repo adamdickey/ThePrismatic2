@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using ThePrismatic2.ThePrismatic2Code.Character;
 using ThePrismatic2.ThePrismatic2Code.Orbs;
@@ -11,10 +13,11 @@ using ThePrismatic2.ThePrismatic2Code.Orbs;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class Rainbow2() : ThePrismatic2Card(4, 
+public class Rainbow2() : ThePrismatic2Card(3, 
     CardType.Skill, CardRarity.Rare, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/rainbow.png-c56801ae4b7b9d21ee600dbaf7253409.ctex";
     public override string PortraitPath => "res://.godot/imported/rainbow.png-c56801ae4b7b9d21ee600dbaf7253409.ctex";
     

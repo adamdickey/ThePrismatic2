@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 using ThePrismatic2.ThePrismatic2Code.Orbs;
@@ -15,6 +17,7 @@ public class KnockoutBlow2() : ThePrismatic2Card(3,
     CardType.Attack, CardRarity.Uncommon, 
     TargetType.AnyEnemy)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/knockout_blow.png-53467956a6f5eba59f1edf391c02e5bb.ctex";
     public override string PortraitPath => "res://.godot/imported/knockout_blow.png-53467956a6f5eba59f1edf391c02e5bb.ctex";
 

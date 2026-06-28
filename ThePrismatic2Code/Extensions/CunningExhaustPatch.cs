@@ -17,7 +17,7 @@ public static class CunningExhaustPatch
         {
             return;
         }
-        if (!card.Keywords.Contains(Keywords.Cunning))
+        if (!card.Keywords.Contains(Keywords.Cunning) && !card.Keywords.Contains(Keywords.CunningThisTurn))
         {
             return;
         }
@@ -29,6 +29,5 @@ public static class CunningExhaustPatch
             }
         }
         await CardCmd.AutoPlay(choiceContext, card, null, AutoPlayType.SlyDiscard);
-        await CardPileCmd.Add(card, PileType.Exhaust);
     }
 }

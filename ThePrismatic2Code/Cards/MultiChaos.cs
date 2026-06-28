@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
@@ -13,6 +14,7 @@ public class MultiChaos() : ThePrismatic2Card(0,
     CardType.Skill, CardRarity.Rare, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/multi_cast.png-81832e5d52543e07fc0de49d16fecc10.ctex";
     public override string PortraitPath => "res://.godot/imported/multi_cast.png-81832e5d52543e07fc0de49d16fecc10.ctex";
     

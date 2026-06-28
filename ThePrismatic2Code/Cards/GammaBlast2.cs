@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -16,6 +18,7 @@ public class GammaBlast2() : ThePrismatic2Card(0,
     CardType.Attack, CardRarity.Uncommon, 
     TargetType.AnyEnemy)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/gamma_blast.png-4d4500e67b0bf6222c6aa40911bab63f.ctex";
     public override string PortraitPath => "res://.godot/imported/gamma_blast.png-4d4500e67b0bf6222c6aa40911bab63f.ctex";
 

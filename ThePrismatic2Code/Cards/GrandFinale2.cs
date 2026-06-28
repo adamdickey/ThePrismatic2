@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -16,6 +17,7 @@ public class GrandFinale2() : ThePrismatic2Card(0,
     CardType.Attack, CardRarity.Rare, 
     TargetType.AllEnemies)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/grand_finale.png-187e80daf7943dd2e51f9a89659de922.ctex";
     public override string PortraitPath => "res://.godot/imported/grand_finale.png-187e80daf7943dd2e51f9a89659de922.ctex";
     

@@ -3,6 +3,8 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using ThePrismatic2.ThePrismatic2Code.Extensions;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
@@ -11,6 +13,7 @@ public class Forget() : ThePrismatic2Card(1,
     CardType.Status, CardRarity.Status, 
     TargetType.None)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<StatusCardPool>();
     public override string CustomPortraitPath => $"Forget.png".BigCardImagePath();
     public override string PortraitPath => $"Forget.png".CardImagePath();
 

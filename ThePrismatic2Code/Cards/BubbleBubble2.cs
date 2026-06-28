@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
@@ -20,6 +21,7 @@ public class BubbleBubble2() : ThePrismatic2Card(1,
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.AnyEnemy)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/bubble_bubble.png-125cb0b9a1c0e99d59d54aa37df57c4f.ctex";
     public override string PortraitPath => "res://.godot/imported/bubble_bubble.png-125cb0b9a1c0e99d59d54aa37df57c4f.ctex";
 

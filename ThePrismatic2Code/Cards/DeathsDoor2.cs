@@ -6,6 +6,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -16,6 +18,7 @@ public class DeathsDoor2() : ThePrismatic2Card(1,
     CardType.Skill, CardRarity.Uncommon,
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/deaths_door.png-ee6a5c8ae4689d500ee53db84ef3c33f.ctex";
 
     public override string PortraitPath => "res://.godot/imported/deaths_door.png-ee6a5c8ae4689d500ee53db84ef3c33f.ctex";

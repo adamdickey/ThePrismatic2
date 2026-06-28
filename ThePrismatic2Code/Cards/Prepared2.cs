@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
@@ -14,6 +15,7 @@ public class Prepared2() : ThePrismatic2Card(0,
     CardType.Skill, CardRarity.Common, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/prepared.png-fd95e08bd21b946e2c3f636677bc1127.ctex";
     public override string PortraitPath => "res://.godot/imported/prepared.png-fd95e08bd21b946e2c3f636677bc1127.ctex";
 

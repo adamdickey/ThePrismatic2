@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -15,6 +16,7 @@ public class SummonForth2() : ThePrismatic2Card(1,
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/summon_forth.png-0c5470285d3094c10ce9d5ac4237292e.ctex";
     public override string PortraitPath => "res://.godot/imported/summon_forth.png-0c5470285d3094c10ce9d5ac4237292e.ctex";
 

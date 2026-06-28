@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -16,6 +17,7 @@ public class HeirloomHammer2() : ThePrismatic2Card(2,
     CardType.Attack, CardRarity.Rare, 
     TargetType.AnyEnemy)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/heirloom_hammer.png-ef4f5fb87be15d64ded62b3b29885116.ctex";
     public override string PortraitPath => "res://.godot/imported/heirloom_hammer.png-ef4f5fb87be15d64ded62b3b29885116.ctex";
 

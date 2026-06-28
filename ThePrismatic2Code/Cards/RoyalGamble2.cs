@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
@@ -12,6 +13,7 @@ public class RoyalGamble2() : ThePrismatic2Card(0,
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/royal_gamble.png-da80e36357cce992acb57ba43bbe77b6.ctex";
     public override string PortraitPath => "res://.godot/imported/royal_gamble.png-da80e36357cce992acb57ba43bbe77b6.ctex";
 

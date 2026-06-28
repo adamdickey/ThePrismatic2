@@ -27,7 +27,7 @@ public class Veilpiercer2Power : ThePrismatic2Power
         {
             return false;
         }
-        if (!(card.Keywords.Contains(CardKeyword.Ethereal) || card.Keywords.Contains(Extensions.Keywords.Cunning)))
+        if (!(card.Keywords.Contains(CardKeyword.Ethereal) || card.Keywords.Contains(Extensions.Keywords.Cunning) || card.Keywords.Contains(Extensions.Keywords.CunningThisTurn)))
         {
             return false;
         }

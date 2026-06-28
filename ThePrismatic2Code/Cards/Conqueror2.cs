@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using ThePrismatic2.ThePrismatic2Code.Character;
 using ThePrismatic2.ThePrismatic2Code.Powers;
 
@@ -14,6 +16,7 @@ public class Conqueror2() : ThePrismatic2Card(1,
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.AnyEnemy)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/conqueror.png-96ef07ccb4cffb8cc9485b087e3534df.ctex";
     public override string PortraitPath => "res://.godot/imported/conqueror.png-96ef07ccb4cffb8cc9485b087e3534df.ctex";
     

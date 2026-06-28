@@ -2,6 +2,8 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -12,6 +14,7 @@ public class TheSealedThrone2() : ThePrismatic2Card(1,
     CardType.Power, CardRarity.Ancient, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/the_sealed_throne.png-9a51d17491cc908657d0fea9b763d690.ctex";
     public override string PortraitPath => "res://.godot/imported/the_sealed_throne.png-9a51d17491cc908657d0fea9b763d690.ctex";
     
@@ -27,6 +30,6 @@ public class TheSealedThrone2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        base.EnergyCost.UpgradeBy(-1);
+        EnergyCost.UpgradeBy(-1);
     }
 }

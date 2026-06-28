@@ -46,22 +46,25 @@ public class Inferno2Power : ThePrismatic2Power
             
         }
     }
+    
+    public override async Task AfterCurrentHpChanged(Creature creature, decimal delta)
+    {
+        if (!(delta >= 0m) && creature.Monster is Osty && creature.PetOwner == Owner.Player && Owner.CombatState != null && Owner.CombatState.CurrentSide == Owner.Side)
+        {
+            foreach (Creature hittableEnemy in CombatState.HittableEnemies)
+            {
+                NFireBurstVfx? child = NFireBurstVfx.Create(hittableEnemy, 0.75f);
+                NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
+            }
+            await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), CombatState.HittableEnemies, Amount, ValueProp.Unpowered, Owner, null);
+        }
+    }
 
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (Owner.Player != null && !Osty.CheckMissingWithAnim(Owner.Player))
+        if (Owner.CombatState != null && (target != Owner || result.UnblockedDamage <= 0 || Owner.CombatState.CurrentSide != Owner.Side))
         {
-            if (Owner.CombatState != null && ((target != Owner && target != Owner.Player.Osty) || result.UnblockedDamage <= 0 || Owner.CombatState.CurrentSide != Owner.Side))
-            {
-                return;
-            }
-        }
-        else
-        {
-            if (Owner.CombatState != null && (target != Owner || result.UnblockedDamage <= 0 || Owner.CombatState.CurrentSide != Owner.Side))
-            {
-                return;
-            }
+            return;
         }
         foreach (Creature hittableEnemy in CombatState.HittableEnemies)
         {

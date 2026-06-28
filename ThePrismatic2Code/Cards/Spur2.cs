@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
@@ -13,6 +15,7 @@ public class Spur2() : ThePrismatic2Card(1,
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/spur.png-1f53d51b972811e7082ee61b2a8e83a2.ctex";
     public override string PortraitPath => "res://.godot/imported/spur.png-1f53d51b972811e7082ee61b2a8e83a2.ctex";
     
@@ -34,7 +37,6 @@ public class Spur2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.CalculationBase.UpgradeValueBy(1m);
-        DynamicVars.CalculationExtra.UpgradeValueBy(1m);
+        DynamicVars.CalculationBase.UpgradeValueBy(2m);
     }
 }

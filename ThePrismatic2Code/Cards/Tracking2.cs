@@ -2,6 +2,8 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using ThePrismatic2.ThePrismatic2Code.Character;
 using ThePrismatic2.ThePrismatic2Code.Powers;
 
@@ -12,6 +14,7 @@ public class Tracking2() : ThePrismatic2Card(2,
     CardType.Power, CardRarity.Rare, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/tracking.png-5266a65b1f84060f3cc1028ab2d2c95e.ctex";
     public override string PortraitPath => "res://.godot/imported/tracking.png-5266a65b1f84060f3cc1028ab2d2c95e.ctex";
 

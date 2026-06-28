@@ -13,7 +13,7 @@ public sealed class BurningRing() : ThePrismatic2Relic
         RelicRarity.Starter;
 
 
-    public override bool TryModifyCardRewardOptions(Player player, List<CardCreationResult> options, CardCreationOptions creationOptions)
+    /*public override bool TryModifyCardRewardOptions(Player player, List<CardCreationResult> options, CardCreationOptions creationOptions)
     {
         if (Owner != player)
         {
@@ -23,9 +23,6 @@ public sealed class BurningRing() : ThePrismatic2Relic
         {
             return false;
         }
-
-        
-        
         IEnumerable<CardModel> enumerable = from c in creationOptions.GetPossibleCards(player)
             where options.TrueForAll((CardCreationResult o) => o.originalCard.Id != c.Id)
             select c;
@@ -47,5 +44,5 @@ public sealed class BurningRing() : ThePrismatic2Relic
             options.Add(cardCreationResult);
         }
         return cardModel != null;
-    }
+    }*/
 }

@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -14,6 +15,7 @@ public class KnifeTrap2() : ThePrismatic2Card(2,
     CardType.Skill, CardRarity.Rare, 
     TargetType.AnyEnemy)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/knife_trap.png-92e5249ad1bbb9c3b40b7558322dda80.ctex";
     public override string PortraitPath => "res://.godot/imported/knife_trap.png-92e5249ad1bbb9c3b40b7558322dda80.ctex";
 

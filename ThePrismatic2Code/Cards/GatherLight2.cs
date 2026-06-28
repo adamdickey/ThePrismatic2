@@ -3,6 +3,8 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -13,6 +15,7 @@ public class GatherLight2() : ThePrismatic2Card(1,
     CardType.Skill, CardRarity.Common, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/gather_light.png-85faf6862e33551c35927291288468ce.ctex";
     public override string PortraitPath => "res://.godot/imported/gather_light.png-85faf6862e33551c35927291288468ce.ctex";
 

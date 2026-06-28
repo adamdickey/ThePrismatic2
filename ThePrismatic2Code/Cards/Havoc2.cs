@@ -3,6 +3,8 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
@@ -12,6 +14,7 @@ public class Havoc2() : ThePrismatic2Card(1,
     CardType.Skill, CardRarity.Common, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/havoc.png-5dd1330148ff0718766297ef54d47fbb.ctex";
     public override string PortraitPath => "res://.godot/imported/havoc.png-5dd1330148ff0718766297ef54d47fbb.ctex";
 

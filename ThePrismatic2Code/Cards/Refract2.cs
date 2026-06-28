@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -16,6 +18,7 @@ public class Refract2() : ThePrismatic2Card(3,
     CardType.Attack, CardRarity.Uncommon, 
     TargetType.AnyEnemy)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/refract.png-1a2eefec5e3d3b524eb69d13f3fafb2a.ctex";
     public override string PortraitPath => "res://.godot/imported/refract.png-1a2eefec5e3d3b524eb69d13f3fafb2a.ctex";
     
@@ -32,7 +35,8 @@ public class Refract2() : ThePrismatic2Card(3,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new RepeatVar(1),
-        new DamageVar(8m, ValueProp.Move)
+        new DamageVar(8m, ValueProp.Move),
+        new OstyDamageVar(4m, ValueProp.Move)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -50,7 +54,7 @@ public class Refract2() : ThePrismatic2Card(3,
         if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
         {
             ArgumentNullException.ThrowIfNull(cardPlay.Target);
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue/2).WithHitCount(2).FromOsty(Owner.Osty, this)
+            await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).WithHitCount(2).FromOsty(Owner.Osty, this)
                 .Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_blunt")
                 .Execute(choiceContext);
@@ -64,5 +68,6 @@ public class Refract2() : ThePrismatic2Card(3,
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(4m);
+        DynamicVars.OstyDamage.UpgradeValueBy(2m);
     }
 }

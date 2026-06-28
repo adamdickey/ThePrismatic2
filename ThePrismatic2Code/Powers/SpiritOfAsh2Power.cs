@@ -17,12 +17,13 @@ public class SpiritOfAsh2Power : ThePrismatic2Power
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromKeyword(CardKeyword.Ethereal),
+        HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
         HoverTipFactory.Static(StaticHoverTip.Block)
     ]);
 
     public override async Task BeforeCardPlayed(CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner == Owner.Player && (cardPlay.Card.Keywords.Contains(CardKeyword.Ethereal) || cardPlay.Card.VisualCardPool.IsColorless))
+        if (cardPlay.Card.Owner == Owner.Player && (cardPlay.Card.Keywords.Contains(CardKeyword.Ethereal) || cardPlay.Card.Keywords.Contains(CardKeyword.Exhaust)))
         {
             await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered, null);
         }

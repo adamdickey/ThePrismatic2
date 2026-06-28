@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -15,7 +17,7 @@ public class BloodWall2() : ThePrismatic2Card(2,
     CardType.Skill, CardRarity.Common, 
     TargetType.Self)
 {
-    
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/blood_wall.png-b433a4f72503ff9c20356636290c64fe.ctex";
     public override string PortraitPath => "res://.godot/imported/blood_wall.png-b433a4f72503ff9c20356636290c64fe.ctex";
 

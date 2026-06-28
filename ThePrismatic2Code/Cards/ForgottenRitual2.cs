@@ -7,6 +7,8 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -18,6 +20,7 @@ public class ForgottenRitual2() : ThePrismatic2Card(1,
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/forgotten_ritual.png-bd77494d8251cc8692e919d82b6a65d9.ctex";
     public override string PortraitPath => "res://.godot/imported/forgotten_ritual.png-bd77494d8251cc8692e919d82b6a65d9.ctex";
 

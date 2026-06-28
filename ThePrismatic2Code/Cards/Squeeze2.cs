@@ -3,6 +3,8 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -14,6 +16,7 @@ public class Squeeze2() : ThePrismatic2Card(3,
     CardType.Attack, CardRarity.Rare, 
     TargetType.AnyEnemy)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/squeeze.png-b8c7515cbade9c93aa1b0bea50d6db1e.ctex";
     public override string PortraitPath => "res://.godot/imported/squeeze.png-b8c7515cbade9c93aa1b0bea50d6db1e.ctex";
 

@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -16,6 +18,7 @@ public class Assassinate2() : ThePrismatic2Card(0,
     CardType.Attack, CardRarity.Rare, 
     TargetType.AnyEnemy)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/assassinate.png-9685bfd4b4f9020fdbdf2107d3272847.ctex";
     public override string PortraitPath => "res://.godot/imported/assassinate.png-9685bfd4b4f9020fdbdf2107d3272847.ctex";
 

@@ -6,6 +6,8 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -16,6 +18,7 @@ public class HowlFromBeyond2() : ThePrismatic2Card(3,
     CardType.Attack, CardRarity.Uncommon, 
     TargetType.AllEnemies)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/howl_from_beyond.png-890b2ee84915111aa80330891fec5309.ctex";
     public override string PortraitPath => "res://.godot/imported/howl_from_beyond.png-890b2ee84915111aa80330891fec5309.ctex";
 
@@ -23,10 +26,7 @@ public class HowlFromBeyond2() : ThePrismatic2Card(3,
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Exhaust));
     
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlyArray<CardKeyword>([
-        Extensions.Keywords.Cunning,
-        Extensions.Keywords.Starbound
-        ]);
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

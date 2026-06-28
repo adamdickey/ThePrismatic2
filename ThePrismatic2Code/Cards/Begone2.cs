@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -15,6 +16,7 @@ public class Begone2() : ThePrismatic2Card(1,
     CardType.Skill, CardRarity.Common, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/begone.png-fe68822900425d35ccc3771a48570f9a.ctex";
     public override string PortraitPath => "res://.godot/imported/begone.png-fe68822900425d35ccc3771a48570f9a.ctex";
 

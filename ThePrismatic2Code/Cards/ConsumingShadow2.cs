@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using ThePrismatic2.ThePrismatic2Code.Character;
 using ThePrismatic2.ThePrismatic2Code.Orbs;
@@ -16,6 +18,7 @@ public class ConsumingShadow2() : ThePrismatic2Card(2,
     CardType.Power, CardRarity.Rare, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/consuming_shadow.png-36fbfe0f9417015a906c77ca4a6f42a4.ctex";
     public override string PortraitPath => "res://.godot/imported/consuming_shadow.png-36fbfe0f9417015a906c77ca4a6f42a4.ctex";
     

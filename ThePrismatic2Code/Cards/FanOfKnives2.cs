@@ -6,6 +6,8 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Cards;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -18,6 +20,7 @@ public class FanOfKnives2() : ThePrismatic2Card(2,
     CardType.Power, CardRarity.Rare, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/fan_of_knives.png-7ba3915fcabeadc8b9905e6d99ac1e62.ctex";
     public override string PortraitPath => "res://.godot/imported/fan_of_knives.png-7ba3915fcabeadc8b9905e6d99ac1e62.ctex";
 

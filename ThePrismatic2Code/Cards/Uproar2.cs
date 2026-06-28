@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -16,12 +17,19 @@ public class Uproar2() : ThePrismatic2Card(2,
     CardType.Attack, CardRarity.Common, 
     TargetType.AnyEnemy)
 {
+	public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/uproar.png-a8bc36a119474d14dc3e3bbac995f2a0.ctex";
     public override string PortraitPath => "res://.godot/imported/uproar.png-a8bc36a119474d14dc3e3bbac995f2a0.ctex";
     
+    protected override bool ShouldGlowGoldInternal => !Osty.CheckMissingWithAnim(Owner);
+    protected override HashSet<CardTag> CanonicalTags => [ CardTag.OstyAttack ];
+    
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.DualWield);
     
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(2m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+	    new DamageVar(2m, ValueProp.Move),
+	    new OstyDamageVar(1m, ValueProp.Move)
+	    ]);
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -61,5 +69,6 @@ public class Uproar2() : ThePrismatic2Card(2,
     protected override void OnUpgrade()
     {
     	DynamicVars.Damage.UpgradeValueBy(2m);
+	    DynamicVars.OstyDamage.UpgradeValueBy(2m);
     }
 }

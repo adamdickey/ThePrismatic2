@@ -1,4 +1,5 @@
-﻿using MegaCrit.Sts2.Core.Entities.Creatures;
+﻿using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -16,7 +17,7 @@ public class Accuracy2Power : ThePrismatic2Power
 
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? card)
     {
-        if (Owner != dealer)
+        if (Owner != dealer && Owner.Player?.Osty != dealer)
         {
             return 0m;
         }
@@ -28,7 +29,7 @@ public class Accuracy2Power : ThePrismatic2Power
         {
             return 0m;
         }
-        if (card.EnergyCost.Canonical != 0)
+        if (card.EnergyCost.GetWithModifiers(CostModifiers.All) != 0)
         {
             return 0m;
         }

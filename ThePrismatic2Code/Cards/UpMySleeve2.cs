@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -14,6 +16,7 @@ public class UpMySleeve2() : ThePrismatic2Card(3,
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/up_my_sleeve.png-170a07df5e0e068fff13f77f6b51b0b0.ctex";
     public override string PortraitPath => "res://.godot/imported/up_my_sleeve.png-170a07df5e0e068fff13f77f6b51b0b0.ctex";
 

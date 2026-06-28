@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Cards;
@@ -21,6 +22,7 @@ public class Stomp2() : ThePrismatic2Card(3,
     CardType.Attack, CardRarity.Uncommon, 
     TargetType.AllEnemies)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/stomp.png-9aac0da66ce194d4ae3678059f67ad08.ctex";
     public override string PortraitPath => "res://.godot/imported/stomp.png-9aac0da66ce194d4ae3678059f67ad08.ctex";
 

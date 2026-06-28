@@ -4,6 +4,8 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -16,7 +18,7 @@ public class Bloodletting2() : ThePrismatic2Card(0,
     CardType.Skill, CardRarity.Common, 
     TargetType.Self)
 {
-    
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/bloodletting.png-17a835f72296388ba15ba2d58d05294d.ctex";
     public override string PortraitPath => "res://.godot/imported/bloodletting.png-17a835f72296388ba15ba2d58d05294d.ctex";
     

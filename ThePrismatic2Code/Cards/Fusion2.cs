@@ -3,6 +3,8 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -13,6 +15,7 @@ public class Fusion2() : ThePrismatic2Card(1,
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/fusion.png-a89db94a6a6ef970aa40e229dc72b09a.ctex";
     public override string PortraitPath => "res://.godot/imported/fusion.png-a89db94a6a6ef970aa40e229dc72b09a.ctex";
     

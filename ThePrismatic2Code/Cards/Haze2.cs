@@ -7,6 +7,8 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -20,6 +22,7 @@ public class Haze2() : ThePrismatic2Card(3,
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.AllEnemies)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/haze.png-5aa9d2c9549ea2b0f9f025b4fd0d9364.ctex";
     public override string PortraitPath => "res://.godot/imported/haze.png-5aa9d2c9549ea2b0f9f025b4fd0d9364.ctex";
 

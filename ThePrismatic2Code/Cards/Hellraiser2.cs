@@ -5,6 +5,8 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Cards;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -17,6 +19,7 @@ public class Hellraiser2() : ThePrismatic2Card(2,
     CardType.Power, CardRarity.Rare, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/hellraiser.png-1ddde74f104c3fe40363c5f5928e7e78.ctex";
     public override string PortraitPath => "res://.godot/imported/hellraiser.png-1ddde74f104c3fe40363c5f5928e7e78.ctex";
 

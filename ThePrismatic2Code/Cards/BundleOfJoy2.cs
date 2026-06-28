@@ -16,6 +16,7 @@ public class BundleOfJoy2() : ThePrismatic2Card(1,
     CardType.Skill, CardRarity.Rare, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/bundle_of_joy.png-cb7480ef183d6f8d11c2f226481e96e2.ctex";
     public override string PortraitPath => "res://.godot/imported/bundle_of_joy.png-cb7480ef183d6f8d11c2f226481e96e2.ctex";
 
@@ -25,15 +26,20 @@ public class BundleOfJoy2() : ThePrismatic2Card(1,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        List<CardModel> list = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, 0, (int)DynamicVars.Cards.BaseValue), context: choiceContext, player: Owner, filter: null, source: this)).ToList();
-        foreach (CardModel item in list)
+        if (RunState != null)
         {
-            if (RunState != null)
+            List<CardModel> list = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, 0, (int)DynamicVars.Cards.BaseValue), context: choiceContext, player: Owner, filter: null, source: this)).ToList();
+            foreach (CardModel item in list)
             {
-                CardModel? distinctForCombat = CardFactory.GetDistinctForCombat(Owner, ModelDb.CardPool<ColorlessCardPool>().GetUnlockedCards(Owner.UnlockState, RunState.CardMultiplayerConstraint), 1, Owner.RunState.Rng.CombatCardGeneration).FirstOrDefault();
-                if (distinctForCombat != null) await CardCmd.Transform(item, distinctForCombat);
+                await CardCmd.Exhaust(choiceContext, item);
+            }
+            IEnumerable<CardModel> distinctForCombat = CardFactory.GetDistinctForCombat(Owner, ModelDb.CardPool<ColorlessCardPool>().GetUnlockedCards(Owner.UnlockState, RunState.CardMultiplayerConstraint), DynamicVars.Cards.IntValue, Owner.RunState.Rng.CombatCardGeneration);
+            foreach (CardModel item in distinctForCombat)
+            {
+                await CardPileCmd.AddGeneratedCardToCombat(item, PileType.Hand, Owner);
             }
         }
+        
     }
 
     protected override void OnUpgrade()

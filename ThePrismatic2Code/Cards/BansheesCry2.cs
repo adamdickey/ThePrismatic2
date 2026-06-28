@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -16,16 +17,17 @@ public class BansheesCry2() : ThePrismatic2Card(9,
     CardType.Attack, CardRarity.Rare, 
     TargetType.AllEnemies)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/banshees_cry.png-5685018fb8babe6b829128677b3b1ba0.ctex";
     public override string PortraitPath => "res://.godot/imported/banshees_cry.png-5685018fb8babe6b829128677b3b1ba0.ctex";
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromKeyword(CardKeyword.Ethereal),
-        HoverTipFactory.FromKeyword(Extensions.Keywords.Cunning)
+        HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
         ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(33m, ValueProp.Move),
+        new DamageVar(25m, ValueProp.Move),
         new EnergyVar(2)
     ]);
 
@@ -52,7 +54,7 @@ public class BansheesCry2() : ThePrismatic2Card(9,
         {
             return Task.CompletedTask;
         }
-        int num = CombatManager.Instance.History.CardPlaysFinished.Count(e => (e.WasEthereal || e.CardPlay.Card.Keywords.Contains(Extensions.Keywords.Cunning)) && e.CardPlay.Card.Owner == Owner);
+        int num = CombatManager.Instance.History.CardPlaysFinished.Count(e => (e.WasEthereal || e.CardPlay.Card.Keywords.Contains(CardKeyword.Exhaust)) && e.CardPlay.Card.Owner == Owner);
         EnergyCost.AddThisCombat(-num * DynamicVars.Energy.IntValue);
         return Task.CompletedTask;
     }
@@ -63,7 +65,7 @@ public class BansheesCry2() : ThePrismatic2Card(9,
         {
             return Task.CompletedTask;
         }
-        if (!cardPlay.Card.Keywords.Contains(CardKeyword.Ethereal) && !cardPlay.Card.Keywords.Contains(Extensions.Keywords.Cunning))
+        if (!cardPlay.Card.Keywords.Contains(CardKeyword.Ethereal) && !cardPlay.Card.Keywords.Contains(CardKeyword.Exhaust))
         {
             return Task.CompletedTask;
         }

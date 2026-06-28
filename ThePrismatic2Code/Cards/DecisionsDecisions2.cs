@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
@@ -14,6 +15,7 @@ public class DecisionsDecisions2() : ThePrismatic2Card(0,
     CardType.Skill, CardRarity.Rare, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/decisions_decisions.png-dd9e5bc21a8a2958e7af67ea73867136.ctex";
     public override string PortraitPath => "res://.godot/imported/decisions_decisions.png-dd9e5bc21a8a2958e7af67ea73867136.ctex";
     

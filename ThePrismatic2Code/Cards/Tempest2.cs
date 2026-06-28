@@ -3,6 +3,8 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -13,6 +15,7 @@ public class Tempest2() : ThePrismatic2Card(0,
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/tempest.png-e431f075eccfa9a2cf6acc592ae16e2a.ctex";
     public override string PortraitPath => "res://.godot/imported/tempest.png-e431f075eccfa9a2cf6acc592ae16e2a.ctex";
     

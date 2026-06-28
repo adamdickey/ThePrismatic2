@@ -6,6 +6,8 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
@@ -19,6 +21,7 @@ public class Hyperbeam2() : ThePrismatic2Card(2,
     CardType.Attack, CardRarity.Rare, 
     TargetType.AllEnemies)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/hyperbeam.png-69e686a51ad6411d420df10a5930e442.ctex";
     public override string PortraitPath => "res://.godot/imported/hyperbeam.png-69e686a51ad6411d420df10a5930e442.ctex";
     

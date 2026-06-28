@@ -4,8 +4,8 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -16,6 +16,7 @@ public class Guards2() : ThePrismatic2Card(2,
     CardType.Skill, CardRarity.Rare, 
     TargetType.Self)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/guards.png-8a2be2ed8c21d315cf66fd957f11a9e7.ctex";
     public override string PortraitPath => "res://.godot/imported/guards.png-8a2be2ed8c21d315cf66fd957f11a9e7.ctex";
 

@@ -5,6 +5,8 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -17,6 +19,7 @@ public class SweepingBeam2() : ThePrismatic2Card(1,
     CardType.Attack, CardRarity.Common, 
     TargetType.AllEnemies)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/sweeping_beam.png-72d9d2103351b0109fff4a1b1a19be96.ctex";
     public override string PortraitPath => "res://.godot/imported/sweeping_beam.png-72d9d2103351b0109fff4a1b1a19be96.ctex";
     

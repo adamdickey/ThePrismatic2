@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -17,6 +18,7 @@ public class SevenStars2() : ThePrismatic2Card(2,
     CardType.Attack, CardRarity.Rare, 
     TargetType.AllEnemies)
 {
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/seven_stars.png-410c481a54e211f8e73bcf56c7f8c7d0.ctex";
     public override string PortraitPath => "res://.godot/imported/seven_stars.png-410c481a54e211f8e73bcf56c7f8c7d0.ctex";
 

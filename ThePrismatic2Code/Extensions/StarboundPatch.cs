@@ -22,24 +22,24 @@ public static class StarboundPatch
             playerStars = card.Owner.PlayerCombatState.Stars;
         }
 
-        if (card.CombatState != null && card.Keywords.Contains(Keywords.Starbound))
+        if (card.CombatState != null && (card.Keywords.Contains(Keywords.Starbound) || card.Keywords.Contains(Keywords.StarboundThisTurn)))
         {
             if (playerEnergy >= cardEnergy && playerStars >= cardStars)
             {
-                card.EnergyCost.SetThisCombat(cardEnergy);
-                card.SetStarCostThisCombat(cardStars);
+                card.EnergyCost.SetThisTurnOrUntilPlayed(cardEnergy);
+                card.SetStarCostThisTurn(cardStars);
                 reason = UnplayableReason.None;
                 return;
             }
             if (playerEnergy < cardEnergy && playerEnergy + playerStars >= cardCost)
             {
-                card.EnergyCost.SetThisTurn(playerEnergy);
+                card.EnergyCost.SetThisTurnOrUntilPlayed(playerEnergy);
                 card.SetStarCostThisTurn(cardCost - playerEnergy);
                 reason = UnplayableReason.None;
             }
             if (playerStars < cardStars && playerStars + playerEnergy >= cardCost)
             {
-                card.EnergyCost.SetThisTurn(cardCost - playerStars);
+                card.EnergyCost.SetThisTurnOrUntilPlayed(cardCost - playerStars);
                 card.SetStarCostThisTurn(playerStars);
                 reason = UnplayableReason.None;
             }

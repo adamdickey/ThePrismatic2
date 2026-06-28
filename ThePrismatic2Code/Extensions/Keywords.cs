@@ -16,4 +16,10 @@ public class Keywords
     
     [CustomEnum, KeywordProperties(AutoKeywordPosition.Before)] 
     public static CardKeyword Starbound;
+    
+    [CustomEnum, KeywordProperties(AutoKeywordPosition.Before)] 
+    public static CardKeyword CunningThisTurn;
+    
+    [CustomEnum, KeywordProperties(AutoKeywordPosition.Before)] 
+    public static CardKeyword StarboundThisTurn;
 }
