@@ -21,7 +21,7 @@ public class AstralPulse2() : ThePrismatic2Card(0,
     
     public override int CanonicalStarCost => 3;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(14m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(6m, ValueProp.Move));
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
@@ -29,6 +29,7 @@ public class AstralPulse2() : ThePrismatic2Card(0,
     {
         if (CombatState != null)
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState)
+                .WithHitCount(2)
                 .WithHitFx("vfx/vfx_starry_impact")
                 .SpawningHitVfxOnEachCreature()
                 .Execute(choiceContext);
@@ -36,6 +37,6 @@ public class AstralPulse2() : ThePrismatic2Card(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4m);
+        DynamicVars.Damage.UpgradeValueBy(2m);
     }
 }

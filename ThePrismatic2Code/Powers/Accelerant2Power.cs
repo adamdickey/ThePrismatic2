@@ -21,7 +21,7 @@ public class Accelerant2Power : ThePrismatic2Power
     {
         if (giver == Owner && target != Owner && power is DoomPower)
         {
-            return amount * Amount;
+            return Amount;
         }
         return amount;
     }

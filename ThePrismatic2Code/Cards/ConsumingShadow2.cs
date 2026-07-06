@@ -6,9 +6,9 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
 using ThePrismatic2.ThePrismatic2Code.Character;
-using ThePrismatic2.ThePrismatic2Code.Orbs;
 using ThePrismatic2.ThePrismatic2Code.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
@@ -24,9 +24,9 @@ public class ConsumingShadow2() : ThePrismatic2Card(2,
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Channeling),
-        HoverTipFactory.FromOrb<GloomOrb>(),
-        HoverTipFactory.FromPower<DoomPower>(),
-        HoverTipFactory.Static(StaticHoverTip.Evoke)
+        HoverTipFactory.FromOrb<DarkOrb>(),
+        HoverTipFactory.Static(StaticHoverTip.Evoke),
+        HoverTipFactory.FromPower<DoomPower>()
     ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
@@ -39,7 +39,7 @@ public class ConsumingShadow2() : ThePrismatic2Card(2,
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         for (int i = 0; i < DynamicVars.Repeat.IntValue; i++)
         {
-            await OrbCmd.Channel<GloomOrb>(choiceContext, Owner);
+            await OrbCmd.Channel<DarkOrb>(choiceContext, Owner);
         }
         await PowerCmd.Apply<ConsumingShadow2Power>(choiceContext, Owner.Creature, DynamicVars["ConsumingShadowPower"].BaseValue, Owner.Creature, this);
     }

@@ -266,7 +266,7 @@
   "THEPRISMATIC2-BUBBLE_BUBBLE2.description": "If the enemy has [gold]Poison[/gold], apply {DoomPower:diff()} [gold]Doom[/gold].\nIf the enemy has [gold]Doom[/gold], apply {PoisonPower:diff()} [gold]Poison[/gold].",
   "THEPRISMATIC2-BUBBLE_BUBBLE2.title": "Bubble Bubble",
 
-  "THEPRISMATIC2-CORROSIVE_WAVE2.description": "{IfUpgraded:show:Gain 1 [gold]Focus[/gold] this turn.\n|} Whenever you draw a card this turn, [gold]Channel[/gold] {CorrosiveWave:diff()} [gold]Venom[/gold].",
+  "THEPRISMATIC2-CORROSIVE_WAVE2.description": "{IfUpgraded:show:[gold]Channel[/gold] 1 [gold]Venom[/gold].\n|} Whenever you draw a card this turn, [gold]Channel[/gold] {CorrosiveWave:diff()} [gold]Venom[/gold].",
   "THEPRISMATIC2-CORROSIVE_WAVE2.title": "Corrosive Wave",
 
   "THEPRISMATIC2-DEADLY_POISON2.description": "Apply {PoisonPower:diff()} [gold]Poison[/gold].\nApply {DoomPower:diff()} [gold]Doom[/gold].",
@@ -326,7 +326,7 @@
   "THEPRISMATIC2-NOXIOUS_FUMES2.description": "{IfUpgraded:show:[gold]Channel[/gold] 1 [gold]Venom[/gold].\n|}At the start of your turn, [gold]Channel[/gold] 1 [gold]Venom[/gold].",
   "THEPRISMATIC2-NOXIOUS_FUMES2.title": "Noxious Fumes",
 
-  "THEPRISMATIC2-OUTBREAK2.description": "Every {Repeat:plural:time|{Repeat:diff()} times} you apply [gold]Poison[/gold] or [gold]Doom[/gold], deal {OutbreakPower:diff()} damage to ALL enemies.",
+  "THEPRISMATIC2-OUTBREAK2.description": "Every {Repeat:plural:time|{Repeat:diff()} times} you apply a debuff, deal {OutbreakPower:diff()} damage to ALL enemies.",
   "THEPRISMATIC2-OUTBREAK2.title": "Outbreak",
 
   "THEPRISMATIC2-PHANTOM_BLADES2.description": "0 {energyPrefix:energyIcons(1)} Attacks gain [gold]Retain[/gold].\nThe first 0 {energyPrefix:energyIcons(1)} Attack you play each turn deals {PhantomBladesPower:diff()} additional damage.",
@@ -380,13 +380,13 @@
   "THEPRISMATIC2-BIG_BANG2.description": "Draw {Cards:diff()} {Cards:plural:card|cards}.\nGain {Energy:energyIcons()}.\n[gold]Channel[/gold] 1 [gold]Solar[/gold].\n[gold]Channel[/gold] 1 [gold]Iron[/gold].",
   "THEPRISMATIC2-BIG_BANG2.title": "Big Bang",
 
-  "THEPRISMATIC2-BLACK_HOLE2.description": "Whenever you spend or gain {singleStarIcon}, [gold]Forge[/gold], or [gold]Summon[/gold], deal {BlackHolePower:diff()} damage to ALL enemies.",
+  "THEPRISMATIC2-BLACK_HOLE2.description": "Whenever you spend or gain {singleStarIcon}, [gold]Exhaust[/gold] a card, or discard a card, deal {BlackHolePower:diff()} damage to ALL enemies.",
   "THEPRISMATIC2-BLACK_HOLE2.title": "Black Hole",
 
   "THEPRISMATIC2-BOMBARDMENT2.description": "Deal {Damage:diff()} damage.\nAt the start of your turn, if this is in your [gold]Exhaust Pile[/gold], play it.",
   "THEPRISMATIC2-BOMBARDMENT2.title": "Bombardment",
 
-  "THEPRISMATIC2-BULWARK2.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Summon[/gold] {Summon:diff()}.\n[gold]Channel[/gold] {Iron:diff()} [gold]Iron[/gold].",
+  "THEPRISMATIC2-BULWARK2.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Channel[/gold] {Iron:diff()} [gold]Iron[/gold].",
   "THEPRISMATIC2-BULWARK2.title": "Bulwark",
 
   "THEPRISMATIC2-BUNDLE_OF_JOY2.description": "[gold]Exhaust[/gold] up to {Cards:diff()} cards in your [gold]Hand[/gold].\nAdd {Cards:diff()} random Colorless cards into your [gold]Hand[/gold].",
@@ -447,14 +447,14 @@
   "THEPRISMATIC2-HAMMER_TIME2.description": "Whenever you [gold]Forge[/gold], all allies [gold]Forge[/gold] as well.\nWhenever a player plays an Attack, [gold]Forge[/gold] {Forge:diff()}.",
   "THEPRISMATIC2-HAMMER_TIME2.title": "Hammer Time",
 
-  "THEPRISMATIC2-HEIRLOOM_HAMMER2.description": "Deal {Damage:diff()} damage.\nChoose a card in your [gold]Hand[/gold]. Add an [gold]Upgraded[/gold] copy of that card into your [gold]Hand[/gold].",
+  "THEPRISMATIC2-HEIRLOOM_HAMMER2.description": "Deal {Damage:diff()} damage.\nChoose a card in your [gold]Hand[/gold]. Add a{IfUpgraded:show:n [gold]Upgraded[/gold]} copy of that card into your [gold]Hand[/gold].",
   "THEPRISMATIC2-HEIRLOOM_HAMMER2.selectionScreenPrompt": "Choose a Card to copy.",
   "THEPRISMATIC2-HEIRLOOM_HAMMER2.title": "Heirloom Hammer",
 
   "THEPRISMATIC2-HIDDEN_CACHE2.description": "[gold]Channel[/gold] 1 [gold]Solar[/gold].\nNext turn, gain {StarNextTurnPower:starIcons()}.",
   "THEPRISMATIC2-HIDDEN_CACHE2.title": "Hidden Cache",
 
-  "THEPRISMATIC2-I_AM_INVINCIBLE2.description": "Gain {Block:diff()} [gold]Block[/gold].\nAt the end of your turn, if this is on top of your [gold]Draw Pile[/gold] or in your [gold]Exhaust Pile[/gold], play it.",
+  "THEPRISMATIC2-I_AM_INVINCIBLE2.description": "Gain {Block:diff()} [gold]Block[/gold].\nAt the end of your turn, if this is on top of your [gold]Draw Pile[/gold], play it.",
   "THEPRISMATIC2-I_AM_INVINCIBLE2.title": "I Am Invincible",
 
   "THEPRISMATIC2-KNOCKOUT_BLOW2.description": "Deal {Damage:diff()} damage.\nIf this kills an enemy, gain {Orbs:diff()} Orb Slots and [gold]Channel[/gold] {Orbs:diff()} [gold]Solar[/gold].",
@@ -559,7 +559,7 @@
   "THEPRISMATIC2-SNEAKY2.description": "Whenever another player attacks an enemy, gain {SneakyPower:diff()} [gold]Block[/gold].",
   "THEPRISMATIC2-SNEAKY2.title": "Sneaky",
 
-  "THEPRISMATIC2-ASTRAL_PULSE2.description": "Deal {Damage:diff()} damage to ALL enemies.",
+  "THEPRISMATIC2-ASTRAL_PULSE2.description": "Deal {Damage:diff()} damage to ALL enemies twice.",
   "THEPRISMATIC2-ASTRAL_PULSE2.title": "Astral Pulse",
 
   "THEPRISMATIC2-DECISIONS_DECISIONS2.description": "Draw {Cards:diff()} cards.\nChoose a Skill in your [gold]Hand[/gold] and play it {Repeat:diff()} times.",
@@ -584,7 +584,7 @@
   "THEPRISMATIC2-THE_SMITH2.description": "[gold]Forge[/gold] {Forge:diff()}.",
   "THEPRISMATIC2-THE_SMITH2.title": "The Smith",
 
-  "THEPRISMATIC2-WROUGHT_IN_WAR2.description": "Deal {Damage:diff()} damage.\n[gold]Forge[/gold] {Forge:diff()}.\n[gold]Channel[/gold] 1 [gold]Magma[/gold].",
+  "THEPRISMATIC2-WROUGHT_IN_WAR2.description": "Deal {Damage:diff()} damage.\n[gold]Forge[/gold] {Forge:diff()}.",
   "THEPRISMATIC2-WROUGHT_IN_WAR2.title": "Wrought in War",
 
   "THEPRISMATIC2-AFTERLIFE2.description": "[gold]Summon[/gold] {Summon:diff()}.\n[gold]Channel[/gold] 1 [gold]Bone[/gold].",
@@ -599,10 +599,10 @@
   "THEPRISMATIC2-BODYGUARD2.description": "[gold]Summon[/gold] {Summon:diff()}.",
   "THEPRISMATIC2-BODYGUARD2.title": "Bodyguard",
 
-  "THEPRISMATIC2-BONE_SHARDS2.description": "If [gold]Osty[/gold] is alive, he deals {OstyDamage:diff()} damage to ALL enemies and loses {HpLoss:diff()} HP, otherwise you deal {Damage:diff()} damage to ALL enemies and lose {HpLoss:diff()} HP.\nGain {Block:diff()} Block.",
+  "THEPRISMATIC2-BONE_SHARDS2.description": "If [gold]Osty[/gold] is alive, he deals {OstyDamage:diff()} damage to ALL enemies and dies, otherwise you deal {Damage:diff()} damage to ALL enemies and lose {HpLoss:diff()} HP.\nGain {Block:diff()} Block.",
   "THEPRISMATIC2-BONE_SHARDS2.title": "Bone Shards",
 
-  "THEPRISMATIC2-BURY2.description": "Deal {Damage:diff()} damage.\nCosts 1 less {energyPrefix:energyIcons(1)} for each other [gold]Costly[/gold] card in your [gold]Hand[/gold].",
+  "THEPRISMATIC2-BURY2.description": "Deal {CalculatedDamage:diff()} damage.\nDeals {ExtraDamage:diff()} additional damage for each other [gold]Costly[/gold] card in your [gold]Hand[/gold].",
   "THEPRISMATIC2-BURY2.title": "Bury",
 
   "THEPRISMATIC2-CALCIFY2.description": "[gold]Osty's[/gold] attacks deal {CalcifyPower:diff()} additional damage.\nHis [gold]Dual Wield[/gold] Attacks deal damage equal to the base Attack's damage.",
@@ -756,13 +756,13 @@
   "THEPRISMATIC2-COMPACT2.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Transform[/gold] all Status cards and Colorless cards in your [gold]Hand[/gold] into [gold]{IfUpgraded:show:Fuel+|Fuel}[/gold].",
   "THEPRISMATIC2-COMPACT2.title": "Compact",
 
-  "THEPRISMATIC2-CONSUMING_SHADOW2.description": "[gold]Channel[/gold] {Repeat:diff()} [gold]Gloom[/gold].\nAt the end of your turn, [gold]Evoke[/gold] your leftmost Orb, then kill enemies with at least as much [gold]Doom[/gold] as HP.",
+  "THEPRISMATIC2-CONSUMING_SHADOW2.description": "[gold]Channel[/gold] {Repeat:diff()} [gold]Dark[/gold].\nAt the end of your turn, [gold]Evoke[/gold] your leftmost Orb, then kill enemies with at least as much [gold]Doom[/gold] as HP.",
   "THEPRISMATIC2-CONSUMING_SHADOW2.title": "Consuming Shadow",
 
   "THEPRISMATIC2-COOLANT2.description": "At the start of your turn, gain {CoolantPower:diff()} [gold]Block[/gold] for each unique Orb you have and each unique debuff on enemies.",
   "THEPRISMATIC2-COOLANT2.title": "Coolant",
 
-  "THEPRISMATIC2-DARKNESS2.description": "[gold]Channel[/gold] 1 [gold]Gloom[/gold].\nTrigger the passive ability of all [gold]Gloom[/gold] Orbs{IfUpgraded:show: twice|}.",
+  "THEPRISMATIC2-DARKNESS2.description": "[gold]Channel[/gold] 1 [gold]Dark[/gold].\nApply {DoomPower:diff()} [gold]Doom[/gold] to the enemy with the least HP.",
   "THEPRISMATIC2-DARKNESS2.title": "Darkness",
 
   "THEPRISMATIC2-DOUBLE_ENERGY2.description": "Double your Energy.\nDouble your Stars.",
@@ -798,7 +798,7 @@
   "THEPRISMATIC2-HELIX_DRILL2.description": "Deal {Damage:diff()} damage for each {energyPrefix:energyIcons(1)} and each {singleStarIcon} previously spent this turn.{InCombat:\n(Hits {CalculatedHits:diff()} {CalculatedHits:plural:time|times})|}",
   "THEPRISMATIC2-HELIX_DRILL2.title": "Helix Drill",
 
-  "THEPRISMATIC2-HOTFIX2.description": "Gain {FocusPower:diff()} [gold]Focus[/gold] this turn.\n[gold]Forge[/gold] {Forge:diff()}.",
+  "THEPRISMATIC2-HOTFIX2.description": "Gain {FocusPower:diff()} [gold]Focus[/gold] this turn.\nGain {Stars:starIcons()}.",
   "THEPRISMATIC2-HOTFIX2.title": "Hotfix",
 
   "THEPRISMATIC2-HYPERBEAM2.description": "Deal {Damage:diff()} damage to ALL enemies.\nLose {StrengthPower:diff()} [gold]Strength[/gold].\nLose {FocusPower:diff()} [gold]Focus[/gold].",
@@ -819,13 +819,13 @@
   "THEPRISMATIC2-MODDED2.description": "Gain {Repeat:diff()} Orb {Repeat:plural:Slot|Slots}.\nDraw {Cards:diff()} {Cards:plural:card|cards}.\nGain {Stars:starIcons()}.\nIncrease this card's cost by 1.",
   "THEPRISMATIC2-MODDED2.title": "Modded",
 
-  "THEPRISMATIC2-NULL2.description": "Deal {Damage:diff()} damage.\nApply {WeakPower:diff()} [gold]Weak[/gold].\n[gold]Channel[/gold] 1 [gold]Gloom[/gold].{IsOstyAlive:\n([gold]Osty[/gold] deals {OstyDamage:diff()} damage)|}",
+  "THEPRISMATIC2-NULL2.description": "Deal {Damage:diff()} damage.\nApply {WeakPower:diff()} [gold]Weak[/gold].\n[gold]Channel[/gold] 1 [gold]Dark[/gold].{IsOstyAlive:\n([gold]Osty[/gold] deals {OstyDamage:diff()} damage)|}",
   "THEPRISMATIC2-NULL2.title": "Null",
 
   "THEPRISMATIC2-OVERCLOCK2.description": "Draw {Cards:diff()} cards.\nAdd 2 [gold]Forgets[/gold] into your [gold]Discard Pile[/gold].",
   "THEPRISMATIC2-OVERCLOCK2.title": "Overclock",
 
-  "THEPRISMATIC2-RAINBOW2.description": "Gain {Repeat:diff()} Orb Slots.\n[gold]Channel[/gold] 1 [gold]Magma[/gold], 1 [gold]Solar[/gold],\n1 [gold]Lightning[/gold], 1 [gold]Venom[/gold],\n1 [gold]Frost[/gold], and 1 [gold]Gloom[/gold].",
+  "THEPRISMATIC2-RAINBOW2.description": "Gain {Repeat:diff()} Orb Slots.\n[gold]Channel[/gold] 1 [gold]Magma[/gold], 1 [gold]Solar[/gold],\n1 [gold]Lightning[/gold], 1 [gold]Venom[/gold],\n1 [gold]Frost[/gold], and 1 [gold]Dark[/gold].",
   "THEPRISMATIC2-RAINBOW2.title": "Rainbow",
 
   "THEPRISMATIC2-REFRACT2.description": "Deal {Damage:diff()} damage twice.\n[gold]Channel[/gold] {Repeat:diff()} [gold]Glass[/gold].{IsOstyAlive:\n([gold]Osty[/gold] deals {OstyDamage:diff()} damage)|}",
@@ -834,7 +834,7 @@
   "THEPRISMATIC2-ROCKET_PUNCH2.description": "Deal {Damage:diff()} damage.\nDraw {Cards:diff()} {Cards:plural:card|cards}.\nWhenever you create a card, reduce this card's cost to 0 {energyPrefix:energyIcons(1)} until played.",
   "THEPRISMATIC2-ROCKET_PUNCH2.title": "Rocket Punch",
 
-  "THEPRISMATIC2-SHADOW_SHIELD2.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Summon[/gold] {Summon:diff()}.\n[gold]Channel[/gold] 1 [gold]Gloom[/gold].",
+  "THEPRISMATIC2-SHADOW_SHIELD2.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Summon[/gold] {Summon:diff()}.\n[gold]Channel[/gold] 1 [gold]Dark[/gold].",
   "THEPRISMATIC2-SHADOW_SHIELD2.title": "Shadow Shield",
 
   "THEPRISMATIC2-SMOKESTACK2.description": "Whenever you create a card, deal {SmokestackPower:diff()} damage to ALL enemies.",
@@ -846,7 +846,7 @@
   "THEPRISMATIC2-SWEEPING_BEAM2.description": "Deal {Damage:diff()} damage to ALL enemies.\nDraw {Cards:diff()} {Cards:plural:card|cards}.\nGain {Stars:starIcons()}.",
   "THEPRISMATIC2-SWEEPING_BEAM2.title": "Sweeping Beam",
 
-  "THEPRISMATIC2-SYNCHRONIZE2.description": "[gold]Forge[/gold] {Forge:diff()} and gain {Focus:diff()} [gold]Focus[/gold] this turn for each unique Orb you have.{InCombat:\n({CalculatedFocus:diff()} unique Orbs)|}",
+  "THEPRISMATIC2-SYNCHRONIZE2.description": "Gain {Stars:starIcons()} and gain {Focus:diff()} [gold]Focus[/gold] this turn for each unique Orb you have.{InCombat:\n({CalculatedFocus:diff()} unique Orbs)|}",
   "THEPRISMATIC2-SYNCHRONIZE2.title": "Synchronize",
   
   "THEPRISMATIC2-TEMPEST2.description": "[gold]Channel[/gold] {IfUpgraded:show:X+1|X} [gold]Lightning[/gold].",
@@ -884,5 +884,56 @@
   "THEPRISMATIC2-HAND_TRICK2.title": "Hand Trick",
 
   "THEPRISMATIC2-BEAT_INTO_SHAPE2.description": "Deal {Damage:diff()} damage.\n[gold]Channel[/gold] 1 [gold]Iron[/gold] for each time you’ve hit the enemy this turn.{IsTargeting:\n([gold]Channel[/gold] {CalculatedOrbs:diff()} [gold]Iron[/gold])|}",
-  "THEPRISMATIC2-BEAT_INTO_SHAPE2.title": "Beat Into Shape"
+  "THEPRISMATIC2-BEAT_INTO_SHAPE2.title": "Beat Into Shape",
+
+  "THEPRISMATIC2-ERADICATE2.description": "Deal {CalculatedDamage:diff()} damage X times.\nDeals {ExtraDamage:diff()} additional damage for each other card in your [gold]Hand[/gold] with [gold]Retain[/gold].",
+  "THEPRISMATIC2-ERADICATE2.title": "Eradicate",
+
+  "THEPRISMATIC2-BLADE_OF_INK2.description": "Add {Cards:diff()} [purple]Inked[/purple] [gold]{Cards:plural:Shiv|Shivs}[/gold] into your [gold]Hand[/gold].",
+  "THEPRISMATIC2-BLADE_OF_INK2.title": "Blade Of Ink",
+
+  "THEPRISMATIC2-RED.description": "Remove red cards from ALL future card rewards.",
+  "THEPRISMATIC2-RED.title": "Red",
+
+  "THEPRISMATIC2-GREEN.description": "Remove green cards from ALL future card rewards.",
+  "THEPRISMATIC2-GREEN.title": "Green",
+
+  "THEPRISMATIC2-ORANGE.description": "Remove orange cards from ALL future card rewards.",
+  "THEPRISMATIC2-ORANGE.title": "Orange",
+
+  "THEPRISMATIC2-PINK.description": "Remove pink cards from ALL future card rewards.",
+  "THEPRISMATIC2-PINK.title": "Pink",
+
+  "THEPRISMATIC2-BLUE.description": "Remove blue cards from ALL future card rewards.",
+  "THEPRISMATIC2-BLUE.title": "Blue",
+
+  "THEPRISMATIC2-STARBOUND_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "THEPRISMATIC2-STARBOUND_DEFEND.title": "Starbound Defend",
+
+  "THEPRISMATIC2-STARBOUND_STRIKE.description": "Deal {Damage:diff()} damage.",
+  "THEPRISMATIC2-STARBOUND_STRIKE.title": "Starbound Strike",
+
+  "THEPRISMATIC2-COORDINATED_STRIKE.description": "Deal {Damage:diff()} damage.{IsOstyAlive:\n([gold]Osty[/gold] deals {OstyDamage:diff()} damage)|}",
+  "THEPRISMATIC2-COORDINATED_STRIKE.title": "Coordinated Strike",
+
+  "THEPRISMATIC2-COORDINATED_DEFEND.description": "Gain {Block:diff()} Block.\n[gold]Osty[/gold] heals {Heal:diff()} HP.",
+  "THEPRISMATIC2-COORDINATED_DEFEND.title": "Coordinated Defend",
+
+  "THEPRISMATIC2-CLAWING_STRIKE.description": "Deal {Damage:diff()} damage.\nIncrease the damage of ALL 0 {energyPrefix:energyIcons(1)} Attacks by 1 this combat.",
+  "THEPRISMATIC2-CLAWING_STRIKE.title": "Clawing Strike",
+
+  "THEPRISMATIC2-CLAWING_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nIncrease the damage of ALL 0 {energyPrefix:energyIcons(1)} Attacks by 1 this combat.",
+  "THEPRISMATIC2-CLAWING_DEFEND.title": "Clawing Defend",
+
+  "THEPRISMATIC2-COSTLY_STRIKE.description": "Deal {Damage:diff()} damage.\nCosts 1 less {energyPrefix:energyIcons(1)} if you played another [gold]Costly[/gold] card this turn.",
+  "THEPRISMATIC2-COSTLY_STRIKE.title": "Costly Strike",
+
+  "THEPRISMATIC2-COSTLY_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nCosts 1 less {energyPrefix:energyIcons(1)} if you played another [gold]Costly[/gold] card this turn.",
+  "THEPRISMATIC2-COSTLY_DEFEND.title": "Costly Defend",
+
+  "THEPRISMATIC2-FORGING_STRIKE.description": "Deal {Damage:diff()} damage.\n[gold]Forge[/gold] {Forge:diff()}.",
+  "THEPRISMATIC2-FORGING_STRIKE.title": "Forging Strike",
+
+  "THEPRISMATIC2-FORGING_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Forge[/gold] {Forge:diff()}.",
+  "THEPRISMATIC2-FORGING_DEFEND.title": "Forging Defend"
 }

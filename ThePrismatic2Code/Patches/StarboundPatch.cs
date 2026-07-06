@@ -2,8 +2,9 @@
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Models;
+using ThePrismatic2.ThePrismatic2Code.Extensions;
 
-namespace ThePrismatic2.ThePrismatic2Code.Extensions;
+namespace ThePrismatic2.ThePrismatic2Code.Patches;
 
 [HarmonyPatch(typeof(PlayerCombatState), "HasEnoughResourcesFor")]
 public static class StarboundPatch
@@ -36,6 +37,7 @@ public static class StarboundPatch
                 card.EnergyCost.SetThisTurnOrUntilPlayed(playerEnergy);
                 card.SetStarCostThisTurn(cardCost - playerEnergy);
                 reason = UnplayableReason.None;
+                return;
             }
             if (playerStars < cardStars && playerStars + playerEnergy >= cardCost)
             {

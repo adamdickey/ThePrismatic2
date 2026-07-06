@@ -25,7 +25,7 @@ public class Unleash2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new SummonVar(2m),
-        new CalculationBaseVar(5m),
+        new CalculationBaseVar(4m),
         new ExtraDamageVar(1m).FromOsty(),
         new CalculatedDamageVar(ValueProp.Move).FromOsty().WithMultiplier(delegate(CardModel card, Creature? _)
         {

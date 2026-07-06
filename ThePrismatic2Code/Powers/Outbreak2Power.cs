@@ -2,10 +2,8 @@
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace ThePrismatic2.ThePrismatic2Code.Powers;
@@ -30,11 +28,6 @@ public class Outbreak2Power : ThePrismatic2Power
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new RepeatVar(3));
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-            HoverTipFactory.FromPower<PoisonPower>(),
-            HoverTipFactory.FromPower<DoomPower>()
-            ]);
-
     protected override object InitInternalData()
     {
         return new Data();
@@ -42,7 +35,7 @@ public class Outbreak2Power : ThePrismatic2Power
 
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
-        if (applier == Owner && !(amount <= 0m) && power is PoisonPower or DoomPower)
+        if (applier == Owner && !(amount <= 0m) && power.Type == PowerType.Debuff)
         {
             Data data = GetInternalData<Data>();
             data.TimesPoisoned++;

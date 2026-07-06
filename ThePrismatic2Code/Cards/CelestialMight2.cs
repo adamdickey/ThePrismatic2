@@ -20,6 +20,7 @@ public class CelestialMight2() : ThePrismatic2Card(2,
     public override string CustomPortraitPath => "res://.godot/imported/celestial_might.png-b39f250a3144e33e06447f2e1893cd44.ctex";
     public override string PortraitPath => "res://.godot/imported/celestial_might.png-b39f250a3144e33e06447f2e1893cd44.ctex";
     
+    protected override bool ShouldGlowGoldInternal => !Osty.CheckMissingWithAnim(Owner);
     protected override HashSet<CardTag> CanonicalTags => [CardTag.OstyAttack];
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.DualWield);

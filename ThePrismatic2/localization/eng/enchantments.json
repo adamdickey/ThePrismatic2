@@ -1,0 +1,5 @@
+﻿{
+  "INKED.description": "This card applies [blue]{WeakPower}[/blue] [gold]Weak[/gold] and [blue]{Exposed}[/blue] [gold]Exposed[/gold].",
+  "INKED.extraCardText": "Apply [blue]{WeakPower}[/blue] [gold]Weak[/gold].\nApply [blue]{Exposed}[/blue] [gold]Exposed[/gold]{TargetType:choose(AllEnemies): to ALL enemies|}.",
+  "INKED.title": "Inked"
+}

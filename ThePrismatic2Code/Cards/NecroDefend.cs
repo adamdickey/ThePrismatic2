@@ -17,10 +17,12 @@ public class NecroDefend() : ThePrismatic2Card(1,
     public override string PortraitPath => $"PrismaticDefend.png".CardImagePath();
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
     
+    public override bool GainsBlock => true;
+    
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon));
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new BlockVar(5m, ValueProp.Move),
+        new BlockVar(4m, ValueProp.Move),
         new SummonVar(2m)
     ]);
 

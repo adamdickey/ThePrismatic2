@@ -37,7 +37,7 @@ public class Blur2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(2m);
+        DynamicVars.Block.UpgradeValueBy(1m);
         DynamicVars.Stars.UpgradeValueBy(1);
     }
 }

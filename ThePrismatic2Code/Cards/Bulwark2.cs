@@ -24,13 +24,11 @@ public class Bulwark2() : ThePrismatic2Card(2,
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new BlockVar(8m, ValueProp.Move),
-        new SummonVar(3m),
+        new BlockVar(12m, ValueProp.Move),
         new DynamicVar("Iron", 2m)
     ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon),
         HoverTipFactory.Static(StaticHoverTip.Channeling),
         HoverTipFactory.FromOrb<IronOrb>()
     ]);
@@ -39,7 +37,6 @@ public class Bulwark2() : ThePrismatic2Card(2,
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
         for (int i = 0; i < DynamicVars["Iron"].BaseValue; i++)
         {
             await OrbCmd.Channel<IronOrb>(choiceContext, Owner);
@@ -48,7 +45,6 @@ public class Bulwark2() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(3m);
-        DynamicVars.Summon.UpgradeValueBy(1m);
+        DynamicVars.Block.UpgradeValueBy(4m);
     }
 }

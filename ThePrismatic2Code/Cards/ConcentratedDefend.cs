@@ -18,6 +18,8 @@ public class ConcentratedDefend() : ThePrismatic2Card(1,
     public override string PortraitPath => $"PrismaticDefend.png".CardImagePath();
     
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
+    
+    public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(7m, ValueProp.Move));
 

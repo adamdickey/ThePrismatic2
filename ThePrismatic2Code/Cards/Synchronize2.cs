@@ -20,19 +20,11 @@ public class Synchronize2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/synchronize.png-24826618afcfde4513d1246835349d1b.ctex";
     public override string PortraitPath => "res://.godot/imported/synchronize.png-24826618afcfde4513d1246835349d1b.ctex";
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips
-    {
-        get
-        {
-            List<IHoverTip> list = [HoverTipFactory.FromPower<FocusPower>()];
-            list.AddRange(HoverTipFactory.FromForge());
-            return new _003C_003Ez__ReadOnlyList<IHoverTip>(list);
-        }
-    }
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<FocusPower>());
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DynamicVar("Focus", 2m),
-        new DynamicVar("Forge", 5m),
+        new DynamicVar("Stars", 1m),
         new CalculationBaseVar(0m),
         new CalculationExtraVar(1m),
         new CalculatedVar("CalculatedFocus").WithMultiplier((card, _) => (from orb in card.Owner.PlayerCombatState?.OrbQueue.Orbs
@@ -45,7 +37,7 @@ public class Synchronize2() : ThePrismatic2Card(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await PowerCmd.Apply<SynchronizePower>(choiceContext, Owner.Creature, ((CalculatedVar)DynamicVars["CalculatedFocus"]).Calculate(cardPlay.Target) * DynamicVars["Focus"].BaseValue, Owner.Creature, this);
-        await ForgeCmd.Forge(((CalculatedVar)DynamicVars["CalculatedFocus"]).Calculate(cardPlay.Target) * DynamicVars["Forge"].BaseValue, Owner, this);
+        await PlayerCmd.GainStars(((CalculatedVar)DynamicVars["CalculatedFocus"]).Calculate(cardPlay.Target) * DynamicVars["Stars"].BaseValue, Owner);
     }
 
     protected override void OnUpgrade()

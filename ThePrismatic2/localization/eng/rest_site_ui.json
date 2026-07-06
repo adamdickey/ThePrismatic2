@@ -1,0 +1,5 @@
+﻿{
+  "OPTION_TOKE.description": "Choose 1 of 3 card colors to remove from ALL future card rewards.{Colors}",
+  "OPTION_TOKE.descriptionDisabled": "[red]You have too few card colors remaining.[/red]{Colors}",
+  "OPTION_TOKE.name": "Delete"
+}

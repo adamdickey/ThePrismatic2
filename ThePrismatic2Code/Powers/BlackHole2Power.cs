@@ -33,17 +33,17 @@ public class BlackHole2Power : ThePrismatic2Power
         }
     }
     
-    public override async Task AfterSummon(PlayerChoiceContext choiceContext, Player summoner, Decimal amount)
+    public override async Task AfterCardExhausted(PlayerChoiceContext choiceContext, CardModel card, bool _)
     {
-        if (amount > 0 && summoner == Owner.Player)
+        if (card.Owner.Creature == Owner)
         {
             await DealDamageToAllEnemies();
         }
     }
-    
-    public override async Task AfterForge(Decimal amount, Player forger, AbstractModel? source)
+
+    public override async Task AfterCardDiscarded(PlayerChoiceContext choiceContext, CardModel card)
     {
-        if (amount > 0 && forger == Owner.Player)
+        if (card.Owner.Creature == Owner)
         {
             await DealDamageToAllEnemies();
         }

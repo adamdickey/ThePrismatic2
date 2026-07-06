@@ -35,10 +35,10 @@ public class ThePrismatic2CardPool : CustomCardPoolModel
     public override Color DeckEntryCardColor => new("ffffff");
 
     public override bool IsColorless => false;
-
+    
     protected override CardModel[] GenerateAllCards()
     {
-		return
+		CardModel[] cardPool = 
 		[
 			ModelDb.Card<Aggression>(),
 			ModelDb.Card<Anger>(),
@@ -137,7 +137,7 @@ public class ThePrismatic2CardPool : CustomCardPoolModel
 			ModelDb.Card<Assassinate2>(),
 			ModelDb.Card<Backflip>(),
 			ModelDb.Card<Backstab2>(),
-			ModelDb.Card<BladeOfInk>(),
+			ModelDb.Card<BladeOfInk2>(),
 			ModelDb.Card<BladeDance>(),
 			ModelDb.Card<Blur2>(),
 			ModelDb.Card<BouncingFlask2>(),
@@ -157,7 +157,7 @@ public class ThePrismatic2CardPool : CustomCardPoolModel
 			ModelDb.Card<EchoingSlash>(),
 			ModelDb.Card<Envenom2>(),
 			ModelDb.Card<EscapePlan2>(),
-			ModelDb.Card<Expertise>(),
+			ModelDb.Card<Expertise2>(),
 			ModelDb.Card<Expose2>(),
 			ModelDb.Card<FanOfKnives2>(),
 			ModelDb.Card<Finisher>(),
@@ -171,7 +171,7 @@ public class ThePrismatic2CardPool : CustomCardPoolModel
 			ModelDb.Card<HiddenDaggers>(),
 			ModelDb.Card<InfiniteBlades2>(),
 			ModelDb.Card<KnifeTrap2>(),
-			ModelDb.Card<LeadingStrike2>(),
+			ModelDb.Card<LeadingStrike>(),
 			ModelDb.Card<LegSweep2>(),
 			ModelDb.Card<Malaise>(),
 			ModelDb.Card<MasterPlanner2>(),
@@ -332,7 +332,7 @@ public class ThePrismatic2CardPool : CustomCardPoolModel
 			ModelDb.Card<Eidolon2>(),
 			ModelDb.Card<EndOfDays>(),
 			ModelDb.Card<EnfeeblingTouch>(),
-			ModelDb.Card<Eradicate>(),
+			ModelDb.Card<Eradicate2>(),
 			ModelDb.Card<Fear2>(),
 			ModelDb.Card<Fetch2>(),
 			ModelDb.Card<Flatten2>(),
@@ -407,7 +407,7 @@ public class ThePrismatic2CardPool : CustomCardPoolModel
 			ModelDb.Card<Chill>(),
 			ModelDb.Card<Claw2>(),
 			ModelDb.Card<ColdSnap>(),
-			ModelDb.Card<Compact>(),
+			ModelDb.Card<Compact2>(),
 			ModelDb.Card<CompileDriver>(),
 			ModelDb.Card<ConsumingShadow2>(),
 			ModelDb.Card<Coolant2>(),
@@ -480,5 +480,6 @@ public class ThePrismatic2CardPool : CustomCardPoolModel
 			ModelDb.Card<WhiteNoise>(),
 			ModelDb.Card<Zap2>()
 		];
-	}
+		return cardPool;
+    }
 }

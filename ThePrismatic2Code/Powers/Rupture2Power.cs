@@ -54,7 +54,14 @@ public class Rupture2Power : ThePrismatic2Power
     {
         if (Owner.Player != null && target == Owner.Player.Osty && CombatState.CurrentSide == Owner.Side)
         {
-            PowerCmd.Apply<StrengthPower>(choiceContext, Owner, Amount, Owner, null);
+            if (cardSource == null || !GetInternalData<Data>().PlayedCards.ContainsKey(cardSource))
+            {
+                PowerCmd.Apply<StrengthPower>(choiceContext, Owner, Amount, Owner, null);
+            }
+            else
+            {
+                GetInternalData<Data>().PlayedCards[cardSource] += Amount;
+            }
         }
         return Task.CompletedTask;
     }

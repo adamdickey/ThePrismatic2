@@ -25,7 +25,7 @@ public class TwinStrike2() : ThePrismatic2Card(1,
     protected override HashSet<CardTag> CanonicalTags => [ CardTag.Strike, CardTag.OstyAttack ];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(4m, ValueProp.Move),
+        new DamageVar(5m, ValueProp.Move),
         new OstyDamageVar(2m, ValueProp.Move)
     ]);
     
@@ -51,7 +51,7 @@ public class TwinStrike2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.Damage.UpgradeValueBy(1m);
         DynamicVars.OstyDamage.UpgradeValueBy(1m);
     }
 }

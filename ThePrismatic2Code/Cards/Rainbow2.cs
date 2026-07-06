@@ -29,8 +29,7 @@ public class Rainbow2() : ThePrismatic2Card(3,
         HoverTipFactory.Static(StaticHoverTip.Channeling),
         HoverTipFactory.FromOrb<MagmaOrb>(),
         HoverTipFactory.FromOrb<SolarOrb>(),
-        HoverTipFactory.FromOrb<VenomOrb>(),
-        HoverTipFactory.FromOrb<GloomOrb>()
+        HoverTipFactory.FromOrb<VenomOrb>()
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -42,7 +41,7 @@ public class Rainbow2() : ThePrismatic2Card(3,
         await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
         await OrbCmd.Channel<VenomOrb>(choiceContext, Owner);
         await OrbCmd.Channel<FrostOrb>(choiceContext, Owner);
-        await OrbCmd.Channel<GloomOrb>(choiceContext, Owner);
+        await OrbCmd.Channel<DarkOrb>(choiceContext, Owner);
     }
 
     protected override void OnUpgrade()

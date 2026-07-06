@@ -36,19 +36,21 @@ public class ThePrismatic2 : PlaceholderCharacterModel
         List<CardModel> strikes2 = [ModelDb.Card<FleetingStrike>(), ModelDb.Card<BladedStrike>(), ModelDb.Card<GhostlyStrike>()];
         List<CardModel> strikes3 = [ModelDb.Card<LootingStrike>(), ModelDb.Card<ConcentratedStrike>(), ModelDb.Card<CunningStrike>()];
         List<CardModel> strikes4 = [ModelDb.Card<ToxicStrike>(), ModelDb.Card<CosmicStrike>(), ModelDb.Card<LoopingStrike>()];
-        List<CardModel> strikes5 = [ModelDb.Card<RecklessStrike>(), ModelDb.Card<NecroStrike>(), ModelDb.Card<NecroStrike>()];
-        List<CardModel> strikes6 = [ModelDb.Card<StarryStrike>(), ModelDb.Card<CosmicStrike>(), ModelDb.Card<StarryStrike>()];
+        List<CardModel> strikes5 = [ModelDb.Card<RecklessStrike>(), ModelDb.Card<NecroStrike>(), ModelDb.Card<CoordinatedStrike>()];
+        List<CardModel> strikes6 = [ModelDb.Card<StarryStrike>(), ModelDb.Card<CosmicStrike>(), ModelDb.Card<StarboundStrike>()];
+        List<CardModel> strikes7 = [ModelDb.Card<ClawingStrike>(), ModelDb.Card<CostlyStrike>(), ModelDb.Card<ForgingStrike>()];
         List<CardModel> defends1 = [ModelDb.Card<ExposingDefend>(), ModelDb.Card<DoomingDefend>(), ModelDb.Card<ToxicDefend>()];
         List<CardModel> defends2 = [ModelDb.Card<FleetingDefend>(), ModelDb.Card<BladedDefend>(), ModelDb.Card<GhostlyDefend>()];
         List<CardModel> defends3 = [ModelDb.Card<LootingDefend>(), ModelDb.Card<ConcentratedDefend>(), ModelDb.Card<CunningDefend>()];
         List<CardModel> defends4 = [ModelDb.Card<ToxicDefend>(), ModelDb.Card<CosmicDefend>(), ModelDb.Card<LoopingDefend>()];
-        List<CardModel> defends5 = [ModelDb.Card<RecklessDefend>(), ModelDb.Card<NecroDefend>(), ModelDb.Card<NecroDefend>()];
-        List<CardModel> defends6 = [ModelDb.Card<StarryDefend>(), ModelDb.Card<CosmicDefend>(), ModelDb.Card<StarryDefend>()];
-        List<List<CardModel>> strikes = [strikes1, strikes2, strikes3, strikes4, strikes5, strikes6];
-        List<List<CardModel>> defends = [defends1, defends2, defends3, defends4, defends5, defends6];
+        List<CardModel> defends5 = [ModelDb.Card<RecklessDefend>(), ModelDb.Card<NecroDefend>(), ModelDb.Card<CoordinatedDefend>()];
+        List<CardModel> defends6 = [ModelDb.Card<StarryDefend>(), ModelDb.Card<CosmicDefend>(), ModelDb.Card<StarboundDefend>()];
+        List<CardModel> defends7 = [ModelDb.Card<ClawingDefend>(), ModelDb.Card<CostlyDefend>(), ModelDb.Card<ForgingDefend>()];
+        List<List<CardModel>> strikes = [strikes1, strikes2, strikes3, strikes4, strikes5, strikes6, strikes7];
+        List<List<CardModel>> defends = [defends1, defends2, defends3, defends4, defends5, defends6, defends7];
         while (true)
         {
-            List<int> numList = [0, 1, 2, 3, 4, 5];
+            List<int> numList = [0, 1, 2, 3, 4, 5, 6];
             numList.StableShuffle(Rng.Chaotic);
             int strikeNum1 = numList[0];
             int defendNum1 = numList[1];
@@ -56,11 +58,11 @@ public class ThePrismatic2 : PlaceholderCharacterModel
             int defendNum2 = Rng.Chaotic.NextInt(0, 3);
             CardModel chosenStrike = strikes[strikeNum1][strikeNum2];
             CardModel chosenDefend = defends[defendNum1][defendNum2];
-            if (chosenStrike is CosmicStrike or StarryStrike & chosenDefend is CosmicDefend or StarryDefend)
+            if (chosenStrike is CosmicStrike or StarryStrike or StarboundStrike & chosenDefend is CosmicDefend or StarryDefend or StarboundDefend)
             {
                 continue;
             }
-            if (chosenStrike is ShockingStrike or CosmicStrike or LoopingStrike & chosenDefend is ShockingDefend or CosmicDefend or LoopingDefend)
+            if (chosenStrike is ToxicStrike or CosmicStrike or LoopingStrike & chosenDefend is ToxicDefend or CosmicDefend or LoopingDefend)
             {
                 continue;
             }

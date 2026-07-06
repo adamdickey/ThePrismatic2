@@ -13,7 +13,7 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class BansheesCry2() : ThePrismatic2Card(9, 
+public class BansheesCry2() : ThePrismatic2Card(7, 
     CardType.Attack, CardRarity.Rare, 
     TargetType.AllEnemies)
 {
@@ -27,8 +27,8 @@ public class BansheesCry2() : ThePrismatic2Card(9,
         ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(25m, ValueProp.Move),
-        new EnergyVar(2)
+        new DamageVar(33m, ValueProp.Move),
+        new EnergyVar(1)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -41,7 +41,7 @@ public class BansheesCry2() : ThePrismatic2Card(9,
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-2);
+        EnergyCost.UpgradeBy(-1);
     }
 
     public override Task AfterCardEnteredCombat(CardModel card)

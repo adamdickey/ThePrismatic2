@@ -41,10 +41,6 @@ public class IAmInvincible2() : ThePrismatic2Card(1,
             {
                 await CardPileCmd.AutoPlayFromDrawPile(choiceContext, Owner, 1, CardPilePosition.Top, forceExhaust: false);
             }
-            if (Pile is { Type: PileType.Exhaust })
-            {
-                await CardCmd.AutoPlay(choiceContext, this, null);
-            }
         }
     }
 

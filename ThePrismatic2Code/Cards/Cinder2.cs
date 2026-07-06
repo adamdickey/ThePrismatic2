@@ -24,7 +24,7 @@ public class Cinder2() : ThePrismatic2Card(2,
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(
     [
         new DamageVar(15m, ValueProp.Move),
-            new StarsVar(2)
+        new StarsVar(2)
     ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Ethereal));

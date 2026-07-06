@@ -1,48 +1,91 @@
-﻿using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Players;
+﻿using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
-using MegaCrit.Sts2.Core.Factories;
+using MegaCrit.Sts2.Core.Entities.RestSite;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Runs;
+using MegaCrit.Sts2.Core.Saves.Runs;
+using ThePrismatic2.ThePrismatic2Code.Cards;
+using ThePrismatic2.ThePrismatic2Code.Extensions;
 
 namespace ThePrismatic2.ThePrismatic2Code.Relics;
 
-public sealed class BurningRing() : ThePrismatic2Relic
+public sealed class BurningRing: ThePrismatic2Relic
 {
     public override RelicRarity Rarity =>
         RelicRarity.Starter;
 
+    private int[] _colorInts = [];
 
-    /*public override bool TryModifyCardRewardOptions(Player player, List<CardCreationResult> options, CardCreationOptions creationOptions)
+    [SavedProperty]
+    public int[] ColorInts
     {
-        if (Owner != player)
+        get => _colorInts;
+        private set
+        {
+            AssertMutable();
+            _colorInts = value;
+        }
+    }
+
+    // Adds the Delete option to rest sites.
+    public override bool TryModifyRestSiteOptions(Player player, ICollection<RestSiteOption> options)
+    {
+        if (player != Owner)
         {
             return false;
         }
-        if (creationOptions.Source != CardCreationSource.Encounter)
+        options.Add(new DeleteRestSiteOption(player));
+        return true;
+    }
+    
+    // Generates card reward options excluding any removed colors.
+    public override CardCreationOptions ModifyCardRewardCreationOptions(Player player, CardCreationOptions options)
+    {
+        if (player != Owner)
         {
-            return false;
+            return options;
         }
-        IEnumerable<CardModel> enumerable = from c in creationOptions.GetPossibleCards(player)
-            where options.TrueForAll((CardCreationResult o) => o.originalCard.Id != c.Id)
-            select c;
-        if (!enumerable.Any())
+        CardModel[] colorsRemoved = ColorsRemoved();
+        List<CardPoolModel> colors = colorsRemoved.Select(card => card.VisualCardPool).ToList();
+        IEnumerable<CardModel> enumerable = from c in options.GetPossibleCards(player)
+            where !colors.Contains(c.VisualCardPool) select c;
+        CardCreationOptions options2 = new CardCreationOptions(enumerable, options.Source, options.RarityOdds);
+        return options2;
+    }
+
+    // Adds a color to the list of colors to exclude.
+    public void RemoveColor(int index)
+    {
+        ColorInts = ColorInts.Append(index).ToArray();
+    }
+
+    // Returns a list of colors removed from the pool.
+    public CardModel[] ColorsRemoved()
+    {
+        CardModel[] colorsRemoved = [];
+        foreach (int num in ColorInts)
         {
-            enumerable = from c in creationOptions.GetPossibleCards(player)
-                select c;
+            CardModel card = ModelDb.Card<Red>();
+            switch (num)
+            {
+                case 0:
+                    card = ModelDb.Card<Red>();
+                    break;
+                case 1:
+                    card = ModelDb.Card<Green>();
+                    break;
+                case 2:
+                    card = ModelDb.Card<Orange>();
+                    break;
+                case 3:
+                    card = ModelDb.Card<Pink>();
+                    break;
+                case 4:
+                    card = ModelDb.Card<Blue>();
+                    break;
+            }
+            colorsRemoved = colorsRemoved.Append(card).ToArray();
         }
-        if (!enumerable.Any())
-        {
-            return false;
-        }
-        CardCreationOptions options2 = new CardCreationOptions(enumerable, CardCreationSource.Other, creationOptions.RarityOdds).WithFlags(CardCreationFlags.NoModifyHooks | CardCreationFlags.NoCardPoolModifications);
-        CardModel? cardModel = CardFactory.CreateForReward(Owner, 1, options2).FirstOrDefault()?.Card;
-        if (cardModel != null)
-        {
-            CardCreationResult cardCreationResult = new CardCreationResult(cardModel);
-            cardCreationResult.ModifyCard(cardModel, this);
-            options.Add(cardCreationResult);
-        }
-        return cardModel != null;
-    }*/
+        return colorsRemoved;
+    }
 }

@@ -21,15 +21,15 @@ public class GrandFinale2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/grand_finale.png-187e80daf7943dd2e51f9a89659de922.ctex";
     public override string PortraitPath => "res://.godot/imported/grand_finale.png-187e80daf7943dd2e51f9a89659de922.ctex";
     
-    public override int CanonicalStarCost => 2;
+    public override int CanonicalStarCost => 1;
 
-    protected override bool ShouldGlowGoldInternal => Owner.PlayerCombatState != null && Owner.PlayerCombatState.Stars >= 2*PileType.Draw.GetPile(Owner).Cards.Count;
+    protected override bool ShouldGlowGoldInternal => Owner.PlayerCombatState != null && Owner.PlayerCombatState.Stars >= PileType.Draw.GetPile(Owner).Cards.Count;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(50m, ValueProp.Move),
-        new StarsVar(2),
+        new StarsVar(1),
         new CalculationBaseVar(0m),
-        new CalculationExtraVar(2m),
+        new CalculationExtraVar(1m),
         new CalculatedVar("StarCost").WithMultiplier((card, _) =>
             card.Owner.PlayerCombatState == null ? 0 : PileType.Draw.GetPile(card.Owner).Cards.Count)
     ]);
@@ -69,7 +69,7 @@ public class GrandFinale2() : ThePrismatic2Card(0,
     
     private void UpdateCost()
     {
-        int starCost = 2 * PileType.Draw.GetPile(Owner).Cards.Count;
+        int starCost = DynamicVars.Stars.IntValue * PileType.Draw.GetPile(Owner).Cards.Count;
         SetStarCostThisCombat(starCost);
     }
 }

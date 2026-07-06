@@ -42,6 +42,5 @@ public class Anticipate2() : ThePrismatic2Card(0,
     protected override void OnUpgrade()
     {
         DynamicVars.Dexterity.UpgradeValueBy(1m);
-        DynamicVars["Focus"].UpgradeValueBy(1m);
     }
 }

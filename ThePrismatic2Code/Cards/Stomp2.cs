@@ -26,7 +26,7 @@ public class Stomp2() : ThePrismatic2Card(3,
     public override string CustomPortraitPath => "res://.godot/imported/stomp.png-9aac0da66ce194d4ae3678059f67ad08.ctex";
     public override string PortraitPath => "res://.godot/imported/stomp.png-9aac0da66ce194d4ae3678059f67ad08.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(12m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(7m, ValueProp.Move));
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Channeling),

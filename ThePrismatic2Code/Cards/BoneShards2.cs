@@ -52,7 +52,7 @@ public class BoneShards2() : ThePrismatic2Card(1,
         }
         if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
         {
-            await CreatureCmd.Damage(choiceContext, Owner.Osty, DynamicVars.HpLoss.BaseValue, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
+            await CreatureCmd.Kill(Owner.Osty);
         }
         else
         {

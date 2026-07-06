@@ -35,7 +35,7 @@ public class CorrosiveWave2() : ThePrismatic2Card(1,
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         if (IsUpgraded)
         {
-            await PowerCmd.Apply<CorrosiveWaveFocusPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
+            await OrbCmd.Channel<VenomOrb>(choiceContext, Owner);
         }
         await PowerCmd.Apply<CorrosiveWave2Power>(choiceContext, Owner.Creature, DynamicVars["CorrosiveWave"].BaseValue, Owner.Creature, this);
     }
