@@ -18,6 +18,10 @@ public static class CunningExhaustPatch
         {
             return;
         }
+        if (card.Pile != null && card.Pile != PileType.Hand.GetPile(card.Owner))
+        {
+            return;
+        }
         if (!card.Keywords.Contains(Keywords.Cunning) && !card.Keywords.Contains(Keywords.CunningThisTurn))
         {
             return;

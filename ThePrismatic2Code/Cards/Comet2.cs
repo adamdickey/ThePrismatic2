@@ -33,9 +33,9 @@ public class Comet2() : ThePrismatic2Card(0,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(33m, ValueProp.Move),
-        new PowerVar<VulnerablePower>(2m),
-        new PowerVar<WeakPower>(2m),
-        new DynamicVar("Exposed", 2m)
+        new PowerVar<VulnerablePower>(3m),
+        new PowerVar<WeakPower>(3m),
+        new DynamicVar("Exposed", 3m)
     ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([

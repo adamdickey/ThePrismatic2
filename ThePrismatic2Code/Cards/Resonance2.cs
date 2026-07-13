@@ -32,8 +32,8 @@ public class Resonance2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        int intValue = DynamicVars["StrengthPower"].IntValue;
-        await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, intValue, Owner.Creature, this);
+        await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, DynamicVars["StrengthPower"].IntValue, Owner.Creature, this);
+        await PowerCmd.Apply<CalcifyPower>(choiceContext, Owner.Creature, DynamicVars["StrengthPower"].IntValue, Owner.Creature, this);
         if (CombatState != null)
             foreach (Creature hittableEnemy in CombatState.HittableEnemies)
             {

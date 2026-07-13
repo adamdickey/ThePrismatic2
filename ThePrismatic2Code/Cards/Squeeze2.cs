@@ -2,6 +2,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
@@ -21,6 +22,8 @@ public class Squeeze2() : ThePrismatic2Card(3,
     public override string PortraitPath => "res://.godot/imported/squeeze.png-b8c7515cbade9c93aa1b0bea50d6db1e.ctex";
 
     protected override HashSet<CardTag> CanonicalTags => [ CardTag.OstyAttack ];
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Costly));
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new SummonVar(5m),
@@ -29,9 +32,8 @@ public class Squeeze2() : ThePrismatic2Card(3,
         new CalculatedDamageVar(ValueProp.Move).FromOsty().WithMultiplier((card, _) =>
         {
             if (card.Owner.PlayerCombatState != null)
-                return card.Owner.PlayerCombatState.AllCards.Count(c =>
-                    (c.Tags.Contains(CardTag.OstyAttack) || c.CurrentStarCost > 0) && c != card);
-            return 20m;
+                return card.Owner.PlayerCombatState.AllCards.Count(c => (c.Tags.Contains(CardTag.OstyAttack) || c.EnergyCost.GetWithModifiers(CostModifiers.All) + c.CurrentStarCost >= 2) && c != card);
+            return 0m;
         })
     ]);
 

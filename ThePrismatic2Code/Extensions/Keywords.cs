@@ -5,11 +5,17 @@ namespace ThePrismatic2.ThePrismatic2Code.Extensions;
 
 public class Keywords
 {
-    [CustomEnum, KeywordProperties(AutoKeywordPosition.Before)] 
-    public static CardKeyword DualWield;
+    [CustomEnum] 
+    public static CardKeyword Offer;
+    
+    [CustomEnum] 
+    public static CardKeyword Bleed;
     
     [CustomEnum] 
     public static CardKeyword Costly;
+    
+    [CustomEnum, KeywordProperties(AutoKeywordPosition.Before)] 
+    public static CardKeyword DualWield;
     
     [CustomEnum, KeywordProperties(AutoKeywordPosition.Before)] 
     public static CardKeyword Cunning;

@@ -89,7 +89,7 @@ public class ThePrismatic2 : PlaceholderCharacterModel
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<BurningRing>()
+        ModelDb.Relic<VividImagination>()
     ];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<ThePrismatic2CardPool>();

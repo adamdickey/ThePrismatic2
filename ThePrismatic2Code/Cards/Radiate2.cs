@@ -32,7 +32,7 @@ public class Radiate2() : ThePrismatic2Card(0,
             new CalculatedVar("CalculatedHits").WithMultiplier((card, _) => (from e in CombatManager.Instance.History.Entries.OfType<StarsModifiedEntry>()
                 where e.HappenedThisTurn(card.CombatState) && e.Amount > 0 && e.Actor == card.Owner.Creature
                 select e).Sum(e => e.Amount) + (from e in CombatManager.Instance.History.Entries.OfType<PowerReceivedEntry>()
-                where e.HappenedThisTurn(card.CombatState) && e.Amount > 0 && e.Actor != card.Owner.Creature && e.Power.Type == PowerType.Debuff && e.Applier == card.Owner.Creature
+                where e.HappenedThisTurn(card.CombatState) && e.Amount > 0 && e.Power.Type == PowerType.Debuff && e.Applier == card.Owner.Creature
                 select e).Count())
     ]);
 
@@ -46,7 +46,6 @@ public class Radiate2() : ThePrismatic2Card(0,
                 .WithHitFx("vfx/vfx_starry_impact", null, "slash_attack.mp3")
                 .SpawningHitVfxOnEachCreature()
                 .Execute(choiceContext);
-        
     }
 
     protected override void OnUpgrade()

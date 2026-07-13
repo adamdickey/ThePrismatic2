@@ -24,7 +24,7 @@ public class Synchronize2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DynamicVar("Focus", 2m),
-        new DynamicVar("Stars", 1m),
+        new DynamicVar("Forge", 5m),
         new CalculationBaseVar(0m),
         new CalculationExtraVar(1m),
         new CalculatedVar("CalculatedFocus").WithMultiplier((card, _) => (from orb in card.Owner.PlayerCombatState?.OrbQueue.Orbs
@@ -37,7 +37,7 @@ public class Synchronize2() : ThePrismatic2Card(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await PowerCmd.Apply<SynchronizePower>(choiceContext, Owner.Creature, ((CalculatedVar)DynamicVars["CalculatedFocus"]).Calculate(cardPlay.Target) * DynamicVars["Focus"].BaseValue, Owner.Creature, this);
-        await PlayerCmd.GainStars(((CalculatedVar)DynamicVars["CalculatedFocus"]).Calculate(cardPlay.Target) * DynamicVars["Stars"].BaseValue, Owner);
+        await ForgeCmd.Forge(((CalculatedVar)DynamicVars["CalculatedFocus"]).Calculate(cardPlay.Target) * DynamicVars["Forge"].BaseValue, Owner, this);
     }
 
     protected override void OnUpgrade()

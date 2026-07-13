@@ -21,7 +21,7 @@ public class NecroMastery2() : ThePrismatic2Card(2,
     public override string CustomPortraitPath => "res://.godot/imported/necro_mastery.png-6769362ae0e1622345ee1d29462b7a2a.ctex";
     public override string PortraitPath => "res://.godot/imported/necro_mastery.png-6769362ae0e1622345ee1d29462b7a2a.ctex";
     
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("Orbs", 2m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("Orbs", 1m));
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
             HoverTipFactory.Static(StaticHoverTip.Channeling),

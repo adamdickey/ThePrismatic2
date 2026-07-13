@@ -24,7 +24,6 @@ public class SpiritOfAsh2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromKeyword(CardKeyword.Ethereal),
-        HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
         HoverTipFactory.Static(StaticHoverTip.Block)
     ]);
 

@@ -33,10 +33,10 @@ public class GammaBlast2() : ThePrismatic2Card(0,
     ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(16m, ValueProp.Move),
-        new PowerVar<VulnerablePower>(1m),
-        new PowerVar<WeakPower>(1m),
-        new DynamicVar("Exposed", 1m)
+        new DamageVar(13m, ValueProp.Move),
+        new PowerVar<VulnerablePower>(2m),
+        new PowerVar<WeakPower>(2m),
+        new DynamicVar("Exposed", 2m)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -52,8 +52,6 @@ public class GammaBlast2() : ThePrismatic2Card(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Weak.UpgradeValueBy(1m);
-        DynamicVars.Vulnerable.UpgradeValueBy(1m);
-        DynamicVars["Exposed"].UpgradeValueBy(1m);
+        DynamicVars.Damage.UpgradeValueBy(5m);
     }
 }

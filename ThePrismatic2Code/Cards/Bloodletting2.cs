@@ -27,7 +27,10 @@ public class Bloodletting2() : ThePrismatic2Card(0,
         new EnergyVar(2)
     ]);
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(EnergyHoverTip);
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        EnergyHoverTip, 
+        HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed)
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

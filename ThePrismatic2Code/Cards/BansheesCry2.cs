@@ -13,7 +13,7 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class BansheesCry2() : ThePrismatic2Card(7, 
+public class BansheesCry2() : ThePrismatic2Card(11, 
     CardType.Attack, CardRarity.Rare, 
     TargetType.AllEnemies)
 {
@@ -23,12 +23,12 @@ public class BansheesCry2() : ThePrismatic2Card(7,
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromKeyword(CardKeyword.Ethereal),
-        HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
+        HoverTipFactory.FromKeyword(Extensions.Keywords.Costly)
         ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(33m, ValueProp.Move),
-        new EnergyVar(1)
+        new EnergyVar(2)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -41,7 +41,7 @@ public class BansheesCry2() : ThePrismatic2Card(7,
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        EnergyCost.UpgradeBy(-2);
     }
 
     public override Task AfterCardEnteredCombat(CardModel card)
@@ -54,7 +54,7 @@ public class BansheesCry2() : ThePrismatic2Card(7,
         {
             return Task.CompletedTask;
         }
-        int num = CombatManager.Instance.History.CardPlaysFinished.Count(e => (e.WasEthereal || e.CardPlay.Card.Keywords.Contains(CardKeyword.Exhaust)) && e.CardPlay.Card.Owner == Owner);
+        int num = CombatManager.Instance.History.CardPlaysFinished.Count(e => (e.WasEthereal || e.CardPlay.Card.EnergyCost.GetResolved() + e.CardPlay.Card.LastStarsSpent >= 2) && e.CardPlay.Card.Owner == Owner);
         EnergyCost.AddThisCombat(-num * DynamicVars.Energy.IntValue);
         return Task.CompletedTask;
     }
@@ -65,7 +65,7 @@ public class BansheesCry2() : ThePrismatic2Card(7,
         {
             return Task.CompletedTask;
         }
-        if (!cardPlay.Card.Keywords.Contains(CardKeyword.Ethereal) && !cardPlay.Card.Keywords.Contains(CardKeyword.Exhaust))
+        if (!cardPlay.Card.Keywords.Contains(CardKeyword.Ethereal) && !(cardPlay.Card.EnergyCost.GetResolved() + cardPlay.Card.LastStarsSpent >= 2))
         {
             return Task.CompletedTask;
         }

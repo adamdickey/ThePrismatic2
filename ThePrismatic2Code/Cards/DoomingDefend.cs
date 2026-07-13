@@ -20,6 +20,8 @@ public class DoomingDefend() : ThePrismatic2Card(1,
     
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
     
+    public override bool IsBasicStrikeOrDefend => false;
+    
     public override bool GainsBlock => true;
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<DoomPower>());
 

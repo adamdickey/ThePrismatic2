@@ -17,6 +17,8 @@ public class CunningDefend() : ThePrismatic2Card(1,
     public override string PortraitPath => $"PrismaticDefend.png".CardImagePath();
     
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
+    
+    public override bool IsBasicStrikeOrDefend => false;
 
     public override bool GainsBlock => true;
     

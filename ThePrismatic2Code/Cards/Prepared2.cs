@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
@@ -18,6 +19,8 @@ public class Prepared2() : ThePrismatic2Card(0,
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/prepared.png-fd95e08bd21b946e2c3f636677bc1127.ctex";
     public override string PortraitPath => "res://.godot/imported/prepared.png-fd95e08bd21b946e2c3f636677bc1127.ctex";
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Costly));
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new CardsVar(1),
@@ -30,7 +33,7 @@ public class Prepared2() : ThePrismatic2Card(0,
         await CardPileCmd.Draw(choiceContext, cardCount, Owner);
         IEnumerable<CardModel> cards = await CardSelectCmd.FromHandForDiscard(choiceContext, Owner, new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, cardCount), null, this);
         await CardCmd.Discard(choiceContext, cards);
-        if (cards.Any(card => card.CanonicalStarCost > 0))
+        if (cards.Any(card => card.EnergyCost.GetWithModifiers(CostModifiers.All) + card.CurrentStarCost >= 2))
         {
             await PlayerCmd.GainStars(DynamicVars.Stars.BaseValue, Owner);
         }

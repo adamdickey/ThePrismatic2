@@ -27,6 +27,7 @@ public class Brand2() : ThePrismatic2Card(0,
     public override string PortraitPath => "res://.godot/imported/brand.png-01334706eb3eb94488272bbcf82bdbe7.ctex";
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed),
         HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
         HoverTipFactory.FromPower<StrengthPower>()
     ]);

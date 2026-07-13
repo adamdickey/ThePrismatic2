@@ -16,10 +16,12 @@ public class StarboundStrike() : ThePrismatic2Card(0,
     public override string PortraitPath => $"PrismaticStrike.png".CardImagePath();
 
     public override int CanonicalStarCost => 1;
+    
+    public override bool IsBasicStrikeOrDefend => false;
 
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(6m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(7m, ValueProp.Move));
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 

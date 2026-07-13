@@ -21,7 +21,10 @@ public class Charge2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/charge.png-bb8f6a24b37ecdaae96ba491cb0fa8ff.ctex";
     public override string PortraitPath => "res://.godot/imported/charge.png-bb8f6a24b37ecdaae96ba491cb0fa8ff.ctex";
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<MinionDiveBomb>(IsUpgraded));
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
+        HoverTipFactory.FromCard<MinionDiveBomb>(IsUpgraded)
+        ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new CardsVar(2));
 
@@ -39,12 +42,12 @@ public class Charge2() : ThePrismatic2Card(1,
         foreach (CardModel unused in list)
         {
             CardModel? card = CombatState?.CreateCard<MinionDiveBomb>(Owner);
+            if (card == null) continue;
             if (IsUpgraded)
             {
-                if (card != null) CardCmd.Upgrade(card);
+                CardCmd.Upgrade(card);
             }
-
-            if (card != null) CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, Owner));
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, Owner, CardPilePosition.Random));
         }
     }
 }

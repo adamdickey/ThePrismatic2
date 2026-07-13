@@ -24,7 +24,7 @@ public class ForgottenRitual2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/forgotten_ritual.png-bd77494d8251cc8692e919d82b6a65d9.ctex";
     public override string PortraitPath => "res://.godot/imported/forgotten_ritual.png-bd77494d8251cc8692e919d82b6a65d9.ctex";
 
-    protected override bool ShouldGlowGoldInternal => WasCardExhaustedThisTurn || WasCardDiscardedThisTurn || WasCardCreatedThisTurn;
+    protected override bool ShouldGlowGoldInternal => WasCardExhaustedThisTurn || WasCostlyCardPlayedThisTurn;
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
 
@@ -32,21 +32,21 @@ public class ForgottenRitual2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         EnergyHoverTip,
+        HoverTipFactory.FromKeyword(Extensions.Keywords.Costly),
         HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
     ]);
 
     protected override IEnumerable<string> ExtraRunAssetPaths => NGroundFireVfx.AssetPaths;
 
     private bool WasCardExhaustedThisTurn => CombatManager.Instance.History.Entries.OfType<CardExhaustedEntry>().Any(e => e.HappenedThisTurn(CombatState) && e.Card.Owner == Owner);
-    private bool WasCardDiscardedThisTurn => CombatManager.Instance.History.Entries.OfType<CardDiscardedEntry>().Any(e => e.HappenedThisTurn(CombatState) && e.Card.Owner == Owner);
-    private bool WasCardCreatedThisTurn => CombatManager.Instance.History.Entries.OfType<CardGeneratedEntry>().Any(e => e.HappenedThisTurn(CombatState) && e.Card.Owner == Owner);
+    private bool WasCostlyCardPlayedThisTurn => CombatManager.Instance.History.Entries.OfType<CardPlayFinishedEntry>().Any(e => e.HappenedThisTurn(CombatState) && e.CardPlay.Card.Owner == Owner && e.CardPlay.Card.EnergyCost.GetResolved() + e.CardPlay.Card.LastStarsSpent >= 2);
 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NGroundFireVfx.Create(Owner.Creature, VfxColor.Purple));
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        if (WasCardExhaustedThisTurn || WasCardDiscardedThisTurn || WasCardCreatedThisTurn)
+        if (WasCardExhaustedThisTurn || WasCostlyCardPlayedThisTurn)
         {
             await PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, Owner);
         }

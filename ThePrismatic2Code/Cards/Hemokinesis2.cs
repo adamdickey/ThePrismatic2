@@ -2,6 +2,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
@@ -20,6 +21,7 @@ public class Hemokinesis2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/hemokinesis.png-97acd5accd58a4400c33490c4b808c57.ctex";
     public override string PortraitPath => "res://.godot/imported/hemokinesis.png-97acd5accd58a4400c33490c4b808c57.ctex";
 
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed));
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new HpLossVar(2m),
         new DamageVar(15m, ValueProp.Move)

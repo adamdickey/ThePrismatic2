@@ -1,5 +1,6 @@
 ﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -33,17 +34,9 @@ public class BlackHole2Power : ThePrismatic2Power
         }
     }
     
-    public override async Task AfterCardExhausted(PlayerChoiceContext choiceContext, CardModel card, bool _)
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
-        if (card.Owner.Creature == Owner)
-        {
-            await DealDamageToAllEnemies();
-        }
-    }
-
-    public override async Task AfterCardDiscarded(PlayerChoiceContext choiceContext, CardModel card)
-    {
-        if (card.Owner.Creature == Owner)
+        if (power.Type == PowerType.Debuff && Applier == Owner)
         {
             await DealDamageToAllEnemies();
         }

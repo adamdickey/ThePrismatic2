@@ -33,7 +33,7 @@ public class DeathsDoor2() : ThePrismatic2Card(1,
     ]);
 
     private bool Were2DebuffsAppliedThisTurn => (from e in CombatManager.Instance.History.Entries.OfType<PowerReceivedEntry>()
-        where e.HappenedThisTurn(CombatState) && e.Amount > 0 && e.Actor != Owner.Creature && e.Power.Type == PowerType.Debuff && e.Applier == Owner.Creature
+        where e.HappenedThisTurn(CombatState) && e.Amount > 0 && e.Power.Type == PowerType.Debuff && e.Applier == Owner.Creature
         select e).Count() >= 2;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

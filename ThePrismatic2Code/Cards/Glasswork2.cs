@@ -24,26 +24,27 @@ public class Glasswork2() : ThePrismatic2Card(1,
     public override bool GainsBlock => true;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        ..HoverTipFactory.FromForge(),
         HoverTipFactory.Static(StaticHoverTip.Channeling),
         HoverTipFactory.FromOrb<GlassOrb>()
     ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new BlockVar(4m, ValueProp.Move),
-        new StarsVar(1)
+        new ForgeVar(4)
         ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        await PlayerCmd.GainStars(DynamicVars.Stars.BaseValue, Owner);
+        await ForgeCmd.Forge(DynamicVars.Forge.BaseValue, Owner, this);
         await OrbCmd.Channel<GlassOrb>(choiceContext, Owner);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Block.UpgradeValueBy(2m);
-        DynamicVars.Stars.UpgradeValueBy(1m);
+        DynamicVars.Forge.UpgradeValueBy(2m);
     }
 }

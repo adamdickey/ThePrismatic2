@@ -21,6 +21,7 @@ public class Dominate2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/dominate.png-8bb755cf6f657e51d5fa88a65015f90f.ctex";
     public override string PortraitPath => "res://.godot/imported/dominate.png-8bb755cf6f657e51d5fa88a65015f90f.ctex";
 
+
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
@@ -30,7 +31,6 @@ public class Dominate2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<StrengthPower>(),
-        HoverTipFactory.FromPower<WeakPower>(),
         HoverTipFactory.FromPower<VulnerablePower>(),
         HoverTipFactory.FromPower<ExposedPower>()
     ]);
@@ -40,7 +40,7 @@ public class Dominate2() : ThePrismatic2Card(1,
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, DynamicVars["VulnerablePower"].BaseValue, Owner.Creature, this);
-        int num = (cardPlay.Target.GetPower<VulnerablePower>()?.Amount??0)+(cardPlay.Target.GetPower<WeakPower>()?.Amount??0)+(cardPlay.Target.GetPower<ExposedPower>()?.Amount??0);
+        int num = (cardPlay.Target.GetPower<VulnerablePower>()?.Amount??0)+(cardPlay.Target.GetPower<ExposedPower>()?.Amount??0);
         await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, num, Owner.Creature, this);
     }
 

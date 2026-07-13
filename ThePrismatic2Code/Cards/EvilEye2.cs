@@ -24,7 +24,7 @@ public class EvilEye2() : ThePrismatic2Card(1,
 
     public override bool GainsBlock => true;
 
-    protected override bool ShouldGlowGoldInternal => WasCardExhaustedThisTurn || WasCardDiscardedThisTurn || WasCardCreatedThisTurn;
+    protected override bool ShouldGlowGoldInternal => WasCardExhaustedThisTurn || WasCardDiscardedThisTurn;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(8m, ValueProp.Move));
 
@@ -32,21 +32,12 @@ public class EvilEye2() : ThePrismatic2Card(1,
 
     private bool WasCardExhaustedThisTurn => CombatManager.Instance.History.Entries.OfType<CardExhaustedEntry>().Any(e => e.HappenedThisTurn(CombatState) && e.Card.Owner == Owner);
     private bool WasCardDiscardedThisTurn => CombatManager.Instance.History.Entries.OfType<CardDiscardedEntry>().Any(e => e.HappenedThisTurn(CombatState) && e.Card.Owner == Owner);
-    private bool WasCardCreatedThisTurn => CombatManager.Instance.History.Entries.OfType<CardGeneratedEntry>().Any(e => e.HappenedThisTurn(CombatState) && e.Card.Owner == Owner);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         VfxCmd.PlayOnCreatureCenter(Owner.Creature, "vfx/vfx_gaze");
-        int blockGains;
-        if (WasCardExhaustedThisTurn || WasCardDiscardedThisTurn || WasCardCreatedThisTurn)
-        {
-            blockGains = 2;
-        }
-        else
-        {
-            blockGains = 1;
-        }
+        int blockGains = WasCardExhaustedThisTurn || WasCardDiscardedThisTurn ? 2 : 1;
         for (int i = 0; i < blockGains; i++)
         {
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);

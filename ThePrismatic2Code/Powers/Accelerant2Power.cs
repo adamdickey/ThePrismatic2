@@ -23,6 +23,6 @@ public class Accelerant2Power : ThePrismatic2Power
         {
             return Amount;
         }
-        return amount;
+        return 1m;
     }
 }

@@ -20,7 +20,7 @@ public class BlackHole2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/black_hole.png-2729b9b83acc302123ce6e1a8a4d4b71.ctex";
     public override string PortraitPath => "res://.godot/imported/black_hole.png-2729b9b83acc302123ce6e1a8a4d4b71.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<BlackHolePower>(3m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<BlackHolePower>(2m));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

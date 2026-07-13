@@ -22,7 +22,7 @@ public class DanseMacabre2Power : ThePrismatic2Power
 
     public override async Task BeforeCardPlayed(CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner.Creature == Owner && (cardPlay.Card.EnergyCost.GetResolved() + cardPlay.Card.LastStarsSpent >= DynamicVars.Energy.IntValue || cardPlay.Card.Type == CardType.Power))
+        if (cardPlay.Card.Owner.Creature == Owner && cardPlay.Card.EnergyCost.GetResolved() + cardPlay.Card.LastStarsSpent >= DynamicVars.Energy.IntValue)
         {
             Flash();
             await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered, null);

@@ -20,20 +20,23 @@ public class Hotfix2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/hotfix.png-b0dcd8207aa51c29085e0004b77c07ba.ctex";
     public override string PortraitPath => "res://.godot/imported/hotfix.png-b0dcd8207aa51c29085e0004b77c07ba.ctex";
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<FocusPower>());
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromPower<FocusPower>(),
+        ..HoverTipFactory.FromForge()
+        ]);
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new PowerVar<FocusPower>(2m),
-        new StarsVar(1)
+        new ForgeVar(5)
         ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await PowerCmd.Apply<HotfixPower>(choiceContext, Owner.Creature, DynamicVars["FocusPower"].BaseValue, Owner.Creature, this);
-        await PlayerCmd.GainStars(DynamicVars.Stars.BaseValue, Owner);
+        await ForgeCmd.Forge(DynamicVars.Forge.BaseValue, Owner, this);
     }
 
     protected override void OnUpgrade()

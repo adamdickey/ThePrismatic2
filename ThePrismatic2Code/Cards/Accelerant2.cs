@@ -1,5 +1,4 @@
-﻿using BaseLib.Extensions;
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -33,18 +32,13 @@ public class Accelerant2() : ThePrismatic2Card(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await PowerCmd.Apply<AccelerantPower>(choiceContext, Owner.Creature, DynamicVars["Accelerant"].BaseValue, Owner.Creature, this);
-        if (Owner.HasPower<Accelerant2Power>())
-        {
-            await PowerCmd.Apply<Accelerant2Power>(choiceContext, Owner.Creature, DynamicVars["Accelerant"].BaseValue, Owner.Creature, this);
-        }
-        else
-        {
-            await PowerCmd.Apply<Accelerant2Power>(choiceContext, Owner.Creature, DynamicVars["Accelerant"].BaseValue+1, Owner.Creature, this);
-        }
+        decimal accelerant2Amount = cardPlay.Target != null && cardPlay.Target.HasPower<Accelerant2Power>() ? DynamicVars["Accelerant"].BaseValue+1 : DynamicVars["Accelerant"].BaseValue;
+        await PowerCmd.Apply<Accelerant2Power>(choiceContext, Owner.Creature, accelerant2Amount, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars["Accelerant"].UpgradeValueBy(1m);
+        DynamicVars["Doom"].UpgradeValueBy(50m);
     }
 }

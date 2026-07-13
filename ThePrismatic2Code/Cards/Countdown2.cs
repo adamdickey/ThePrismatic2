@@ -21,7 +21,10 @@ public class Countdown2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/countdown.png-57e7f53d715d5acec56e3217f661ce2c.ctex";
     public override string PortraitPath => "res://.godot/imported/countdown.png-57e7f53d715d5acec56e3217f661ce2c.ctex";
     
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<CountdownPower>(3m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new PowerVar<PoisonPower>(2m),
+        new PowerVar<CountdownPower>(4m)
+    ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<PoisonPower>(),
@@ -36,6 +39,6 @@ public class Countdown2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["CountdownPower"].UpgradeValueBy(1m);
+        DynamicVars["CountdownPower"].UpgradeValueBy(2m);
     }
 }

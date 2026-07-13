@@ -11,13 +11,17 @@ using ThePrismatic2.ThePrismatic2Code.Powers;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class TrashToTreasure2() : ThePrismatic2Card(2, 
+public class TrashToTreasure2() : ThePrismatic2Card(1, 
     CardType.Power, CardRarity.Rare, 
     TargetType.Self)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/trash_to_treasure.png-106d45953a6a838bc6872fe2c08e81d9.ctex";
     public override string PortraitPath => "res://.godot/imported/trash_to_treasure.png-106d45953a6a838bc6872fe2c08e81d9.ctex";
+    
+    public override int CanonicalStarCost => 2;
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.Channeling));
 
@@ -29,6 +33,6 @@ public class TrashToTreasure2() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        AddKeyword(CardKeyword.Innate);
     }
 }

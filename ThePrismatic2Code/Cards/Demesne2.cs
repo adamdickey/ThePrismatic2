@@ -12,13 +12,15 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class Demesne2() : ThePrismatic2Card(3, 
+public class Demesne2() : ThePrismatic2Card(2, 
     CardType.Power, CardRarity.Rare, 
     TargetType.Self)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/demesne.png-0e91b272ab67402e0bf4ffa3ea2d63de.ctex";
     public override string PortraitPath => "res://.godot/imported/demesne.png-0e91b272ab67402e0bf4ffa3ea2d63de.ctex";
+
+    public override int CanonicalStarCost => 2;
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new EnergyVar(1),
@@ -30,10 +32,7 @@ public class Demesne2() : ThePrismatic2Card(3,
         Extensions.Keywords.Starbound
         ]);
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        HoverTipFactory.FromKeyword(Extensions.Keywords.Starbound),
-        EnergyHoverTip
-        ]);
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(EnergyHoverTip);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

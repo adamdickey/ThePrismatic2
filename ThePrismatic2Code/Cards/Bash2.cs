@@ -28,9 +28,9 @@ public class Bash2() : ThePrismatic2Card(2,
     ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(10m, ValueProp.Move),
+        new DamageVar(13m, ValueProp.Move),
         new PowerVar<VulnerablePower>(2m),
-        new("Exposed", 2m)
+        new DynamicVar("Exposed", 2m)
     ]);
 
     protected override async Task OnPlay(
@@ -47,7 +47,7 @@ public class Bash2() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
         DynamicVars.Vulnerable.UpgradeValueBy(1m);
         DynamicVars["Exposed"].UpgradeValueBy(1m);
     }

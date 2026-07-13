@@ -15,7 +15,7 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class SevenStars2() : ThePrismatic2Card(2, 
+public class SevenStars2() : ThePrismatic2Card(3, 
     CardType.Attack, CardRarity.Rare, 
     TargetType.AllEnemies)
 {
@@ -29,10 +29,10 @@ public class SevenStars2() : ThePrismatic2Card(2,
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.Channeling));
     
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
+    //public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(5m, ValueProp.Move),
+        new DamageVar(7m, ValueProp.Move),
         new RepeatVar(7)
     ]);
 
@@ -49,7 +49,7 @@ public class SevenStars2() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
+        EnergyCost.UpgradeBy(-2);
     }
     
     public override Task AfterCardEnteredCombat(CardModel card)

@@ -36,11 +36,16 @@ public class Genesis2Power : ThePrismatic2Power
             return Task.CompletedTask;
         }
         IEnumerable<CardModel> enumerable = Owner.Player?.PlayerCombatState?.AllCards ?? Array.Empty<CardModel>();
-        foreach (CardModel item in enumerable)
+        foreach (CardModel card in enumerable)
         {
-            if (item.Type == CardType.Power && !item.Keywords.Contains(Extensions.Keywords.Starbound))
+            if (card.Type != CardType.Power) continue;
+            if (card.Keywords.Contains(Extensions.Keywords.StarboundThisTurn))
             {
-                item.AddKeyword(Extensions.Keywords.Starbound);
+                card.RemoveKeyword(Extensions.Keywords.StarboundThisTurn);
+            }
+            if (!card.Keywords.Contains(Extensions.Keywords.Starbound))
+            {
+                card.AddKeyword(Extensions.Keywords.Starbound);
             }
         }
         return Task.CompletedTask;
@@ -48,19 +53,15 @@ public class Genesis2Power : ThePrismatic2Power
 
     public override Task AfterCardEnteredCombat(CardModel card)
     {
-        if (card.Owner != Owner.Player)
+        if (card.Type != CardType.Power) return Task.CompletedTask;
+        if (card.Keywords.Contains(Extensions.Keywords.StarboundThisTurn))
         {
-            return Task.CompletedTask;
+            card.RemoveKeyword(Extensions.Keywords.StarboundThisTurn);
         }
-        if (card.Type != CardType.Power)
+        if (!card.Keywords.Contains(Extensions.Keywords.Starbound))
         {
-            return Task.CompletedTask;
+            card.AddKeyword(Extensions.Keywords.Starbound);
         }
-        if (card.Keywords.Contains(Extensions.Keywords.Starbound))
-        {
-            return Task.CompletedTask;
-        }
-        card.AddKeyword(Extensions.Keywords.Starbound);
         return Task.CompletedTask;
     }
 

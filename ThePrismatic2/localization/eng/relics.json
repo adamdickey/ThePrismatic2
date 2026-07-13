@@ -1,5 +1,33 @@
 {
   "THEPRISMATIC2-BURNING_RING.description": "You may [gold]Delete[/gold] at Rest Sites.",
   "THEPRISMATIC2-BURNING_RING.flavor": "Flavor",
-  "THEPRISMATIC2-BURNING_RING.title": "Burning Ring"
+  "THEPRISMATIC2-BURNING_RING.title": "Burning Ring",
+
+  "THEPRISMATIC2-BURNING_REMNANT.description": "At the start of each combat, heal [green]{Heal}[/green] HP.",
+  "THEPRISMATIC2-BURNING_REMNANT.flavor": "What remains of a mighty warrior.",
+  "THEPRISMATIC2-BURNING_REMNANT.title": "Burning Remnant",
+
+  "THEPRISMATIC2-RING_REMNANT.description": "At the start of each combat, draw 1 card.",
+  "THEPRISMATIC2-RING_REMNANT.flavor": "What remains of a cunning tactician.",
+  "THEPRISMATIC2-RING_REMNANT.title": "Ring Remnant",
+
+  "THEPRISMATIC2-DIVINE_REMNANT.description": "At the start of each combat, gain {Stars:starIcons()}.",
+  "THEPRISMATIC2-DIVINE_REMNANT.flavor": "What remains of an arrogant monarch.",
+  "THEPRISMATIC2-DIVINE_REMNANT.title": "Divine Remnant",
+
+  "THEPRISMATIC2-PHYLACTERY_REMNANT.description": "At the start of each combat, [gold]Summon[/gold] {Summon:diff()}.",
+  "THEPRISMATIC2-PHYLACTERY_REMNANT.flavor": "What remains of a vengeful lich.",
+  "THEPRISMATIC2-PHYLACTERY_REMNANT.title": "Phylactery Remnant",
+
+  "THEPRISMATIC2-CORE_REMNANT.description": "At the start of each combat, [gold]Channel[/gold] 1 [gold]Venom[/gold].",
+  "THEPRISMATIC2-CORE_REMNANT.flavor": "What remains of a broken automaton.",
+  "THEPRISMATIC2-CORE_REMNANT.title": "Core Remnant",
+
+  "THEPRISMATIC2-VIVID_IMAGINATION.description": "Upon pickup, obtain 3 random relics based on other characters.",
+  "THEPRISMATIC2-VIVID_IMAGINATION.flavor": "Flavor",
+  "THEPRISMATIC2-VIVID_IMAGINATION.title": "Vivid Imagination",
+
+  "THEPRISMATIC2-VIVID_RECALL.description": "Upon pickup, transform your [gold]Remnant[/gold] relics into their original versions.",
+  "THEPRISMATIC2-VIVID_RECALL.flavor": "Flavor",
+  "THEPRISMATIC2-VIVID_RECALL.title": "Vivid Recall"
 }

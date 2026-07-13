@@ -29,7 +29,10 @@ public class Offering2() : ThePrismatic2Card(0,
     
     	public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
     
-    	protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(EnergyHoverTip);
+    	protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+		    HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed),
+		    EnergyHoverTip
+	    ]);
     
     	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     	{

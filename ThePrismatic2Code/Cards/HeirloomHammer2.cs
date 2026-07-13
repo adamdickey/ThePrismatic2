@@ -38,10 +38,6 @@ public class HeirloomHammer2() : ThePrismatic2Card(2,
             for (int i = 0; i < DynamicVars.Repeat.IntValue; i++)
             {
                 CardModel card = selection.CreateClone();
-                if (IsUpgraded)
-                {
-                    CardCmd.Upgrade(card);
-                }
                 await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner);
             }
         }
@@ -49,6 +45,6 @@ public class HeirloomHammer2() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.Damage.UpgradeValueBy(5m);
     }
 }

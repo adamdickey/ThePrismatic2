@@ -18,11 +18,13 @@ public class NecroStrike() : ThePrismatic2Card(1,
     public override string PortraitPath => $"PrismaticStrike.png".CardImagePath();
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike, CardTag.OstyAttack];
     
+    public override bool IsBasicStrikeOrDefend => false;
+    
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon));
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new OstyDamageVar(5m, ValueProp.Move),
-        new SummonVar(2m)
+        new OstyDamageVar(6m, ValueProp.Move),
+        new SummonVar(1m)
     ]);
 
 

@@ -28,37 +28,27 @@ public class BoneShards2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new HpLossVar(4m),
+        new SummonVar(1m),
         new OstyDamageVar(9m, ValueProp.Move),
-        new DamageVar(9m, ValueProp.Move),
         new BlockVar(9m, ValueProp.Move)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        if (Osty.CheckMissingWithAnim(Owner))
+        {
+            await CreatureCmd.Damage(choiceContext, Owner.Creature, DynamicVars.HpLoss.BaseValue, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
+            await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
+        }
         if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null && CombatState != null)
         {
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this)
                 .TargetingAllOpponents(CombatState)
                 .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
                 .Execute(choiceContext);
-        }
-        else
-        {
-            if (CombatState != null)
-                await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromCard(this)
-                    .TargetingAllOpponents(CombatState)
-                    .WithHitFx("vfx/vfx_attack_blunt", null, "heavy_attack.mp3")
-                    .Execute(choiceContext);
-        }
-        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
-        {
+            await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
             await CreatureCmd.Kill(Owner.Osty);
         }
-        else
-        {
-            await CreatureCmd.Damage(choiceContext, Owner.Creature, DynamicVars.HpLoss.BaseValue, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
-        }
-        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
     }
 
     protected override void OnUpgrade()

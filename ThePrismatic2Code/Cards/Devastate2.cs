@@ -14,7 +14,7 @@ namespace ThePrismatic2.ThePrismatic2Code.Cards;
 [Pool(typeof(ThePrismatic2CardPool))]
 public class Devastate2() : ThePrismatic2Card(1, 
     CardType.Attack, CardRarity.Uncommon, 
-    TargetType.Self)
+    TargetType.AnyEnemy)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/devastate.png-5a8afa63739e1780605788b495d7fc14.ctex";
@@ -26,7 +26,7 @@ public class Devastate2() : ThePrismatic2Card(1,
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.Evoke));
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(24m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(33m, ValueProp.Move));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -46,6 +46,6 @@ public class Devastate2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(8m);
+        DynamicVars.Damage.UpgradeValueBy(9m);
     }
 }

@@ -16,6 +16,8 @@ public class CoordinatedStrike() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => $"PrismaticStrike.png".BigCardImagePath();
     public override string PortraitPath => $"PrismaticStrike.png".CardImagePath();
     
+    public override bool IsBasicStrikeOrDefend => false;
+    
     protected override bool ShouldGlowGoldInternal => !Osty.CheckMissingWithAnim(Owner);
     protected override HashSet<CardTag> CanonicalTags => [CardTag.OstyAttack, CardTag.Strike];
 
