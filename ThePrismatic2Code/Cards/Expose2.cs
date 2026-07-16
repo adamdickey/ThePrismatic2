@@ -23,7 +23,7 @@ public class Expose2() : ThePrismatic2Card(0,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DynamicVar("Vulnerable", 1m),
-        new DynamicVar("Exposed", 2m)
+        new DynamicVar("Exposed", 5m)
     ]);
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
@@ -54,6 +54,6 @@ public class Expose2() : ThePrismatic2Card(0,
     protected override void OnUpgrade()
     {
         DynamicVars["Vulnerable"].UpgradeValueBy(1m);
-        DynamicVars["Exposed"].UpgradeValueBy(1m);
+        DynamicVars["Exposed"].UpgradeValueBy(3m);
     }
 }
