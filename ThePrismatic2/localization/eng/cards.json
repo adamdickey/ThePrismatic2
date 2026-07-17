@@ -350,7 +350,7 @@
   "THEPRISMATIC2-SLICE2.description": "Deal {Damage:diff()} damage.\nGain {Stars:starIcons()}.",
   "THEPRISMATIC2-SLICE2.title": "Slice",
 
-  "THEPRISMATIC2-SNAKEBITE2.description": "Apply {PoisonPower:diff()} [gold]Poison[/gold].\nApply {DoomPower:diff()} [gold]Doom[/gold].",
+  "THEPRISMATIC2-SNAKEBITE2.description": "Apply {PoisonPower:diff()} [gold]Poison[/gold].\nApply {DoomPower:diff()} [gold]Doom[/gold].\nApply {Exposed:diff()} [gold]Exposed[/gold].",
   "THEPRISMATIC2-SNAKEBITE2.title": "Snakebite",
 
   "THEPRISMATIC2-SPEEDSTER2.description": "Whenever you draw or create a card during your turn, deal {SpeedsterPower:diff()} damage to ALL enemies.",
@@ -493,7 +493,7 @@
   "THEPRISMATIC2-SHINING_STRIKE2.description": "Deal {Damage:diff()} damage.\nGain {Stars:starIcons()}.\nPut this card on top of your [gold]Draw Pile[/gold].",
   "THEPRISMATIC2-SHINING_STRIKE2.title": "Shining Strike",
 
-  "THEPRISMATIC2-SOLAR_STRIKE2.description": "Deal {Damage:diff()} damage.\n[gold]Channel[/gold] 1 [gold]Solar[/gold].",
+  "THEPRISMATIC2-SOLAR_STRIKE2.description": "[gold]Bleed[/gold] {HpLoss:diff()}.\nDeal {Damage:diff()} damage.\n[gold]Channel[/gold] 1 [gold]Solar[/gold].",
   "THEPRISMATIC2-SOLAR_STRIKE2.title": "Solar Strike",
 
   "THEPRISMATIC2-SPECTRUM_SHIFT2.description": "At the start of your turn, [gold]Exhaust[/gold] 1 card and add a random Colorless card into your [gold]Hand[/gold].",
