@@ -24,7 +24,7 @@ public class Glitterstream2() : ThePrismatic2Card(2,
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new BlockVar(8m, ValueProp.Move),
+        new BlockVar(7m, ValueProp.Move),
         new SummonVar(2m),
         new BlockVar("BlockNextTurn", 2m, ValueProp.Move),
         new SummonVar("SummonNextTurn", 2m)
@@ -48,7 +48,7 @@ public class Glitterstream2() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(2m);
+        DynamicVars.Block.UpgradeValueBy(3m);
         DynamicVars["BlockNextTurn"].UpgradeValueBy(1m);
     }
 }

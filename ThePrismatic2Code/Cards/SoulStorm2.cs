@@ -23,7 +23,7 @@ public class SoulStorm2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new CalculationBaseVar(9m),
-        new ExtraDamageVar(2m),
+        new ExtraDamageVar(3m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((card, _) => CombatManager.Instance.History.Entries.OfType<CardPlayFinishedEntry>().Count(e => e.CardPlay.Card.Owner == card.Owner && e.CardPlay.Card.EnergyCost.Canonical == 0))
     ]);
 
@@ -37,6 +37,6 @@ public class SoulStorm2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.ExtraDamage.UpgradeValueBy(1m);
+        DynamicVars.ExtraDamage.UpgradeValueBy(2m);
     }
 }

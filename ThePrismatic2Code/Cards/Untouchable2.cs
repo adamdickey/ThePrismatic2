@@ -39,6 +39,6 @@ public class Untouchable2() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(2m);
+        DynamicVars.Block.UpgradeValueBy(3m);
     }
 }

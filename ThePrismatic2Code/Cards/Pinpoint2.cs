@@ -20,7 +20,7 @@ public class Pinpoint2() : ThePrismatic2Card(3,
     public override string CustomPortraitPath => "res://.godot/imported/pinpoint.png-7e7577a6d94b41c05a9090f32811ed8d.ctex";
     public override string PortraitPath => "res://.godot/imported/pinpoint.png-7e7577a6d94b41c05a9090f32811ed8d.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(14m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(13m, ValueProp.Move));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

@@ -25,7 +25,7 @@ public class BeatIntoShape2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/beat_into_shape.png-99c90e2e819d29996ecfc0436e19889c.ctex";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(5m, ValueProp.Move),
+        new DamageVar(10m, ValueProp.Move),
         new CalculationBaseVar(1m),
         new CalculationExtraVar(1m),
         new CalculatedVar("CalculatedOrbs").WithMultiplier((card, target) => CombatManager.Instance.History.Entries.OfType<DamageReceivedEntry>().Count(e => e.Receiver == target && e.Dealer == card.Owner.Creature && e.Result.Props.IsPoweredAttack() && e.HappenedThisTurn(card.CombatState)))
@@ -61,6 +61,6 @@ public class BeatIntoShape2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(4m);
     }
 }

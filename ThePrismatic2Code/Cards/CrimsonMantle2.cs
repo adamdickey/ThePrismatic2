@@ -22,7 +22,7 @@ public class CrimsonMantle2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/crimson_mantle.png-cb20729b9d0652f51a70c751335d2512.ctex";
     public override string PortraitPath => "res://.godot/imported/crimson_mantle.png-cb20729b9d0652f51a70c751335d2512.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<CrimsonMantlePower>(8m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<CrimsonMantlePower>(7m));
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Block),
@@ -38,6 +38,6 @@ public class CrimsonMantle2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["CrimsonMantlePower"].UpgradeValueBy(2m);
+        DynamicVars["CrimsonMantlePower"].UpgradeValueBy(3m);
     }
 }

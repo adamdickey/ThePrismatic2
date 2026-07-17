@@ -22,7 +22,7 @@ public class Defile2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/defile.png-4de7e77d549d3e0b65518a3cdcda10e3.ctex";
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(11m, ValueProp.Move),
+        new DamageVar(12m, ValueProp.Move),
         new DynamicVar("Exposed", 1m)
         ]);
     
@@ -41,7 +41,7 @@ public class Defile2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
         DynamicVars["Exposed"].UpgradeValueBy(1m);
     }
 }

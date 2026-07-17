@@ -19,7 +19,7 @@ public class HowlFromBeyond2() : ThePrismatic2Card(3,
     public override string CustomPortraitPath => "res://.godot/imported/howl_from_beyond.png-890b2ee84915111aa80330891fec5309.ctex";
     public override string PortraitPath => "res://.godot/imported/howl_from_beyond.png-890b2ee84915111aa80330891fec5309.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(16m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(18m, ValueProp.Move));
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlyArray<CardKeyword>([
         Extensions.Keywords.Starbound,
@@ -37,6 +37,6 @@ public class HowlFromBeyond2() : ThePrismatic2Card(3,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(5m);
+        DynamicVars.Damage.UpgradeValueBy(6m);
     }
 }

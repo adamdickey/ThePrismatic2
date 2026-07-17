@@ -24,8 +24,8 @@ public class Flechettes2() : ThePrismatic2Card(1,
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<DoomPower>());
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(3m, ValueProp.Move),
-        new PowerVar<DoomPower>(3m),
+        new DamageVar(4m, ValueProp.Move),
+        new PowerVar<DoomPower>(2m),
         new CalculationBaseVar(0m),
         new CalculationExtraVar(1m),
         new CalculatedVar("CalculatedHits").WithMultiplier((card, _) => PileType.Hand.GetPile(card.Owner).Cards.Count(c => c.Type == CardType.Skill))
@@ -51,7 +51,7 @@ public class Flechettes2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(1m);
-        DynamicVars.Doom.UpgradeValueBy(1m);
+        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.Doom.UpgradeValueBy(2m);
     }
 }

@@ -25,7 +25,7 @@ public class Juggernaut2() : ThePrismatic2Card(2,
         HoverTipFactory.Static(StaticHoverTip.SummonStatic)
     ]);
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<Juggernaut2Power>(5m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<Juggernaut2Power>(6m));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

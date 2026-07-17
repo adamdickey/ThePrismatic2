@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using ThePrismatic2.ThePrismatic2Code.Character;
+using ThePrismatic2.ThePrismatic2Code.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -22,12 +23,14 @@ public class Snakebite2() : ThePrismatic2Card(2,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new PowerVar<PoisonPower>(5m),
-        new PowerVar<DoomPower>(5m)
+        new PowerVar<DoomPower>(5m),
+        new DynamicVar("Exposed", 2m)
         ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<PoisonPower>(),
-        HoverTipFactory.FromPower<DoomPower>()
+        HoverTipFactory.FromPower<DoomPower>(),
+        HoverTipFactory.FromPower<ExposedPower>()
         ]);
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Retain);
@@ -39,11 +42,13 @@ public class Snakebite2() : ThePrismatic2Card(2,
         VfxCmd.PlayOnCreatureCenter(cardPlay.Target, "vfx/vfx_bite");
         await PowerCmd.Apply<PoisonPower>(choiceContext, cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
         await PowerCmd.Apply<DoomPower>(choiceContext, cardPlay.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<ExposedPower>(choiceContext, cardPlay.Target, DynamicVars["Exposed"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Poison.UpgradeValueBy(2m);
         DynamicVars.Doom.UpgradeValueBy(2m);
+        DynamicVars["Exposed"].UpgradeValueBy(1m);
     }
 }

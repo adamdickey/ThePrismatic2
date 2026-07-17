@@ -21,7 +21,7 @@ public class Resonance2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/resonance.png-a1e1b6db000c52ac43c457a13ff594dd.ctex";
     public override string PortraitPath => "res://.godot/imported/resonance.png-a1e1b6db000c52ac43c457a13ff594dd.ctex";
     
-    public override int CanonicalStarCost => 3;
+    public override int CanonicalStarCost => 2;
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
