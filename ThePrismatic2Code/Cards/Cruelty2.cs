@@ -13,7 +13,7 @@ namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
 public class Cruelty2() : ThePrismatic2Card(1, 
-    CardType.Power, CardRarity.Rare, 
+    CardType.Power, CardRarity.Uncommon, 
     TargetType.Self)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();

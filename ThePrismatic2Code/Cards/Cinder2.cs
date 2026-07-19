@@ -21,11 +21,7 @@ public class Cinder2() : ThePrismatic2Card(2,
     public override string CustomPortraitPath => "res://.godot/imported/cinder.png-d24a89aa723f13b62a5fd061b1faf93f.ctex";
     public override string PortraitPath => "res://.godot/imported/cinder.png-d24a89aa723f13b62a5fd061b1faf93f.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(
-    [
-        new DamageVar(15m, ValueProp.Move),
-        new StarsVar(2)
-    ]);
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(18m, ValueProp.Move));
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Ethereal));
 
@@ -42,11 +38,10 @@ public class Cinder2() : ThePrismatic2Card(2,
             CardCmd.ApplyKeyword(cardModel, CardKeyword.Ethereal);
             CardCmd.Preview(cardModel, 0.5f);
         }
-        await PlayerCmd.GainStars(DynamicVars.Stars.BaseValue, Owner);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(5m);
+        DynamicVars.Damage.UpgradeValueBy(6m);
     }
 }

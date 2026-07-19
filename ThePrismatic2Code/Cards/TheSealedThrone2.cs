@@ -6,17 +6,18 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using ThePrismatic2.ThePrismatic2Code.Character;
+using ThePrismatic2.ThePrismatic2Code.Extensions;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class TheSealedThrone2() : ThePrismatic2Card(1, 
-    CardType.Power, CardRarity.Ancient, 
+public class TheSealedThrone2() : ThePrismatic2Card(2, 
+    CardType.Power, CardRarity.Rare, 
     TargetType.Self)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
-    public override string CustomPortraitPath => "res://.godot/imported/the_sealed_throne.png-9a51d17491cc908657d0fea9b763d690.ctex";
-    public override string PortraitPath => "res://.godot/imported/the_sealed_throne.png-9a51d17491cc908657d0fea9b763d690.ctex";
+    public override string CustomPortraitPath => "TheSealedThrone.png".BigCardImagePath();
+    public override string PortraitPath => "TheSealedThrone.png".CardImagePath();
     
     public override int CanonicalStarCost => 3;
     

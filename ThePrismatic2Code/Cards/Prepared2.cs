@@ -33,7 +33,7 @@ public class Prepared2() : ThePrismatic2Card(0,
         await CardPileCmd.Draw(choiceContext, cardCount, Owner);
         IEnumerable<CardModel> cards = await CardSelectCmd.FromHandForDiscard(choiceContext, Owner, new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, cardCount), null, this);
         await CardCmd.Discard(choiceContext, cards);
-        if (cards.Any(card => card.EnergyCost.GetWithModifiers(CostModifiers.All) + card.CurrentStarCost >= 2))
+        if (cards.Any(card => card.EnergyCost.GetWithModifiers(CostModifiers.All) + Math.Max(0, card.CurrentStarCost) >= 2))
         {
             await PlayerCmd.GainStars(DynamicVars.Stars.BaseValue, Owner);
         }

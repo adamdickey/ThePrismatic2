@@ -14,7 +14,7 @@ namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
 public class Dominate2() : ThePrismatic2Card(1, 
-    CardType.Skill, CardRarity.Uncommon, 
+    CardType.Skill, CardRarity.Rare, 
     TargetType.AnyEnemy)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();

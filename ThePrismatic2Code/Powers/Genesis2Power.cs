@@ -83,10 +83,7 @@ public class Genesis2Power : ThePrismatic2Power
         if (player == Owner.Player)
         {
             Flash();
-            for (int i = 0; i < Amount; i++)
-            {
-                await OrbCmd.Channel<SolarOrb>(new ThrowingPlayerChoiceContext(), Owner.Player);
-            }
+            await PlayerCmd.GainStars(Amount, Owner.Player);
         }
     }
 }

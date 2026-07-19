@@ -24,7 +24,7 @@ public class PhantomBlades2Power : ThePrismatic2Power
 
     public override Task AfterCardEnteredCombat(CardModel card)
     {
-        if (card.EnergyCost.Canonical != 0)
+        if (card.EnergyCost.GetWithModifiers(CostModifiers.All) != 0)
         {
             return Task.CompletedTask;
         }
@@ -57,11 +57,11 @@ public class PhantomBlades2Power : ThePrismatic2Power
         {
             return 0m;
         }
-        if (cardSource == null || !(cardSource.EnergyCost.Canonical == 0 && cardSource.Type == CardType.Attack))
+        if (cardSource == null || !(cardSource.EnergyCost.GetWithModifiers(CostModifiers.All) == 0 && cardSource.Type == CardType.Attack))
         {
             return 0m;
         }
-        if (dealer != Owner)
+        if (Owner != dealer && Owner.Player?.Osty != dealer)
         {
             return 0m;
         }

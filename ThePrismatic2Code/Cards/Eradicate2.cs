@@ -32,7 +32,8 @@ public class Eradicate2() : ThePrismatic2Card(0,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await DamageCmd.Attack(DynamicVars.CalculatedDamage.IntValue+DynamicVars.ExtraDamage.BaseValue).WithHitCount(ResolveEnergyXValue()).FromCard(this)
+        decimal damage = DynamicVars.CalculatedDamage.BaseValue + DynamicVars.ExtraDamage.BaseValue * PileType.Hand.GetPile(Owner).Cards.Count(c => c.ShouldRetainThisTurn);
+        await DamageCmd.Attack(damage).WithHitCount(ResolveEnergyXValue()).FromCard(this)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

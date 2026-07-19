@@ -23,7 +23,7 @@ public class Uppercut2() : ThePrismatic2Card(2,
     public override string PortraitPath => "res://.godot/imported/uppercut.png-9a2ef872349c253bc03c0fda8057e87e.ctex";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(9m, ValueProp.Move),
+        new DamageVar(10m, ValueProp.Move),
         new DynamicVar("Power", 1m)
     ]);
 

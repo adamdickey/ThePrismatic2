@@ -21,10 +21,7 @@ public class Inferno2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/inferno.png-69f23aaa7cb8231fa2b455955f8896e0.ctex";
     public override string PortraitPath => "res://.godot/imported/inferno.png-69f23aaa7cb8231fa2b455955f8896e0.ctex";
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed),
-        HoverTipFactory.FromKeyword(Extensions.Keywords.Offer)
-    ]);
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed));
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<InfernoPower>(6m));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

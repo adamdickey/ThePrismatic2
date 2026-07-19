@@ -6,9 +6,9 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
-using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
+using ThePrismatic2.ThePrismatic2Code.Orbs;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -21,18 +21,16 @@ public class WroughtInWar2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/wrought_in_war.png-fbaf5558a1b7b26aa86a5c2d5c71549c.ctex";
     public override string PortraitPath => "res://.godot/imported/wrought_in_war.png-fbaf5558a1b7b26aa86a5c2d5c71549c.ctex";
     
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.DualWield);
-    
-    protected override bool ShouldGlowGoldInternal => !Osty.CheckMissingWithAnim(Owner);
-    protected override HashSet<CardTag> CanonicalTags => [ CardTag.OstyAttack ];
-    
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(6m, ValueProp.Move),
-        new OstyDamageVar(3m, ValueProp.Move),
-        new ForgeVar(5)
+        new DamageVar(8m, ValueProp.Move),
+        new DynamicVar("Orbs", 1m)
     ]);
-    
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => HoverTipFactory.FromForge();
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.Static(StaticHoverTip.Channeling),
+        HoverTipFactory.FromOrb<IronOrb>(),
+        ..HoverTipFactory.FromForge()
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -40,21 +38,14 @@ public class WroughtInWar2() : ThePrismatic2Card(1,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_blunt")
             .Execute(choiceContext);
-        await ForgeCmd.Forge(DynamicVars.Forge.IntValue, Owner, this);
-        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
+        for (int i = 0; i < DynamicVars["Orbs"].BaseValue; i++)
         {
-            ArgumentNullException.ThrowIfNull(cardPlay.Target);
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromOsty(Owner.Osty, this).Targeting(cardPlay.Target)
-                .WithHitFx("vfx/vfx_attack_blunt")
-                .Execute(choiceContext);
-            await ForgeCmd.Forge(DynamicVars.Forge.IntValue, Owner, this);
+            await OrbCmd.Channel<IronOrb>(choiceContext, Owner);
         }
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
-        DynamicVars.OstyDamage.UpgradeValueBy(1m);
-        DynamicVars.Forge.UpgradeValueBy(1m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

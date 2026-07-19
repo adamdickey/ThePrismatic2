@@ -44,7 +44,7 @@ public class RightHandHand2() : ThePrismatic2Card(0,
 
     public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner == Owner && cardPlay.Card.EnergyCost.GetResolved() + cardPlay.Card.LastStarsSpent >= 2)
+        if (cardPlay.Card.Owner == Owner && cardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, cardPlay.Card.LastStarsSpent) >= 2)
         {
             CardPile? pile = Pile;
             if (pile is { Type: PileType.Discard })

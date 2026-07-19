@@ -14,7 +14,7 @@ namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
 public class Accelerant2() : ThePrismatic2Card(1, 
-    CardType.Power, CardRarity.Rare, 
+    CardType.Power, CardRarity.Uncommon, 
     TargetType.Self)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
@@ -26,19 +26,21 @@ public class Accelerant2() : ThePrismatic2Card(1,
         HoverTipFactory.FromPower<DoomPower>()
         ]);
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("Accelerant", 1m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new DynamicVar("Poison", 1m),
+        new DynamicVar("Doom", 50m)
+        ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<AccelerantPower>(choiceContext, Owner.Creature, DynamicVars["Accelerant"].BaseValue, Owner.Creature, this);
-        decimal accelerant2Amount = cardPlay.Target != null && cardPlay.Target.HasPower<Accelerant2Power>() ? DynamicVars["Accelerant"].BaseValue+1 : DynamicVars["Accelerant"].BaseValue;
-        await PowerCmd.Apply<Accelerant2Power>(choiceContext, Owner.Creature, accelerant2Amount, Owner.Creature, this);
+        await PowerCmd.Apply<AccelerantPower>(choiceContext, Owner.Creature, DynamicVars["Poison"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Accelerant2Power>(choiceContext, Owner.Creature, DynamicVars["Doom"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Accelerant"].UpgradeValueBy(1m);
+        DynamicVars["Poison"].UpgradeValueBy(1m);
         DynamicVars["Doom"].UpgradeValueBy(50m);
     }
 }

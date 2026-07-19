@@ -19,16 +19,4 @@ public sealed class RingRemnant: ThePrismatic2Relic
         }
         return count + 1;
     }
-
-    /*public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
-    {
-        if (player == Owner && Owner.PlayerCombatState != null && Owner.PlayerCombatState.TurnNumber <= 1)
-        {
-            List<CardModel> list = (await CardSelectCmd.FromHandForDiscard(choiceContext, player, new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, 1), null, this)).ToList();
-            if (list.Count != 0)
-            {
-                await CardCmd.Discard(choiceContext, list);
-            }
-        }
-    }*/
 }

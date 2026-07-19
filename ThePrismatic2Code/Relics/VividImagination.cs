@@ -43,6 +43,13 @@ public sealed class VividImagination: ThePrismatic2Relic
     {
         if (Owner.RunState is { CurrentActIndex: 0, ActFloor: 1 })
         {
+            foreach (RelicModel relic in Owner.Relics)
+            {
+                if (relic is BurningRemnant or RingRemnant or DivineRemnant or PhylacteryRemnant or CoreRemnant)
+                {
+                    return;
+                }
+            }
             List<RelicModel> list = [ModelDb.Relic<BurningRemnant>(), ModelDb.Relic<RingRemnant>(), ModelDb.Relic<DivineRemnant>(), ModelDb.Relic<PhylacteryRemnant>(), ModelDb.Relic<CoreRemnant>()];
             List<RelicModel> list2 = RelicInts.Select(i => list[i]).ToList();
             foreach (RelicModel relic in list2)

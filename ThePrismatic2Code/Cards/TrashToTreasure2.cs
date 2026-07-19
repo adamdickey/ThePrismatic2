@@ -33,6 +33,6 @@ public class TrashToTreasure2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Innate);
+        EnergyCost.UpgradeBy(-1);
     }
 }

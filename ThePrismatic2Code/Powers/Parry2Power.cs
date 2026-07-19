@@ -17,7 +17,7 @@ public class Parry2Power : ThePrismatic2Power
     
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Type == CardType.Attack && cardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, cardPlay.Card.CurrentStarCost) >= 2)
+        if (cardPlay.Card.Type == CardType.Attack && cardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, cardPlay.Card.LastStarsSpent) >= 2)
         {
             Flash();
             await CreatureCmd.GainBlock(cardPlay.Card.Owner.Creature, Amount, ValueProp.Unpowered, null);

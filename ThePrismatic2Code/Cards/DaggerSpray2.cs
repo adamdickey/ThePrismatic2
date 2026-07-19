@@ -24,10 +24,8 @@ public class DaggerSpray2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/dagger_spray.png-e68d84c4cddcb97b1e085c7adf6ae00a.ctex";
     public override string PortraitPath => "res://.godot/imported/dagger_spray.png-e68d84c4cddcb97b1e085c7adf6ae00a.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(4m, ValueProp.Move),
-        new StarsVar(1)
-    ]);
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Ethereal);
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(5m, ValueProp.Move));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -47,7 +45,6 @@ public class DaggerSpray2() : ThePrismatic2Card(1,
                     return Task.CompletedTask;
                 })
                 .Execute(choiceContext);
-        await PlayerCmd.GainStars(DynamicVars.Stars.BaseValue, Owner);
     }
 
     protected override void OnUpgrade()

@@ -23,13 +23,11 @@ public class Snakebite2() : ThePrismatic2Card(2,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new PowerVar<PoisonPower>(5m),
-        new PowerVar<DoomPower>(5m),
         new DynamicVar("Exposed", 2m)
         ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<PoisonPower>(),
-        HoverTipFactory.FromPower<DoomPower>(),
         HoverTipFactory.FromPower<ExposedPower>()
         ]);
 
@@ -41,14 +39,12 @@ public class Snakebite2() : ThePrismatic2Card(2,
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         VfxCmd.PlayOnCreatureCenter(cardPlay.Target, "vfx/vfx_bite");
         await PowerCmd.Apply<PoisonPower>(choiceContext, cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<DoomPower>(choiceContext, cardPlay.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this);
         await PowerCmd.Apply<ExposedPower>(choiceContext, cardPlay.Target, DynamicVars["Exposed"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Poison.UpgradeValueBy(2m);
-        DynamicVars.Doom.UpgradeValueBy(2m);
         DynamicVars["Exposed"].UpgradeValueBy(1m);
     }
 }

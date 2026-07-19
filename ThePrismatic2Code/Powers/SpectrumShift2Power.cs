@@ -5,7 +5,6 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 
@@ -19,19 +18,20 @@ public class SpectrumShift2Power : ThePrismatic2Power
     public override PowerType Type => PowerType.Buff;
 
     public override PowerStackType StackType => PowerStackType.Counter;
-    
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Exhaust));
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player == Owner.Player)
         {
             List<CardModel> cards = CardFactory.GetDistinctForCombat(Owner.Player, ModelDb.CardPool<ColorlessCardPool>().GetUnlockedCards(Owner.Player.UnlockState, Owner.Player.RunState.CardMultiplayerConstraint), Amount, Owner.Player.RunState.Rng.CombatCardGeneration).ToList();
-            List<CardModel> selection = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, Amount), context: choiceContext, player: Owner.Player, filter: null, source: this)).ToList() ?? throw new InvalidOperationException();
-            foreach (var (i, card) in cards.Index())
+            foreach (CardModel card in cards)
             {
-                await CardCmd.Exhaust(choiceContext, selection[i]);
                 await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner.Player);
+            }
+            List<CardModel> selection = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, Amount), context: choiceContext, player: Owner.Player, filter: null, source: this)).ToList() ?? throw new InvalidOperationException();
+            foreach (CardModel card2 in selection)
+            {
+                await CardCmd.Discard(choiceContext, card2);
             }
             Flash();
         }

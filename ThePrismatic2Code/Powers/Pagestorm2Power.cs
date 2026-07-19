@@ -16,11 +16,14 @@ public class Pagestorm2Power : ThePrismatic2Power
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Ethereal));
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromKeyword(CardKeyword.Ethereal),
+        HoverTipFactory.FromKeyword(CardKeyword.Retain)
+    ]);
 
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
-        if (card.Owner.Creature == Owner && (card.Keywords.Contains(CardKeyword.Ethereal) || card.Type == CardType.Power))
+        if (card.Owner.Creature == Owner && (card.Keywords.Contains(CardKeyword.Ethereal) || card.ShouldRetainThisTurn))
         {
             Flash();
             if (Owner.Player != null) await CardPileCmd.Draw(choiceContext, Amount, Owner.Player);

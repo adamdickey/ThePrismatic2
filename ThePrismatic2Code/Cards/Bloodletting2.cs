@@ -15,7 +15,7 @@ namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
 public class Bloodletting2() : ThePrismatic2Card(0, 
-    CardType.Skill, CardRarity.Common, 
+    CardType.Skill, CardRarity.Uncommon, 
     TargetType.Self)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();

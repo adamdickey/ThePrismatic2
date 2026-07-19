@@ -5,7 +5,6 @@ using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Random;
 using ThePrismatic2.ThePrismatic2Code.Cards;
 using ThePrismatic2.ThePrismatic2Code.Relics;
@@ -72,14 +71,14 @@ public class ThePrismatic2 : PlaceholderCharacterModel
             }
             IEnumerable<CardModel> startingDeck = 
             [
-                ModelDb.Card<StrikeIronclad>(), 
-                ModelDb.Card<StrikeSilent>(), 
-                ModelDb.Card<StrikeRegent>(), 
-                ModelDb.Card<StrikeNecrobinder>(), 
-                ModelDb.Card<DefendIronclad>(), 
-                ModelDb.Card<DefendSilent>(), 
-                ModelDb.Card<DefendNecrobinder>(), 
-                ModelDb.Card<DefendDefect>(), 
+                ModelDb.Card<StrikePrismatic>(),
+                ModelDb.Card<StrikePrismatic>(),
+                ModelDb.Card<StrikePrismatic>(),
+                ModelDb.Card<StrikePrismatic>(),
+                ModelDb.Card<DefendPrismatic>(),
+                ModelDb.Card<DefendPrismatic>(),
+                ModelDb.Card<DefendPrismatic>(),
+                ModelDb.Card<DefendPrismatic>(),
                 chosenStrike, 
                 chosenDefend
             ];

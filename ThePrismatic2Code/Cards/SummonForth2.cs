@@ -46,7 +46,7 @@ public class SummonForth2() : ThePrismatic2Card(1,
             });
             var sovereignBlades = cards.ToList();
             IEnumerable<CardModel> costlyCards = from c in Owner.PlayerCombatState.AllCards
-                where c.EnergyCost.Canonical + Math.Max(0, c.CurrentStarCost) >= 2 && c.Pile != null && c.Pile.Type != PileType.Hand
+                where c.EnergyCost.GetWithModifiers(CostModifiers.All) + Math.Max(0, c.CurrentStarCost) >= 2 && c.Pile != null && c.Pile.Type != PileType.Hand
                 select c;
             
             CardModel? costlyCard = Owner.RunState.Rng.CombatCardSelection.NextItem(costlyCards);

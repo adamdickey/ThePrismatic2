@@ -25,7 +25,7 @@ public class Dismantle2() : ThePrismatic2Card(1,
     protected override bool ShouldGlowGoldInternal => CombatState != null && (CombatState.HittableEnemies.Any(e => e.Powers.Count(power => power.Type == PowerType.Debuff) >= 2) || !Osty.CheckMissingWithAnim(Owner));
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(6m, ValueProp.Move),
+        new DamageVar(7m, ValueProp.Move),
         new OstyDamageVar(3m, ValueProp.Move)
     ]);
 

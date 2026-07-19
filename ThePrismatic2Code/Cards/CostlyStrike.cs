@@ -1,7 +1,7 @@
 ﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -21,6 +21,7 @@ public class CostlyStrike() : ThePrismatic2Card(2,
     
     public override bool IsBasicStrikeOrDefend => false;
 
+    private bool _costReduced;
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(10m, ValueProp.Move));
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Costly));
 
@@ -39,25 +40,30 @@ public class CostlyStrike() : ThePrismatic2Card(2,
     
     public override Task AfterCardEnteredCombat(CardModel card)
     {
-        UpdateCost();
+        if (card != this) return Task.CompletedTask;
+        bool costlyCardPlayed = CombatManager.Instance.History.CardPlaysFinished.Any(e => e.CardPlay.Card.EnergyCost.GetResolved() + e.CardPlay.Card.LastStarsSpent >= 2 && e.CardPlay.Card.Owner == Owner && e.HappenedThisTurn(CombatState));
+        if (!costlyCardPlayed) return Task.CompletedTask;
+        EnergyCost.AddThisTurn(-1);
+        _costReduced = true;
         return Task.CompletedTask;
     }
 
     public override Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        UpdateCost();
+        if (cardPlay.Card.Owner == Owner && !_costReduced && cardPlay.Card.EnergyCost.GetResolved() + cardPlay.Card.LastStarsSpent >= 2)
+        {
+            EnergyCost.AddThisTurn(-1);
+            _costReduced = true;
+        }
         return Task.CompletedTask;
     }
     
-    public override Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
+    public override Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
-        UpdateCost();
+        if (player == Owner)
+        {
+            _costReduced = false;
+        }
         return Task.CompletedTask;
-    }
-
-    private void UpdateCost()
-    {
-        int costlyCardsPlayed = CombatManager.Instance.History.CardPlaysFinished.Count(e => e.CardPlay.Card.EnergyCost.GetResolved() + e.CardPlay.Card.LastStarsSpent >= 2 && e.CardPlay.Card.Owner == Owner && e.HappenedThisTurn(CombatState));
-        EnergyCost.SetUntilPlayed(EnergyCost.Canonical - Math.Min(1, costlyCardsPlayed));
     }
 }

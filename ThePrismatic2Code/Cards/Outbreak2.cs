@@ -20,10 +20,7 @@ public class Outbreak2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/outbreak.png-68e282f3c4c29d8ecda8fd4edda58fd2.ctex";
     public override string PortraitPath => "res://.godot/imported/outbreak.png-68e282f3c4c29d8ecda8fd4edda58fd2.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new PowerVar<OutbreakPower>(8m),
-        new RepeatVar(3)
-    ]);
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<OutbreakPower>(4m));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -32,6 +29,6 @@ public class Outbreak2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["OutbreakPower"].UpgradeValueBy(3m);
+        DynamicVars["OutbreakPower"].UpgradeValueBy(1m);
     }
 }

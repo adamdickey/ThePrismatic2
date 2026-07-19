@@ -26,14 +26,7 @@ public class Corruption2Power : ThePrismatic2Power
         foreach (CardModel card in enumerable)
         {
             if (card.Type != CardType.Skill) continue;
-            if (card.Keywords.Contains(Extensions.Keywords.StarboundThisTurn))
-            {
-                card.RemoveKeyword(Extensions.Keywords.StarboundThisTurn);
-            }
-            if (!card.Keywords.Contains(Extensions.Keywords.Starbound))
-            {
-                card.AddKeyword(Extensions.Keywords.Starbound);
-            }
+            card.EnergyCost.AddThisCombat(-1);
         }
         return Task.CompletedTask;
     }
@@ -41,14 +34,7 @@ public class Corruption2Power : ThePrismatic2Power
     public override Task AfterCardEnteredCombat(CardModel card)
     {
         if (card.Type != CardType.Skill) return Task.CompletedTask;
-        if (card.Keywords.Contains(Extensions.Keywords.StarboundThisTurn))
-        {
-            card.RemoveKeyword(Extensions.Keywords.StarboundThisTurn);
-        }
-        if (!card.Keywords.Contains(Extensions.Keywords.Starbound))
-        {
-            card.AddKeyword(Extensions.Keywords.Starbound);
-        }
+        card.EnergyCost.AddThisCombat(-1);
         return Task.CompletedTask;
     }
 

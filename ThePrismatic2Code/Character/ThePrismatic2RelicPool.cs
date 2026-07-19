@@ -1,6 +1,8 @@
 ﻿using BaseLib.Abstracts;
 using ThePrismatic2.ThePrismatic2Code.Extensions;
 using Godot;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Relics;
 
 namespace ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -10,4 +12,26 @@ public class ThePrismatic2RelicPool : CustomRelicPoolModel
 
     public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();
     public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();
+
+    protected override RelicModel[] GenerateAllRelics()
+    {
+        RelicModel[] relicPool =
+        [
+            ModelDb.Relic<RedSkull>(),
+            ModelDb.Relic<CharonsAshes>(),
+            ModelDb.Relic<Brimstone>(),
+            ModelDb.Relic<TwistedFunnel>(),
+            ModelDb.Relic<FencingManual>(),
+            ModelDb.Relic<Regalite>(),
+            ModelDb.Relic<LunarPastry>(),
+            ModelDb.Relic<FuneraryMask>(),
+            ModelDb.Relic<Bookmark>(),
+            ModelDb.Relic<IvoryTile>(),
+            ModelDb.Relic<DataDisk>(),
+            ModelDb.Relic<EmotionChip>(),
+            ModelDb.Relic<PowerCell>(),
+            ModelDb.Relic<RunicCapacitor>()
+        ];
+        return relicPool;
+    }
 }

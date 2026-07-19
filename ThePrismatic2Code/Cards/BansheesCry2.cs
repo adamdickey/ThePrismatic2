@@ -54,7 +54,7 @@ public class BansheesCry2() : ThePrismatic2Card(11,
         {
             return Task.CompletedTask;
         }
-        int num = CombatManager.Instance.History.CardPlaysFinished.Count(e => (e.WasEthereal || e.CardPlay.Card.EnergyCost.GetResolved() + e.CardPlay.Card.LastStarsSpent >= 2) && e.CardPlay.Card.Owner == Owner);
+        int num = CombatManager.Instance.History.CardPlaysFinished.Count(e => (e.WasEthereal || e.CardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, e.CardPlay.Card.LastStarsSpent) >= 2) && e.CardPlay.Card.Owner == Owner);
         EnergyCost.AddThisCombat(-num * DynamicVars.Energy.IntValue);
         return Task.CompletedTask;
     }

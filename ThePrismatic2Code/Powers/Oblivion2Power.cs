@@ -24,7 +24,7 @@ public class Oblivion2Power : ThePrismatic2Power
 
     public override PowerStackType StackType => PowerStackType.Counter;
     
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<DoomPower>(0m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<PoisonPower>(0m));
 
     protected override object InitInternalData()
     {
@@ -35,7 +35,7 @@ public class Oblivion2Power : ThePrismatic2Power
     {
 	    if (power == this)
 	    {
-		    DynamicVars.Doom.UpgradeValueBy(2m);
+		    DynamicVars.Poison.UpgradeValueBy(1m);
 	    }
 	    return Task.CompletedTask;
     }
@@ -59,8 +59,8 @@ public class Oblivion2Power : ThePrismatic2Power
     	if (GetInternalData<Data>().AmountsForPlayedCards.Remove(cardPlay.Card, out var value))
     	{
     		Flash();
-    		await PowerCmd.Apply<PoisonPower>(context, Owner, value, Applier, null);
-			await PowerCmd.Apply<DoomPower>(context, Owner, DynamicVars.Doom.BaseValue, Applier, null);
+    		await PowerCmd.Apply<PoisonPower>(context, Owner, DynamicVars.Poison.BaseValue, Applier, null);
+			await PowerCmd.Apply<DoomPower>(context, Owner, value, Applier, null);
     	}
     }
 

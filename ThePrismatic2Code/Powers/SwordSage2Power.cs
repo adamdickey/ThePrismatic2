@@ -20,7 +20,7 @@ public class SwordSage2Power : ThePrismatic2Power
         {
             return playCount;
         }
-        if (card.Type != CardType.Attack || card.EnergyCost.GetResolved() + card.LastStarsSpent < 2)
+        if (card.Type != CardType.Attack || card.EnergyCost.GetResolved() + Math.Max(0, card.LastStarsSpent) < 2)
         {
             return playCount;
         }

@@ -39,13 +39,8 @@ public class Colossus2Power : ThePrismatic2Power
         {
             return 1m;
         }
-
         int numDebuffs = dealer.Powers.Count(power => power.TypeForCurrentAmount == PowerType.Debuff);
-        if (numDebuffs < 2)
-        {
-            return 1m;
-        }
-        return DynamicVars["DamageDecrease"].BaseValue;
+        return numDebuffs < 2 ? 1m : DynamicVars["DamageDecrease"].BaseValue;
     }
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)

@@ -39,7 +39,7 @@ public class ForgottenRitual2() : ThePrismatic2Card(1,
     protected override IEnumerable<string> ExtraRunAssetPaths => NGroundFireVfx.AssetPaths;
 
     private bool WasCardExhaustedThisTurn => CombatManager.Instance.History.Entries.OfType<CardExhaustedEntry>().Any(e => e.HappenedThisTurn(CombatState) && e.Card.Owner == Owner);
-    private bool WasCostlyCardPlayedThisTurn => CombatManager.Instance.History.Entries.OfType<CardPlayFinishedEntry>().Any(e => e.HappenedThisTurn(CombatState) && e.CardPlay.Card.Owner == Owner && e.CardPlay.Card.EnergyCost.GetResolved() + e.CardPlay.Card.LastStarsSpent >= 2);
+    private bool WasCostlyCardPlayedThisTurn => CombatManager.Instance.History.Entries.OfType<CardPlayFinishedEntry>().Any(e => e.HappenedThisTurn(CombatState) && e.CardPlay.Card.Owner == Owner && e.CardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, e.CardPlay.Card.LastStarsSpent) >= 2);
 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

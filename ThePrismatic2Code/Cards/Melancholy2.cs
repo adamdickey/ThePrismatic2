@@ -28,10 +28,7 @@ public class Melancholy2() : ThePrismatic2Card(3,
         new EnergyVar(1)
     ]);
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        EnergyHoverTip,
-        HoverTipFactory.FromKeyword(Extensions.Keywords.Offer)
-        ]);
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(EnergyHoverTip);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

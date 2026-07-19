@@ -1,5 +1,6 @@
 ﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -22,7 +23,7 @@ public class Conqueror2Power : ThePrismatic2Power
 
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (cardSource != null && !(cardSource.EnergyCost.Canonical + Math.Max(0, cardSource.CurrentStarCost) >= 2))
+        if (cardSource != null && !(cardSource.EnergyCost.GetWithModifiers(CostModifiers.All) + Math.Max(0, cardSource.CurrentStarCost) >= 2))
         {
             return 1m;
         }

@@ -23,7 +23,7 @@ public class Fear2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/fear.png-34a02f946dff7373a51eae039c299b93.ctex";
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(6m, ValueProp.Move),
+        new DamageVar(7m, ValueProp.Move),
         new PowerVar<VulnerablePower>(1m),
         new DynamicVar("Exposed", 1m)
     ]);

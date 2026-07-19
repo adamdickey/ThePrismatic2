@@ -1,6 +1,7 @@
 ﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -18,7 +19,8 @@ public class Reap2() : ThePrismatic2Card(3,
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/reap.png-e4ffbdae7991268a1d2e5971010912e2.ctex";
     public override string PortraitPath => "res://.godot/imported/reap.png-e4ffbdae7991268a1d2e5971010912e2.ctex";
-    
+
+    private bool _costReduced;
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(24m, ValueProp.Move));
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Retain);
@@ -38,7 +40,10 @@ public class Reap2() : ThePrismatic2Card(3,
     
     public override Task AfterCardEnteredCombat(CardModel card)
     {
-        UpdateCost();
+        if (card == this)
+        {
+            UpdateCost();
+        }
         return Task.CompletedTask;
     }
 
@@ -62,7 +67,20 @@ public class Reap2() : ThePrismatic2Card(3,
 
     private void UpdateCost()
     {
-        int retainCards = PileType.Hand.GetPile(Owner).Cards.Count(card => card != this && card.ShouldRetainThisTurn);
-        EnergyCost.SetUntilPlayed(EnergyCost.Canonical - Math.Min(1, retainCards));
+        bool retainCard = PileType.Hand.GetPile(Owner).Cards.Any(card => card != this && card.ShouldRetainThisTurn);
+        if (retainCard && !_costReduced)
+        {
+            EnergyCost.AddThisTurn(-1);
+            _costReduced = true;
+        }
     }
+    public override Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
+        {
+            if (player == Owner)
+            {
+                _costReduced = false;
+                UpdateCost();
+            }
+            return Task.CompletedTask;
+        }
 }

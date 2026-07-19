@@ -35,11 +35,11 @@ public class Oblivion2() : ThePrismatic2Card(0,
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<Oblivion2Power>(choiceContext, cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Oblivion2Power>(choiceContext, cardPlay.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Poison.UpgradeValueBy(1m);
+        DynamicVars.Doom.UpgradeValueBy(1m);
     }
 }

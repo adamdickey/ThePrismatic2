@@ -28,7 +28,7 @@ public class Flatten2() : ThePrismatic2Card(2,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new SummonVar(1m),
-        new OstyDamageVar(10m, ValueProp.Move)
+        new OstyDamageVar(11m, ValueProp.Move)
         ]);
 
     private bool PlayedCostlyCardThisTurn => CombatManager.Instance.History.Entries.OfType<CardPlayFinishedEntry>().Any(e => e.HappenedThisTurn(Owner.Creature.CombatState) && e.CardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, e.CardPlay.Card.LastStarsSpent) >= 2);

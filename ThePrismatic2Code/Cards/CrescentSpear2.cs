@@ -30,12 +30,12 @@ public class CrescentSpear2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new CalculationBaseVar(8m),
-        new ExtraDamageVar(2m),
+        new ExtraDamageVar(3m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((card, _) =>
         {
             if (card.Owner.PlayerCombatState != null)
                 return card.Owner.PlayerCombatState.AllCards.Count(c =>
-                    c.EnergyCost.Canonical + Math.Max(0, c.CurrentStarCost) >= 2);
+                    c.EnergyCost.GetWithModifiers(CostModifiers.All) + Math.Max(0, c.CurrentStarCost) >= 2);
             return 0;
         })
     ]);

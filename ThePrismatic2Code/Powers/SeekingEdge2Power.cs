@@ -24,7 +24,7 @@ public class SeekingEdge2Power : ThePrismatic2Power
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         CardModel? lastPlayedCard = CombatManager.Instance.History.Entries.OfType<CardPlayFinishedEntry>().ElementAtOrDefault(^2)?.CardPlay.Card;
-        if (cardPlay.Card is { Type: CardType.Attack, TargetType: TargetType.AnyEnemy } && cardPlay.Resources.EnergySpent + cardPlay.Card.LastStarsSpent >= 2)
+        if (cardPlay.Card is { Type: CardType.Attack, TargetType: TargetType.AnyEnemy } && cardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, cardPlay.Card.LastStarsSpent) >= 2)
         {
             if (cardPlay.Card != lastPlayedCard || !cardPlay.IsAutoPlay)
             {

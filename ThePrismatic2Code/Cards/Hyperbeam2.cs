@@ -26,7 +26,7 @@ public class Hyperbeam2() : ThePrismatic2Card(2,
     public override string PortraitPath => "res://.godot/imported/hyperbeam.png-69e686a51ad6411d420df10a5930e442.ctex";
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(28m, ValueProp.Move),
+        new DamageVar(30m, ValueProp.Move),
         new PowerVar<StrengthPower>(1m),
         new PowerVar<FocusPower>(1m)
     ]);

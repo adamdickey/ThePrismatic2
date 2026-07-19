@@ -38,6 +38,6 @@ public class Alignment2() : ThePrismatic2Card(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Stars.UpgradeValueBy(1m);
+        AddKeyword(CardKeyword.Retain);
     }
 }

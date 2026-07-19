@@ -6,9 +6,6 @@ namespace ThePrismatic2.ThePrismatic2Code.Extensions;
 public class Keywords
 {
     [CustomEnum] 
-    public static CardKeyword Offer;
-    
-    [CustomEnum] 
     public static CardKeyword Bleed;
     
     [CustomEnum] 

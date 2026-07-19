@@ -4,9 +4,6 @@
 
   "THEPRISMATIC2-COSTLY.description": "Costly cards cost 2 or more total Energy and Stars.",
   "THEPRISMATIC2-COSTLY.title": "Costly",
-
-  "THEPRISMATIC2-OFFER.description": "You Offer when you or [gold]Osty[/gold] lose HP before the end of your turn.",
-  "THEPRISMATIC2-OFFER.title": "Offer",
   
   "THEPRISMATIC2-BLEED.description": "[gold]Osty[/gold] loses HP if he is alive, otherwise you lose HP.",
   "THEPRISMATIC2-BLEED.title": "Bleed",

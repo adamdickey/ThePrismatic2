@@ -15,7 +15,7 @@ namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
 public class Taunt2() : ThePrismatic2Card(1, 
-    CardType.Skill, CardRarity.Uncommon, 
+    CardType.Skill, CardRarity.Common, 
     TargetType.AnyEnemy)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();
@@ -25,7 +25,7 @@ public class Taunt2() : ThePrismatic2Card(1,
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new BlockVar(7m, ValueProp.Move),
+        new BlockVar(5m, ValueProp.Move),
         new PowerVar<VulnerablePower>(1m),
         new DynamicVar("Exposed", 1m)
     ]);

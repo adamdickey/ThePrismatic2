@@ -24,7 +24,7 @@ public class SweepingBeam2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/sweeping_beam.png-72d9d2103351b0109fff4a1b1a19be96.ctex";
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(5m, ValueProp.Move),
+        new DamageVar(6m, ValueProp.Move),
         new CardsVar(1),
         new StarsVar(1)
     ]);

@@ -19,10 +19,10 @@ public class SwordBoomerang2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/sword_boomerang.png-1fe722e5d3d427729a50aca5fad03dc5.ctex";
     public override string PortraitPath => "res://.godot/imported/sword_boomerang.png-1fe722e5d3d427729a50aca5fad03dc5.ctex";
     
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Ethereal);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(3m, ValueProp.Move),
+        new DamageVar(4m, ValueProp.Move),
         new RepeatVar(3)
     ]);
 
