@@ -51,8 +51,8 @@
   "THEPRISMATIC2-UNMOVABLE2_POWER.smartDescription": "The first {Amount:plural:time|[blue]{}[/blue] times} you [gold]Summon[/gold] or gain [gold]Block[/gold] from a card each turn, double the amount gained.",
   "THEPRISMATIC2-UNMOVABLE2_POWER.title": "Unmovable",
 
-  "THEPRISMATIC2-VICIOUS2_POWER.description": "Whenever you apply [gold]Weak[/gold], [gold]Vulnerable[/gold], and/or [gold]Exposed[/gold], draw [blue]1[/blue] card.",
-  "THEPRISMATIC2-VICIOUS2_POWER.smartDescription": "Whenever you apply [gold]Weak[/gold], [gold]Vulnerable[/gold], and/or [gold]Exposed[/gold], draw [blue]{Amount}[/blue] {Amount:plural:card|cards}.",
+  "THEPRISMATIC2-VICIOUS2_POWER.description": "Whenever you apply [gold]Vulnerable[/gold], and/or [gold]Exposed[/gold], draw [blue]1[/blue] card.",
+  "THEPRISMATIC2-VICIOUS2_POWER.smartDescription": "Whenever you apply [gold]Vulnerable[/gold], and/or [gold]Exposed[/gold], draw [blue]{Amount}[/blue] {Amount:plural:card|cards}.",
   "THEPRISMATIC2-VICIOUS2_POWER.title": "Vicious",
 
   "THEPRISMATIC2-HELLRAISER2_POWER.description": "Whenever you draw a card containing \"Strike\" or [gold]Sovereign Blade[/gold], it is played against a random enemy.",

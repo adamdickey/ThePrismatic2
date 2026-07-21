@@ -22,7 +22,6 @@ public class Vicious2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/vicious.png-16476ed09a4669a4552fcb0c1bee3be0.ctex";
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        HoverTipFactory.FromPower<WeakPower>(),
             HoverTipFactory.FromPower<VulnerablePower>(),
             HoverTipFactory.FromPower<ExposedPower>()
     ]);

@@ -22,7 +22,6 @@ public class Vicious2Power : ThePrismatic2Power
     private List<Creature> _targets = [];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        HoverTipFactory.FromPower<WeakPower>(),
         HoverTipFactory.FromPower<VulnerablePower>(),
         HoverTipFactory.FromPower<ExposedPower>()
     ]);
@@ -45,7 +44,7 @@ public class Vicious2Power : ThePrismatic2Power
 
     public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
-        if (!(amount <= 0m) && _canDraw && applier == Owner && (power is VulnerablePower || power is WeakPower || power is ExposedPower))
+        if (!(amount <= 0m) && _canDraw && applier == Owner && (power is VulnerablePower || power is ExposedPower))
         {
             Flash();
             if (Owner.Player != null) await CardPileCmd.Draw(new BlockingPlayerChoiceContext(), Amount, Owner.Player);
