@@ -17,7 +17,7 @@ public class RoyalGamble2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/royal_gamble.png-da80e36357cce992acb57ba43bbe77b6.ctex";
     public override string PortraitPath => "res://.godot/imported/royal_gamble.png-da80e36357cce992acb57ba43bbe77b6.ctex";
 
-    public override int CanonicalStarCost => 3;
+    public override int CanonicalStarCost => 2;
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlyArray<CardKeyword>([
         CardKeyword.Exhaust,

@@ -4,9 +4,11 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -24,13 +26,14 @@ public class Conflagration2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/conflagration.png-e304f5493cd41c4a3f93cdf71cbf8d4e.ctex";
     
     protected override IEnumerable<string> ExtraRunAssetPaths => NGroundFireVfx.AssetPaths;
-    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<StrengthPower>());
+	
     	protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
     		new DamageVar(2m, ValueProp.Move),
     		new RepeatVar(4),
-			new StarsVar(1)
+			new PowerVar<StrengthPower>(1m)
     	]);
-    
+	
     	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     	{
 		    if (CombatState != null)
@@ -45,12 +48,13 @@ public class Conflagration2() : ThePrismatic2Card(1,
 				    .WithHitFx("vfx/vfx_attack_blunt", null, "heavy_attack.mp3")
 				    .Execute(choiceContext);
 		    }
-			await PlayerCmd.GainStars(DynamicVars.Stars.BaseValue, Owner);
+			NPowerUpVfx.CreateNormal(Owner.Creature);
+        await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, DynamicVars["StrengthPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<CalcifyPower>(choiceContext, Owner.Creature, DynamicVars["StrengthPower"].BaseValue, Owner.Creature, this);
     	}
     
     	protected override void OnUpgrade()
     	{
     		DynamicVars.Repeat.UpgradeValueBy(1m);
-			DynamicVars.Stars.UpgradeValueBy(1m);
     	}
 }

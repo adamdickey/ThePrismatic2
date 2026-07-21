@@ -13,7 +13,7 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class BansheesCry2() : ThePrismatic2Card(11, 
+public class BansheesCry2() : ThePrismatic2Card(9, 
     CardType.Attack, CardRarity.Rare, 
     TargetType.AllEnemies)
 {
@@ -27,7 +27,7 @@ public class BansheesCry2() : ThePrismatic2Card(11,
         ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(33m, ValueProp.Move),
+        new DamageVar(30m, ValueProp.Move),
         new EnergyVar(2)
     ]);
 

@@ -970,7 +970,7 @@
   "THEPRISMATIC2-ARMAMENTS2.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Upgrade[/gold] {IfUpgraded:show:ALL cards|a card} in your [gold]Hand[/gold].\nGain {Stars:starIcons()}.",
   "THEPRISMATIC2-ARMAMENTS2.title": "Armaments",
 
-  "THEPRISMATIC2-CONFLAGRATION2.description": "Deal {Damage:diff()} damage to ALL enemies {Repeat:diff()} {Repeat:plural:time|times}.\nGain {Stars:starIcons()}.",
+  "THEPRISMATIC2-CONFLAGRATION2.description": "Deal {Damage:diff()} damage to ALL enemies {Repeat:diff()} {Repeat:plural:time|times}.\nYou and Osty Gain {StrengthPower:diff()} [gold]Strength[/gold].",
   "THEPRISMATIC2-CONFLAGRATION2.title": "Conflagration",
 
   "THEPRISMATIC2-IRON_WAVE2.description": "Gain {Block:diff()} [gold]Block[/gold].\nDeal {Damage:diff()} damage.\nGain {Stars:starIcons()}.",

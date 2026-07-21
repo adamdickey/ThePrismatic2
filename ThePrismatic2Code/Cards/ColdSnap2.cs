@@ -24,7 +24,7 @@ public class ColdSnap2() : ThePrismatic2Card(1,
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
 	    new HpLossVar(1m),
-	    new DamageVar(9m, ValueProp.Move) 
+	    new DamageVar(8m, ValueProp.Move) 
 		]);
     
     	protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([ 
