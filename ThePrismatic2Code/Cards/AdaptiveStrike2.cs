@@ -1,7 +1,6 @@
 ﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -12,18 +11,19 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class DrainPower2() : ThePrismatic2Card(1, 
-    CardType.Attack, CardRarity.Common, 
+public class AdaptiveStrike2() : ThePrismatic2Card(2, 
+    CardType.Attack, CardRarity.Rare, 
     TargetType.AnyEnemy)
 {
-    public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
-    public override string CustomPortraitPath => "res://.godot/imported/drain_power.png-2a1cf297725158673f88fd6e3a6f1a34.ctex";
-    public override string PortraitPath => "res://.godot/imported/drain_power.png-2a1cf297725158673f88fd6e3a6f1a34.ctex";
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
+    public override string CustomPortraitPath => "res://.godot/imported/adaptive_strike.png-75332133bedbfcfb09f93ca3279b16f0.ctex";
+    public override string PortraitPath => "res://.godot/imported/adaptive_strike.png-75332133bedbfcfb09f93ca3279b16f0.ctex";
+    
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
+    
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Cunning);
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(7m, ValueProp.Move),
-        new CardsVar(2)
-    ]);
+
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(16m, ValueProp.Move));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -31,16 +31,13 @@ public class DrainPower2() : ThePrismatic2Card(1,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-        IEnumerable<CardModel> enumerable = PileType.Discard.GetPile(Owner).Cards.Where(c => c.IsUpgradable).TakeRandom(DynamicVars.Cards.IntValue, Owner.RunState.Rng.CombatCardSelection);
-        foreach (CardModel item in enumerable)
-        {
-            CardCmd.Upgrade(item);
-            CardCmd.Preview(item);
-        }
+        CardModel cardModel = CreateClone();
+        cardModel.EnergyCost.SetThisCombat(0);
+        CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(cardModel, PileType.Discard, Owner), 1.5f);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(5m);
     }
 }

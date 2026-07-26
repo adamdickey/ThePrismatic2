@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
+using ThePrismatic2.ThePrismatic2Code.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -24,12 +25,12 @@ public class ShadowShield2() : ThePrismatic2Card(2,
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new BlockVar(7m, ValueProp.Move),
-        new SummonVar(3m)
+        new BlockVar(9m, ValueProp.Move),
+        new DynamicVar("Exposed", 1m)
         ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon),
+        HoverTipFactory.FromPower<ExposedPower>(),
         HoverTipFactory.Static(StaticHoverTip.Channeling),
         HoverTipFactory.FromOrb<DarkOrb>()
     ]);
@@ -38,13 +39,16 @@ public class ShadowShield2() : ThePrismatic2Card(2,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
+        if (CombatState?.HittableEnemies != null)
+        {
+            await PowerCmd.Apply<ExposedPower>(choiceContext, CombatState.HittableEnemies, DynamicVars["Exposed"].BaseValue, Owner.Creature, this);
+        }
         await OrbCmd.Channel<DarkOrb>(choiceContext, Owner);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(2m);
-        DynamicVars.Summon.UpgradeValueBy(1m);
+        DynamicVars.Block.UpgradeValueBy(3m);
+        DynamicVars["Exposed"].UpgradeValueBy(1m);
     }
 }

@@ -11,8 +11,8 @@
   "THEPRISMATIC2-DEMON_FORM2_POWER.smartDescription": "At the start of your turn, you and [gold]Osty[/gold] each gain [blue]{Amount}[/blue] [gold]Strength[/gold].",
   "THEPRISMATIC2-DEMON_FORM2_POWER.title": "Demon Form",
 
-  "THEPRISMATIC2-COLOSSUS2_POWER.description": "You receive [blue]50%[/blue] less damage from enemies with [blue]2[/blue] or more debuffs this turn.",
-  "THEPRISMATIC2-COLOSSUS2_POWER.smartDescription": "You receive [blue]{DamageDecrease:percentLess()}%[/blue] less damage from enemies with [blue]2[/blue] or more debuffs {Amount:plural:this turn|for [blue]{}[/blue] turns}.",
+  "THEPRISMATIC2-COLOSSUS2_POWER.description": "You receive [blue]10%[/blue] less damage from enemies this turn for each unique debuff they have.",
+  "THEPRISMATIC2-COLOSSUS2_POWER.smartDescription": "You receive [blue]{DamageDecrease:diff()}%[/blue] less damage from enemies {Amount:plural:this turn|for [blue]{}[/blue] turns} for each unique debuff they have.",
   "THEPRISMATIC2-COLOSSUS2_POWER.title": "Colossus",
 
   "THEPRISMATIC2-FLAME_BARRIER2_POWER.description": "Whenever you are attacked this turn, Channel [blue]1[/blue] Magma.",
@@ -51,8 +51,8 @@
   "THEPRISMATIC2-UNMOVABLE2_POWER.smartDescription": "The first {Amount:plural:time|[blue]{}[/blue] times} you [gold]Summon[/gold] or gain [gold]Block[/gold] from a card each turn, double the amount gained.",
   "THEPRISMATIC2-UNMOVABLE2_POWER.title": "Unmovable",
 
-  "THEPRISMATIC2-VICIOUS2_POWER.description": "Whenever you apply [gold]Vulnerable[/gold], and/or [gold]Exposed[/gold], draw [blue]1[/blue] card.",
-  "THEPRISMATIC2-VICIOUS2_POWER.smartDescription": "Whenever you apply [gold]Vulnerable[/gold], and/or [gold]Exposed[/gold], draw [blue]{Amount}[/blue] {Amount:plural:card|cards}.",
+  "THEPRISMATIC2-VICIOUS2_POWER.description": "Whenever you apply [gold]Vulnerable[/gold] and/or [gold]Exposed[/gold], draw [blue]1[/blue] card.",
+  "THEPRISMATIC2-VICIOUS2_POWER.smartDescription": "Whenever you apply [gold]Vulnerable[/gold] and/or [gold]Exposed[/gold], draw [blue]{Amount}[/blue] {Amount:plural:card|cards}.",
   "THEPRISMATIC2-VICIOUS2_POWER.title": "Vicious",
 
   "THEPRISMATIC2-HELLRAISER2_POWER.description": "Whenever you draw a card containing \"Strike\" or [gold]Sovereign Blade[/gold], it is played against a random enemy.",
@@ -64,7 +64,7 @@
   "THEPRISMATIC2-CRUELTY2_POWER.title": "Cruelty",
 
   "THEPRISMATIC2-ACCURACY2_POWER.description": "[blue]0[/blue] Energy Attacks deal additional damage.",
-  "THEPRISMATIC2-ACCURACY2_POWER.smartDescription": "[blue]0[/blue] Energy Attacks deal [blue]{Amount}[/blue] additional damage.",
+  "THEPRISMATIC2-ACCURACY2_POWER.smartDescription": "[blue]0[/blue]{energyPrefix:energyIcons(1)} Attacks deal [blue]{Amount}[/blue] additional damage.",
   "THEPRISMATIC2-ACCURACY2_POWER.title": "Accuracy",
 
   "THEPRISMATIC2-ACCELERANT2_POWER.description": "You apply [blue]50%[/blue] more [gold]Doom[/gold].",
@@ -183,8 +183,8 @@
   "THEPRISMATIC2-DANSE_MACABRE2_POWER.smartDescription": "Whenever you play a [gold]Costly[/gold] card, gain [blue]{Amount}[/blue] [gold]Block[/gold].",
   "THEPRISMATIC2-DANSE_MACABRE2_POWER.title": "Danse Macabre",
 
-  "THEPRISMATIC2-DEBILITATE2_POWER.description": "[gold]Exposed[/gold] is twice as effective for the next [blue]2[/blue] turns.",
-  "THEPRISMATIC2-DEBILITATE2_POWER.smartDescription": "[gold]Exposed[/gold] is twice as effective {Amount:plural:this turn|for the next [blue]{}[/blue] turns}.",
+  "THEPRISMATIC2-DEBILITATE2_POWER.description": "[gold]Vulnerable[/gold] and [gold]Exposed[/gold] are twice as effective for the next [blue]2[/blue] turns.",
+  "THEPRISMATIC2-DEBILITATE2_POWER.smartDescription": "[gold]Vulnerable[/gold] and [gold]Exposed[/gold] are twice as effective {Amount:plural:this turn|for the next [blue]{}[/blue] turns}.",
   "THEPRISMATIC2-DEBILITATE2_POWER.title": "Debilitate",
 
   "THEPRISMATIC2-DEVOUR_LIFE2_POWER.description": "Whenever you play a 0 [gold]Energy[/gold] Skill, [gold]Summon[/gold] [blue]1[/blue].",
@@ -192,7 +192,7 @@
   "THEPRISMATIC2-DEVOUR_LIFE2_POWER.title": "Devour Life",
 
   "THEPRISMATIC2-HAUNT2_POWER.description": "Whenever you play a 0 [gold]Energy[/gold] card, a random enemy loses [blue]3[/blue] HP.",
-  "THEPRISMATIC2-HAUNT2_POWER.smartDescription": "Whenever you play a  0 {energyPrefix:energyIcons(1)} card, a random enemy loses [blue]{Amount}[/blue] HP.",
+  "THEPRISMATIC2-HAUNT2_POWER.smartDescription": "Whenever you play a  0{energyPrefix:energyIcons(1)} card, a random enemy loses [blue]{Amount}[/blue] HP.",
   "THEPRISMATIC2-HAUNT2_POWER.title": "Haunt",
 
   "THEPRISMATIC2-NECRO_MASTERY2_POWER.description": "Whenever you or [gold]Osty[/gold] lose HP, ALL enemies lose that much HP as well.",

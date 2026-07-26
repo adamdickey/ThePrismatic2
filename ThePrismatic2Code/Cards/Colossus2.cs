@@ -22,8 +22,6 @@ public class Colossus2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/colossus.png-07c17af2b3933c0ca517146cd00de351.ctex";
     public override string PortraitPath => "res://.godot/imported/colossus.png-07c17af2b3933c0ca517146cd00de351.ctex";
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<VulnerablePower>());
-
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([

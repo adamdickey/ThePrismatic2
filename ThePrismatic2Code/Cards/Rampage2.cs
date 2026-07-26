@@ -11,14 +11,15 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class Rampage2() : ThePrismatic2Card(1, 
+public class Rampage2() : ThePrismatic2Card(0, 
     CardType.Attack, CardRarity.Uncommon, 
     TargetType.AnyEnemy)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/rampage.png-41facc0224a8197dabb863d270aff09f.ctex";
     public override string PortraitPath => "res://.godot/imported/rampage.png-41facc0224a8197dabb863d270aff09f.ctex";
-    
+
+    public override int CanonicalStarCost => 1;
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     private decimal _extraDamageFromPlays;

@@ -11,13 +11,15 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class HowlFromBeyond2() : ThePrismatic2Card(3, 
+public class HowlFromBeyond2() : ThePrismatic2Card(1, 
     CardType.Attack, CardRarity.Uncommon, 
     TargetType.AllEnemies)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/howl_from_beyond.png-890b2ee84915111aa80330891fec5309.ctex";
     public override string PortraitPath => "res://.godot/imported/howl_from_beyond.png-890b2ee84915111aa80330891fec5309.ctex";
+
+    public override int CanonicalStarCost => 2;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(18m, ValueProp.Move));
     

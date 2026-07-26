@@ -46,7 +46,7 @@ public sealed class VenomOrb : CustomOrbModel
             .Instantiate<Node2D>();
         new MegaSprite(glass.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
-        glass.Modulate = _passiveVal <= 0m ? new Color(0.3f, 0.9f, 0.3f, 0.0f) : new Color(0.3f, 0.9f, 0.3f);
+        glass.Modulate = _passiveVal <= 0m ? new Color(0.1f, 0.3f, 0.1f, 0.0f) : new Color(0.3f, 0.9f, 0.3f);
         glass.Scale = new Vector2(0.9f, 0.9f);
         container.AddChild(glass);
         return container;
@@ -66,7 +66,7 @@ public sealed class VenomOrb : CustomOrbModel
             Trigger();
             PlayPassiveSfx();
             await PowerCmd.Apply<PoisonPower>(choiceContext, targets, PassiveVal, Owner.Creature, null);
-            _passiveVal = Math.Max(0m, _passiveVal - 1m);
+            _passiveVal -= 1m;
         }
     }
 

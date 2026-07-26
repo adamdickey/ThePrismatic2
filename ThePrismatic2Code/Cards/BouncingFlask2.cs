@@ -31,9 +31,9 @@ public class BouncingFlask2() : ThePrismatic2Card(2,
     private readonly Color _vfxTint = new Color("83eb85");
 
 	protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-		new PowerVar<PoisonPower>(2m),
-		new PowerVar<DoomPower>(2m),
-		new RepeatVar(3)
+		new PowerVar<PoisonPower>(3m),
+		new PowerVar<DoomPower>(3m),
+		new RepeatVar(2)
 	]);
 
 	protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
@@ -59,7 +59,7 @@ public class BouncingFlask2() : ThePrismatic2Card(2,
 					if (i == 0)
 					{
 						if (NCombatRoom.Instance != null)
-							lastPos = NCombatRoom.Instance.GetCreatureNode(Owner.Creature)!.VfxSpawnPosition;
+								lastPos = NCombatRoom.Instance.GetCreatureNode(Owner.Creature)!.VfxSpawnPosition;
 					}
 					NCreature? targetNode = NCombatRoom.Instance?.GetCreatureNode(enemy);
 					if (targetNode != null)

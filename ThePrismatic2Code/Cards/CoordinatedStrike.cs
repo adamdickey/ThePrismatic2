@@ -20,13 +20,12 @@ public class CoordinatedStrike() : ThePrismatic2Card(1,
     
     protected override bool ShouldGlowGoldInternal => !Osty.CheckMissingWithAnim(Owner);
     protected override HashSet<CardTag> CanonicalTags => [CardTag.OstyAttack, CardTag.Strike];
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.DualWield);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(7m, ValueProp.Move),
         new OstyDamageVar(3m, ValueProp.Move)
         ]);
-    
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.DualWield);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

@@ -30,6 +30,6 @@ public class Cruelty2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["CrueltyPower"].UpgradeValueBy(20m);
+        DynamicVars["CrueltyPower"].UpgradeValueBy(5m);
     }
 }

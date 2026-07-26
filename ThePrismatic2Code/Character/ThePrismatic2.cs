@@ -29,7 +29,7 @@ public class ThePrismatic2 : PlaceholderCharacterModel
         ..GetRandomStartingDeck()
     ];
 
-    private static IEnumerable<CardModel> GetRandomStartingDeck()
+    public static IEnumerable<CardModel> GetRandomStartingDeck()
     {
         List<CardModel> strikes1 = [ModelDb.Card<ExposingStrike>(), ModelDb.Card<DoomingStrike>(), ModelDb.Card<ToxicStrike>()];
         List<CardModel> strikes2 = [ModelDb.Card<FleetingStrike>(), ModelDb.Card<BladedStrike>(), ModelDb.Card<GhostlyStrike>()];
@@ -65,10 +65,6 @@ public class ThePrismatic2 : PlaceholderCharacterModel
             {
                 continue;
             }
-            if (chosenStrike is ToxicStrike or CosmicStrike or LoopingStrike & chosenDefend is ToxicDefend or CosmicDefend or LoopingDefend)
-            {
-                continue;
-            }
             IEnumerable<CardModel> startingDeck = 
             [
                 ModelDb.Card<StrikePrismatic>(),
@@ -84,6 +80,32 @@ public class ThePrismatic2 : PlaceholderCharacterModel
             ];
             return startingDeck;
         }
+    }
+
+    public static CardModel GetRandomPrismaticStrike()
+    {
+        List<CardModel> strikes = 
+        [ModelDb.Card<ExposingStrike>(), ModelDb.Card<DoomingStrike>(), ModelDb.Card<ToxicStrike>(),
+            ModelDb.Card<FleetingStrike>(), ModelDb.Card<BladedStrike>(), ModelDb.Card<GhostlyStrike>(),
+            ModelDb.Card<LootingStrike>(), ModelDb.Card<ConcentratedStrike>(), ModelDb.Card<CunningStrike>(),
+            ModelDb.Card<ToxicStrike>(), ModelDb.Card<CosmicStrike>(), ModelDb.Card<LoopingStrike>(),
+            ModelDb.Card<RecklessStrike>(), ModelDb.Card<NecroStrike>(), ModelDb.Card<CoordinatedStrike>(),
+            ModelDb.Card<StarryStrike>(), ModelDb.Card<CosmicStrike>(), ModelDb.Card<StarboundStrike>(),
+            ModelDb.Card<ClawingStrike>(), ModelDb.Card<CostlyStrike>(), ModelDb.Card<ForgingStrike>()];
+        return strikes.TakeRandom(1, Rng.Chaotic).First();
+    }
+    
+    public static CardModel GetRandomPrismaticDefend()
+    {
+        List<CardModel> defends = 
+        [ModelDb.Card<ExposingDefend>(), ModelDb.Card<DoomingDefend>(), ModelDb.Card<ToxicDefend>(),
+            ModelDb.Card<FleetingDefend>(), ModelDb.Card<BladedDefend>(), ModelDb.Card<GhostlyDefend>(),
+            ModelDb.Card<LootingDefend>(), ModelDb.Card<ConcentratedDefend>(), ModelDb.Card<CunningDefend>(),
+            ModelDb.Card<ToxicDefend>(), ModelDb.Card<CosmicDefend>(), ModelDb.Card<LoopingDefend>(),
+            ModelDb.Card<RecklessDefend>(), ModelDb.Card<NecroDefend>(), ModelDb.Card<CoordinatedDefend>(),
+            ModelDb.Card<StarryDefend>(), ModelDb.Card<CosmicDefend>(), ModelDb.Card<StarboundDefend>(),
+            ModelDb.Card<ClawingDefend>(), ModelDb.Card<CostlyDefend>(), ModelDb.Card<ForgingDefend>()];
+        return defends.TakeRandom(1, Rng.Chaotic).First();
     }
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

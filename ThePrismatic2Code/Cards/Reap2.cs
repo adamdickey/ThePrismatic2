@@ -1,4 +1,6 @@
 ﻿using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -67,7 +69,7 @@ public class Reap2() : ThePrismatic2Card(3,
 
     private void UpdateCost()
     {
-        bool retainCard = PileType.Hand.GetPile(Owner).Cards.Any(card => card != this && card.ShouldRetainThisTurn);
+        bool retainCard = CombatManager.Instance.History.Entries.OfType<CardPlayFinishedEntry>().Any(e => e.CardPlay.Card.ShouldRetainThisTurn && e.HappenedThisTurn(CombatState));
         if (retainCard && !_costReduced)
         {
             EnergyCost.AddThisTurn(-1);

@@ -24,7 +24,6 @@ public class Debilitate2() : ThePrismatic2Card(1,
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<VulnerablePower>(),
-        HoverTipFactory.FromPower<WeakPower>(),
         HoverTipFactory.FromPower<ExposedPower>()
     ]);
 
@@ -39,7 +38,6 @@ public class Debilitate2() : ThePrismatic2Card(1,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-        await PowerCmd.Apply<DebilitatePower>(choiceContext, cardPlay.Target, DynamicVars["DebilitatePower"].BaseValue, Owner.Creature, this);
         await PowerCmd.Apply<Debilitate2Power>(choiceContext, cardPlay.Target, DynamicVars["DebilitatePower"].BaseValue, Owner.Creature, this);
     }
 

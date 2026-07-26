@@ -23,7 +23,10 @@ public class Resonance2() : ThePrismatic2Card(1,
     
     public override int CanonicalStarCost => 2;
     
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlyArray<CardKeyword>([
+        Extensions.Keywords.Starbound,
+        Extensions.Keywords.Cunning
+        ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<StrengthPower>(1m));
 

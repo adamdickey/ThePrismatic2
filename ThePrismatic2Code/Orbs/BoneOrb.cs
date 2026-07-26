@@ -21,7 +21,7 @@ public sealed class BoneOrb : CustomOrbModel
     public override string CustomChannelSfx => "event:/sfx/characters/defect/defect_dark_channel";
 
     public override decimal PassiveVal => ModifyOrbValue(1m);
-    public override decimal EvokeVal => ModifyOrbValue(3m);
+    public override decimal EvokeVal => ModifyOrbValue(2m);
 
     public override Node2D CreateCustomSprite()
     {

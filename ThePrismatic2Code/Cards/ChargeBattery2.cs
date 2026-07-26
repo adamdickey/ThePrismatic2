@@ -6,7 +6,6 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
-using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -14,35 +13,34 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class LightningRod2() : ThePrismatic2Card(0, 
+public class ChargeBattery2() : ThePrismatic2Card(1, 
     CardType.Skill, CardRarity.Common, 
     TargetType.Self)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
-    public override string CustomPortraitPath => "res://.godot/imported/lightning_rod.png-d80f6b5d52a0fcab8b0a05a2cee44e6b.ctex";
-    public override string PortraitPath => "res://.godot/imported/lightning_rod.png-d80f6b5d52a0fcab8b0a05a2cee44e6b.ctex";
+    public override string CustomPortraitPath => "res://.godot/imported/charge_battery.png-cf7d3397f16da58ac44a7f27e0020361.ctex";
+    public override string PortraitPath => "res://.godot/imported/charge_battery.png-cf7d3397f16da58ac44a7f27e0020361.ctex";
+    
+    public override bool GainsBlock => true;
     
     public override int CanonicalStarCost => 1;
-    
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        HoverTipFactory.Static(StaticHoverTip.Channeling),
-        HoverTipFactory.FromOrb<LightningOrb>()
-    ]);
-
-    public override bool GainsBlock => true;
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new BlockVar(4m, ValueProp.Move),
-        new PowerVar<LightningRodPower>(2m)
+        new BlockVar(9m, ValueProp.Move),
+        new EnergyVar(1),
+        new StarsVar(1)
     ]);
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(EnergyHoverTip);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await CreatureCmd.TriggerAnim(Owner.Creature, "PowerUp", Owner.Character.PowerUpAnimDelay);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        await PowerCmd.Apply<LightningRodPower>(choiceContext, Owner.Creature, DynamicVars["LightningRodPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<EnergyNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Energy.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<StarNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Stars.BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

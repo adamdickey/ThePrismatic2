@@ -29,5 +29,10 @@
 
   "THEPRISMATIC2-VIVID_RECALL.description": "Upon pickup, transform your [gold]Remnant[/gold] relics into their original versions.",
   "THEPRISMATIC2-VIVID_RECALL.flavor": "Flavor",
-  "THEPRISMATIC2-VIVID_RECALL.title": "Vivid Recall"
+  "THEPRISMATIC2-VIVID_RECALL.title": "Vivid Recall",
+
+  "THEPRISMATIC2-RAINBOW_SOUP.description": "[gold]Transform[/gold] ALL [gold]Strikes[/gold] and [gold]Defends[/gold] into [gold]Prismatic Strikes[/gold] and [gold]Defends[/gold].",
+  "THEPRISMATIC2-RAINBOW_SOUP.flavor": "Flavor",
+  "THEPRISMATIC2-RAINBOW_SOUP.infoText": "Cards transformed by [gold]Rainbow Soup[/gold].",
+  "THEPRISMATIC2-RAINBOW_SOUP.title": "Rainbow Soup"
 }

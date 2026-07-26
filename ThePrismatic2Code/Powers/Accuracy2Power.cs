@@ -29,7 +29,7 @@ public class Accuracy2Power : ThePrismatic2Power
         {
             return 0m;
         }
-        if (card.EnergyCost.GetWithModifiers(CostModifiers.All) != 0)
+        if (card.EnergyCost.GetWithModifiers(CostModifiers.All) != 0 || card.HasStarCostX || card.EnergyCost.CostsX)
         {
             return 0m;
         }

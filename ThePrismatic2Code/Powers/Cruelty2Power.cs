@@ -21,12 +21,12 @@ public class Cruelty2Power : ThePrismatic2Power
 
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if (target != null)
+        if (target == null || target == Owner || !props.IsPoweredAttack())
         {
-            int numDebuffs = target.Powers.Count(power => power.Type == PowerType.Debuff);
-            return 1m + numDebuffs*Amount / 100m;
+            return 1m;
         }
-        
-        return 1m;
+        int numDebuffs = target.Powers.Count(power => power.Type == PowerType.Debuff);
+        return 1m + numDebuffs*Amount / 100m;
+
     }
 }

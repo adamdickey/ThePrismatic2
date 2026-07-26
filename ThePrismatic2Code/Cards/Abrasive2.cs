@@ -12,13 +12,15 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class Abrasive2() : ThePrismatic2Card(3, 
+public class Abrasive2() : ThePrismatic2Card(1, 
     CardType.Power, CardRarity.Rare, 
     TargetType.Self)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/abrasive.png-50aa9f22ce7701adc7b7059c901a8353.ctex";
     public override string PortraitPath => "res://.godot/imported/abrasive.png-50aa9f22ce7701adc7b7059c901a8353.ctex";
+    
+    public override int CanonicalStarCost => 2;
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<DexterityPower>(),
