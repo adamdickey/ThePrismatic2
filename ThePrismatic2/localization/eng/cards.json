@@ -440,7 +440,7 @@
   "THEPRISMATIC2-GLITTERSTREAM2.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Summon[/gold] {Summon:diff()}.\nNext turn, gain {BlockNextTurn:diff()} [gold]Block[/gold] and [gold]Summon[/gold] {SummonNextTurn:diff()}.",
   "THEPRISMATIC2-GLITTERSTREAM2.title": "Glitterstream",
 
-  "THEPRISMATIC2-GLOW2.description": "[gold]Channel[/gold] 1 [gold]Solar[/gold].\nDraw {Cards:diff()} {Cards:plural:card|cards}.",
+  "THEPRISMATIC2-GLOW2.description": "Gain {Stars:starIcons()}.\nDraw {Cards:diff()} card, then\nDiscard 1 card.\nNext turn, Draw {Cards:diff()} card.",
   "THEPRISMATIC2-GLOW2.title": "Glow",
 
   "THEPRISMATIC2-GUARDS2.description": "[gold]Exhaust[/gold] any number of cards in your [gold]Hand[/gold].\nAdd that many [gold]{IfUpgraded:show:Minion Sacrifices+|Minion Sacrifices}[/gold] into your [gold]Hand[/gold].",
@@ -553,7 +553,7 @@
   "THEPRISMATIC2-ALIGNMENT2.description": "Gain {energyPrefix:energyIcons(1)} for each {singleStarIcon} spent.\nGain {Stars:starIcons()} for each {energyPrefix:energyIcons(1)} spent.",
   "THEPRISMATIC2-ALIGNMENT2.title": "Alignment",
 
-  "THEPRISMATIC2-GENESIS2.description": "Your Powers gain [gold]Starbound[/gold].\nAt the start of your turn, gain {Genesis2Power:starIcons()}.",
+  "THEPRISMATIC2-GENESIS2.description": "Your cards gain [gold]Starbound[/gold].\nAt the start of your turn, gain {Genesis2Power:starIcons()}.",
   "THEPRISMATIC2-GENESIS2.title": "Genesis",
 
   "THEPRISMATIC2-MASTER_PLANNER2.description": "When you play a Skill, it gains [gold]Starbound[/gold] and [gold]Cunning[/gold].",
@@ -885,8 +885,8 @@
   "THEPRISMATIC2-PATTER2.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Channel[/gold] 1 [gold]Magma[/gold].",
   "THEPRISMATIC2-PATTER2.title": "Patter",
 
-  "THEPRISMATIC2-HAND_TRICK2.description": "Gain {Block:diff()} [gold]Block[/gold].\nAdd [gold]Cunning[/gold] and [gold]Starbound[/gold] to a Skill in your [gold]Hand[/gold] this turn.",
-  "THEPRISMATIC2-HAND_TRICK2.selectionScreenPrompt": "Choose a card to add [gold]Cunning[/gold] and [gold]Starbound[/gold] to.",
+  "THEPRISMATIC2-HAND_TRICK2.description": "Gain {Block:diff()} [gold]Block[/gold].\nAdd [gold]Cunning[/gold], [gold]Starbound[/gold] and [gold]Retain[/gold] to a Skill in your [gold]Hand[/gold] this turn.",
+  "THEPRISMATIC2-HAND_TRICK2.selectionScreenPrompt": "Choose a card to add [gold]Cunning[/gold], [gold]Starbound[/gold] and [gold]Retain[/gold] to.",
   "THEPRISMATIC2-HAND_TRICK2.title": "Hand Trick",
 
   "THEPRISMATIC2-BEAT_INTO_SHAPE2.description": "Deal {Damage:diff()} damage.\n[gold]Channel[/gold] 1 [gold]Iron[/gold] for each time you’ve hit the enemy this turn.{IsTargeting:\n([gold]Channel[/gold] {CalculatedOrbs:diff()} [gold]Iron[/gold])|}",

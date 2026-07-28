@@ -38,7 +38,6 @@ public class Genesis2Power : ThePrismatic2Power
         IEnumerable<CardModel> enumerable = Owner.Player?.PlayerCombatState?.AllCards ?? Array.Empty<CardModel>();
         foreach (CardModel card in enumerable)
         {
-            if (card.Type != CardType.Power) continue;
             if (card.Keywords.Contains(Extensions.Keywords.StarboundThisTurn))
             {
                 card.RemoveKeyword(Extensions.Keywords.StarboundThisTurn);
@@ -53,7 +52,6 @@ public class Genesis2Power : ThePrismatic2Power
 
     public override Task AfterCardEnteredCombat(CardModel card)
     {
-        if (card.Type != CardType.Power) return Task.CompletedTask;
         if (card.Keywords.Contains(Extensions.Keywords.StarboundThisTurn))
         {
             card.RemoveKeyword(Extensions.Keywords.StarboundThisTurn);
@@ -70,7 +68,7 @@ public class Genesis2Power : ThePrismatic2Power
         IEnumerable<CardModel> enumerable = oldOwner.Player?.PlayerCombatState?.AllCards ?? Array.Empty<CardModel>();
         foreach (CardModel item in enumerable)
         {
-            if (item.Type == CardType.Power && item.Keywords.Contains(Extensions.Keywords.Starbound))
+            if (item.Keywords.Contains(Extensions.Keywords.Starbound))
             {
                 item.RemoveKeyword(Extensions.Keywords.Starbound);
             }

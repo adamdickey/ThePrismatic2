@@ -167,8 +167,8 @@
   "THEPRISMATIC2-VENERATE_POWER.smartDescription": "Gain [blue]{Amount}[/blue] [gold]Focus[/gold] until the end of this turn.",
   "THEPRISMATIC2-VENERATE_POWER.title": "Venerate",
 
-  "THEPRISMATIC2-GENESIS2_POWER.description": "Your Powers have [gold]Starbound[/gold]. At the start of your turn, gain {singleStarIcon}.",
-  "THEPRISMATIC2-GENESIS2_POWER.smartDescription": "Your Powers have [gold]Starbound[/gold]. At the start of your turn, gain {Amount:starIcons()}.",
+  "THEPRISMATIC2-GENESIS2_POWER.description": "Your cards have [gold]Starbound[/gold]. At the start of your turn, gain {singleStarIcon}.",
+  "THEPRISMATIC2-GENESIS2_POWER.smartDescription": "Your cards have [gold]Starbound[/gold]. At the start of your turn, gain {Amount:starIcons()}.",
   "THEPRISMATIC2-GENESIS2_POWER.title": "Genesis",
 
   "THEPRISMATIC2-MASTER_PLANNER2_POWER.description": "When you play a Skill, it gains [gold]Starbound[/gold] and [gold]Cunning[/gold].",

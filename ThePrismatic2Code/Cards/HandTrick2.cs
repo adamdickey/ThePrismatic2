@@ -25,17 +25,23 @@ public class HandTrick2() : ThePrismatic2Card(1,
     
     public override bool GainsBlock => true;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(7m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(6m, ValueProp.Move));
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromKeyword(Extensions.Keywords.Cunning),
         HoverTipFactory.FromKeyword(Extensions.Keywords.Starbound),
+        HoverTipFactory.FromKeyword(CardKeyword.Retain)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        CardModel? cardModel = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(SelectionScreenPrompt, 1), context: choiceContext, player: Owner, filter: card => card.Type == CardType.Skill && !(card.Keywords.Contains(Extensions.Keywords.Cunning) || card.Keywords.Contains(Extensions.Keywords.CunningThisTurn)) && !(card.Keywords.Contains(Extensions.Keywords.Starbound) || card.Keywords.Contains(Extensions.Keywords.StarboundThisTurn)), source: this)).FirstOrDefault();
+        CardModel? cardModel = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(SelectionScreenPrompt, 1), context: choiceContext, player: Owner, filter: card => card.Type == CardType.Skill && (
+            !(card.Keywords.Contains(Extensions.Keywords.Cunning) || card.Keywords.Contains(Extensions.Keywords.CunningThisTurn)) ||
+            !(card.Keywords.Contains(Extensions.Keywords.Starbound) || card.Keywords.Contains(Extensions.Keywords.StarboundThisTurn)) ||
+            !card.Keywords.Contains(CardKeyword.Retain)
+        ), source: this)).FirstOrDefault();
+        
         if (cardModel != null)
         {
             if (!cardModel.Keywords.Contains(Extensions.Keywords.Cunning) && !cardModel.Keywords.Contains(Extensions.Keywords.CunningThisTurn))
@@ -46,6 +52,11 @@ public class HandTrick2() : ThePrismatic2Card(1,
             if (!cardModel.Keywords.Contains(Extensions.Keywords.Starbound) && !cardModel.Keywords.Contains(Extensions.Keywords.StarboundThisTurn))
             {
                 cardModel.AddKeyword(Extensions.Keywords.StarboundThisTurn);
+            }
+
+            if (!cardModel.Keywords.Contains(CardKeyword.Retain))
+            {
+                cardModel.GiveSingleTurnRetain();
             }
         }
     }

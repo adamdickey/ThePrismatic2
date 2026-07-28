@@ -28,7 +28,7 @@ public class DodgeAndRoll2() : ThePrismatic2Card(1,
     ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new BlockVar(4m, ValueProp.Move),
+        new BlockVar(3m, ValueProp.Move),
         new SummonVar(1m)
     ]);
 

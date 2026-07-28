@@ -11,13 +11,15 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class Tactician2() : ThePrismatic2Card(3, 
+public class Tactician2() : ThePrismatic2Card(0, 
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.Self)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/tactician.png-2093c3cdb5be59601e1c55a08396982f.ctex";
     public override string PortraitPath => "res://.godot/imported/tactician.png-2093c3cdb5be59601e1c55a08396982f.ctex";
+
+    public override int CanonicalStarCost => 2;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new EnergyVar(1));
 

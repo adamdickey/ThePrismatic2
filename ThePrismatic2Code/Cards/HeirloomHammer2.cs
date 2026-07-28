@@ -22,7 +22,7 @@ public class HeirloomHammer2() : ThePrismatic2Card(2,
     public override string PortraitPath => "res://.godot/imported/heirloom_hammer.png-ef4f5fb87be15d64ded62b3b29885116.ctex";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(20m, ValueProp.Move),
+        new DamageVar(18m, ValueProp.Move),
         new RepeatVar(1)
     ]);
 
@@ -45,6 +45,6 @@ public class HeirloomHammer2() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(5m);
+        DynamicVars.Damage.UpgradeValueBy(6m);
     }
 }
