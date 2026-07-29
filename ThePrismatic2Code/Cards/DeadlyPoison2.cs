@@ -27,7 +27,7 @@ public class DeadlyPoison2() : ThePrismatic2Card(1,
     
     	protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
 		    new PowerVar<PoisonPower>(4m),
-		    new PowerVar<DoomPower>(3m)
+		    new PowerVar<DoomPower>(4m)
 		    ]);
     
     	protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
@@ -48,6 +48,6 @@ public class DeadlyPoison2() : ThePrismatic2Card(1,
     	protected override void OnUpgrade()
     	{
     		DynamicVars.Poison.UpgradeValueBy(2m);
-		    DynamicVars.Doom.UpgradeValueBy(1m);
+		    DynamicVars.Doom.UpgradeValueBy(2m);
     	}
 }

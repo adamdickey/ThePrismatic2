@@ -29,7 +29,7 @@ public class Debilitate2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(10m, ValueProp.Move),
-        new PowerVar<DebilitatePower>(2m)
+        new PowerVar<DebilitatePower>(3m)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

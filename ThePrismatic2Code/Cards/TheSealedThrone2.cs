@@ -11,7 +11,7 @@ using ThePrismatic2.ThePrismatic2Code.Extensions;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class TheSealedThrone2() : ThePrismatic2Card(2, 
+public class TheSealedThrone2() : ThePrismatic2Card(1, 
     CardType.Power, CardRarity.Rare, 
     TargetType.Self)
 {
