@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -25,25 +26,32 @@ public class GunkUp2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(4m, ValueProp.Move),
-        new RepeatVar(3)
+        new CardsVar(2),
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(DynamicVars.Repeat.IntValue).FromCard(this)
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this)
             .Targeting(cardPlay.Target)
             .WithHitFx(null, null, "blunt_attack.mp3")
             .WithHitVfxNode(NGoopyImpactVfx.Create)
             .Execute(choiceContext);
-        CardModel? card = CombatState?.CreateCard<Forget>(Owner);
-        if (card != null)
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Discard, Owner));
-        await Cmd.Wait(0.5f);
+        for (int i = 0; i < DynamicVars.Cards.IntValue; i++)
+        {
+            if (CombatState != null) await Shiv.CreateInHand(Owner, CombatState);
+            await Cmd.Wait(0.25f);
+        }
+        CardModel? card2 = CombatState?.CreateCard<Forget>(Owner);
+        if (card2 != null)
+        {
+            await CardPileCmd.AddGeneratedCardToCombat(card2, PileType.Hand, Owner);
+        }
+        await Cmd.Wait(0.25f);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(1m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

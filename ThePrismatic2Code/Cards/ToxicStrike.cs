@@ -25,7 +25,7 @@ public class ToxicStrike() : ThePrismatic2Card(1,
         HoverTipFactory.Static(StaticHoverTip.Channeling),
         HoverTipFactory.FromOrb<VenomOrb>()
     ]);
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(5m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(3m, ValueProp.Move));
 
 
     protected override async Task OnPlay(

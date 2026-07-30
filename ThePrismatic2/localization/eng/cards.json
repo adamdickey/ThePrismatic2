@@ -353,7 +353,7 @@
   "THEPRISMATIC2-SERPENT_FORM2.description": "Whenever you play a card, apply {SerpentFormPower:diff()} [gold]Doom[/gold] to a random enemy.",
   "THEPRISMATIC2-SERPENT_FORM2.title": "Serpent Form",
 
-  "THEPRISMATIC2-SLICE2.description": "[gold]Bleed[/gold] {HpLoss:diff()}.\nDeal {Damage:diff()} damage.",
+  "THEPRISMATIC2-SLICE2.description": "[gold]Bleed[/gold] {HpLoss:diff()}.\nDeal {Damage:diff()} damage.\nAdd {Cards:diff()} [gold]{Cards:plural:Shiv|Shivs}[/gold] into your [gold]Hand[/gold].",
   "THEPRISMATIC2-SLICE2.title": "Slice",
 
   "THEPRISMATIC2-SNAKEBITE2.description": "Apply {PoisonPower:diff()} [gold]Poison[/gold].\nApply {Exposed:diff()} [gold]Exposed[/gold].",
@@ -795,7 +795,7 @@
   "THEPRISMATIC2-GO_FOR_THE_EYES2.description": "Deal {Damage:diff()} damage.\nApply {WeakPower:diff()} [gold]Weak[/gold] if the enemy intends to attack, otherwise apply {Exposed:diff()} [gold]Exposed[/gold].",
   "THEPRISMATIC2-GO_FOR_THE_EYES2.title": "Go for the Eyes",
 
-  "THEPRISMATIC2-GUNK_UP2.description": "Deal {Damage:diff()} damage {Repeat:diff()} {Repeat:plural:time|times}.\nAdd a [gold]Forget[/gold] into your [gold]Discard Pile[/gold].",
+  "THEPRISMATIC2-GUNK_UP2.description": "Deal {Damage:diff()} damage.\nAdd {Cards:diff()} [gold]{Cards:plural:Shiv|Shivs}[/gold] and\na [gold]Forget[/gold] into your [gold]Hand[/gold].",
   "THEPRISMATIC2-GUNK_UP2.title": "Gunk Up",
 
   "THEPRISMATIC2-HAILSTORM2.description": "At the end of your turn, if you have at least 3 Orbs [gold]Channeled[/gold], deal {HailstormPower:diff()} damage to ALL enemies.",

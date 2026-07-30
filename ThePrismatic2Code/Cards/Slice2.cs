@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
@@ -28,7 +29,8 @@ public class Slice2() : ThePrismatic2Card(0,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(8m, ValueProp.Move),
-        new HpLossVar(1m)
+        new HpLossVar(1m),
+        new CardsVar(1),
         ]);
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed));
@@ -56,6 +58,11 @@ public class Slice2() : ThePrismatic2Card(0,
             .WithAttackerAnim("Attack", num)
             .WithHitFx("vfx/vfx_attack_slash", null, "slash_attack.mp3")
             .Execute(choiceContext);
+
+        CardModel? card = CombatState?.CreateCard<Shiv>(Owner);
+        if (card != null)
+            await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner);
+        await Cmd.Wait(0.25f);   
     }
 
     protected override void OnUpgrade()
