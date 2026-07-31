@@ -28,7 +28,7 @@ public class Slice2() : ThePrismatic2Card(0,
     public override string PortraitPath => "res://.godot/imported/slice.png-22c006dba43bf1a03ef8be8a4c6f391d.ctex";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(8m, ValueProp.Move),
+        new DamageVar(4m, ValueProp.Move),
         new HpLossVar(1m),
         new CardsVar(1),
         ]);

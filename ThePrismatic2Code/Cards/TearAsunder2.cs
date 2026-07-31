@@ -22,7 +22,7 @@ public class TearAsunder2() : ThePrismatic2Card(2,
     public override string PortraitPath => "res://.godot/imported/tear_asunder.png-21413c291331ffb17e9eea85c1e55a35.ctex";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(5m, ValueProp.Move),
+        new DamageVar(4m, ValueProp.Move),
         new RepeatVar(1),
         new CalculationBaseVar(0m),
         new CalculationExtraVar(1m),

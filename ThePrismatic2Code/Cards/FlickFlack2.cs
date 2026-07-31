@@ -22,7 +22,7 @@ public class FlickFlack2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/flick_flack.png-61d601df41f68ff1e721a90457c674db.ctex";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(6m, ValueProp.Move),
+        new DamageVar(7m, ValueProp.Move),
         new DynamicVar("Exposed", 1m)
     ]);
     
