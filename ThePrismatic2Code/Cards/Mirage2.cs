@@ -3,11 +3,9 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -29,13 +27,6 @@ public class Mirage2() : ThePrismatic2Card(1,
         new CalculationExtraVar(1m),
         new CalculatedBlockVar(ValueProp.Move).WithMultiplier((card, _) => card.CombatState?.Enemies.Where(c => c.IsAlive).Sum(c => c.Powers.Where(power => power.Type == PowerType.Debuff).Sum(power => power.Amount)) ?? 0)
     ]);
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        HoverTipFactory.FromPower<PoisonPower>(),
-        HoverTipFactory.FromPower<DoomPower>()
-        ]);
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

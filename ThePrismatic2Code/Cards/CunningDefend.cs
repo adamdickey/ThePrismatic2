@@ -10,7 +10,7 @@ namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 
 public class CunningDefend() : ThePrismatic2Card(1,
-    CardType.Skill, CardRarity.Basic,
+    CardType.Skill, CardRarity.None,
     TargetType.Self)
 {
     public override string CustomPortraitPath => $"PrismaticDefend.png".BigCardImagePath();

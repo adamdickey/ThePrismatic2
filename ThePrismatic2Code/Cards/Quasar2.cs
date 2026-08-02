@@ -1,5 +1,4 @@
 ﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Factories;
@@ -23,14 +22,18 @@ public class Quasar2() : ThePrismatic2Card(0,
 
     public override int CanonicalStarCost => 2;
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Exhaust));
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.Evoke));
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        CardModel selection = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, 1), context: choiceContext, player: Owner, filter: null, source: this)).FirstOrDefault() ?? throw new InvalidOperationException();
-        await CardCmd.Exhaust(choiceContext, selection);
+        if (Owner.PlayerCombatState is { OrbQueue.Orbs.Count: > 0 })
+        {
+            await OrbCmd.EvokeNext(choiceContext, Owner, dequeue: false);
+            await Cmd.CustomScaledWait(0.1f, 0.25f);
+            await OrbCmd.EvokeNext(choiceContext, Owner);
+        }
         List<CardModel> cards = CardFactory.GetDistinctForCombat(Owner, ModelDb.CardPool<ColorlessCardPool>().GetUnlockedCards(Owner.UnlockState, Owner.RunState.CardMultiplayerConstraint), 3, Owner.RunState.Rng.CombatCardGeneration).ToList();
         if (IsUpgraded)
         {

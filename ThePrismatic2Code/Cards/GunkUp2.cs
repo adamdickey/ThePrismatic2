@@ -22,11 +22,14 @@ public class GunkUp2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/gunk_up.png-bbe8bcb4ecbb36ccefb6178d593420cd.ctex";
     public override string PortraitPath => "res://.godot/imported/gunk_up.png-bbe8bcb4ecbb36ccefb6178d593420cd.ctex";
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<Forget>());
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromCard<Shiv>(),
+        HoverTipFactory.FromCard<Forget>()
+        ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(4m, ValueProp.Move),
-        new CardsVar(2),
+        new CardsVar(2)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

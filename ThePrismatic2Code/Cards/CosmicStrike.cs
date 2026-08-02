@@ -12,7 +12,7 @@ namespace ThePrismatic2.ThePrismatic2Code.Cards;
   
 
 public class CosmicStrike() : ThePrismatic2Card(1,
-    CardType.Attack, CardRarity.Basic,
+    CardType.Attack, CardRarity.None,
     TargetType.AnyEnemy)
 {
     public override string CustomPortraitPath => $"PrismaticStrike.png".BigCardImagePath();

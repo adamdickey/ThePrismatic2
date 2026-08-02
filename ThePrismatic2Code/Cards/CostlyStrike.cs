@@ -12,7 +12,7 @@ using ThePrismatic2.ThePrismatic2Code.Extensions;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 public class CostlyStrike() : ThePrismatic2Card(2,
-    CardType.Attack, CardRarity.Basic,
+    CardType.Attack, CardRarity.None,
     TargetType.AnyEnemy)
 {
     public override string CustomPortraitPath => $"PrismaticStrike.png".BigCardImagePath();

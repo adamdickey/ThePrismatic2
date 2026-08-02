@@ -44,7 +44,7 @@ public class RocketPunch2() : ThePrismatic2Card(2,
         {
             return Task.CompletedTask;
         }
-        EnergyCost.SetUntilPlayed(0);
+        EnergyCost.AddUntilPlayed(-1);
         return Task.CompletedTask;
     }
 

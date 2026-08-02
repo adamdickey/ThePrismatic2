@@ -29,7 +29,7 @@ public class BladeOfInk2() : ThePrismatic2Card(1,
             [
                 HoverTipFactory.FromCard<Shiv>()
             ];
-            list.AddRange(HoverTipFactory.FromEnchantment<Inked>());
+            list.AddRange(HoverTipFactory.FromEnchantment<Oily>());
             return new _003C_003Ez__ReadOnlyList<IHoverTip>(list);
         }
     }
@@ -41,7 +41,7 @@ public class BladeOfInk2() : ThePrismatic2Card(1,
         if (CombatState != null)
             foreach (CardModel item in await Shiv.CreateInHand(Owner, DynamicVars.Cards.IntValue, CombatState))
             {
-                CardCmd.Enchant<Inked>(item, 1m);
+                CardCmd.Enchant<Oily>(item, 1m);
             }
     }
 

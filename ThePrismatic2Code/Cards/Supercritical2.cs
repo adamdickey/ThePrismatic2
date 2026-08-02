@@ -37,7 +37,7 @@ public class Supercritical2() : ThePrismatic2Card(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Energy.UpgradeValueBy(1m);
-        DynamicVars.Stars.UpgradeValueBy(1m);
+        DynamicVars.Energy.UpgradeValueBy(2m);
+        DynamicVars.Stars.UpgradeValueBy(2m);
     }
 }

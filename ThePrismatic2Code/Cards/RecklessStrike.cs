@@ -11,7 +11,7 @@ namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 
 public class RecklessStrike() : ThePrismatic2Card(0,
-    CardType.Attack, CardRarity.Basic,
+    CardType.Attack, CardRarity.None,
     TargetType.AnyEnemy)
 {
     public override string CustomPortraitPath => $"PrismaticStrike.png".BigCardImagePath();

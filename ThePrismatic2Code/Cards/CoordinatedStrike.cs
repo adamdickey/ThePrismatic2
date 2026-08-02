@@ -10,7 +10,7 @@ using CardKeyword = MegaCrit.Sts2.Core.Entities.Cards.CardKeyword;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 public class CoordinatedStrike() : ThePrismatic2Card(1,
-    CardType.Attack, CardRarity.Basic,
+    CardType.Attack, CardRarity.None,
     TargetType.AnyEnemy)
 {
     public override string CustomPortraitPath => $"PrismaticStrike.png".BigCardImagePath();

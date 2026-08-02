@@ -21,15 +21,13 @@ public class SwordSage2() : ThePrismatic2Card(2,
     public override string CustomPortraitPath => "res://.godot/imported/sword_sage.png-458450de54ede3ee31ae1bc9fc45525c.ctex";
     public override string PortraitPath => "res://.godot/imported/sword_sage.png-458450de54ede3ee31ae1bc9fc45525c.ctex";
 
-    public override int CanonicalStarCost => 3;
+    public override int CanonicalStarCost => 1;
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Costly));
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<SwordSagePower>(1m));
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlyArray<CardKeyword>([
-        Extensions.Keywords.Starbound
-        ]);
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
