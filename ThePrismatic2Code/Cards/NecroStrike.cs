@@ -23,7 +23,7 @@ public class NecroStrike() : ThePrismatic2Card(1,
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon));
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new OstyDamageVar(6m, ValueProp.Move),
+        new OstyDamageVar(7m, ValueProp.Move),
         new SummonVar(1m)
     ]);
 
