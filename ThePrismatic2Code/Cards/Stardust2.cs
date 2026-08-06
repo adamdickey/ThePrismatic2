@@ -19,6 +19,7 @@ public class Stardust2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/stardust.png-c726c8fa4b8621ae787c3a56e9ddb621.ctex";
     public override string PortraitPath => "res://.godot/imported/stardust.png-c726c8fa4b8621ae787c3a56e9ddb621.ctex";
 
+    protected override bool HasEnergyCostX => true;
     public override bool HasStarCostX => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(5m, ValueProp.Move));

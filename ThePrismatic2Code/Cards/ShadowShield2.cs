@@ -25,7 +25,7 @@ public class ShadowShield2() : ThePrismatic2Card(2,
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new BlockVar(9m, ValueProp.Move),
+        new BlockVar(10m, ValueProp.Move),
         new DynamicVar("Exposed", 1m)
         ]);
 
@@ -48,7 +48,7 @@ public class ShadowShield2() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(3m);
+        DynamicVars.Block.UpgradeValueBy(4m);
         DynamicVars["Exposed"].UpgradeValueBy(1m);
     }
 }

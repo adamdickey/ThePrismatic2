@@ -21,7 +21,7 @@ public class SwordSage2() : ThePrismatic2Card(2,
     public override string CustomPortraitPath => "res://.godot/imported/sword_sage.png-458450de54ede3ee31ae1bc9fc45525c.ctex";
     public override string PortraitPath => "res://.godot/imported/sword_sage.png-458450de54ede3ee31ae1bc9fc45525c.ctex";
 
-    public override int CanonicalStarCost => 3;
+    public override int CanonicalStarCost => 1;
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Costly));
 

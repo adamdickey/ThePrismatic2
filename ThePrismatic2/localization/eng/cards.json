@@ -813,7 +813,7 @@
   "THEPRISMATIC2-ITERATION2.description": "The first time you draw a Colorless card or a Status each turn, draw {IterationPower:diff()} {IterationPower:plural:card|cards}.",
   "THEPRISMATIC2-ITERATION2.title": "Iteration",
 
-  "THEPRISMATIC2-LEAP2.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Summon[/gold] {Summon:diff()}.",
+  "THEPRISMATIC2-LEAP2.description": "Gain {Block:diff()} [gold]Block[/gold].\nGain {Stars:starIcons()}.",
   "THEPRISMATIC2-LEAP2.title": "Leap",
 
   "THEPRISMATIC2-LOOP2.description": "At the start of your turn, gain {singleStarIcon} and trigger the passive ability of your rightmost Orb{IfUpgraded:show: 2 times}.",

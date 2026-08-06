@@ -21,7 +21,7 @@ public class CompileDriver2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/compile_driver.png-ee77990178301fc7354322f29fa4e2d5.ctex";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(7m, ValueProp.Move),
+        new DamageVar(8m, ValueProp.Move),
         new CalculationBaseVar(0m),
         new CalculationExtraVar(1m),
         new CalculatedVar("CalculatedCards").WithMultiplier((card, _) => card.Owner.PlayerCombatState != null ? (from orb in card.Owner.PlayerCombatState.OrbQueue.Orbs group orb by orb.Id).Count() : 0)
