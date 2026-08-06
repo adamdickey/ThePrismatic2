@@ -9,7 +9,7 @@ using CardKeyword = MegaCrit.Sts2.Core.Entities.Cards.CardKeyword;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 public class StarboundDefend() : ThePrismatic2Card(0,
-    CardType.Skill, CardRarity.Basic,
+    CardType.Skill, CardRarity.None,
     TargetType.Self)
 {
     public override string CustomPortraitPath => $"PrismaticDefend.png".BigCardImagePath();

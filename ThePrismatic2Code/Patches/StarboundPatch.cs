@@ -13,7 +13,7 @@ public static class StarboundPatch
     {
         reason = UnplayableReason.None;
         int cardEnergy = Math.Max(0, card.EnergyCost.GetWithModifiers(CostModifiers.All));
-        int cardStars = Math.Max(0, card.CurrentStarCost);
+        int cardStars = Math.Max(0, card.GetStarCostWithModifiers());
         int cardCost = cardEnergy + cardStars;
         int playerEnergy = 0;
         int playerStars = 0;
@@ -24,25 +24,38 @@ public static class StarboundPatch
         }
 
         if (card.CombatState == null || (!card.Keywords.Contains(Keywords.Starbound) && !card.Keywords.Contains(Keywords.StarboundThisTurn))) return;
-        if (playerEnergy >= cardEnergy && playerStars >= cardStars)
+        if (playerStars + playerEnergy >= cardCost)
         {
-            card.EnergyCost.SetThisTurnOrUntilPlayed(cardEnergy);
-            card.SetStarCostThisTurn(cardStars);
-            reason = UnplayableReason.None;
-            return;
+            if (playerEnergy < cardEnergy && playerEnergy + playerStars >= cardCost)
+            {
+                card.EnergyCost.SetThisTurnOrUntilPlayed(playerEnergy);
+                card.SetStarCostThisTurn(cardCost - playerEnergy);
+                card.InvokeEnergyCostChanged();
+                return;
+            }
+            if (playerStars < cardStars && playerStars + playerEnergy >= cardCost)
+            {
+                card.EnergyCost.SetThisTurnOrUntilPlayed(cardCost - playerStars);
+                card.SetStarCostThisTurn(playerStars);
+                card.InvokeEnergyCostChanged();
+            }
         }
-        if (playerEnergy < cardEnergy && playerEnergy + playerStars >= cardCost)
+        else
         {
-            card.EnergyCost.SetThisTurnOrUntilPlayed(playerEnergy);
-            card.SetStarCostThisTurn(cardCost - playerEnergy);
-            reason = UnplayableReason.None;
-            return;
-        }
-        if (playerStars < cardStars && playerStars + playerEnergy >= cardCost)
-        {
-            card.EnergyCost.SetThisTurnOrUntilPlayed(cardCost - playerStars);
-            card.SetStarCostThisTurn(playerStars);
-            reason = UnplayableReason.None;
+            if (cardCost == card.EnergyCost.Canonical + card.CanonicalStarCost)
+            {
+                card.EnergyCost.SetThisCombat(card.EnergyCost.Canonical);
+                card.SetStarCostThisCombat(card.CanonicalStarCost);
+                card.InvokeEnergyCostChanged();
+            }
+            if (Math.Max(0, card.EnergyCost.GetWithModifiers(CostModifiers.All)) > playerEnergy)
+            {
+                reason |= UnplayableReason.EnergyCostTooHigh;
+            }
+            if (Math.Max(0, card.CurrentStarCost) > playerStars)
+            {
+                reason |= UnplayableReason.StarCostTooHigh;
+            }
         }
     }
 }

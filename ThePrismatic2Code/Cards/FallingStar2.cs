@@ -9,7 +9,6 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
-using ThePrismatic2.ThePrismatic2Code.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -29,14 +28,12 @@ public class FallingStar2() : ThePrismatic2Card(0,
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(9m, ValueProp.Move),
         new PowerVar<VulnerablePower>(1m),
-        new PowerVar<WeakPower>(1m),
-        new DynamicVar("Exposed", 1m)
+        new PowerVar<WeakPower>(1m)
     ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<WeakPower>(),
-        HoverTipFactory.FromPower<VulnerablePower>(),
-        HoverTipFactory.FromPower<ExposedPower>()
+        HoverTipFactory.FromPower<VulnerablePower>()
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -47,7 +44,6 @@ public class FallingStar2() : ThePrismatic2Card(0,
             .Execute(choiceContext);
         await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
         await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, DynamicVars.Vulnerable.BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<ExposedPower>(choiceContext, cardPlay.Target, DynamicVars["Exposed"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

@@ -31,8 +31,6 @@ public class Synchronize2() : ThePrismatic2Card(1,
             group orb by orb.Id).Count())
     ]);
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
@@ -42,6 +40,6 @@ public class Synchronize2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Exhaust);
+        DynamicVars.Forge.UpgradeValueBy(3m);
     }
 }

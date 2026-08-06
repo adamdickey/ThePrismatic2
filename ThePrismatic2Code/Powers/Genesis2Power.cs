@@ -1,12 +1,10 @@
 ﻿using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
-using ThePrismatic2.ThePrismatic2Code.Orbs;
 
 namespace ThePrismatic2.ThePrismatic2Code.Powers;
 
@@ -19,11 +17,7 @@ public class Genesis2Power : ThePrismatic2Power
 
     public override PowerStackType StackType => PowerStackType.Counter;
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        HoverTipFactory.FromKeyword(Extensions.Keywords.Starbound),
-        HoverTipFactory.Static(StaticHoverTip.Channeling),
-        HoverTipFactory.FromOrb<SolarOrb>()
-    ]);
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Starbound));
     
     public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
@@ -68,7 +62,7 @@ public class Genesis2Power : ThePrismatic2Power
         IEnumerable<CardModel> enumerable = oldOwner.Player?.PlayerCombatState?.AllCards ?? Array.Empty<CardModel>();
         foreach (CardModel item in enumerable)
         {
-            if (item.Keywords.Contains(Extensions.Keywords.Starbound))
+            if (item.Keywords.Contains(Extensions.Keywords.Starbound) && !item.CanonicalKeywords.Contains(Extensions.Keywords.Starbound))
             {
                 item.RemoveKeyword(Extensions.Keywords.Starbound);
             }

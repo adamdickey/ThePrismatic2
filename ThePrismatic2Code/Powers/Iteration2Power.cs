@@ -19,7 +19,7 @@ public class Iteration2Power : ThePrismatic2Power
 
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
-        if (card.Owner.Creature == Owner && card.Type == CardType.Status)
+        if (card.Owner.Creature == Owner && (card.Type == CardType.Status || card.VisualCardPool.IsColorless))
         {
             int num = CombatManager.Instance.History.Entries.OfType<CardDrawnEntry>().Count(e => e.HappenedThisTurn(CombatState) && e.Actor == Owner && (e.Card.Type == CardType.Status || e.Card.VisualCardPool.IsColorless));
             if (num <= 1)

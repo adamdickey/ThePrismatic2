@@ -28,8 +28,8 @@ public class Mangle2() : ThePrismatic2Card(3,
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.DualWield);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(12m, ValueProp.Move),
-        new OstyDamageVar(6m, ValueProp.Move),
+        new DamageVar(16m, ValueProp.Move),
+        new OstyDamageVar(8m, ValueProp.Move),
         new DynamicVar("StrengthLoss", 8m)
     ]);
 

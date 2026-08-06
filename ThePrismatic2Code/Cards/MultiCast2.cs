@@ -27,19 +27,14 @@ public class MultiCast2() : ThePrismatic2Card(0,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         int evokeCount = ResolveEnergyXValue();
-        int orbCount = 0;
-        if (Owner.PlayerCombatState != null) orbCount = Owner.PlayerCombatState.OrbQueue.Orbs.Count;
         if (IsUpgraded)
         {
             evokeCount++;
         }
-        for (int i = 0; i < orbCount; i++)
+        for (int i = 0; i < evokeCount; i++)
         {
-            for (int j = 0; j < evokeCount; j++)
-            {
-                await OrbCmd.EvokeNext(choiceContext, Owner, j == evokeCount - 1);
-                await Cmd.Wait(0.25f);
-            }
+            await OrbCmd.EvokeNext(choiceContext, Owner, i == evokeCount - 1);
+            await Cmd.Wait(0.25f);
         }
     }
 }

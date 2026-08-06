@@ -1,9 +1,7 @@
 ﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.CardSelection;
-using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -37,8 +35,8 @@ public class HandTrick2() : ThePrismatic2Card(1,
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
         CardModel? cardModel = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(SelectionScreenPrompt, 1), context: choiceContext, player: Owner, filter: card => card.Type == CardType.Skill && (
-            !(card.Keywords.Contains(Extensions.Keywords.Cunning) || card.Keywords.Contains(Extensions.Keywords.CunningThisTurn)) ||
-            !(card.Keywords.Contains(Extensions.Keywords.Starbound) || card.Keywords.Contains(Extensions.Keywords.StarboundThisTurn)) ||
+            !(card.Keywords.Contains(Extensions.Keywords.Cunning) || !card.Keywords.Contains(Extensions.Keywords.CunningThisTurn)) ||
+            !(card.Keywords.Contains(Extensions.Keywords.Starbound) || !card.Keywords.Contains(Extensions.Keywords.StarboundThisTurn)) ||
             !card.Keywords.Contains(CardKeyword.Retain)
         ), source: this)).FirstOrDefault();
         
@@ -48,12 +46,10 @@ public class HandTrick2() : ThePrismatic2Card(1,
             {
                 cardModel.AddKeyword(Extensions.Keywords.CunningThisTurn);
             }
-
             if (!cardModel.Keywords.Contains(Extensions.Keywords.Starbound) && !cardModel.Keywords.Contains(Extensions.Keywords.StarboundThisTurn))
             {
                 cardModel.AddKeyword(Extensions.Keywords.StarboundThisTurn);
             }
-
             if (!cardModel.Keywords.Contains(CardKeyword.Retain))
             {
                 cardModel.GiveSingleTurnRetain();
@@ -64,68 +60,5 @@ public class HandTrick2() : ThePrismatic2Card(1,
     protected override void OnUpgrade()
     {
         DynamicVars.Block.UpgradeValueBy(3m);
-    }
-    
-    public override Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
-    { 
-        foreach (CardModel card in PileType.Draw.GetPile(Owner).Cards)
-        {
-            RemoveKeywords(card);
-        }
-        foreach (CardModel card in PileType.Discard.GetPile(Owner).Cards)
-        {
-            RemoveKeywords(card);
-        }
-        foreach (CardModel card in PileType.Hand.GetPile(Owner).Cards)
-        {
-            RemoveKeywords(card);
-        }
-        foreach (CardModel card in PileType.Exhaust.GetPile(Owner).Cards)
-        {
-            RemoveKeywords(card);
-        }
-        foreach (CardModel card in PileType.Play.GetPile(Owner).Cards)
-        {
-            RemoveKeywords(card);
-        }
-        return Task.CompletedTask;
-    }
-    
-    public override void AfterTransformedFrom()
-    {
-        foreach (CardModel card in PileType.Draw.GetPile(Owner).Cards)
-        {
-            RemoveKeywords(card);
-        }
-        foreach (CardModel card in PileType.Discard.GetPile(Owner).Cards)
-        {
-            RemoveKeywords( card);
-        }
-        foreach (CardModel card in PileType.Hand.GetPile(Owner).Cards)
-        {
-            RemoveKeywords(card);
-        }
-        foreach (CardModel card in PileType.Exhaust.GetPile(Owner).Cards)
-        {
-            RemoveKeywords(card);
-        }
-        foreach (CardModel card in PileType.Play.GetPile(Owner).Cards)
-        {
-            RemoveKeywords(card);
-        }
-    }
-
-    private void RemoveKeywords(CardModel card)
-    {
-        if (card.Keywords.Contains(Extensions.Keywords.CunningThisTurn))
-        {
-            card.RemoveKeyword(Extensions.Keywords.CunningThisTurn);
-        }
-        if (card.Keywords.Contains(Extensions.Keywords.StarboundThisTurn))
-        {
-            card.EnergyCost.SetThisCombat(card.EnergyCost.Canonical);
-            card.SetStarCostThisCombat(card.CanonicalStarCost);
-            card.RemoveKeyword(Extensions.Keywords.StarboundThisTurn);
-        }
     }
 }

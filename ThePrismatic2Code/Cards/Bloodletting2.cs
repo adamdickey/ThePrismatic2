@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Monsters;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -46,6 +47,7 @@ public class Bloodletting2() : ThePrismatic2Card(0,
             await CreatureCmd.Damage(choiceContext, Owner.Creature, DynamicVars.HpLoss.BaseValue, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
         }
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
+        await PowerCmd.Apply<NoEnergyGainPower>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

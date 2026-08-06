@@ -20,6 +20,10 @@ public class NoxiousFumes2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/noxious_fumes.png-41ac213c85c82724e5fb506f4fe36194.ctex";
     public override string PortraitPath => "res://.godot/imported/noxious_fumes.png-41ac213c85c82724e5fb506f4fe36194.ctex";
 
+    public override int CanonicalStarCost => 1;
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Channeling),
         HoverTipFactory.FromOrb<VenomOrb>()

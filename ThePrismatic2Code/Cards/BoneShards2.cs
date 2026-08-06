@@ -27,7 +27,7 @@ public class BoneShards2() : ThePrismatic2Card(1,
     protected override HashSet<CardTag> CanonicalTags => [CardTag.OstyAttack];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new HpLossVar(4m),
+        new HpLossVar(3m),
         new SummonVar(1m),
         new OstyDamageVar(9m, ValueProp.Move),
         new BlockVar(9m, ValueProp.Move)

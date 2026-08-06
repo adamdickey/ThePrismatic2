@@ -13,32 +13,37 @@ using ThePrismatic2.ThePrismatic2Code.Powers;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class Countdown2() : ThePrismatic2Card(1, 
-    CardType.Power, CardRarity.Uncommon, 
+public class Monologue2() : ThePrismatic2Card(0, 
+    CardType.Skill, CardRarity.Uncommon, 
     TargetType.Self)
 {
-    public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
-    public override string CustomPortraitPath => "res://.godot/imported/countdown.png-57e7f53d715d5acec56e3217f661ce2c.ctex";
-    public override string PortraitPath => "res://.godot/imported/countdown.png-57e7f53d715d5acec56e3217f661ce2c.ctex";
-    
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
+    public override string CustomPortraitPath => "res://.godot/imported/monologue.png-3db958f5fb0e9fe0d5e0d37dbaf67542.ctex";
+    public override string PortraitPath => "res://.godot/imported/monologue.png-3db958f5fb0e9fe0d5e0d37dbaf67542.ctex";
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new PowerVar<PoisonPower>(2m),
-        new PowerVar<CountdownPower>(4m)
-    ]);
+        new DynamicVar("Strength", 2m),
+        new DynamicVar("Focus", 1m)
+        ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        HoverTipFactory.FromPower<PoisonPower>(),
-        HoverTipFactory.FromPower<DoomPower>()
+        HoverTipFactory.FromPower<StrengthPower>(),
+        HoverTipFactory.FromPower<FocusPower>()
         ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<Countdown2Power>(choiceContext, Owner.Creature, DynamicVars["CountdownPower"].BaseValue, Owner.Creature, this);
+        Monologue2Power? monologuePower = await PowerCmd.Apply<Monologue2Power>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
+        if (monologuePower != null)
+        {
+            monologuePower.DynamicVars.Strength.BaseValue = DynamicVars["Strength"].BaseValue;
+            monologuePower.DynamicVars["FocusPower"].BaseValue = DynamicVars["Focus"].BaseValue;
+        }
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["CountdownPower"].UpgradeValueBy(2m);
+        AddKeyword(CardKeyword.Retain);
     }
 }

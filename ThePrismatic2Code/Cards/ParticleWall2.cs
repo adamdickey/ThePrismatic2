@@ -1,8 +1,8 @@
 ﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
@@ -25,19 +25,19 @@ public class ParticleWall2() : ThePrismatic2Card(0,
     public override bool GainsBlock => true;
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon));
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(9m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new BlockVar(6m, ValueProp.Move),
+        new SummonVar(2m)
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        CardModel? cardModel = (await CardSelectCmd.FromHandForDiscard(choiceContext, Owner,
-            new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, 1), null, this)).FirstOrDefault();
-        if (cardModel != null)
-        {
-            await CardCmd.Discard(choiceContext, cardModel);
-        }
-        
+        await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
+        await Cmd.Wait(0.25f);
     }
 
     protected override PileType GetResultPileTypeForCardPlay()
@@ -52,6 +52,7 @@ public class ParticleWall2() : ThePrismatic2Card(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(3m);
+        DynamicVars.Block.UpgradeValueBy(2m);
+        DynamicVars.Summon.UpgradeValueBy(1m);
     }
 }

@@ -1,12 +1,15 @@
 ﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
+using ThePrismatic2.ThePrismatic2Code.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -21,22 +24,33 @@ public class AstralPulse2() : ThePrismatic2Card(0,
     
     public override int CanonicalStarCost => 3;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(6m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new DamageVar(6m, ValueProp.Move),
+        new DynamicVar("Exposed", 2m)
+        ]);
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<ExposedPower>());
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState!)
+            .WithHitCount(2)
+            .WithHitFx("vfx/vfx_starry_impact")
+            .SpawningHitVfxOnEachCreature()
+            .Execute(choiceContext);
         if (CombatState != null)
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState)
-                .WithHitCount(2)
-                .WithHitFx("vfx/vfx_starry_impact")
-                .SpawningHitVfxOnEachCreature()
-                .Execute(choiceContext);
+            foreach (Creature enemy in CombatState.HittableEnemies)
+            {
+                await PowerCmd.Apply<ExposedPower>(choiceContext, enemy, DynamicVars["Exposed"].BaseValue,
+                    Owner.Creature, this);
+            }
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars["Exposed"].UpgradeValueBy(1m);
     }
 }

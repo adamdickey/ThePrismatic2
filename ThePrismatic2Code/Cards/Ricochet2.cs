@@ -28,8 +28,7 @@ public class Ricochet2() : ThePrismatic2Card(2,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(DynamicVars.Repeat.IntValue)
-            .FromCard(this)
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(DynamicVars.Repeat.IntValue).FromCard(this)
             .TargetingRandomOpponents(CombatState!)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

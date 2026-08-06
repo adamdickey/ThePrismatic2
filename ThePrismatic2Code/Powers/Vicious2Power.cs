@@ -35,7 +35,7 @@ public class Vicious2Power : ThePrismatic2Power
     public override Task BeforePowerAmountChanged(PowerModel power, decimal amount, Creature target, Creature? applier, CardModel? cardSource)
     {
         _canDraw = !_targets.Contains(target);
-        if (_canDraw)
+        if (!(amount <= 0m) && _canDraw && applier == Owner && (power is VulnerablePower || power is ExposedPower))
         {
             _targets.Add(target);
         }

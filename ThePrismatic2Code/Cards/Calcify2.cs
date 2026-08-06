@@ -21,14 +21,17 @@ public class Calcify2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/calcify.png-a06385677c41e908af4ab3153830be80.ctex";
     public override string PortraitPath => "res://.godot/imported/calcify.png-a06385677c41e908af4ab3153830be80.ctex";
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.DualWield));
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<CalcifyPower>(4m));
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new PowerVar<CalcifyPower>(4m),
+        new SummonVar(1m)
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await PowerCmd.Apply<CalcifyPower>(choiceContext, Owner.Creature, DynamicVars["CalcifyPower"].BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<Calcify2Power>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<Calcify2Power>(choiceContext, Owner.Creature, DynamicVars.Summon.BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

@@ -24,7 +24,7 @@ public class WraithForm2() : ThePrismatic2Card(3,
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new PowerVar<IntangiblePower>(2m),
-        new PowerVar<WraithFormPower>(7m)
+        new PowerVar<WraithFormPower>(6m)
     ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([

@@ -28,7 +28,7 @@ public class Hellraiser2() : ThePrismatic2Card(2,
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => HoverTipFactory.FromForge();
     
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new ForgeVar(7));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new ForgeVar(6));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

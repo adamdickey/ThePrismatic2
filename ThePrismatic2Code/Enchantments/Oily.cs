@@ -10,7 +10,7 @@ using ThePrismatic2.ThePrismatic2Code.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Enchantments;
 
-public sealed class Inked : EnchantmentModel
+public sealed class Oily : EnchantmentModel
 {
     public override bool HasExtraCardText => true;
 

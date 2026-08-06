@@ -1,5 +1,4 @@
 ﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Factories;
@@ -22,7 +21,10 @@ public class ManifestAuthority2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/manifest_authority.png-19975ebd22b72d774233af6e7c1cd597.ctex";
     public override string PortraitPath => "res://.godot/imported/manifest_authority.png-19975ebd22b72d774233af6e7c1cd597.ctex";
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.Block));
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.Static(StaticHoverTip.Block),
+        HoverTipFactory.Static(StaticHoverTip.Evoke)
+        ]);
 
     public override bool GainsBlock => true;
 
@@ -31,14 +33,16 @@ public class ManifestAuthority2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        CardModel selection = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, 1), context: choiceContext, player: Owner, filter: null, source: this)).FirstOrDefault() ?? throw new InvalidOperationException();
-        CardModel cardModel = CardFactory.GetDistinctForCombat(Owner, ModelDb.CardPool<ColorlessCardPool>().GetUnlockedCards(Owner.UnlockState, Owner.RunState.CardMultiplayerConstraint), 1, Owner.RunState.Rng.CombatCardGeneration).FirstOrDefault() ?? throw new InvalidOperationException();
-        if (IsUpgraded)
+        await OrbCmd.EvokeNext(choiceContext, Owner);
+        CardModel? cardModel = CardFactory.GetDistinctForCombat(Owner, ModelDb.CardPool<ColorlessCardPool>().GetUnlockedCards(Owner.UnlockState, Owner.RunState.CardMultiplayerConstraint), 1, Owner.RunState.Rng.CombatCardGeneration).FirstOrDefault();
+        if (cardModel != null)
         {
-            CardCmd.Upgrade(cardModel);
+            if (IsUpgraded)
+            {
+                CardCmd.Upgrade(cardModel);
+            }
+            await CardPileCmd.AddGeneratedCardToCombat(cardModel, PileType.Hand, Owner);
         }
-        await CardCmd.Discard(choiceContext, selection);
-        await CardPileCmd.AddGeneratedCardToCombat(cardModel, PileType.Hand, Owner);
     }
 
     protected override void OnUpgrade()
