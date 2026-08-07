@@ -30,6 +30,8 @@ public class Glow2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await PlayerCmd.GainStars(DynamicVars.Stars.BaseValue, Owner);
+        
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
         CardModel? cardModel = (await CardSelectCmd.FromHandForDiscard(choiceContext, Owner, new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, 1), null, this)).FirstOrDefault();
         if (cardModel != null)
