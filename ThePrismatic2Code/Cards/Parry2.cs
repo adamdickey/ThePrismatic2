@@ -26,7 +26,7 @@ public class Parry2() : ThePrismatic2Card(1,
         HoverTipFactory.Static(StaticHoverTip.Block)
     ]);
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<ParryPower>(8m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<ParryPower>(7m));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -36,6 +36,6 @@ public class Parry2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["ParryPower"].UpgradeValueBy(4m);
+        DynamicVars["ParryPower"].UpgradeValueBy(3m);
     }
 }

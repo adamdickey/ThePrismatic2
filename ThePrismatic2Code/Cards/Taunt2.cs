@@ -36,6 +36,10 @@ public class Taunt2() : ThePrismatic2Card(1,
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
         await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, DynamicVars.Vulnerable.BaseValue, Owner.Creature, this);
+        if (Owner.PlayerCombatState is { OrbQueue.Orbs.Count: > 0 })
+        {
+            await OrbCmd.Passive(choiceContext, Owner.PlayerCombatState.OrbQueue.Orbs[0], null);
+        }
     }
 
     protected override void OnUpgrade()

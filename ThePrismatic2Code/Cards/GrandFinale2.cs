@@ -21,12 +21,12 @@ public class GrandFinale2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/grand_finale.png-187e80daf7943dd2e51f9a89659de922.ctex";
     public override string PortraitPath => "res://.godot/imported/grand_finale.png-187e80daf7943dd2e51f9a89659de922.ctex";
     
-    public override int CanonicalStarCost => 1;
+    public override int CanonicalStarCost => 0;
 
     protected override bool ShouldGlowGoldInternal => Owner.PlayerCombatState != null && Owner.PlayerCombatState.Stars >= PileType.Draw.GetPile(Owner).Cards.Count;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(50m, ValueProp.Move),
+        new DamageVar(60m, ValueProp.Move),
         new StarsVar(1),
         new CalculationBaseVar(0m),
         new CalculationExtraVar(1m),
@@ -46,7 +46,7 @@ public class GrandFinale2() : ThePrismatic2Card(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(10m);
+        DynamicVars.Damage.UpgradeValueBy(15m);
     }
     
     public override Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)

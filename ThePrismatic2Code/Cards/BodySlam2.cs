@@ -22,6 +22,8 @@ public class BodySlam2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/body_slam.png-a6564034dd7a8a0880db3ec339d1d71e.ctex";
     public override string PortraitPath => "res://.godot/imported/body_slam.png-a6564034dd7a8a0880db3ec339d1d71e.ctex";
     
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.OstyAttack];
+    
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new CalculationBaseVar(0m),
         new ExtraDamageVar(1m),

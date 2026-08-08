@@ -52,6 +52,6 @@ public class Flechettes2() : ThePrismatic2Card(1,
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(2m);
-        DynamicVars.Doom.UpgradeValueBy(2m);
+        DynamicVars.Doom.UpgradeValueBy(1m);
     }
 }

@@ -24,11 +24,14 @@ public class Stardust2() : ThePrismatic2Card(0,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(5m, ValueProp.Move));
     
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Cunning);
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlyArray<CardKeyword>([
+        Extensions.Keywords.Cunning,
+        Extensions.Keywords.Starbound
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(ResolveStarXValue()).FromCard(this)
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(ResolveStarXValue()+ResolveEnergyXValue()).FromCard(this)
             .TargetingRandomOpponents(CombatState!)
             .WithHitFx("vfx/vfx_starry_impact")
             .Execute(choiceContext);

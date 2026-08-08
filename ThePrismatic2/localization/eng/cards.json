@@ -197,7 +197,7 @@
   "THEPRISMATIC2-STONE_ARMOR2.description": "Gain {PlatingPower:diff()} [gold]Plating[/gold].\n[gold]Channel[/gold] 1 [gold]Bone[/gold].",
   "THEPRISMATIC2-STONE_ARMOR2.title": "Stone Armor",
 
-  "THEPRISMATIC2-TAUNT2.description": "Gain {Block:diff()} [gold]Block[/gold].\nApply {VulnerablePower:diff()} [gold]Vulnerable[/gold].",
+  "THEPRISMATIC2-TAUNT2.description": "Gain {Block:diff()} [gold]Block[/gold].\nApply {VulnerablePower:diff()} [gold]Vulnerable[/gold].\nTrigger the passive ability of your rightmost Orb.",
   "THEPRISMATIC2-TAUNT2.title": "Taunt",
 
   "THEPRISMATIC2-TEAR_ASUNDER2.description": "Deal {Damage:diff()} damage.\nHits an additional time for each time you or [gold]Osty[/gold] lost HP this combat.{InCombat:\n(Hits {CalculatedHits:diff()} {CalculatedHits:plural:time|times})|}",
@@ -843,7 +843,7 @@
   "THEPRISMATIC2-SHADOW_SHIELD2.description": "Gain {Block:diff()} [gold]Block[/gold].\nApply {Exposed:diff()} [gold]Exposed[/gold] to ALL enemies.\n[gold]Channel[/gold] 1 [gold]Dark[/gold].",
   "THEPRISMATIC2-SHADOW_SHIELD2.title": "Shadow Shield",
 
-  "THEPRISMATIC2-SMOKESTACK2.description": "Whenever you create a card, apply {SmokestackPower:diff()} [gold]Poison[/gold] to ALL enemies.",
+  "THEPRISMATIC2-SMOKESTACK2.description": "Whenever you create a card, deal {SmokestackPower:diff()} damage to ALL enemies.",
   "THEPRISMATIC2-SMOKESTACK2.title": "Smokestack",
 
   "THEPRISMATIC2-SPINNER2.description": "{IfUpgraded:show:[gold]Channel[/gold] 1 random Orb.\n|}At the start of your turn, [gold]Channel[/gold] 1 random Orb.",
@@ -1059,5 +1059,39 @@
   "THEPRISMATIC2-HEGEMONY2.title": "Hegemony",
 
   "THEPRISMATIC2-MONOLOGUE2.description": "Every 2 cards you play this turn, gain {Strength:diff()} [gold]Strength[/gold] and {Focus:diff()} [gold]Focus[/gold] this turn.",
-  "THEPRISMATIC2-MONOLOGUE2.title": "Monologue"
+  "THEPRISMATIC2-MONOLOGUE2.title": "Monologue",
+
+  "THEPRISMATIC2-PILLAR_OF_CREATION2.description": "Whenever you create a card, gain {Block:diff()} [gold]Block[/gold].",
+  "THEPRISMATIC2-PILLAR_OF_CREATION2.title": "Pillar of Creation",
+
+  "THEPRISMATIC2-FEEL_NO_PAIN2.description": "Whenever a non-Colorless card is [gold]Exhausted[/gold], gain {Power:diff()} [gold]Block[/gold].",
+  "THEPRISMATIC2-FEEL_NO_PAIN2.title": "Feel No Pain",
+
+  "THEPRISMATIC2-TRUE_GRIT2.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Exhaust[/gold] 1 card{IfUpgraded:show:| at random}.",
+  "THEPRISMATIC2-TRUE_GRIT2.title": "True Grit",
+
+  "THEPRISMATIC2-CRUSH_UNDER2.description": "Deal {Damage:diff()} damage to ALL enemies. All enemies lose {CalculationExtra:diff()} [gold]Strength[/gold] this turn for each unique Orb you have.{InCombat:\n(Enemies lose {CalculatedStrengthLoss:diff()} [gold]Strength[/gold])|}",
+  "THEPRISMATIC2-CRUSH_UNDER2.title": "Crush Under",
+
+  "THEPRISMATIC2-HEADBUTT2.description": "Deal {Damage:diff()} damage.\n[gold]Evoke[/gold] your rightmost Orb.\nPut a card from your [gold]Discard Pile[/gold] on top of your [gold]Draw Pile[/gold].",
+  "THEPRISMATIC2-HEADBUTT2.selectionScreenPrompt": "Choose a card to put on top of your Draw Pile.",
+  "THEPRISMATIC2-HEADBUTT2.title": "Headbutt",
+
+  "THEPRISMATIC2-BLADE_DANCE2.description": "0{energyPrefix:energyIcons(1)} Attacks deal {AccuracyPower:diff()} additional damage.\nAdd {Cards:diff()} [gold]{Cards:plural:Shiv|Shivs}[/gold] into your [gold]Hand[/gold].",
+  "THEPRISMATIC2-BLADE_DANCE2.title": "Blade Dance",
+
+  "THEPRISMATIC2-NOT_YET2.description": "Heal {Heal:diff()} HP.\n[gold]Osty[/gold] heals {Heal:diff()} HP.",
+  "THEPRISMATIC2-NOT_YET2.title": "Not Yet",
+
+  "THEPRISMATIC2-CONVERGENCE2.description": "Next turn,\ngain {Energy:energyIcons()} and {Stars:starIcons()}.\n[gold]Retain[/gold] your [gold]Hand[/gold] this turn.",
+  "THEPRISMATIC2-CONVERGENCE2.title": "Convergence",
+
+  "THEPRISMATIC2-STRANGLE2.description": "Deal {Damage:diff()} damage.\nWhenever you play a card this turn, the enemy loses {StranglePower:diff()} HP.",
+  "THEPRISMATIC2-STRANGLE2.title": "Strangle",
+
+  "THEPRISMATIC2-IMPERVIOUS2.description": "Gain {Block:diff()} [gold]Block[/gold].\n[gold]Channel[/gold] {Orbs:diff()} [gold]Frost[/gold].",
+  "THEPRISMATIC2-IMPERVIOUS2.title": "Impervious",
+
+  "THEPRISMATIC2-OCH_O_FORM.description": "The first 0{energyPrefix:energyIcons(1)} card you play each turn is played an extra time.",
+  "THEPRISMATIC2-OCH_O_FORM.title": "0ch0 F0rm"
 }

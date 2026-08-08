@@ -10,7 +10,7 @@ using ThePrismatic2.ThePrismatic2Code.Extensions;
 namespace ThePrismatic2.ThePrismatic2Code.Patches;
 
 [HarmonyPatch(typeof(CardCmd), "Exhaust")]
-public static class CunningExhaustPatch
+public static class CunningPatch
 {
     private static void Postfix(PlayerChoiceContext choiceContext, CardModel card)
     {
@@ -33,17 +33,16 @@ public static class CunningExhaustPatch
     }
 }
 
+/*
 [HarmonyPatch(typeof(CardCmd), "DiscardAndDraw")]
 public static class CunningDiscardPatch
 {
     private static void Postfix(PlayerChoiceContext choiceContext, IEnumerable<CardModel> cardsToDiscard, int cardsToDraw)
     {
-        List<CardModel> discardCards = cardsToDiscard.ToList();
-        List<CardModel> cunningCards = discardCards.Where(card => card.Keywords.Contains(Keywords.Cunning) || card.Keywords.Contains(Keywords.CunningThisTurn)).ToList();
+        List<CardModel> cunningCards = cardsToDiscard.Where(card => card.Keywords.Contains(Keywords.Cunning) || card.Keywords.Contains(Keywords.CunningThisTurn)).ToList();
         foreach (CardModel item in cunningCards)
         {
-            CreatureCmd.TriggerAnim(item.Owner.Creature, "Cast", item.Owner.Character.CastAnimDelay);
             CardCmd.AutoPlay(choiceContext, item, null, AutoPlayType.SlyDiscard);
         }
     }
-}
+}*/
