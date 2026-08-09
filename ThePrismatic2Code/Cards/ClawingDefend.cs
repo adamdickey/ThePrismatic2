@@ -19,6 +19,8 @@ public class ClawingDefend() : ThePrismatic2Card(1,
     
     public override bool IsBasicStrikeOrDefend => false;
     
+    public override bool CanBeGeneratedInCombat => false;
+    
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(7m, ValueProp.Move));

@@ -22,7 +22,7 @@ public class RefineBlade2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/refine_blade.png-97535c45043134cf35e286432e385a6f.ctex";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new ForgeVar(5),
+        new ForgeVar(4),
         new EnergyVar(1)
     ]);
 

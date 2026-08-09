@@ -24,7 +24,10 @@ public class Corruption2() : ThePrismatic2Card(3,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("Power", 1m));
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Exhaust));
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromKeyword(Extensions.Keywords.Cunning),
+        HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -35,6 +38,6 @@ public class Corruption2() : ThePrismatic2Card(3,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Power"].UpgradeValueBy(1m);
+        EnergyCost.UpgradeBy(-1);
     }
 }

@@ -24,17 +24,14 @@ public class SpoilsOfBattle2() : ThePrismatic2Card(1,
         new CardsVar(1)
     ]);
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        ..HoverTipFactory.FromForge(),
-        HoverTipFactory.FromKeyword(Extensions.Keywords.Costly)
-    ]);
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => HoverTipFactory.FromForge();
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await ForgeCmd.Forge(DynamicVars.Forge.IntValue, Owner, this);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
-        IEnumerable<CardModel> costlyCards = PileType.Hand.GetPile(Owner).Cards.Where(c => c.EnergyCost.GetWithModifiers(CostModifiers.All) + Math.Max(0, c.CurrentStarCost) >= 2);
-        foreach (CardModel card in costlyCards)
+        IEnumerable<CardModel> colorlessCards = PileType.Hand.GetPile(Owner).Cards.Where(c => c.VisualCardPool.IsColorless);
+        foreach (CardModel card in colorlessCards)
         {
             CardCmd.Upgrade(card);
         }

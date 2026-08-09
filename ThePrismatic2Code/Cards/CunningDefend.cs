@@ -19,6 +19,8 @@ public class CunningDefend() : ThePrismatic2Card(1,
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
     
     public override bool IsBasicStrikeOrDefend => false;
+    
+    public override bool CanBeGeneratedInCombat => false;
 
     public override bool GainsBlock => true;
     

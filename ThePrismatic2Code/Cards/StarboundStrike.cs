@@ -1,7 +1,9 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using BaseLib.Abstracts;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Extensions;
 using CardKeyword = MegaCrit.Sts2.Core.Entities.Cards.CardKeyword;
@@ -10,7 +12,7 @@ namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 public class StarboundStrike() : ThePrismatic2Card(0,
     CardType.Attack, CardRarity.None,
-    TargetType.AnyEnemy)
+    TargetType.AnyEnemy), ITranscendenceCard
 {
     public override string CustomPortraitPath => $"PrismaticStrike.png".BigCardImagePath();
     public override string PortraitPath => $"PrismaticStrike.png".CardImagePath();
@@ -18,6 +20,10 @@ public class StarboundStrike() : ThePrismatic2Card(0,
     public override int CanonicalStarCost => 1;
     
     public override bool IsBasicStrikeOrDefend => false;
+    
+    public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<StarboundBlast>();
+    
+    public override bool CanBeGeneratedInCombat => false;
 
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
 

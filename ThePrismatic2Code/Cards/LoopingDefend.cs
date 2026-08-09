@@ -18,20 +18,26 @@ public class LoopingDefend() : ThePrismatic2Card(1,
     
     public override bool IsBasicStrikeOrDefend => false;
     
+    public override bool CanBeGeneratedInCombat => false;
+    
     public override bool GainsBlock => true;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(7m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new BlockVar(6m, ValueProp.Move),
+        new RepeatVar(2)
+        ]);
 
-    protected override async Task OnPlay(
-        PlayerChoiceContext choiceContext,
-        CardPlay play)
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play);
         if (Owner.PlayerCombatState != null && Owner.PlayerCombatState.OrbQueue.Orbs.Count != 0)
         {
-            await OrbCmd.Passive(choiceContext, Owner.PlayerCombatState.OrbQueue.Orbs[0], null);
-            await Cmd.Wait(0.25f);
+            for (int i = 0; i < DynamicVars.Repeat.IntValue; i++)
+            {
+                await OrbCmd.Passive(choiceContext, Owner.PlayerCombatState.OrbQueue.Orbs[0], null);
+                await Cmd.Wait(0.25f);
+            }
         }
     }
 

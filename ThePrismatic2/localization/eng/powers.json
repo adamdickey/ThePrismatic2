@@ -7,11 +7,11 @@
   "THEPRISMATIC2-CRIMSON_MANTLE2_POWER.smartDescription": "At the start of your turn, [gold]Bleed[/gold] [blue]{SelfDamage}[/blue] and gain [blue]{Amount}[/blue] [gold]Block[/gold].",
   "THEPRISMATIC2-CRIMSON_MANTLE2_POWER.title": "Crimson Mantle",
 
-  "THEPRISMATIC2-DEMON_FORM2_POWER.description": "At the start of your turn, you and[gold]Osty[/gold] each gain [blue]2[/blue] [gold]Strength[/gold].",
-  "THEPRISMATIC2-DEMON_FORM2_POWER.smartDescription": "At the start of your turn, you and [gold]Osty[/gold] each gain [blue]{Amount}[/blue] [gold]Strength[/gold].",
+  "THEPRISMATIC2-DEMON_FORM2_POWER.description": "At the start of your turn, gain [blue]3[/blue] [gold]Strength[/gold] and [gold]Calcify[/gold] [blue]3[/blue].",
+  "THEPRISMATIC2-DEMON_FORM2_POWER.smartDescription": "At the start of your turn, gain [blue]{Amount}[/blue] [gold]Strength[/gold] and [gold]Calcify[/gold] [blue]{Amount}[/blue].",
   "THEPRISMATIC2-DEMON_FORM2_POWER.title": "Demon Form",
 
-  "THEPRISMATIC2-COLOSSUS2_POWER.description": "You receive [blue]10%[/blue] less damage from enemies this turn for each unique debuff they have.",
+  "THEPRISMATIC2-COLOSSUS2_POWER.description": "You receive [blue]15%[/blue] less damage from enemies this turn for each unique debuff they have.",
   "THEPRISMATIC2-COLOSSUS2_POWER.smartDescription": "You receive [blue]{DamageDecrease:diff()}%[/blue] less damage from enemies {Amount:plural:this turn|for [blue]{}[/blue] turns} for each unique debuff they have.",
   "THEPRISMATIC2-COLOSSUS2_POWER.title": "Colossus",
 
@@ -167,8 +167,8 @@
   "THEPRISMATIC2-VENERATE_POWER.smartDescription": "Gain [blue]{Amount}[/blue] [gold]Focus[/gold] until the end of this turn.",
   "THEPRISMATIC2-VENERATE_POWER.title": "Venerate",
 
-  "THEPRISMATIC2-GENESIS2_POWER.description": "Your cards have [gold]Starbound[/gold]. At the start of your turn, gain {singleStarIcon}.",
-  "THEPRISMATIC2-GENESIS2_POWER.smartDescription": "Your cards have [gold]Starbound[/gold]. At the start of your turn, gain {Amount:starIcons()}.",
+  "THEPRISMATIC2-GENESIS2_POWER.description": "At the start of your turn, [gold]Channel[/gold] [blue]1[/blue] [gold]Solar[/gold].",
+  "THEPRISMATIC2-GENESIS2_POWER.smartDescription": "At the start of your turn, [gold]Channel[/gold] [blue]{Amount}[/blue] [gold]Solar[/gold].",
   "THEPRISMATIC2-GENESIS2_POWER.title": "Genesis",
 
   "THEPRISMATIC2-MASTER_PLANNER2_POWER.description": "When you play a Skill, it gains [gold]Starbound[/gold] and [gold]Cunning[/gold].",
@@ -287,11 +287,11 @@
   "THEPRISMATIC2-CALCIFY2_POWER.smartDescription": "At the start of your turn, [gold]Summon[/gold] [blue]{Amount}[/blue].",
   "THEPRISMATIC2-CALCIFY2_POWER.title": "Calcify",
 
-  "THEPRISMATIC2-CORRUPTION2_POWER.description": "The first Skill you play each turn costs 0 Energy and [gold]Exhausts[/gold] when played.",
-  "THEPRISMATIC2-CORRUPTION2_POWER.smartDescription": "The first {Amount:plural:Skill|[blue]{}[/blue] Skills} you play each turn {Amount:plural:costs|cost} 0 {energyPrefix:energyIcons(1)} and [gold]{Amount:plural:Exhausts|Exhaust}[/gold] when played.",
+  "THEPRISMATIC2-CORRUPTION2_POWER.description": "Skills cost [blue]1[/blue] Energy less. Whenever you play a non-[gold]Cunning[/gold] Skill, [gold]Exhaust[/gold] it.",
+  "THEPRISMATIC2-CORRUPTION2_POWER.smartDescription": "Skills cost {energyPrefix:energyIcons(1)} less. Whenever you play a non-[gold]Cunning[/gold] Skill, [gold]Exhaust[/gold] it.",
   "THEPRISMATIC2-CORRUPTION2_POWER.title": "Corruption",
 
-  "THEPRISMATIC2-WRAITH_FORM2_POWER.description": "At the start of your turn, apply [blue]7[/blue] [gold]Doom[/gold] to yourself.",
+  "THEPRISMATIC2-WRAITH_FORM2_POWER.description": "At the start of your turn, apply [blue]6[/blue] [gold]Doom[/gold] to yourself.",
   "THEPRISMATIC2-WRAITH_FORM2_POWER.smartDescription": "At the start of your turn, apply [blue]{Amount}[/blue] [gold]Doom[/gold] to yourself.",
   "THEPRISMATIC2-WRAITH_FORM2_POWER.title": "Wraith Form",
 
@@ -309,5 +309,9 @@
 
   "THEPRISMATIC2-OCH_O_FORM_POWER.description": "The first 0 Energy card you play each turn is played an extra time.",
   "THEPRISMATIC2-OCH_O_FORM_POWER.smartDescription": "The first {Amount:plural:0{energyPrefix:energyIcons(1)} card you play each turn is|[blue]{}[/blue] 0{energyPrefix:energyIcons(1)} cards you play each turn are} played an extra time.",
-  "THEPRISMATIC2-OCH_O_FORM_POWER.title": "0ch0 F0rm"
+  "THEPRISMATIC2-OCH_O_FORM_POWER.title": "0ch0 F0rm",
+
+  "THEPRISMATIC2-THE_SEALED_THRONE2_POWER.description": "Your cards gain [gold]Starbound[/gold]. The first time you play a card each turn, gain {singleStarIcon}.",
+  "THEPRISMATIC2-THE_SEALED_THRONE2_POWER.smartDescription": "Your cards gain [gold]Starbound[/gold]. The first {Amount:plural:time|[blue]{}[/blue] times} you play a card each turn, gain {singleStarIcon}.",
+  "THEPRISMATIC2-THE_SEALED_THRONE2_POWER.title": "The Sealed Throne"
 }

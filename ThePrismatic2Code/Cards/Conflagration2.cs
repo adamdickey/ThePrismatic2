@@ -26,7 +26,10 @@ public class Conflagration2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/conflagration.png-e304f5493cd41c4a3f93cdf71cbf8d4e.ctex";
     
     protected override IEnumerable<string> ExtraRunAssetPaths => NGroundFireVfx.AssetPaths;
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<StrengthPower>());
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+	    HoverTipFactory.FromPower<StrengthPower>(),
+	    HoverTipFactory.FromPower<CalcifyPower>()
+	    ]);
 	
     	protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
     		new DamageVar(2m, ValueProp.Move),

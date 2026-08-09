@@ -1,19 +1,19 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using BaseLib.Abstracts;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Extensions;
 using ThePrismatic2.ThePrismatic2Code.Orbs;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
-
-  
   
 public class ToxicStrike() : ThePrismatic2Card(1,
     CardType.Attack, CardRarity.None,
-    TargetType.AnyEnemy)
+    TargetType.AnyEnemy), ITranscendenceCard
 {
     public override string CustomPortraitPath => $"PrismaticStrike.png".BigCardImagePath();
     public override string PortraitPath => $"PrismaticStrike.png".CardImagePath();
@@ -21,11 +21,15 @@ public class ToxicStrike() : ThePrismatic2Card(1,
     
     public override bool IsBasicStrikeOrDefend => false;
     
+    public override bool CanBeGeneratedInCombat => false;
+    
+    public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<ToxicBlast>();
+    
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Channeling),
         HoverTipFactory.FromOrb<VenomOrb>()
     ]);
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(3m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(5m, ValueProp.Move));
 
 
     protected override async Task OnPlay(

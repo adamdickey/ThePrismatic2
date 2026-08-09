@@ -27,7 +27,10 @@ public class Inflame2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<StrengthPower>(2m));
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<StrengthPower>());
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromPower<StrengthPower>(),
+        HoverTipFactory.FromPower<CalcifyPower>()
+        ]);
 
     protected override IEnumerable<string> ExtraRunAssetPaths => NGroundFireVfx.AssetPaths;
 

@@ -1,11 +1,9 @@
 ﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Models;
 using ThePrismatic2.ThePrismatic2Code.Orbs;
 
 namespace ThePrismatic2.ThePrismatic2Code.Powers;
@@ -18,7 +16,7 @@ public class Furnace2Power : ThePrismatic2Power
     public override PowerType Type => PowerType.Buff;
 
     public override PowerStackType StackType => PowerStackType.Counter;
-    
+    /*
     private class Data
     {
         public readonly Dictionary<CardModel, int> PlayedCards = new();
@@ -28,6 +26,7 @@ public class Furnace2Power : ThePrismatic2Power
     {
         return new Data();
     }
+    */
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Channeling),
@@ -44,7 +43,7 @@ public class Furnace2Power : ThePrismatic2Power
             }
         }
     }
-    
+    /*
     public override Task BeforeCardPlayed(CardPlay cardPlay)
     {
         if (cardPlay.Card.Owner.Creature != Owner)
@@ -73,4 +72,5 @@ public class Furnace2Power : ThePrismatic2Power
             }
         }
     }
+    */
 }

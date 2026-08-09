@@ -19,6 +19,8 @@ public class StarboundDefend() : ThePrismatic2Card(0,
     
     public override bool IsBasicStrikeOrDefend => false;
     
+    public override bool CanBeGeneratedInCombat => false;
+    
     public override bool GainsBlock => true;
 
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];

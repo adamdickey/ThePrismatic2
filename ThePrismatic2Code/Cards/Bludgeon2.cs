@@ -22,7 +22,7 @@ public class Bludgeon2() : ThePrismatic2Card(3,
     public override string PortraitPath => "res://.godot/imported/bludgeon.png-46e9e5632a8dbd63cc2066c4317184cd.ctex";
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Costly));
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(32m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(28m, ValueProp.Move));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -34,7 +34,7 @@ public class Bludgeon2() : ThePrismatic2Card(3,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(10m);
+        DynamicVars.Damage.UpgradeValueBy(8m);
     }
     
     public override async Task AfterCardEnteredCombat(CardModel card)

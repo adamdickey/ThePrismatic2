@@ -1,4 +1,5 @@
-﻿using MegaCrit.Sts2.Core.CardSelection;
+﻿using BaseLib.Abstracts;
+using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -12,13 +13,17 @@ namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 public class LootingStrike() : ThePrismatic2Card(1,
     CardType.Attack, CardRarity.None,
-    TargetType.AnyEnemy)
+    TargetType.AnyEnemy), ITranscendenceCard
 {
     public override string CustomPortraitPath => $"PrismaticStrike.png".BigCardImagePath();
     public override string PortraitPath => $"PrismaticStrike.png".CardImagePath();
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
     
     public override bool IsBasicStrikeOrDefend => false;
+    
+    public override bool CanBeGeneratedInCombat => false;
+    
+    public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<LootingBlast>();
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(7m, ValueProp.Move));
 

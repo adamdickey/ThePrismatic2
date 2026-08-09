@@ -15,7 +15,7 @@ namespace ThePrismatic2.ThePrismatic2Code.Cards;
 [Pool(typeof(ThePrismatic2CardPool))]
 public class Strangle2() : ThePrismatic2Card(1, 
     CardType.Attack, CardRarity.Uncommon, 
-    TargetType.Self)
+    TargetType.AnyEnemy)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/strangle.png-35d5e3e015a34b5be7fd395f7d75ef54.ctex";

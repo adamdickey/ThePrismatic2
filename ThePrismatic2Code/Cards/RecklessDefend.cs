@@ -20,6 +20,8 @@ public class RecklessDefend() : ThePrismatic2Card(0,
     
     public override bool IsBasicStrikeOrDefend => false;
     
+    public override bool CanBeGeneratedInCombat => false;
+    
     public override bool GainsBlock => true;
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed));

@@ -1,4 +1,5 @@
 ﻿using BaseLib.Utils;
+using Godot;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -6,34 +7,35 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class PommelStrike2() : ThePrismatic2Card(1, 
+public class DaggerThrow2() : ThePrismatic2Card(0, 
     CardType.Attack, CardRarity.Common, 
     TargetType.AnyEnemy)
 {
-    public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();
-    public override string CustomPortraitPath => "res://.godot/imported/pommel_strike.png-13c4383e8d6a3cde8f6fb931a5aa03b1.ctex";
-    public override string PortraitPath => "res://.godot/imported/pommel_strike.png-13c4383e8d6a3cde8f6fb931a5aa03b1.ctex";
+    public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
+    public override string CustomPortraitPath => "res://.godot/imported/dagger_throw.png-e79979bd97de558cfd8deb953ddfa6bf.ctex";
+    public override string PortraitPath => "res://.godot/imported/dagger_throw.png-e79979bd97de558cfd8deb953ddfa6bf.ctex";
 
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
+    public override int CanonicalStarCost => 1;
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(9m, ValueProp.Move),
-        new CardsVar(1)
-    ]);
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(8m, ValueProp.Move));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
+            .WithAttackerFx(() => NDaggerSprayFlurryVfx.Create(Owner.Creature, new Color("#b1ccca"), goingRight: true))
+            .WithHitVfxNode(t => NDaggerSprayImpactVfx.Create(t, new Color("#b1ccca"), goingRight: true))
             .Execute(choiceContext);
-        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
+        await CardPileCmd.Draw(choiceContext, 1m, Owner);
         CardModel? cardModel = (await CardSelectCmd.FromHandForDiscard(choiceContext, Owner, new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, 1), null, this)).FirstOrDefault();
         if (cardModel != null)
         {
@@ -43,7 +45,6 @@ public class PommelStrike2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(1m);
-        DynamicVars.Cards.UpgradeValueBy(1m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

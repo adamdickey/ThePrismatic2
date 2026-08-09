@@ -22,7 +22,7 @@ public class Monologue2() : ThePrismatic2Card(0,
     public override string PortraitPath => "res://.godot/imported/monologue.png-3db958f5fb0e9fe0d5e0d37dbaf67542.ctex";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DynamicVar("Strength", 2m),
+        new DynamicVar("Strength", 1m),
         new DynamicVar("Focus", 1m)
         ]);
 

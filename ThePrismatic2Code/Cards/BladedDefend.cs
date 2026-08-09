@@ -18,7 +18,9 @@ public class BladedDefend() : ThePrismatic2Card(1,
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
     
     public override bool IsBasicStrikeOrDefend => false;
-    
+
+    public override bool CanBeGeneratedInCombat => false;
+
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(4m, ValueProp.Move));

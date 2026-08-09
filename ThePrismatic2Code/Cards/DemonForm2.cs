@@ -21,7 +21,10 @@ public class DemonForm2() : ThePrismatic2Card(3,
     public override string CustomPortraitPath => "res://.godot/imported/demon_form.png-691739fe3412e6e53f43f7e80e0ab1a1.ctex";
     public override string PortraitPath => "res://.godot/imported/demon_form.png-691739fe3412e6e53f43f7e80e0ab1a1.ctex";
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<StrengthPower>());
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromPower<StrengthPower>(),
+        HoverTipFactory.FromPower<CalcifyPower>()
+    ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<StrengthPower>(3m));
 

@@ -1,7 +1,9 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using BaseLib.Abstracts;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Extensions;
 using ThePrismatic2.ThePrismatic2Code.Powers;
@@ -10,13 +12,17 @@ namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 public class ClawingStrike() : ThePrismatic2Card(1,
     CardType.Attack, CardRarity.None,
-    TargetType.AnyEnemy)
+    TargetType.AnyEnemy), ITranscendenceCard
 {
     public override string CustomPortraitPath => $"PrismaticStrike.png".BigCardImagePath();
     public override string PortraitPath => $"PrismaticStrike.png".CardImagePath();
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
     
     public override bool IsBasicStrikeOrDefend => false;
+    
+    public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<ClawingBlast>();
+    
+    public override bool CanBeGeneratedInCombat => false;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(8m, ValueProp.Move));
 

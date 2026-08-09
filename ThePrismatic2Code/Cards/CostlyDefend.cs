@@ -21,8 +21,12 @@ public class CostlyDefend() : ThePrismatic2Card(2,
     
     public override bool IsBasicStrikeOrDefend => false;
     public override bool GainsBlock => true;
+    
+    public override bool CanBeGeneratedInCombat => false;
 
     private bool _costReduced;
+    
+    protected override bool ShouldGlowGoldInternal => CombatManager.Instance.History.CardPlaysFinished.Any(e => e.CardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, e.CardPlay.Card.LastStarsSpent) >= 2 && e.CardPlay.Card.Owner == Owner && e.HappenedThisTurn(CombatState));
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(10m, ValueProp.Move));
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Costly));
@@ -41,8 +45,12 @@ public class CostlyDefend() : ThePrismatic2Card(2,
     public override Task AfterCardEnteredCombat(CardModel card)
     {
         if (card != this) return Task.CompletedTask;
-        bool costlyCardPlayed = CombatManager.Instance.History.CardPlaysFinished.Any(e => e.CardPlay.Card.EnergyCost.GetResolved() + e.CardPlay.Card.LastStarsSpent >= 2 && e.CardPlay.Card.Owner == Owner && e.HappenedThisTurn(CombatState));
-        if (!costlyCardPlayed) return Task.CompletedTask;
+        bool costlyCardPlayed = CombatManager.Instance.History.CardPlaysFinished.Any(e => e.CardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, e.CardPlay.Card.LastStarsSpent) >= 2 && e.CardPlay.Card.Owner == Owner && e.HappenedThisTurn(CombatState));
+        if (!costlyCardPlayed)
+        {
+            _costReduced = false;
+            return Task.CompletedTask;
+        }
         EnergyCost.AddThisTurn(-1);
         _costReduced = true;
         return Task.CompletedTask;

@@ -36,7 +36,7 @@ public class BubbleBubble2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new PowerVar<PoisonPower>(6m),
-        new PowerVar<DoomPower>(15m)
+        new PowerVar<DoomPower>(14m)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -70,7 +70,7 @@ public class BubbleBubble2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Doom.UpgradeValueBy(5m);
+        DynamicVars.Doom.UpgradeValueBy(4m);
         DynamicVars.Poison.UpgradeValueBy(3m);
     }
 }

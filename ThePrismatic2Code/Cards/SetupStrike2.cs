@@ -22,7 +22,10 @@ public class SetupStrike2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/setup_strike.png-f0f0ee5a110469762ebd12caca88ad8d.ctex";
     public override string PortraitPath => "res://.godot/imported/setup_strike.png-f0f0ee5a110469762ebd12caca88ad8d.ctex";
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<StrengthPower>());
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([ 
+        HoverTipFactory.FromPower<StrengthPower>(), 
+        HoverTipFactory.FromPower<CalcifyPower>()
+    ]);
 
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
 

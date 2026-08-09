@@ -33,16 +33,16 @@ public static class CunningPatch
     }
 }
 
-/*
+
 [HarmonyPatch(typeof(CardCmd), "DiscardAndDraw")]
 public static class CunningDiscardPatch
 {
     private static void Postfix(PlayerChoiceContext choiceContext, IEnumerable<CardModel> cardsToDiscard, int cardsToDraw)
     {
-        List<CardModel> cunningCards = cardsToDiscard.Where(card => card.Keywords.Contains(Keywords.Cunning) || card.Keywords.Contains(Keywords.CunningThisTurn)).ToList();
+        List<CardModel> cunningCards = cardsToDiscard.Where(card => card.Keywords.Contains(Keywords.CunningThisTurn)).ToList();
         foreach (CardModel item in cunningCards)
         {
             CardCmd.AutoPlay(choiceContext, item, null, AutoPlayType.SlyDiscard);
         }
     }
-}*/
+}

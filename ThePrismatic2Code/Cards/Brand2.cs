@@ -29,7 +29,8 @@ public class Brand2() : ThePrismatic2Card(0,
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed),
         HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
-        HoverTipFactory.FromPower<StrengthPower>()
+        HoverTipFactory.FromPower<StrengthPower>(),
+        HoverTipFactory.FromPower<CalcifyPower>()
     ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([

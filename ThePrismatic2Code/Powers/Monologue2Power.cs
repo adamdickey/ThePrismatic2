@@ -46,7 +46,7 @@ public class Monologue2Power : ThePrismatic2Power
 	public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
 
 	protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-		new PowerVar<StrengthPower>(2m),
+		new PowerVar<StrengthPower>(1m),
 		new PowerVar<FocusPower>(1m),
 		new DynamicVar("StrengthApplied", 0m),
 		new DynamicVar("FocusApplied", 0m)
@@ -82,7 +82,7 @@ public class Monologue2Power : ThePrismatic2Power
 				_cardsPlayed = 0;
 				Flash();
 				await PowerCmd.Apply<StrengthPower>(choiceContext, Owner, value, Owner, null, silent: true);
-				await PowerCmd.Apply<FocusPower>(choiceContext, Owner, value/2, Owner, null, silent: true);
+				await PowerCmd.Apply<FocusPower>(choiceContext, Owner, value, Owner, null, silent: true);
 				DynamicVars["StrengthApplied"].BaseValue += DynamicVars.Strength.IntValue;
 				DynamicVars["FocusApplied"].BaseValue += DynamicVars["FocusPower"].IntValue;
 				InvokeDisplayAmountChanged();

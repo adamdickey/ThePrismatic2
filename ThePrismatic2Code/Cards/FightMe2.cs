@@ -21,7 +21,10 @@ public class FightMe2() : ThePrismatic2Card(2,
     public override string CustomPortraitPath => "res://.godot/imported/fight_me.png-a0dde290c3d7f01b44684c5ed0eade66.ctex";
     public override string PortraitPath => "res://.godot/imported/fight_me.png-a0dde290c3d7f01b44684c5ed0eade66.ctex";
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<StrengthPower>());
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromPower<StrengthPower>(),
+        HoverTipFactory.FromPower<CalcifyPower>()
+        ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(5m, ValueProp.Move),
