@@ -2,316 +2,241 @@
   "THEPRISMATIC2-EXPOSED_POWER.description": "Exposed creatures take [blue]50%[/blue] more damage from non-Attack sources and receive [blue]50%[/blue] more [gold]Doom[/gold].",
   "THEPRISMATIC2-EXPOSED_POWER.smartDescription": "Receive [blue]{DamageIncrease:percentMore()}%[/blue] more damage from non-Attack sources and receive [blue]{DamageIncrease:percentMore()}%[/blue] more [gold]Doom[/gold] for [blue]{Amount}[/blue] {Amount:plural:turn|turns}.",
   "THEPRISMATIC2-EXPOSED_POWER.title": "Exposed",
-
   "THEPRISMATIC2-CRIMSON_MANTLE2_POWER.description": "At the start of your turn, [gold]Bleed[/gold] [blue]1[/blue] and you gain [gold]Block[/gold].",
   "THEPRISMATIC2-CRIMSON_MANTLE2_POWER.smartDescription": "At the start of your turn, [gold]Bleed[/gold] [blue]{SelfDamage}[/blue] and gain [blue]{Amount}[/blue] [gold]Block[/gold].",
   "THEPRISMATIC2-CRIMSON_MANTLE2_POWER.title": "Crimson Mantle",
-
   "THEPRISMATIC2-DEMON_FORM2_POWER.description": "At the start of your turn, gain [blue]3[/blue] [gold]Strength[/gold] and [gold]Calcify[/gold] [blue]3[/blue].",
   "THEPRISMATIC2-DEMON_FORM2_POWER.smartDescription": "At the start of your turn, gain [blue]{Amount}[/blue] [gold]Strength[/gold] and [gold]Calcify[/gold] [blue]{Amount}[/blue].",
   "THEPRISMATIC2-DEMON_FORM2_POWER.title": "Demon Form",
-
   "THEPRISMATIC2-COLOSSUS2_POWER.description": "You receive [blue]15%[/blue] less damage from enemies this turn for each unique debuff they have.",
   "THEPRISMATIC2-COLOSSUS2_POWER.smartDescription": "You receive [blue]{DamageDecrease:diff()}%[/blue] less damage from enemies {Amount:plural:this turn|for [blue]{}[/blue] turns} for each unique debuff they have.",
   "THEPRISMATIC2-COLOSSUS2_POWER.title": "Colossus",
-
   "THEPRISMATIC2-FLAME_BARRIER2_POWER.description": "Whenever you are attacked this turn, Channel [blue]1[/blue] Magma.",
   "THEPRISMATIC2-FLAME_BARRIER2_POWER.smartDescription": "Whenever you are attacked this turn, [gold]Channel[/gold] [blue]{Amount}[/blue] [gold]Magma[/gold].",
   "THEPRISMATIC2-FLAME_BARRIER2_POWER.title": "Flame Barrier",
-
   "THEPRISMATIC2-INFERNO2_POWER.description": "At the start of your turn, [gold]Bleed[/gold] [blue]1[/blue]. Whenever you or [gold]Osty[/gold] lose HP on your turn, deal [blue]6[/blue] damage to ALL enemies.",
   "THEPRISMATIC2-INFERNO2_POWER.smartDescription": "At the start of your turn, [gold]Bleed[/gold] [blue]{SelfDamage}[/blue]. Whenever you or [gold]Osty[/gold] lose HP on your turn, deal [blue]{Amount}[/blue] damage to ALL enemies.",
   "THEPRISMATIC2-INFERNO2_POWER.title": "Inferno",
-
   "THEPRISMATIC2-JUGGLING2_POWER.description": "Add a copy of the third Attack you play each turn into your [gold]Hand[/gold]. It gains [gold]Cunning[/gold].",
   "THEPRISMATIC2-JUGGLING2_POWER.smartDescription": "Add [blue]{Amount}[/blue] {Amount:plural:copy|copies} of the third Attack you play each turn into your [gold]Hand[/gold] and apply [gold]Cunning[/gold] to {Amount:plural:it|them}.",
   "THEPRISMATIC2-JUGGLING2_POWER.title": "Juggling",
-
   "THEPRISMATIC2-PYRE2_POWER.description": "At the start of your turn, gain [blue]1[/blue] [gold]Energy[/gold] and [gold]Channel[/gold] [blue]1[/blue] [gold]Magma[/gold].",
   "THEPRISMATIC2-PYRE2_POWER.smartDescription": "At the start of your turn, gain {Amount:energyIcons()} and [gold]Channel[/gold] [blue]{Amount}[/blue] [gold]Magma[/gold].",
   "THEPRISMATIC2-PYRE2_POWER.title": "Pyre",
-
   "THEPRISMATIC2-RAGE2_POWER.description": "Whenever you play an Attack this turn, [gold]Summon[/gold] [blue]2[/blue].",
   "THEPRISMATIC2-RAGE2_POWER.smartDescription": "Whenever you play an Attack this turn, [gold]Summon[/gold] [blue]{Amount}[/blue].",
   "THEPRISMATIC2-RAGE2_POWER.title": "Rage",
-
   "THEPRISMATIC2-RUPTURE2_POWER.description": "Whenever you or [gold]Osty[/gold] lose HP on your turn or you play a Power, gain [blue]1[/blue] [gold]Strength[/gold].",
   "THEPRISMATIC2-RUPTURE2_POWER.smartDescription": "Whenever you or [gold]Osty[/gold] lose HP on your turn or you play a Power, gain [blue]{Amount}[/blue] [gold]Strength[/gold].",
   "THEPRISMATIC2-RUPTURE2_POWER.title": "Rupture",
-
   "THEPRISMATIC2-JUGGERNAUT2_POWER.description": "Whenever you [gold]Summon[/gold] or gain [gold]Block[/gold], deal [blue]5[/blue] damage to a random enemy.",
   "THEPRISMATIC2-JUGGERNAUT2_POWER.smartDescription": "Whenever you [gold]Summon[/gold] or gain [gold]Block[/gold], deal [blue]{Amount}[/blue] damage to a random enemy.",
   "THEPRISMATIC2-JUGGERNAUT2_POWER.title": "Juggernaut",
-
   "THEPRISMATIC2-SETUP_STRIKE2_POWER.description": "You and [gold]Osty[/gold] each gain [gold]Strength[/gold] until the end of this turn.",
   "THEPRISMATIC2-SETUP_STRIKE2_POWER.smartDescription": "You and [gold]Osty[/gold] each gain [blue]{Amount}[/blue] [gold]Strength[/gold] until the end of this turn.",
   "THEPRISMATIC2-SETUP_STRIKE2_POWER.title": "Setup Strike",
-
   "THEPRISMATIC2-UNMOVABLE2_POWER.description": "The first time you [gold]Summon[/gold] or gain [gold]Block[/gold] from a card each turn, double the amount gained.",
   "THEPRISMATIC2-UNMOVABLE2_POWER.smartDescription": "The first {Amount:plural:time|[blue]{}[/blue] times} you [gold]Summon[/gold] or gain [gold]Block[/gold] from a card each turn, double the amount gained.",
   "THEPRISMATIC2-UNMOVABLE2_POWER.title": "Unmovable",
-
   "THEPRISMATIC2-VICIOUS2_POWER.description": "Whenever you apply [gold]Vulnerable[/gold] and/or [gold]Exposed[/gold], draw [blue]1[/blue] card.",
   "THEPRISMATIC2-VICIOUS2_POWER.smartDescription": "Whenever you apply [gold]Vulnerable[/gold] and/or [gold]Exposed[/gold], draw [blue]{Amount}[/blue] {Amount:plural:card|cards}.",
   "THEPRISMATIC2-VICIOUS2_POWER.title": "Vicious",
-
   "THEPRISMATIC2-HELLRAISER2_POWER.description": "Whenever you draw a card containing \"Strike\" or [gold]Sovereign Blade[/gold], it is played against a random enemy.",
   "THEPRISMATIC2-HELLRAISER2_POWER.smartDescription": "Whenever you draw a card containing \"Strike\" or [gold]Sovereign Blade[/gold], it is played against a random enemy.",
   "THEPRISMATIC2-HELLRAISER2_POWER.title": "Hellraiser",
-
   "THEPRISMATIC2-CRUELTY2_POWER.description": "Debuffed enemies take additional damage.",
   "THEPRISMATIC2-CRUELTY2_POWER.smartDescription": "Enemies take an additional [blue]{Amount}%[/blue] damage for each unique debuff they have.",
   "THEPRISMATIC2-CRUELTY2_POWER.title": "Cruelty",
-
   "THEPRISMATIC2-ACCURACY2_POWER.description": "[blue]0[/blue] Energy Attacks deal additional damage.",
   "THEPRISMATIC2-ACCURACY2_POWER.smartDescription": "[blue]0[/blue]{energyPrefix:energyIcons(1)} Attacks deal [blue]{Amount}[/blue] additional damage.",
   "THEPRISMATIC2-ACCURACY2_POWER.title": "Accuracy",
-
   "THEPRISMATIC2-ACCELERANT2_POWER.description": "You apply [blue]50%[/blue] more [gold]Doom[/gold].",
   "THEPRISMATIC2-ACCELERANT2_POWER.smartDescription": "You apply [blue]{Amount}%[/blue]  more [gold]Doom[/gold].",
   "THEPRISMATIC2-ACCELERANT2_POWER.title": "Accelerant",
-
   "THEPRISMATIC2-ANTICIPATE_FOCUS_POWER.description": "Gain [gold]Focus[/gold] until the end of this turn.",
   "THEPRISMATIC2-ANTICIPATE_FOCUS_POWER.smartDescription": "Gain [blue]{Amount}[/blue] [gold]Focus[/gold] until the end of this turn.",
   "THEPRISMATIC2-ANTICIPATE_FOCUS_POWER.title": "Anticipate",
-
   "THEPRISMATIC2-CORROSIVE_WAVE2_POWER.description": "Whenever you draw a card this turn, [gold]Channel[/gold] [blue]1[/blue] [gold]Venom[/gold].",
   "THEPRISMATIC2-CORROSIVE_WAVE2_POWER.smartDescription": "Whenever you draw a card this turn, [gold]Channel[/gold] [blue]{Amount}[/blue] [gold]Venom[/gold].",
   "THEPRISMATIC2-CORROSIVE_WAVE2_POWER.title": "Corrosive Wave",
-
   "THEPRISMATIC2-DEFLECT_POWER.description": "Whenever you play a [blue]0[/blue] Energy Attack this turn, gain [blue]1[/blue] [gold]Block[/gold].",
   "THEPRISMATIC2-DEFLECT_POWER.smartDescription": "Whenever you play a [blue]0[/blue] {energyPrefix:energyIcons(1)} Attack this turn, gain [blue]{Amount}[/blue] [gold]Block[/gold].",
   "THEPRISMATIC2-DEFLECT_POWER.title": "Deflect",
-
   "THEPRISMATIC2-ENVENOM2_POWER.description": "Whenever you deal unblocked attack damage, apply [blue]1[/blue] [gold]Poison[/gold] and [blue]1[/blue] [gold]Doom[/gold].",
   "THEPRISMATIC2-ENVENOM2_POWER.smartDescription": "Whenever you deal unblocked attack damage, apply [blue]{Amount}[/blue] [gold]Poison[/gold] and [blue]{DoomPower:diff()}[/blue] [gold]Doom[/gold].",
   "THEPRISMATIC2-ENVENOM2_POWER.title": "Envenom",
-
   "THEPRISMATIC2-HAZE2_POWER.description": "Gain [gold]Focus[/gold] until the end of this turn.",
   "THEPRISMATIC2-HAZE2_POWER.smartDescription": "Gain [blue]{Amount}[/blue] [gold]Focus[/gold] until the end of this turn.",
   "THEPRISMATIC2-HAZE2_POWER.title": "Haze",
-
   "THEPRISMATIC2-CORROSIVE_WAVE_FOCUS_POWER.description": "Gain [gold]Focus[/gold] until the end of this turn.",
   "THEPRISMATIC2-CORROSIVE_WAVE_FOCUS_POWER.smartDescription": "Gain [blue]{Amount}[/blue] [gold]Focus[/gold] until the end of this turn.",
   "THEPRISMATIC2-CORROSIVE_WAVE_FOCUS_POWER.title": "Corrosive Wave Focus",
-
   "THEPRISMATIC2-INFINITE_BLADES2_POWER.description": "At the start of your turn and whenever you play a Power, add a [gold]Shiv[/gold] into your [gold]Hand[/gold].",
   "THEPRISMATIC2-INFINITE_BLADES2_POWER.smartDescription": "At the start of your turn and whenever you play a Power, add {Amount:plural:a [gold]Shiv[/gold]|[blue]{}[/blue] [gold]Shivs[/gold]} into your [gold]Hand[/gold].",
   "THEPRISMATIC2-INFINITE_BLADES2_POWER.title": "Infinite Blades",
-
   "THEPRISMATIC2-NOXIOUS_FUMES2_POWER.description": "At the start of your turn, [gold]Channel[/gold] [blue]1[/blue] [gold]Venom[/gold].",
   "THEPRISMATIC2-NOXIOUS_FUMES2_POWER.smartDescription": "At the start of your turn, [gold]Channel[/gold] [blue]{Amount}[/blue] [gold]Venom[/gold].",
   "THEPRISMATIC2-NOXIOUS_FUMES2_POWER.title": "Noxious Fumes",
-
   "THEPRISMATIC2-OUTBREAK2_POWER.description": "Whenever you apply a debuff to an enemy, deal damage to ALL enemies.",
   "THEPRISMATIC2-OUTBREAK2_POWER.smartDescription": "Whenever you apply a debuff to an enemy, deal [blue]{Amount}[/blue] damage to ALL enemies.",
   "THEPRISMATIC2-OUTBREAK2_POWER.title": "Outbreak",
-
   "THEPRISMATIC2-PHANTOM_BLADES2_POWER.description": "[blue]0[/blue] Energy Attacks gain [gold]Retain[/gold].\nThe first [blue]0[/blue] Energy Attack you play each turn deals [blue]9[/blue] additional damage.",
   "THEPRISMATIC2-PHANTOM_BLADES2_POWER.smartDescription": "[blue]0[/blue] {energyPrefix:energyIcons(1)} Attacks gain [gold]Retain[/gold].\nThe first [blue]0[/blue] {energyPrefix:energyIcons(1)} Attack you play each turn deals [blue]{Amount}[/blue] additional damage.",
   "THEPRISMATIC2-PHANTOM_BLADES2_POWER.title": "Phantom Blades",
-
   "THEPRISMATIC2-SERPENT_FORM2_POWER.description": "Whenever you play a card, apply [blue]6[/blue] [gold]Doom[/gold] to a random enemy.",
   "THEPRISMATIC2-SERPENT_FORM2_POWER.smartDescription": "Whenever you play a card, apply [blue]{Amount}[/blue] [gold]Doom[/gold] to a random enemy.",
   "THEPRISMATIC2-SERPENT_FORM2_POWER.title": "Serpent Form",
-
   "THEPRISMATIC2-SPEEDSTER2_POWER.description": "Whenever you draw or create a card during your turn, deal [blue]1[/blue] damage to ALL enemies.",
   "THEPRISMATIC2-SPEEDSTER2_POWER.smartDescription": "Whenever you draw or create a card during your turn, deal [blue]{Amount}[/blue] damage to ALL enemies.",
   "THEPRISMATIC2-SPEEDSTER2_POWER.title": "Speedster",
-
   "THEPRISMATIC2-TOOLS_OF_THE_TRADE2_POWER.description": "At the start of your turn and whenever you play a Power, draw [blue]1[/blue] card and discard [blue]1[/blue] card.",
   "THEPRISMATIC2-TOOLS_OF_THE_TRADE2_POWER.smartDescription": "At the start of your turn and whenever you play a Power, draw [blue]{Amount}[/blue] {Amount:plural:card|cards} and discard [blue]{Amount}[/blue] {Amount:plural:card|cards}.",
   "THEPRISMATIC2-TOOLS_OF_THE_TRADE2_POWER.title": "Tools of the Trade",
-
   "THEPRISMATIC2-TRACKING2_POWER.description": "Enemies with [blue]2[/blue] or more unique debuffs take [blue]2[/blue] times more damage from Attacks.",
   "THEPRISMATIC2-TRACKING2_POWER.smartDescription": "Enemies with [blue]2[/blue] or more unique debuffs take [blue]{Amount}[/blue] times more damage from Attacks.",
   "THEPRISMATIC2-TRACKING2_POWER.title": "Tracking",
-
   "THEPRISMATIC2-BLACK_HOLE2_POWER.description": "Whenever you spend or gain {singleStarIcon} or play a Power, deal [blue]3[/blue] damage to ALL enemies.",
   "THEPRISMATIC2-BLACK_HOLE2_POWER.smartDescription": "Whenever you spend or gain {singleStarIcon} or play a Power, deal [blue]{Amount}[/blue] damage to ALL enemies.",
   "THEPRISMATIC2-BLACK_HOLE2_POWER.title": "Black Hole",
-
   "THEPRISMATIC2-CHILD_OF_THE_STARS2_POWER.description": "Gain [blue]1[/blue] [gold]Block[/gold] for each {singleStarIcon} spent. Gain [blue]1[/blue] [gold]Block[/gold] for each [gold]Orb Evoked[/gold].",
   "THEPRISMATIC2-CHILD_OF_THE_STARS2_POWER.smartDescription": "Gain [blue]{Amount}[/blue] [gold]Block[/gold] for each {singleStarIcon} spent and each [gold]Orb Evoked[/gold].",
   "THEPRISMATIC2-CHILD_OF_THE_STARS2_POWER.title": "Child of the Stars",
-
   "THEPRISMATIC2-CONQUEROR2_POWER.description": "[gold]Costly[/gold] Attacks deal double damage to the enemy this turn.",
   "THEPRISMATIC2-CONQUEROR2_POWER.smartDescription": "[gold]Costly[/gold] Attacks deal double damage to [gold]{OwnerName}[/gold] {Amount:plural:this turn|for the next [blue]{}[/blue] turns}.",
   "THEPRISMATIC2-CONQUEROR2_POWER.title": "Conqueror",
-
   "THEPRISMATIC2-FURNACE2_POWER.description": "At the start of your turn and whenever you play a Power, [gold]Channel[/gold] [blue]1[/blue] [gold]Iron[/gold].",
   "THEPRISMATIC2-FURNACE2_POWER.smartDescription": "At the start of your turn and whenever you play a Power, [gold]Channel[/gold] [blue]{Amount}[/blue] [gold]Iron[/gold].",
   "THEPRISMATIC2-FURNACE2_POWER.title": "Furnace",
-
   "THEPRISMATIC2-HAMMER_TIME2_POWER.description": "Whenever you [gold]Forge[/gold], all allies [gold]Forge[/gold] as well. Whenever a player plays an Attack, [gold]Forge[/gold] [blue]2[/blue].",
   "THEPRISMATIC2-HAMMER_TIME2_POWER.smartDescription": "Whenever you [gold]Forge[/gold], all allies [gold]Forge[/gold] as well. Whenever a player plays an Attack, [gold]Forge[/gold] [blue]{Amount}[/blue].",
   "THEPRISMATIC2-HAMMER_TIME2_POWER.title": "Hammer Time",
-
   "THEPRISMATIC2-MONARCHS_GAZE2_POWER.description": "Whenever you or [gold]Osty[/gold] attack an enemy, it loses [blue]1[/blue] [gold]Strength[/gold] this turn.",
   "THEPRISMATIC2-MONARCHS_GAZE2_POWER.smartDescription": "Whenever you or [gold]Osty[/gold] attack an enemy, it loses [blue]{Amount}[/blue] [gold]Strength[/gold] this turn.",
   "THEPRISMATIC2-MONARCHS_GAZE2_POWER.title": "Monarch's Gaze",
-
   "THEPRISMATIC2-PARRY2_POWER.description": "Whenever you play a [gold]Costly[/gold] Attack, gain [blue]8[/blue] [gold]Block[/gold].",
   "THEPRISMATIC2-PARRY2_POWER.smartDescription": "Whenever you play a [gold]Costly[/gold] Attack, gain [blue]{Amount}[/blue] [gold]Block[/gold].",
   "THEPRISMATIC2-PARRY2_POWER.title": "Parry",
-
   "THEPRISMATIC2-SPECTRUM_SHIFT2_POWER.description": "At the start of your turn, trigger the passive ability of your next Orb and add [blue]1[/blue] random Colorless card into your [gold]Hand[/gold]",
   "THEPRISMATIC2-SPECTRUM_SHIFT2_POWER.smartDescription": "At the start of your turn, trigger the passive ability of your next Orb [blue]{Amount}[/blue] {Amount:plural:time|times} and add [blue]{Amount}[/blue] random Colorless {Amount:plural:card|cards} into your [gold]Hand[/gold].",
   "THEPRISMATIC2-SPECTRUM_SHIFT2_POWER.title": "Spectrum Shift",
-
   "THEPRISMATIC2-SWORD_SAGE2_POWER.description": "[gold]Costly[/gold] Attacks are played an extra time.",
   "THEPRISMATIC2-SWORD_SAGE2_POWER.smartDescription": "[gold]Costly[/gold] Attacks are played {Amount:plural:an extra time|[blue]{Amount}[/blue] extra times}.",
   "THEPRISMATIC2-SWORD_SAGE2_POWER.title": "Sword Sage",
-
   "THEPRISMATIC2-VENERATE_POWER.description": "Gain [gold]Focus[/gold] until the end of this turn.",
   "THEPRISMATIC2-VENERATE_POWER.smartDescription": "Gain [blue]{Amount}[/blue] [gold]Focus[/gold] until the end of this turn.",
   "THEPRISMATIC2-VENERATE_POWER.title": "Venerate",
-
   "THEPRISMATIC2-GENESIS2_POWER.description": "At the start of your turn, [gold]Channel[/gold] [blue]1[/blue] [gold]Solar[/gold].",
   "THEPRISMATIC2-GENESIS2_POWER.smartDescription": "At the start of your turn, [gold]Channel[/gold] [blue]{Amount}[/blue] [gold]Solar[/gold].",
   "THEPRISMATIC2-GENESIS2_POWER.title": "Genesis",
-
   "THEPRISMATIC2-MASTER_PLANNER2_POWER.description": "When you play a Skill, it gains [gold]Starbound[/gold] and [gold]Cunning[/gold].",
   "THEPRISMATIC2-MASTER_PLANNER2_POWER.smartDescription": "When you play a Skill, it gains [gold]Starbound[/gold] and [gold]Cunning[/gold].",
   "THEPRISMATIC2-MASTER_PLANNER2_POWER.title": "Master Planner",
-
   "THEPRISMATIC2-COUNTDOWN2_POWER.description": "At the start of your turn, apply [blue]3[/blue] [gold]Poison[/gold] and [blue]3[/blue] [gold]Doom[/gold] to a random enemy.",
   "THEPRISMATIC2-COUNTDOWN2_POWER.smartDescription": "At the start of your turn, apply [blue]{PoisonPower:diff()}[/blue] [gold]Poison[/gold] and [blue]{Amount}[/blue] [gold]Doom[/gold] to a random enemy.",
   "THEPRISMATIC2-COUNTDOWN2_POWER.title": "Countdown",
-
   "THEPRISMATIC2-DANSE_MACABRE2_POWER.description": "Whenever you play a [gold]Costly[/gold] card, gain [blue]4[/blue] [gold]Block[/gold].",
   "THEPRISMATIC2-DANSE_MACABRE2_POWER.smartDescription": "Whenever you play a [gold]Costly[/gold] card, gain [blue]{Amount}[/blue] [gold]Block[/gold].",
   "THEPRISMATIC2-DANSE_MACABRE2_POWER.title": "Danse Macabre",
-
   "THEPRISMATIC2-DEBILITATE2_POWER.description": "[gold]Vulnerable[/gold] and [gold]Exposed[/gold] are twice as effective for the next [blue]2[/blue] turns.",
   "THEPRISMATIC2-DEBILITATE2_POWER.smartDescription": "[gold]Vulnerable[/gold] and [gold]Exposed[/gold] are twice as effective {Amount:plural:this turn|for the next [blue]{}[/blue] turns}.",
   "THEPRISMATIC2-DEBILITATE2_POWER.title": "Debilitate",
-
   "THEPRISMATIC2-DEVOUR_LIFE2_POWER.description": "Whenever you play a 0 [gold]Energy[/gold] Skill, [gold]Summon[/gold] [blue]1[/blue].",
   "THEPRISMATIC2-DEVOUR_LIFE2_POWER.smartDescription": "Whenever you play a 0{energyPrefix:energyIcons(1)} Skill, [gold]Summon[/gold] [blue]{Amount}[/blue].",
   "THEPRISMATIC2-DEVOUR_LIFE2_POWER.title": "Devour Life",
-
   "THEPRISMATIC2-HAUNT2_POWER.description": "Whenever you play a 0 [gold]Energy[/gold] card, a random enemy loses [blue]3[/blue] HP.",
   "THEPRISMATIC2-HAUNT2_POWER.smartDescription": "Whenever you play a  0{energyPrefix:energyIcons(1)} card, a random enemy loses [blue]{Amount}[/blue] HP.",
   "THEPRISMATIC2-HAUNT2_POWER.title": "Haunt",
-
   "THEPRISMATIC2-NECRO_MASTERY2_POWER.description": "Whenever you or [gold]Osty[/gold] lose HP, ALL enemies lose that much HP as well.",
   "THEPRISMATIC2-NECRO_MASTERY2_POWER.smartDescription": "Whenever you or [gold]Osty[/gold] lose HP, ALL enemies lose {Amount:plural:|[blue]{Amount}[/blue] times }that much HP as well.",
   "THEPRISMATIC2-NECRO_MASTERY2_POWER.title": "Necro Mastery",
-
   "THEPRISMATIC2-OBLIVION2_POWER.description": "Whenever you play a card, this enemy gains [blue]1[/blue] [gold]Poison[/gold] and [blue]1[/blue] [gold]Doom[/gold].",
   "THEPRISMATIC2-OBLIVION2_POWER.smartDescription": "Whenever you play a card, this enemy gains [blue]{PoisonPower:diff()}[/blue] [gold]Poison[/gold] and [blue]{Amount}[/blue] [gold]Doom[/gold].",
   "THEPRISMATIC2-OBLIVION2_POWER.title": "Oblivion",
-
   "THEPRISMATIC2-PAGESTORM2_POWER.description": "Whenever you draw a card with [gold]Ethereal[/gold] or [gold]Retain[/gold], draw [blue]1[/blue] card.",
   "THEPRISMATIC2-PAGESTORM2_POWER.smartDescription": "Whenever you draw a card with [gold]Ethereal[/gold] or [gold]Retain[/gold], draw [blue]{Amount}[/blue] {Amount:plural:card|cards}.",
   "THEPRISMATIC2-PAGESTORM2_POWER.title": "Pagestorm",
-
   "THEPRISMATIC2-SENTRY_MODE2_POWER.description": "At the start of your turn, [gold]Summon[/gold] [blue]1[/blue] and add [blue]1[/blue] [gold]Sweeping Gaze[/gold] into your [gold]Hand[/gold].",
   "THEPRISMATIC2-SENTRY_MODE2_POWER.smartDescription": "At the start of your turn, [gold]Summon[/gold] [blue]{Amount}[/blue] and add [blue]{Amount}[/blue] [gold]Sweeping Gaze[/gold] into your [gold]Hand[/gold].",
   "THEPRISMATIC2-SENTRY_MODE2_POWER.title": "Sentry Mode",
-
   "THEPRISMATIC2-SHROUD2_POWER.description": "Whenever you apply a debuff, gain [blue]2[/blue] [gold]Block[/gold].",
   "THEPRISMATIC2-SHROUD2_POWER.smartDescription": "Whenever you apply a debuff, gain [blue]{Amount}[/blue] [gold]Block[/gold].",
   "THEPRISMATIC2-SHROUD2_POWER.title": "Shroud",
-
   "THEPRISMATIC2-SIC_EM2_POWER.description": "Whenever [gold]Osty[/gold] or a non-Attack source hits the enemy this turn, [gold]Summon[/gold] [blue]3[/blue].",
   "THEPRISMATIC2-SIC_EM2_POWER.smartDescription": "Whenever [gold]Osty[/gold] or a non-Attack source hits the enemy this turn, [gold]Summon[/gold] [blue]{Amount}[/blue].",
   "THEPRISMATIC2-SIC_EM2_POWER.title": "Sic 'Em",
-
   "THEPRISMATIC2-SPIRIT_OF_ASH2_POWER.description": "Whenever you play an [gold]Ethereal[/gold] card or a Power, gain [blue]4[/blue] [gold]Block[/gold].",
   "THEPRISMATIC2-SPIRIT_OF_ASH2_POWER.smartDescription": "Whenever you play an [gold]Ethereal[/gold] card or a Power, gain [blue]{Amount}[/blue] [gold]Block[/gold].",
   "THEPRISMATIC2-SPIRIT_OF_ASH2_POWER.title": "Spirit of Ash",
-
   "THEPRISMATIC2-VEILPIERCER2_POWER.description": "The next [gold]Ethereal card[/gold] or [gold]Cunning card[/gold] you play costs [blue]0[/blue].",
   "THEPRISMATIC2-VEILPIERCER2_POWER.smartDescription": "The next [blue]{Amount}[/blue] [gold]Ethereal[/gold] or [gold]Cunning[/gold] {Amount:plural:card|cards} you play {Amount:plural:costs|cost} [blue]0[/blue].",
   "THEPRISMATIC2-VEILPIERCER2_POWER.title": "Veilpiercer",
-
   "THEPRISMATIC2-BIASED_COGNITION2_POWER.description": "At the start of your turn, lose [blue]1[/blue] [gold]Focus[/gold] and [blue]1[/blue] [gold]Strength[/gold].",
   "THEPRISMATIC2-BIASED_COGNITION2_POWER.smartDescription": "At the start of your turn, lose [blue]{Amount}[/blue] [gold]Focus[/gold] and [blue]{Amount}[/blue] [gold]Strength[/gold].",
   "THEPRISMATIC2-BIASED_COGNITION2_POWER.title": "Biased Cognition",
-
   "THEPRISMATIC2-CONSUMING_SHADOW2_POWER.description": "At the end of your turn, [gold]Evoke[/gold] your leftmost Orb, then kill enemies with at least as much [gold]Doom[/gold] as HP..",
   "THEPRISMATIC2-CONSUMING_SHADOW2_POWER.smartDescription": "At the end of your turn, [gold]Evoke[/gold] your {Amount:plural:|[blue]{}[/blue] }leftmost {Amount:plural:Orb|Orbs}, then kill enemies with at least as much [gold]Doom[/gold] as HP.",
   "THEPRISMATIC2-CONSUMING_SHADOW2_POWER.title": "Consuming Shadow",
-
   "THEPRISMATIC2-COOLANT2_POWER.description": "At the start of your turn, gain [blue]2[/blue] [gold]Block[/gold] for each unique Orb you have and each unique debuff on enemies.",
   "THEPRISMATIC2-COOLANT2_POWER.smartDescription": "At the start of your turn, gain [blue]{Amount}[/blue] [gold]Block[/gold] for each unique Orb you have and each unique debuff on enemies.",
   "THEPRISMATIC2-COOLANT2_POWER.title": "Coolant",
-
   "THEPRISMATIC2-HAILSTORM2_POWER.description": "At the end of your turn, if you have at least 3 Orbs [gold]Channeled[/gold], deal [blue]6[/blue] damage to ALL enemies.",
   "THEPRISMATIC2-HAILSTORM2_POWER.smartDescription": "At the end of your turn, if you have at least 3 Orbs [gold]Channeled[/gold], deal [blue]{Amount}[/blue] damage to ALL enemies.",
   "THEPRISMATIC2-HAILSTORM2_POWER.title": "Hailstorm",
-
   "THEPRISMATIC2-ITERATION2_POWER.description": "The first time you draw a Colorless card or a Status each turn, draw more cards.",
   "THEPRISMATIC2-ITERATION2_POWER.smartDescription": "The first time you draw a Colorless card or a Status each turn, draw [blue]{Amount}[/blue] {Amount:plural:card|cards}.",
   "THEPRISMATIC2-ITERATION2_POWER.title": "Iteration",
-
   "THEPRISMATIC2-LOOP2_POWER.description": "At the start of your turn, gain 1 Star and trigger the passive ability of your next Orb.",
   "THEPRISMATIC2-LOOP2_POWER.smartDescription": "At the start of your turn, gain {Stars:starIcons()} and trigger the passive ability of your next Orb [blue]{Amount}[/blue] {Amount:plural:time|times}.",
   "THEPRISMATIC2-LOOP2_POWER.title": "Loop",
-
   "THEPRISMATIC2-MACHINE_LEARNING2_POWER.description": "At the start of your turn, add a [gold]Soul[/gold] into your [gold]Draw Pile[/gold].",
   "THEPRISMATIC2-MACHINE_LEARNING2_POWER.smartDescription": "At the start of your turn, add [blue]{Amount}[/blue] [gold]{Amount:plural:Soul|Souls}[/gold] into your [gold]Draw Pile[/gold].",
   "THEPRISMATIC2-MACHINE_LEARNING2_POWER.title": "Machine Learning",
-
   "THEPRISMATIC2-SMOKESTACK2_POWER.description": "Whenever you create a card, deal [blue]3[/blue] damage to ALL enemies.",
   "THEPRISMATIC2-SMOKESTACK2_POWER.smartDescription": "Whenever you create a card, deal [blue]{Amount}[/blue] damage to ALL enemies.",
   "THEPRISMATIC2-SMOKESTACK2_POWER.title": "Smokestack",
-
   "THEPRISMATIC2-SPINNER2_POWER.description": "At the start of your turn, [gold]Channel[/gold] [blue]1[/blue] random Orb.",
   "THEPRISMATIC2-SPINNER2_POWER.smartDescription": "At the start of your turn, [gold]Channel[/gold] [blue]{Amount}[/blue] random {Amount:plural:Orb|Orbs}.",
   "THEPRISMATIC2-SPINNER2_POWER.title": "Spinner",
-
   "THEPRISMATIC2-THUNDER2_POWER.description": "Whenever you [gold]Evoke[/gold] an Orb, deal [blue]8[/blue] damage to a random enemy.",
   "THEPRISMATIC2-THUNDER2_POWER.smartDescription": "Whenever you [gold]Evoke[/gold] an Orb, deal [blue]{Amount}[/blue] damage to a random enemy.",
   "THEPRISMATIC2-THUNDER2_POWER.title": "Thunder",
-
   "THEPRISMATIC2-TRASH_TO_TREASURE2_POWER.description": "Whenever you create a card, [gold]Channel[/gold] [blue]1[/blue] random Orb.",
   "THEPRISMATIC2-TRASH_TO_TREASURE2_POWER.smartDescription": "Whenever you create a card, [gold]Channel[/gold] {Amount:plural:[blue]{}[/blue] random Orb|[blue]{}[/blue] random Orbs}.",
   "THEPRISMATIC2-TRASH_TO_TREASURE2_POWER.title": "Trash to Treasure",
-
   "THEPRISMATIC2-SEEKING_EDGE2_POWER.description": "Whenever you play a [gold]Costly[/gold] Attack on a single enemy, play it on each other enemy.",
   "THEPRISMATIC2-SEEKING_EDGE2_POWER.smartDescription": "Whenever you play a [gold]Costly[/gold] Attack on a single enemy, play it on each other enemy.",
   "THEPRISMATIC2-SEEKING_EDGE2_POWER.title": "Seeking Edge",
-
   "THEPRISMATIC2-FAN_OF_KNIVES2_POWER.description": "Whenever you play a 0 Energy Attack on a single enemy, play it on each other enemy.",
   "THEPRISMATIC2-FAN_OF_KNIVES2_POWER.smartDescription": "Whenever you play a 0{energyPrefix:energyIcons(1)} Attack on a single enemy, play it on each other enemy.",
   "THEPRISMATIC2-FAN_OF_KNIVES2_POWER.title": "Fan of Knives",
-
   "THEPRISMATIC2-TERRAFORMING_POWER.description": "Gain [gold]Focus[/gold] until the end of this turn.",
   "THEPRISMATIC2-TERRAFORMING_POWER.smartDescription": "Gain [blue]{Amount}[/blue] [gold]Focus[/gold] until the end of this turn.",
   "THEPRISMATIC2-TERRAFORMING_POWER.title": "Terraforming",
-
   "THEPRISMATIC2-CALCIFY2_POWER.description": "At the start of your turn, [gold]Summon[/gold] [blue]1[/blue].",
   "THEPRISMATIC2-CALCIFY2_POWER.smartDescription": "At the start of your turn, [gold]Summon[/gold] [blue]{Amount}[/blue].",
   "THEPRISMATIC2-CALCIFY2_POWER.title": "Calcify",
-
   "THEPRISMATIC2-CORRUPTION2_POWER.description": "Skills cost [blue]1[/blue] Energy less. Whenever you play a non-[gold]Cunning[/gold] Skill, [gold]Exhaust[/gold] it.",
   "THEPRISMATIC2-CORRUPTION2_POWER.smartDescription": "Skills cost {energyPrefix:energyIcons(1)} less. Whenever you play a non-[gold]Cunning[/gold] Skill, [gold]Exhaust[/gold] it.",
   "THEPRISMATIC2-CORRUPTION2_POWER.title": "Corruption",
-
   "THEPRISMATIC2-WRAITH_FORM2_POWER.description": "At the start of your turn, apply [blue]6[/blue] [gold]Doom[/gold] to yourself.",
   "THEPRISMATIC2-WRAITH_FORM2_POWER.smartDescription": "At the start of your turn, apply [blue]{Amount}[/blue] [gold]Doom[/gold] to yourself.",
   "THEPRISMATIC2-WRAITH_FORM2_POWER.title": "Wraith Form",
-
   "THEPRISMATIC2-FORBIDDEN_GRIMOIRE2_POWER.description": "At the end of combat, transform a card in your [gold]Deck[/gold].",
   "THEPRISMATIC2-FORBIDDEN_GRIMOIRE2_POWER.smartDescription": "At the end of combat, transform [blue]{Amount}[/blue] {Amount:plural:card|cards} in your [gold]Deck[/gold].",
   "THEPRISMATIC2-FORBIDDEN_GRIMOIRE2_POWER.title": "Forbidden Grimoire",
-
   "THEPRISMATIC2-MONOLOGUE2_POWER.description": "Every 2 cards you play this turn, gain [blue]2[/blue] [gold]Strength[/gold] and [blue]1[/blue] [gold]Focus[/gold] this turn.",
   "THEPRISMATIC2-MONOLOGUE2_POWER.smartDescription": "Every 2 cards you play this turn, gain [blue]{StrengthPower}[/blue] [gold]Strength[/gold] and [blue]{FocusPower}[/blue] [gold]Focus[/gold] this turn.\nCurrently granting [blue]{StrengthApplied}[/blue] [gold]Strength[/gold] and [blue]{FocusApplied}[/blue] [gold]Focus[/gold].",
   "THEPRISMATIC2-MONOLOGUE2_POWER.title": "Monologue",
-
   "THEPRISMATIC2-FEEL_NO_PAIN2_POWER.description": "Whenever a non-Colorless card is [gold]Exhausted[/gold], gain [blue]3[/blue] [gold]Block[/gold].",
   "THEPRISMATIC2-FEEL_NO_PAIN2_POWER.smartDescription": "Whenever a non-Colorless card is [gold]Exhausted[/gold], gain [blue]{Amount}[/blue] [gold]Block[/gold].",
   "THEPRISMATIC2-FEEL_NO_PAIN2_POWER.title": "Feel No Pain",
-
   "THEPRISMATIC2-OCH_O_FORM_POWER.description": "The first 0 Energy card you play each turn is played an extra time.",
   "THEPRISMATIC2-OCH_O_FORM_POWER.smartDescription": "The first {Amount:plural:0{energyPrefix:energyIcons(1)} card you play each turn is|[blue]{}[/blue] 0{energyPrefix:energyIcons(1)} cards you play each turn are} played an extra time.",
   "THEPRISMATIC2-OCH_O_FORM_POWER.title": "0ch0 F0rm",
-
   "THEPRISMATIC2-THE_SEALED_THRONE2_POWER.description": "Your cards gain [gold]Starbound[/gold]. The first time you play a card each turn, gain {singleStarIcon}.",
   "THEPRISMATIC2-THE_SEALED_THRONE2_POWER.smartDescription": "Your cards gain [gold]Starbound[/gold]. The first {Amount:plural:time|[blue]{}[/blue] times} you play a card each turn, gain {singleStarIcon}.",
-  "THEPRISMATIC2-THE_SEALED_THRONE2_POWER.title": "The Sealed Throne"
+  "THEPRISMATIC2-THE_SEALED_THRONE2_POWER.title": "The Sealed Throne",
+  "THEPRISMATIC2-HYPERBEAM_POWER.description": "Lose [gold]Strength[/gold] and [gold]Focus[/gold] until the end of this turn.",
+  "THEPRISMATIC2-HYPERBEAM_POWER.smartDescription": "Lose [blue]{Amount}[/blue] [gold]Strength[/gold] and [gold]Focus[/gold] until the end of this turn.",
+  "THEPRISMATIC2-HYPERBEAM_POWER.title": "Hyperbeam"
 }

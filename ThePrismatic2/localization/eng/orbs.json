@@ -1,24 +1,19 @@
 {
-  "THEPRISMATIC2-SOLAR_ORB.description": "Orb: Gives Stars.",
-  "THEPRISMATIC2-SOLAR_ORB.smartDescription": "When [gold]Channeled[/gold]: Gain {Passive:starIcons()}.\n[gold]Evoke[/gold]: Gain {Evoke:starIcons()}.",
+  "THEPRISMATIC2-SOLAR_ORB.description": "Orb: Gains Stars.",
+  "THEPRISMATIC2-SOLAR_ORB.smartDescription": "[gold]Passive:[/gold] When [gold]Channeled[/gold],\ngain {Passive:starIcons()}.\n[gold]Evoke[/gold]: Gain {Evoke:starIcons()}.\nSolar is unaffected by [gold]Focus[/gold].",
   "THEPRISMATIC2-SOLAR_ORB.title": "Solar",
-
-  "THEPRISMATIC2-VENOM_ORB.description": "Orb: Applies [gold]Poison[/gold] to ALL enemies for 2 turns.",
+  "THEPRISMATIC2-VENOM_ORB.description": "Orb: Applies [gold]Poison[/gold] to ALL enemies. Decreases [gold]Posion[/gold] every turn.",
   "THEPRISMATIC2-VENOM_ORB.smartDescription": "[gold]Passive:[/gold] At the end of turn, apply [blue]{Passive}[/blue] [gold]Poison[/gold] to ALL enemies and reduce this orb's value by [blue]1[/blue].\n[gold]Evoke:[/gold] Apply [blue]{Evoke}[/blue] [gold]Poison[/gold] to ALL enemies.",
   "THEPRISMATIC2-VENOM_ORB.title": "Venom",
-
-  "THEPRISMATIC2-MAGMA_ORB.description": "Orb: Gives [gold]Vigor[/gold].",
+  "THEPRISMATIC2-MAGMA_ORB.description": "Orb: Gains [gold]Vigor[/gold].",
   "THEPRISMATIC2-MAGMA_ORB.smartDescription": "[gold]Passive:[/gold] At the end of turn, gain [blue]{Passive}[/blue] [gold]Vigor[/gold].\n[gold]Evoke:[/gold] Gain [blue]{Evoke}[/blue] [gold]Vigor[/gold].",
   "THEPRISMATIC2-MAGMA_ORB.title": "Magma",
-
   "THEPRISMATIC2-BONE_ORB.description": "Orb: Summons [gold]Osty[/gold].",
   "THEPRISMATIC2-BONE_ORB.smartDescription": "[gold]Passive:[/gold] At the end of turn, [gold]Summon[/gold] [blue]{Passive}[/blue].\n[gold]Evoke:[/gold] [gold]Summon[/gold] [blue]{Evoke}[/blue].",
   "THEPRISMATIC2-BONE_ORB.title": "Bone",
-
   "THEPRISMATIC2-IRON_ORB.description": "Orb: Forges the [gold]Sovereign Blade[/gold].",
   "THEPRISMATIC2-IRON_ORB.smartDescription": "[gold]Passive:[/gold] At the end of turn, [gold]Forge[/gold] [blue]{Passive}[/blue].\n[gold]Evoke:[/gold] [gold]Forge[/gold] [blue]{Evoke}[/blue].",
   "THEPRISMATIC2-IRON_ORB.title": "Iron",
-
   "THEPRISMATIC2-GLOOM_ORB.description": "Orb: When [gold]Evoked[/gold], deals damage and applies [gold]Doom[/gold] to the enemy with the least HP. Increases damage and [gold]Doom[/gold] every turn.",
   "THEPRISMATIC2-GLOOM_ORB.smartDescription": "[gold]Passive:[/gold] At the end of turn, increase this Orb's damage and [gold]Doom[/gold] by [blue]{Passive}[/blue].\n[gold]Evoke:[/gold] Deal [blue]{Evoke}[/blue] damage and apply [blue]{Evoke}[/blue] [gold]Doom[/gold] to the enemy with the lowest HP.",
   "THEPRISMATIC2-GLOOM_ORB.title": "Gloom"

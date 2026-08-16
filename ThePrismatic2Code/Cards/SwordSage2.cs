@@ -13,7 +13,7 @@ using ThePrismatic2.ThePrismatic2Code.Powers;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class SwordSage2() : ThePrismatic2Card(2, 
+public class SwordSage2() : ThePrismatic2Card(1, 
     CardType.Power, CardRarity.Rare, 
     TargetType.Self)
 {
@@ -21,7 +21,7 @@ public class SwordSage2() : ThePrismatic2Card(2,
     public override string CustomPortraitPath => "res://.godot/imported/sword_sage.png-458450de54ede3ee31ae1bc9fc45525c.ctex";
     public override string PortraitPath => "res://.godot/imported/sword_sage.png-458450de54ede3ee31ae1bc9fc45525c.ctex";
 
-    public override int CanonicalStarCost => 1;
+    public override int CanonicalStarCost => 2;
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Costly));
 

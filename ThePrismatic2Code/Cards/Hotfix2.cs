@@ -28,7 +28,7 @@ public class Hotfix2() : ThePrismatic2Card(0,
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new PowerVar<FocusPower>(2m),
+        new PowerVar<FocusPower>(1m),
         new ForgeVar(5)
         ]);
 

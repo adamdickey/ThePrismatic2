@@ -23,7 +23,7 @@ public class Synchronize2() : ThePrismatic2Card(1,
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<FocusPower>());
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DynamicVar("Focus", 2m),
+        new DynamicVar("Focus", 1m),
         new DynamicVar("Forge", 5m),
         new CalculationBaseVar(0m),
         new CalculationExtraVar(1m),

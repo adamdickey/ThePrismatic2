@@ -1,4 +1,8 @@
 {
   "THEPRISMATIC2-EXPOSED_POTION.description": "Apply [blue]{Exposed}[/blue] [gold]Exposed[/gold].",
-  "THEPRISMATIC2-EXPOSED_POTION.title": "Exposed Potion"
+  "THEPRISMATIC2-EXPOSED_POTION.title": "Exposed Potion",
+  "THEPRISMATIC2-ORB_POTION.description": "[gold]Channel[/gold] [blue]{Repeat:diff()}[/blue] random Orbs.",
+  "THEPRISMATIC2-ORB_POTION.title": "Orb Potion",
+  "THEPRISMATIC2-COSTLY_POTION.description": "Choose [blue]1[/blue] of [blue]3[/blue] random [gold]Costly[/gold] cards to add into your [gold]Hand[/gold]. It's free to play this turn.",
+  "THEPRISMATIC2-COSTLY_POTION.title": "Costly Potion"
 }

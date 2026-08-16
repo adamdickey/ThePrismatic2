@@ -22,7 +22,7 @@ public class Reave2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/reave.png-90f9b5ea46111283f63b2ffec2335592.ctex";
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(9m, ValueProp.Move),
+        new DamageVar(7m, ValueProp.Move),
         new CardsVar(1),
         new StarsVar(1)
     ]);

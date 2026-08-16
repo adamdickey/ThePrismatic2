@@ -1,22 +1,16 @@
 {
   "THEPRISMATIC2-DUALWIELD.description": "If [gold]Osty[/gold] is alive, he repeats this Attack and any additional effects this Attack has. His attack deals half damage.",
   "THEPRISMATIC2-DUALWIELD.title": "Dual Wield",
-
   "THEPRISMATIC2-COSTLY.description": "Costly cards cost 2 or more total Energy and Stars.",
   "THEPRISMATIC2-COSTLY.title": "Costly",
-  
   "THEPRISMATIC2-BLEED.description": "[gold]Osty[/gold] loses HP if he is alive, otherwise you lose HP.",
   "THEPRISMATIC2-BLEED.title": "Bleed",
-
   "THEPRISMATIC2-CUNNING.description": "If this card is [gold]Exhausted[/gold] or discarded from anywhere before the end of your turn, play it for free.",
   "THEPRISMATIC2-CUNNING.title": "Cunning",
-
   "THEPRISMATIC2-STARBOUND.description": "If you don't have enough Energy, use Stars instead. If you don't have enough Stars, use Energy instead.",
   "THEPRISMATIC2-STARBOUND.title": "Starbound",
-
   "THEPRISMATIC2-CUNNINGTHISTURN.description": "If this card is [gold]Exhausted[/gold] or discarded from anywhere before the end of your turn, play it for free.",
   "THEPRISMATIC2-CUNNINGTHISTURN.title": "Cunning",
-
   "THEPRISMATIC2-STARBOUNDTHISTURN.description": "If you don't have enough Energy, use Stars instead. If you don't have enough Stars, use Energy instead.",
   "THEPRISMATIC2-STARBOUNDTHISTURN.title": "Starbound"
 }

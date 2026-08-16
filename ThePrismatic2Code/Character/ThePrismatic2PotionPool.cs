@@ -2,6 +2,7 @@
 using ThePrismatic2.ThePrismatic2Code.Extensions;
 using Godot;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Potions;
 using ThePrismatic2.ThePrismatic2Code.Potions;
 
 namespace ThePrismatic2.ThePrismatic2Code.Character;
@@ -18,7 +19,18 @@ public class ThePrismatic2PotionPool : CustomPotionPoolModel
     {
         return
         [
-            ModelDb.Potion<ExposedPotion>()
+            ModelDb.Potion<ExposedPotion>(),
+            ModelDb.Potion<OrbPotion>(),
+            ModelDb.Potion<CostlyPotion>(),
+            ModelDb.Potion<BloodPotion>(),
+            ModelDb.Potion<Ashwater>(),
+            ModelDb.Potion<PoisonPotion>(),
+            ModelDb.Potion<CunningPotion>(),
+            ModelDb.Potion<GhostInAJar>(),
+            ModelDb.Potion<KingsCourage>(),
+            ModelDb.Potion<PotionOfDoom>(),
+            ModelDb.Potion<BoneBrew>(),
+            ModelDb.Potion<PotOfGhouls>()
         ];
     }
 }

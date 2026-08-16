@@ -26,7 +26,7 @@ public class GuidingStar2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/guiding_star.png-741b1b575fa11bbd6ddd29ccec79744e.ctex";
     public override string PortraitPath => "res://.godot/imported/guiding_star.png-741b1b575fa11bbd6ddd29ccec79744e.ctex";
 
-    public override int CanonicalStarCost => 2;
+    public override int CanonicalStarCost => 1;
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
     
@@ -57,7 +57,7 @@ public class GuidingStar2() : ThePrismatic2Card(1,
             {
                 CardCmd.Upgrade(card);
             }
-            await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner);
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, Owner, CardPilePosition.Random));
         }
     }
 

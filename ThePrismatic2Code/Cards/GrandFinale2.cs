@@ -25,6 +25,8 @@ public class GrandFinale2() : ThePrismatic2Card(0,
 
     protected override bool ShouldGlowGoldInternal => Owner.PlayerCombatState != null && Owner.PlayerCombatState.Stars >= PileType.Draw.GetPile(Owner).Cards.Count;
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(60m, ValueProp.Move),
         new StarsVar(1),
@@ -70,6 +72,7 @@ public class GrandFinale2() : ThePrismatic2Card(0,
     private void UpdateCost()
     {
         int starCost = DynamicVars.Stars.IntValue * PileType.Draw.GetPile(Owner).Cards.Count;
+        EnergyCost.SetThisCombat(CanonicalEnergyCost);
         SetStarCostThisCombat(starCost);
     }
 }

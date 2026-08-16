@@ -22,7 +22,7 @@ public class Reanimate2() : ThePrismatic2Card(3,
     public override string PortraitPath => "res://.godot/imported/reanimate.png-cb51b41861eb560de17fdf1a8bc75996.ctex";
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new SummonVar(15m),
+        new SummonVar(16m),
         new PowerVar<CalcifyPower>(10m)
     ]);
 
@@ -42,7 +42,7 @@ public class Reanimate2() : ThePrismatic2Card(3,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Summon.UpgradeValueBy(3m);
-        DynamicVars["CalcifyPower"].UpgradeValueBy(3m);
+        DynamicVars.Summon.UpgradeValueBy(4m);
+        DynamicVars["CalcifyPower"].UpgradeValueBy(2m);
     }
 }

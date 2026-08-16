@@ -26,8 +26,6 @@ public static class TempKeywordPatch
                     if (card.Keywords.Contains(Keywords.StarboundThisTurn))
                     {
                         card.RemoveKeyword(Keywords.StarboundThisTurn);
-                        card.EnergyCost.SetThisCombat(card.EnergyCost.Canonical);
-                        card.SetStarCostThisCombat(card.CanonicalStarCost);
                     }
                 }
             }

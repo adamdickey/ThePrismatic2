@@ -22,7 +22,7 @@ public class Anticipate2() : ThePrismatic2Card(0,
     public override string PortraitPath => "res://.godot/imported/anticipate.png-42f2136f7095fe73788485df07f25453.ctex";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new PowerVar<DexterityPower>(3m),
+        new PowerVar<DexterityPower>(2m),
         new DynamicVar("Focus", 1m)
     ]);
 

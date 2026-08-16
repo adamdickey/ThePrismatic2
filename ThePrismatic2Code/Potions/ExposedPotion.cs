@@ -13,13 +13,16 @@ namespace ThePrismatic2.ThePrismatic2Code.Potions;
 
 public sealed class ExposedPotion : ThePrismatic2Potion
 {
+    public override string CustomPackedImagePath => "res://.godot/imported/crystal_sphere_common_potion.png-f744c5cace1a6d462cb56c6952e27270.ctex";
+    
+    //public override string CustomPackedOutlinePath => "res://.godot/imported/potion_placeholder.png-a1ad2b9e149feb01c6a9fce0de02ae61.ctex";
     public override PotionRarity Rarity => PotionRarity.Common;
 
     public override PotionUsage Usage => PotionUsage.CombatOnly;
 
     public override TargetType TargetType => TargetType.AnyEnemy;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("Exposed", 3m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("Exposed", 5m));
 
     public override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<ExposedPower>());
 

@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
+using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.Models;
 using ThePrismatic2.ThePrismatic2Code.Extensions;
 
@@ -24,20 +25,19 @@ public static class StarboundPatch
         }
 
         if (card.CombatState == null || (!card.Keywords.Contains(Keywords.Starbound) && !card.Keywords.Contains(Keywords.StarboundThisTurn))) return;
+        if (cardCost == 0) return;
         if (playerStars + playerEnergy >= cardCost)
         {
             if (playerEnergy < cardEnergy && playerEnergy + playerStars >= cardCost)
             {
                 card.EnergyCost.SetThisTurnOrUntilPlayed(playerEnergy);
                 card.SetStarCostThisTurn(cardCost - playerEnergy);
-                card.InvokeEnergyCostChanged();
                 return;
             }
             if (playerStars < cardStars && playerStars + playerEnergy >= cardCost)
             {
                 card.EnergyCost.SetThisTurnOrUntilPlayed(cardCost - playerStars);
                 card.SetStarCostThisTurn(playerStars);
-                card.InvokeEnergyCostChanged();
             }
         }
         else
@@ -46,7 +46,6 @@ public static class StarboundPatch
             {
                 card.EnergyCost.SetThisCombat(card.EnergyCost.Canonical);
                 card.SetStarCostThisCombat(card.CanonicalStarCost);
-                card.InvokeEnergyCostChanged();
             }
             if (Math.Max(0, card.EnergyCost.GetWithModifiers(CostModifiers.All)) > playerEnergy)
             {

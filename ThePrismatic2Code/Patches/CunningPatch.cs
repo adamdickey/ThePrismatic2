@@ -12,7 +12,7 @@ namespace ThePrismatic2.ThePrismatic2Code.Patches;
 [HarmonyPatch(typeof(CardCmd), "Exhaust")]
 public static class CunningPatch
 {
-    private static void Postfix(PlayerChoiceContext choiceContext, CardModel card)
+    private static async void Postfix(PlayerChoiceContext choiceContext, CardModel card)
     {
         if (CombatManager.Instance.IsOverOrEnding)
         {
@@ -29,20 +29,19 @@ public static class CunningPatch
                 return;
             }
         }
-        CardCmd.AutoPlay(choiceContext, card, null, AutoPlayType.SlyDiscard);
+        await CardCmd.AutoPlay(choiceContext, card, null, AutoPlayType.SlyDiscard);
     }
 }
-
 
 [HarmonyPatch(typeof(CardCmd), "DiscardAndDraw")]
 public static class CunningDiscardPatch
 {
-    private static void Postfix(PlayerChoiceContext choiceContext, IEnumerable<CardModel> cardsToDiscard, int cardsToDraw)
+    private static async void Postfix(PlayerChoiceContext choiceContext, IEnumerable<CardModel> cardsToDiscard, int cardsToDraw)
     {
-        List<CardModel> cunningCards = cardsToDiscard.Where(card => card.Keywords.Contains(Keywords.CunningThisTurn)).ToList();
+        List<CardModel> cunningCards = cardsToDiscard.Where(card => card.Keywords.Contains(Keywords.Cunning) || card.Keywords.Contains(Keywords.CunningThisTurn)).ToList();
         foreach (CardModel item in cunningCards)
         {
-            CardCmd.AutoPlay(choiceContext, item, null, AutoPlayType.SlyDiscard);
+            await CardCmd.AutoPlay(choiceContext, item, null, AutoPlayType.SlyDiscard);
         }
     }
 }

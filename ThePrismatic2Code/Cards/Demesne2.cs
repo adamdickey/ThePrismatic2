@@ -12,7 +12,7 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class Demesne2() : ThePrismatic2Card(2, 
+public class Demesne2() : ThePrismatic2Card(1, 
     CardType.Power, CardRarity.Rare, 
     TargetType.Self)
 {
@@ -20,7 +20,7 @@ public class Demesne2() : ThePrismatic2Card(2,
     public override string CustomPortraitPath => "res://.godot/imported/demesne.png-0e91b272ab67402e0bf4ffa3ea2d63de.ctex";
     public override string PortraitPath => "res://.godot/imported/demesne.png-0e91b272ab67402e0bf4ffa3ea2d63de.ctex";
 
-    public override int CanonicalStarCost => 2;
+    public override int CanonicalStarCost => 3;
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new EnergyVar(1),

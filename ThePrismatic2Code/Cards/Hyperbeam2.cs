@@ -13,6 +13,7 @@ using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
+using ThePrismatic2.ThePrismatic2Code.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -26,9 +27,9 @@ public class Hyperbeam2() : ThePrismatic2Card(2,
     public override string PortraitPath => "res://.godot/imported/hyperbeam.png-69e686a51ad6411d420df10a5930e442.ctex";
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(30m, ValueProp.Move),
-        new PowerVar<StrengthPower>(1m),
-        new PowerVar<FocusPower>(1m)
+        new DamageVar(24m, ValueProp.Move),
+        new PowerVar<StrengthPower>(2m),
+        new PowerVar<FocusPower>(2m)
     ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
@@ -61,12 +62,11 @@ public class Hyperbeam2() : ThePrismatic2Card(2,
                     }
                 })
                 .Execute(choiceContext);
-        await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, -DynamicVars["StrengthPower"].BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<FocusPower>(choiceContext, Owner.Creature, -DynamicVars["FocusPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<HyperbeamPower>(choiceContext, Owner.Creature, DynamicVars["FocusPower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(8m);
+        DynamicVars.Damage.UpgradeValueBy(6m);
     }
 }

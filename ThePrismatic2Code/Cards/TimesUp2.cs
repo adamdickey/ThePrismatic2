@@ -20,8 +20,6 @@ public class TimesUp2() : ThePrismatic2Card(2,
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/times_up.png-714b702fd2a54f37beb2080e183f0173.ctex";
     public override string PortraitPath => "res://.godot/imported/times_up.png-714b702fd2a54f37beb2080e183f0173.ctex";
-    
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new CalculationBaseVar(0m),

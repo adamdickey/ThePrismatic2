@@ -48,7 +48,7 @@ public class ShadowShield2() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(4m);
+        DynamicVars.Block.UpgradeValueBy(3m);
         DynamicVars["Exposed"].UpgradeValueBy(1m);
     }
 }

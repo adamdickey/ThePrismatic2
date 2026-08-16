@@ -23,7 +23,7 @@ public class TheSmith2() : ThePrismatic2Card(1,
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new ForgeVar(30));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new ForgeVar(25));
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         ..HoverTipFactory.FromForge(),
@@ -34,6 +34,13 @@ public class TheSmith2() : ThePrismatic2Card(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await ForgeCmd.Forge(DynamicVars.Forge.IntValue, Owner, this);
+        foreach (CardModel card in PileType.Hand.GetPile(Owner).Cards)
+        {
+            if (card.EnergyCost.GetWithModifiers(CostModifiers.All) + Math.Max(0, card.GetStarCostWithModifiers()) >= 2)
+            {
+                CardCmd.Upgrade(card);
+            }
+        }
     }
 
     protected override void OnUpgrade()
