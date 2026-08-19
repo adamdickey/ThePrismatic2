@@ -5,7 +5,7 @@ ThePrismatic2.json::JSON::-1::1781974496::0::1::::<><><>0<>0<><>::
 ::res://bin/::1776545055
 ::res://bin/ExportRelease/::1776545055
 ::res://bin/ExportRelease/net9.0/::1776545055
-::res://bin/ExportRelease/net9.0/publish/::1786915490
+::res://bin/ExportRelease/net9.0/publish/::1787097905
 ThePrismatic2.deps.json::JSON::-1::1786115638::0::1::::<><><>0<>0<><>::
 ::res://ThePrismatic2/::1777739709
 mod_image.png::CompressedTexture2D::3839704962390075743::1776544440::1776545062::1::::<><><>0<>0<>cb305a347ff43869c9d438ea3cbc8b84<>res://.godot/imported/mod_image.png-6a0584a1ee7d76eaabad087c77dde317.ctex::
@@ -61,9 +61,9 @@ relic_outline.png::CompressedTexture2D::8729787435962443579::1776544440::1776545
 ::res://ThePrismatic2/images/relics/big/::1776545062
 relic.png::CompressedTexture2D::1816616300862966548::1776544440::1776545062::1::::<><><>0<>0<>8902a47737aaa3ab71c6fc6b572af315<>res://.godot/imported/relic.png-4b51af5054ed6e62847f9efb12be09f2.ctex::
 ::res://ThePrismatic2/localization/::1776544440
-::res://ThePrismatic2/localization/eng/::1786915257
+::res://ThePrismatic2/localization/eng/::1787097842
 ancients.json::JSON::-1::1776544897::0::1::::<><><>0<>0<><>::
-cards.json::JSON::-1::1786915257::0::1::::<><><>0<>0<><>::
+cards.json::JSON::-1::1787097842::0::1::::<><><>0<>0<><>::
 card_keywords.json::JSON::-1::1786902968::0::1::::<><><>0<>0<><>::
 characters.json::JSON::-1::1777758394::0::1::::<><><>0<>0<><>::
 enchantments.json::JSON::-1::1785624250::0::1::::<><><>0<>0<><>::
@@ -76,7 +76,7 @@ rest_site_ui.json::JSON::-1::1783285996::0::1::::<><><>0<>0<><>::
 static_hover_tips.json::JSON::-1::1783777977::0::1::::<><><>0<>0<><>::
 ::res://ThePrismatic2Code/::1786805836
 ::res://ThePrismatic2Code/Cards/::1786915458
-::res://ThePrismatic2Code/Character/::1786906005
+::res://ThePrismatic2Code/Character/::1787097847
 ::res://ThePrismatic2Code/Enchantments/::1786820095
 ::res://ThePrismatic2Code/Extensions/::1786799907
 ::res://ThePrismatic2Code/Orbs/::1786488649

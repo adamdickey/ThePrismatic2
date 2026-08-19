@@ -31,37 +31,35 @@ public class ThePrismatic2 : PlaceholderCharacterModel
 
     public static IEnumerable<CardModel> GetRandomStartingDeck()
     {
-        List<CardModel> strikes1 = [ModelDb.Card<ExposingStrike>(), ModelDb.Card<DoomingStrike>(), ModelDb.Card<ToxicStrike>()];
-        List<CardModel> strikes2 = [ModelDb.Card<FleetingStrike>(), ModelDb.Card<BladedStrike>(), ModelDb.Card<GhostlyStrike>()];
-        List<CardModel> strikes3 = [ModelDb.Card<LootingStrike>(), ModelDb.Card<ConcentratedStrike>(), ModelDb.Card<CunningStrike>()];
-        List<CardModel> strikes4 = [ModelDb.Card<ToxicStrike>(), ModelDb.Card<CosmicStrike>(), ModelDb.Card<LoopingStrike>()];
-        List<CardModel> strikes5 = [ModelDb.Card<RecklessStrike>(), ModelDb.Card<NecroStrike>(), ModelDb.Card<CoordinatedStrike>()];
-        List<CardModel> strikes6 = [ModelDb.Card<StarryStrike>(), ModelDb.Card<CosmicStrike>(), ModelDb.Card<StarboundStrike>()];
-        List<CardModel> strikes7 = [ModelDb.Card<ClawingStrike>(), ModelDb.Card<CostlyStrike>(), ModelDb.Card<ForgingStrike>()];
-        List<CardModel> defends1 = [ModelDb.Card<ExposingDefend>(), ModelDb.Card<DoomingDefend>(), ModelDb.Card<ToxicDefend>()];
-        List<CardModel> defends2 = [ModelDb.Card<FleetingDefend>(), ModelDb.Card<BladedDefend>(), ModelDb.Card<GhostlyDefend>()];
-        List<CardModel> defends3 = [ModelDb.Card<LootingDefend>(), ModelDb.Card<ConcentratedDefend>(), ModelDb.Card<CunningDefend>()];
-        List<CardModel> defends4 = [ModelDb.Card<ToxicDefend>(), ModelDb.Card<CosmicDefend>(), ModelDb.Card<LoopingDefend>()];
-        List<CardModel> defends5 = [ModelDb.Card<RecklessDefend>(), ModelDb.Card<NecroDefend>(), ModelDb.Card<CoordinatedDefend>()];
-        List<CardModel> defends6 = [ModelDb.Card<StarryDefend>(), ModelDb.Card<CosmicDefend>(), ModelDb.Card<StarboundDefend>()];
-        List<CardModel> defends7 = [ModelDb.Card<ClawingDefend>(), ModelDb.Card<CostlyDefend>(), ModelDb.Card<ForgingDefend>()];
-        List<List<CardModel>> strikes = [strikes1, strikes2, strikes3, strikes4, strikes5, strikes6, strikes7];
-        List<List<CardModel>> defends = [defends1, defends2, defends3, defends4, defends5, defends6, defends7];
         while (true)
         {
-            List<int> numList = [0, 1, 2, 3, 4, 5, 6];
-            numList.StableShuffle(Rng.Chaotic);
-            int strikeNum1 = numList[0];
-            int defendNum1 = numList[1];
-            int strikeNum2 = Rng.Chaotic.NextInt(0, 3);
-            int defendNum2 = Rng.Chaotic.NextInt(0, 3);
-            CardModel chosenStrike = strikes[strikeNum1][strikeNum2];
-            CardModel chosenDefend = defends[defendNum1][defendNum2];
-            if (chosenStrike is CosmicStrike or StarryStrike or StarboundStrike & chosenDefend is CosmicDefend or StarryDefend or StarboundDefend)
+            CardModel chosenStrike = GetRandomPrismaticStrike();
+            CardModel chosenDefend = GetRandomPrismaticDefend();
+            if (chosenStrike is DoomingStrike or ExposingStrike or ToxicStrike & chosenDefend is DoomingDefend or ExposingDefend or ToxicDefend)
             {
                 continue;
             }
-            if (chosenStrike is ToxicStrike or CosmicStrike or LoopingStrike & chosenDefend is ToxicDefend or CosmicDefend or LoopingDefend)
+            if (chosenStrike is BladedStrike or FleetingStrike or GhostlyStrike & chosenDefend is BladedDefend or FleetingDefend or GhostlyDefend)
+            {
+                continue;
+            }
+            if (chosenStrike is ConcentratedStrike or CunningStrike or LootingStrike & chosenDefend is ConcentratedDefend or CunningDefend or LootingDefend)
+            {
+                continue;
+            }
+            if (chosenStrike is CosmicStrike or LoopingStrike or ToxicStrike & chosenDefend is CosmicDefend or LoopingDefend or ToxicDefend)
+            {
+                continue;
+            }
+            if (chosenStrike is CoordinatedStrike or NecroStrike or RecklessStrike & chosenDefend is CoordinatedDefend or NecroDefend or RecklessDefend)
+            {
+                continue;
+            }
+            if (chosenStrike is CosmicStrike or StarboundStrike or StarryStrike & chosenDefend is CosmicDefend or StarboundDefend or StarryDefend)
+            {
+                continue;
+            }
+            if (chosenStrike is ClawingStrike or CostlyStrike or ForgingStrike & chosenDefend is ClawingDefend or CostlyDefend or ForgingDefend)
             {
                 continue;
             }

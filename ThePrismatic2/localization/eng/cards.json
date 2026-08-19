@@ -748,7 +748,7 @@
   "THEPRISMATIC2-HEADBUTT2.description": "Deal {Damage:diff()} damage.\nPut a card from your [gold]Discard Pile[/gold] on top of your [gold]Draw Pile[/gold].",
   "THEPRISMATIC2-HEADBUTT2.selectionScreenPrompt": "Choose a card to put on top of your Draw Pile.",
   "THEPRISMATIC2-HEADBUTT2.title": "Headbutt",
-  "THEPRISMATIC2-BLADE_DANCE2.description": "0{energyPrefix:energyIcons(1)} Attacks deal {AccuracyPower:diff()} additional damage.\nAdd {Cards:diff()} [gold]{Cards:plural:Shiv|Shivs}[/gold] into your [gold]Hand[/gold].",
+  "THEPRISMATIC2-BLADE_DANCE2.description": "0{energyPrefix:energyIcons(1)} Attacks deal {Accuracy2Power:diff()} additional damage.\nAdd {Cards:diff()} [gold]{Cards:plural:Shiv|Shivs}[/gold] into your [gold]Hand[/gold].",
   "THEPRISMATIC2-BLADE_DANCE2.title": "Blade Dance",
   "THEPRISMATIC2-NOT_YET2.description": "Heal {Heal:diff()} HP.\n[gold]Osty[/gold] heals {Heal:diff()} HP.",
   "THEPRISMATIC2-NOT_YET2.title": "Not Yet",
