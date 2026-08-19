@@ -34,15 +34,17 @@ public class BladeDance2() : ThePrismatic2Card(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await PowerCmd.Apply<Accuracy2Power>(choiceContext, Owner.Creature, DynamicVars["Accuracy2Power"].BaseValue, Owner.Creature, this);
-        for (int i = 0; i < DynamicVars.Cards.IntValue; i++)
+        if (CombatState != null)
         {
-            Shiv shiv = new Shiv();
-            if (IsUpgraded)
+            IEnumerable<CardModel> enumerable = await Shiv.CreateInHand(Owner, DynamicVars.Cards.IntValue, CombatState);
+            if (!IsUpgraded)
             {
-                CardCmd.Upgrade(shiv);
+                return;
             }
-            await CardPileCmd.AddGeneratedCardToCombat(shiv, PileType.Hand, Owner);
-            await Cmd.Wait(0.1f);
+            foreach (CardModel item in enumerable)
+            {
+                CardCmd.Upgrade(item);
+            }
         }
     }
 }
