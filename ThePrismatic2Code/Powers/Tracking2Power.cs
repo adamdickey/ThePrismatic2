@@ -33,11 +33,11 @@ public class Tracking2Power : ThePrismatic2Power
         {
             return 1m;
         }
-        int numDebuffs = target.Powers.Count(power => power.Type == PowerType.Debuff);
-        if (numDebuffs < 2)
+        bool debuffed = target.Powers.Any(power => power.Type == PowerType.Debuff);
+        if (!debuffed)
         {
             return 1m;
         }
-        return Amount;
+        return 1m + Amount*0.01m;
     }
 }

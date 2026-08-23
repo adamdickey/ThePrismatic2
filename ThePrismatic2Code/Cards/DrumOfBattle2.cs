@@ -19,11 +19,12 @@ public class DrumOfBattle2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/drum_of_battle.png-17d414e562deb6a6057b9a9cafdde247.ctex";
     public override string PortraitPath => "res://.godot/imported/drum_of_battle.png-17d414e562deb6a6057b9a9cafdde247.ctex";
     
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Cunning);
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Exhaust));
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new CardsVar(2),
-        new EnergyVar(2)
+        new EnergyVar(1)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -34,14 +35,6 @@ public class DrumOfBattle2() : ThePrismatic2Card(1,
     protected override void OnUpgrade()
     {
         DynamicVars.Energy.UpgradeValueBy(1m);
-    }
-    
-    public override async Task AfterCardDiscarded(PlayerChoiceContext choiceContext, CardModel card)
-    {
-        if (card == this)
-        {
-            await CardCmd.Exhaust(choiceContext, this);
-        }
     }
     
     public override async Task AfterCardExhausted(PlayerChoiceContext choiceContext, CardModel card, bool causedByEthereal)

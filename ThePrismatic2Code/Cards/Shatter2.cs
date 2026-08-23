@@ -18,10 +18,17 @@ public class Shatter2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/shatter.png-429cb605a1a09eb961a06ffddda3e28d.ctex";
     
     public override OrbEvokeType OrbEvokeType => OrbEvokeType.All;
+    
+    public override int CanonicalStarCost => 1;
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlyArray<CardKeyword>([
+        Extensions.Keywords.Starbound,
+        CardKeyword.Exhaust 
+    ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.Evoke));
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(7m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(10m, ValueProp.Move));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

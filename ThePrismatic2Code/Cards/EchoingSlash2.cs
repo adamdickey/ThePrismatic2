@@ -21,7 +21,11 @@ public class EchoingSlash2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/echoing_slash.png-949e53ef77e71f652b2e83d444084490.ctex";
     public override string PortraitPath => "res://.godot/imported/echoing_slash.png-949e53ef77e71f652b2e83d444084490.ctex";
     
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(10m, ValueProp.Move));
+    public override int CanonicalStarCost => 2;
+    
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(13m, ValueProp.Move));
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -38,6 +42,6 @@ public class EchoingSlash2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(4m);
     }
 }

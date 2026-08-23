@@ -24,13 +24,13 @@ public class Unleash2() : ThePrismatic2Card(1,
     protected override HashSet<CardTag> CanonicalTags => [CardTag.OstyAttack];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new SummonVar(2m),
-        new CalculationBaseVar(4m),
+        new SummonVar(1m),
+        new CalculationBaseVar(6m),
         new ExtraDamageVar(1m).FromOsty(),
         new CalculatedDamageVar(ValueProp.Move).FromOsty().WithMultiplier(delegate(CardModel card, Creature? _)
         {
             Creature? osty = card.Owner.Osty;
-            return osty is { IsAlive: true } ? osty.CurrentHp : 0;
+            return osty is { IsAlive: true } ? osty.CurrentHp + 1 : 0;
         })
     ]);
 
@@ -40,7 +40,9 @@ public class Unleash2() : ThePrismatic2Card(1,
         await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
         if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
         {
-            await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromOsty(Owner.Osty, this).Targeting(cardPlay.Target)
+            await DamageCmd.Attack(DynamicVars.CalculatedDamage.Calculate(cardPlay.Target) - DynamicVars.Summon.BaseValue)
+                .FromOsty(Owner.Osty, this)
+                .Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
                 .Execute(choiceContext);
         }
@@ -48,6 +50,6 @@ public class Unleash2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Summon.UpgradeValueBy(2m);
+        DynamicVars.CalculationBase.UpgradeValueBy(3m);
     }
 }

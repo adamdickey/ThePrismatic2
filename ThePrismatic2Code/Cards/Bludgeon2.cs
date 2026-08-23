@@ -41,7 +41,7 @@ public class Bludgeon2() : ThePrismatic2Card(3,
     {
         if (card == this && !IsClone)
         {
-            int amount = CombatManager.Instance.History.CardPlaysFinished.Count(e => e.CardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, e.CardPlay.Card.CurrentStarCost) >= 2 && e.CardPlay.Card.Owner == Owner && e.HappenedThisTurn(CombatState));
+            int amount = CombatManager.Instance.History.CardPlaysFinished.Count(e => e.CardPlay.Resources.EnergyValue + Math.Max(0, e.CardPlay.Resources.StarValue) >= 2 && e.CardPlay.Card.Owner == Owner && e.HappenedThisTurn(CombatState));
             ReduceCostBy(amount);
         }
     }

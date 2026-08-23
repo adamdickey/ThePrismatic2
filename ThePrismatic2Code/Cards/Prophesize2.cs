@@ -29,7 +29,10 @@ public class Prophesize2() : ThePrismatic2Card(2,
         IEnumerable<CardModel> cards = await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner);
         foreach (CardModel card in cards)
         {
-            CardCmd.ApplyKeyword(card, Extensions.Keywords.StarboundThisTurn);
+            if (!card.Keywords.Contains(Extensions.Keywords.Starbound) && !card.Keywords.Contains(Extensions.Keywords.StarboundThisTurn))
+            {
+                CardCmd.ApplyKeyword(card, Extensions.Keywords.StarboundThisTurn);
+            }
         }
     }
 

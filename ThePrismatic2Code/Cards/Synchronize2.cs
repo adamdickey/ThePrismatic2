@@ -40,6 +40,6 @@ public class Synchronize2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Forge.UpgradeValueBy(3m);
+        DynamicVars["Forge"].UpgradeValueBy(3m);
     }
 }

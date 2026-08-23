@@ -22,7 +22,7 @@ public class KinglyKick2() : ThePrismatic2Card(4,
     public override string PortraitPath => "res://.godot/imported/kingly_kick.png-0c55b4d9a21182fa577f3f8836d3aa23.ctex";
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(18m, ValueProp.Move),
+        new DamageVar(16m, ValueProp.Move),
         new DynamicVar("Orbs", 2m)
     ]);
     
@@ -45,7 +45,7 @@ public class KinglyKick2() : ThePrismatic2Card(4,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(7m);
+        DynamicVars.Damage.UpgradeValueBy(6m);
     }
 
     public override Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)

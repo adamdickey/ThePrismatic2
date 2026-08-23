@@ -54,7 +54,7 @@ public class BansheesCry2() : ThePrismatic2Card(9,
         {
             return Task.CompletedTask;
         }
-        int num = CombatManager.Instance.History.CardPlaysFinished.Count(e => (e.WasEthereal || e.CardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, e.CardPlay.Card.LastStarsSpent) >= 2) && e.CardPlay.Card.Owner == Owner);
+        int num = CombatManager.Instance.History.CardPlaysFinished.Count(e => (e.WasEthereal || e.CardPlay.Resources.EnergyValue + Math.Max(0, e.CardPlay.Resources.StarValue) >= 2) && e.CardPlay.Card.Owner == Owner);
         EnergyCost.AddThisCombat(-num * DynamicVars.Energy.IntValue);
         return Task.CompletedTask;
     }
@@ -65,7 +65,7 @@ public class BansheesCry2() : ThePrismatic2Card(9,
         {
             return Task.CompletedTask;
         }
-        if (!cardPlay.Card.Keywords.Contains(CardKeyword.Ethereal) && !(cardPlay.Card.EnergyCost.GetResolved() + cardPlay.Card.LastStarsSpent >= 2))
+        if (!cardPlay.Card.Keywords.Contains(CardKeyword.Ethereal) && !(cardPlay.Resources.EnergyValue + cardPlay.Resources.StarValue >= 2))
         {
             return Task.CompletedTask;
         }

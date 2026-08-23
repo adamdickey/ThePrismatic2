@@ -20,6 +20,8 @@ public class Envenom2() : ThePrismatic2Card(2,
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/envenom.png-9f1fd530e72503ce7a2f2baa997dc764.ctex";
     public override string PortraitPath => "res://.godot/imported/envenom.png-9f1fd530e72503ce7a2f2baa997dc764.ctex";
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Cunning);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<EnvenomPower>(1m));
 

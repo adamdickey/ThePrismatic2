@@ -18,15 +18,20 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class Nightmare2() : ThePrismatic2Card(3, 
+public class Nightmare2() : ThePrismatic2Card(1, 
     CardType.Skill, CardRarity.Rare, 
     TargetType.Self)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/nightmare.png-0e5e4a95f852fd9e7ba3c74f8e3c8fab.ctex";
     public override string PortraitPath => "res://.godot/imported/nightmare.png-0e5e4a95f852fd9e7ba3c74f8e3c8fab.ctex";
+
+    public override int CanonicalStarCost => 3;
     
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlyArray<CardKeyword>([
+        CardKeyword.Exhaust,
+        Extensions.Keywords.Starbound
+        ]);
 
     protected override IEnumerable<string> ExtraRunAssetPaths => NNightmareHandsVfx.AssetPaths;
 

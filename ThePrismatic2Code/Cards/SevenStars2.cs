@@ -70,7 +70,7 @@ public class SevenStars2() : ThePrismatic2Card(3,
                 _orbsChanneled.Add(orbType);
             }
         }
-        UpdateCost();
+        SetStarCostThisCombat(CurrentStarCost - _orbsChanneled.Count);
         return Task.CompletedTask;
     }
     
@@ -85,11 +85,7 @@ public class SevenStars2() : ThePrismatic2Card(3,
             }
         }
         _orbsChanneled.Add(orbType);
-        UpdateCost();
+        SetStarCostThisCombat(CurrentStarCost - 1);
         return Task.CompletedTask;
-    }
-    private void UpdateCost()
-    {
-        SetStarCostThisCombat(CanonicalStarCost - _orbsChanneled.Count);
     }
 }

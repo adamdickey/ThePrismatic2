@@ -30,7 +30,7 @@ public class BodySlam2() : ThePrismatic2Card(1,
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((card, _) => card.Owner.Creature.Block),
         new DynamicVar("OstyDamageBase", 0m),
         new DynamicVar("OstyDamageExtra", 1m),
-        new CustomCalculatedDamageVar("OstyDamage", ValueProp.Move).WithMultiplier((card, _) => card.Owner.Osty?.CurrentHp ?? 0)
+        new CustomCalculatedDamageVar("OstyDamage", ValueProp.Move).FromOsty().WithMultiplier((card, _) => card.Owner.Osty?.CurrentHp ?? 0)
     ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.Block));

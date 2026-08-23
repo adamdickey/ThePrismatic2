@@ -1,8 +1,8 @@
 ﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -22,7 +22,9 @@ public class Flatten2() : ThePrismatic2Card(2,
     public override string CustomPortraitPath => "res://.godot/imported/flatten.png-04012f64bf19cc92b525146f7d426bb1.ctex";
     public override string PortraitPath => "res://.godot/imported/flatten.png-04012f64bf19cc92b525146f7d426bb1.ctex";
     
-    protected override bool ShouldGlowGoldInternal => PlayedCostlyCardThisTurn;
+    private bool _costReduced;
+
+    protected override bool ShouldGlowGoldInternal => _costReduced;
 
     protected override HashSet<CardTag> CanonicalTags => [CardTag.OstyAttack];
 
@@ -30,8 +32,6 @@ public class Flatten2() : ThePrismatic2Card(2,
         new SummonVar(1m),
         new OstyDamageVar(11m, ValueProp.Move)
         ]);
-
-    private bool PlayedCostlyCardThisTurn => CombatManager.Instance.History.Entries.OfType<CardPlayFinishedEntry>().Any(e => e.HappenedThisTurn(Owner.Creature.CombatState) && e.CardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, e.CardPlay.Card.LastStarsSpent) >= 2);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -52,30 +52,34 @@ public class Flatten2() : ThePrismatic2Card(2,
     
     public override Task AfterCardEnteredCombat(CardModel card)
     {
-        if (card != this)
+        if (card != this) return Task.CompletedTask;
+        bool costlyCardPlayed = CombatManager.Instance.History.CardPlaysFinished.Any(e => e.CardPlay.Resources.EnergyValue + Math.Max(0, e.CardPlay.Resources.StarValue) >= 2 && e.CardPlay.Card.Owner == Owner && e.HappenedThisTurn(CombatState));
+        if (!costlyCardPlayed)
         {
+            _costReduced = false;
             return Task.CompletedTask;
         }
-        if (!PlayedCostlyCardThisTurn)
-        {
-            return Task.CompletedTask;
-        }
-        ReduceCost();
+        EnergyCost.SetThisTurn(0);
+        _costReduced = true;
         return Task.CompletedTask;
     }
 
     public override Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (!(cardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, cardPlay.Card.LastStarsSpent) >= 2))
+        if (cardPlay.Card != this && cardPlay.Card.Owner == Owner && !_costReduced && cardPlay.Resources.EnergyValue + Math.Max(0, cardPlay.Resources.StarValue) >= 2)
         {
-            return Task.CompletedTask;
+            EnergyCost.SetThisTurn(0);
+            _costReduced = true;
         }
-        ReduceCost();
         return Task.CompletedTask;
     }
-
-    private void ReduceCost()
+    
+    public override Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
-        EnergyCost.SetThisTurn(0);
+        if (player == Owner)
+        {
+            _costReduced = false;
+        }
+        return Task.CompletedTask;
     }
 }

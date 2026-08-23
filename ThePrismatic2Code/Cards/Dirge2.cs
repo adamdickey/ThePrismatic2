@@ -34,11 +34,7 @@ public class Dirge2() : ThePrismatic2Card(0,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         int xValue = ResolveEnergyXValue();
-        if (IsUpgraded)
-        {
-            await OrbCmd.Channel<BoneOrb>(choiceContext, Owner);
-        }
-        for (int i = 0; i < xValue-1; i++)
+        for (int i = 0; i < xValue; i++)
         {
             await OrbCmd.Channel<BoneOrb>(choiceContext, Owner);
         }

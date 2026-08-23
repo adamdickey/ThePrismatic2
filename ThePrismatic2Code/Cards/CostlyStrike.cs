@@ -27,8 +27,8 @@ public class CostlyStrike() : ThePrismatic2Card(2,
     public override bool CanBeGeneratedInCombat => false;
 
     private bool _costReduced;
-    
-    protected override bool ShouldGlowGoldInternal => CombatManager.Instance.History.CardPlaysFinished.Any(e => e.CardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, e.CardPlay.Card.LastStarsSpent) >= 2 && e.CardPlay.Card.Owner == Owner && e.HappenedThisTurn(CombatState));
+
+    protected override bool ShouldGlowGoldInternal => _costReduced;
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(11m, ValueProp.Move));
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Costly));
 

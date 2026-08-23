@@ -26,8 +26,8 @@ public class Squeeze2() : ThePrismatic2Card(3,
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Costly));
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new SummonVar(1m),
-        new CalculationBaseVar(20m),
+        new SummonVar(5m),
+        new CalculationBaseVar(15m),
         new ExtraDamageVar(5m).FromOsty(),
         new CalculatedDamageVar(ValueProp.Move).FromOsty().WithMultiplier((card, _) =>
         {
@@ -51,6 +51,7 @@ public class Squeeze2() : ThePrismatic2Card(3,
 
     protected override void OnUpgrade()
     {
+        DynamicVars.Summon.UpgradeValueBy(1m);
         DynamicVars.CalculationBase.UpgradeValueBy(5m);
         DynamicVars.ExtraDamage.UpgradeValueBy(1m);
     }

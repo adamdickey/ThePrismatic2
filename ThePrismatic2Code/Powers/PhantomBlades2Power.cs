@@ -65,7 +65,7 @@ public class PhantomBlades2Power : ThePrismatic2Power
         {
             return 0m;
         }
-        int num = CombatManager.Instance.History.CardPlaysFinished.Count(e => e.HappenedThisTurn(CombatState) && e.CardPlay.Card.EnergyCost.Canonical == 0 && e.CardPlay.Card.Type == CardType.Attack && e.CardPlay.Card.Owner.Creature == Owner);
+        int num = CombatManager.Instance.History.CardPlaysFinished.Count(e => e.HappenedThisTurn(CombatState) && e.CardPlay.Card.EnergyCost.GetResolved() == 0 && e.CardPlay.Card.Type == CardType.Attack && e.CardPlay.Card.Owner.Creature == Owner);
         if (num > 0)
         {
             return 0m;

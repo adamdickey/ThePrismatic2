@@ -25,7 +25,7 @@ public class BladeDance2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new CardsVar(2),
-        new PowerVar<Accuracy2Power>(2m)
+        new PowerVar<Accuracy2Power>(1m)
         ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<Shiv>());
@@ -36,15 +36,12 @@ public class BladeDance2() : ThePrismatic2Card(1,
         await PowerCmd.Apply<Accuracy2Power>(choiceContext, Owner.Creature, DynamicVars["Accuracy2Power"].BaseValue, Owner.Creature, this);
         if (CombatState != null)
         {
-            IEnumerable<CardModel> enumerable = await Shiv.CreateInHand(Owner, DynamicVars.Cards.IntValue, CombatState);
-            if (!IsUpgraded)
-            {
-                return;
-            }
-            foreach (CardModel item in enumerable)
-            {
-                CardCmd.Upgrade(item);
-            }
+            await Shiv.CreateInHand(Owner, DynamicVars.Cards.IntValue, CombatState);
         }
+    }
+
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Cards.UpgradeValueBy(1m);
     }
 }

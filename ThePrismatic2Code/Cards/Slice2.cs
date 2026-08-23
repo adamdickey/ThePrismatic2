@@ -33,7 +33,10 @@ public class Slice2() : ThePrismatic2Card(0,
         new CardsVar(1),
         ]);
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed));
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed),
+        HoverTipFactory.FromCard<Shiv>() 
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

@@ -10,13 +10,17 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
-public class Refract2() : ThePrismatic2Card(3, 
+public class Refract2() : ThePrismatic2Card(2, 
     CardType.Attack, CardRarity.Uncommon, 
     TargetType.AnyEnemy)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/refract.png-1a2eefec5e3d3b524eb69d13f3fafb2a.ctex";
     public override string PortraitPath => "res://.godot/imported/refract.png-1a2eefec5e3d3b524eb69d13f3fafb2a.ctex";
+
+    public override int CanonicalStarCost => 1;
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Channeling),
@@ -25,7 +29,7 @@ public class Refract2() : ThePrismatic2Card(3,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new RepeatVar(2),
-        new DamageVar(9m, ValueProp.Move)
+        new DamageVar(7m, ValueProp.Move)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

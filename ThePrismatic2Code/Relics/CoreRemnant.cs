@@ -21,7 +21,7 @@ public sealed class CoreRemnant: ThePrismatic2Relic
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Channeling),
-        HoverTipFactory.FromOrb<VenomOrb>()
+        HoverTipFactory.FromOrb<SparkOrb>()
     ]);
 
     public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
@@ -30,7 +30,7 @@ public sealed class CoreRemnant: ThePrismatic2Relic
         {
             for (int i = 0; i < DynamicVars["Lightning"].BaseValue; i++)
             {
-                await OrbCmd.Channel<VenomOrb>(new BlockingPlayerChoiceContext(), Owner);
+                await OrbCmd.Channel<SparkOrb>(new BlockingPlayerChoiceContext(), Owner);
             }
         }
     }

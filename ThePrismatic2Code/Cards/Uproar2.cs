@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
-public class Uproar2() : ThePrismatic2Card(2, 
+public class Uproar2() : ThePrismatic2Card(1, 
     CardType.Attack, CardRarity.Common, 
     TargetType.AnyEnemy)
 {
@@ -17,7 +17,11 @@ public class Uproar2() : ThePrismatic2Card(2,
     public override string CustomPortraitPath => "res://.godot/imported/uproar.png-a8bc36a119474d14dc3e3bbac995f2a0.ctex";
     public override string PortraitPath => "res://.godot/imported/uproar.png-a8bc36a119474d14dc3e3bbac995f2a0.ctex";
     
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(6m, ValueProp.Move));
+    public override int CanonicalStarCost => 1;
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
+    
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(4m, ValueProp.Move));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

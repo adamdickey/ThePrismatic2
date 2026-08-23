@@ -20,7 +20,7 @@ public class DeflectPower : ThePrismatic2Power
     
     public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (cardPlay.Card.Owner == Owner.Player && cardPlay.Card.EnergyCost.Canonical == 0)
+        if (cardPlay.Card.Owner == Owner.Player && cardPlay.Card.Type == CardType.Attack)
         {
             await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered, null);
         }

@@ -48,7 +48,6 @@ public sealed class SolarOrb : CustomOrbModel
     
     public override async Task Passive(PlayerChoiceContext choiceContext, Creature? target)
     {
-        Trigger();
         await AfterOrbChanneled(choiceContext, null, this);
     }
 

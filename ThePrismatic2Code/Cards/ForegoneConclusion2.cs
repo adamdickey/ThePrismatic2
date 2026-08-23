@@ -19,6 +19,8 @@ public class ForegoneConclusion2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/foregone_conclusion.png-a620f98af08682227f7075f78418ba48.ctex";
     public override string PortraitPath => "res://.godot/imported/foregone_conclusion.png-a620f98af08682227f7075f78418ba48.ctex";
     
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Cunning);
+    
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new CardsVar(2));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

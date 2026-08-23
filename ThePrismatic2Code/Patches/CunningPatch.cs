@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+﻿using BaseLib.Abstracts;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
@@ -9,10 +9,9 @@ using ThePrismatic2.ThePrismatic2Code.Extensions;
 
 namespace ThePrismatic2.ThePrismatic2Code.Patches;
 
-[HarmonyPatch(typeof(CardCmd), "Exhaust")]
-public static class CunningPatch
+public class CunningSingleton() : CustomSingletonModel(true, false)
 {
-    private static async void Postfix(PlayerChoiceContext choiceContext, CardModel card)
+    public override async Task AfterCardExhausted(PlayerChoiceContext choiceContext, CardModel card, bool causedByEthereal)
     {
         if (CombatManager.Instance.IsOverOrEnding)
         {
@@ -31,17 +30,17 @@ public static class CunningPatch
         }
         await CardCmd.AutoPlay(choiceContext, card, null, AutoPlayType.SlyDiscard);
     }
-}
-
-[HarmonyPatch(typeof(CardCmd), "DiscardAndDraw")]
-public static class CunningDiscardPatch
-{
-    private static async void Postfix(PlayerChoiceContext choiceContext, IEnumerable<CardModel> cardsToDiscard, int cardsToDraw)
+    
+    public override async Task AfterCardDiscarded(PlayerChoiceContext choiceContext, CardModel card)
     {
-        List<CardModel> cunningCards = cardsToDiscard.Where(card => card.Keywords.Contains(Keywords.Cunning) || card.Keywords.Contains(Keywords.CunningThisTurn)).ToList();
-        foreach (CardModel item in cunningCards)
+        if (CombatManager.Instance.IsOverOrEnding)
         {
-            await CardCmd.AutoPlay(choiceContext, item, null, AutoPlayType.SlyDiscard);
+            return;
         }
+        if (!card.Keywords.Contains(Keywords.Cunning) && !card.Keywords.Contains(Keywords.CunningThisTurn))
+        {
+            return;
+        }
+        await CardCmd.AutoPlay(choiceContext, card, null, AutoPlayType.SlyDiscard);
     }
 }

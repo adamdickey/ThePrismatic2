@@ -9,17 +9,22 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
-public class Sunder2() : ThePrismatic2Card(3, 
+public class Sunder2() : ThePrismatic2Card(2, 
     CardType.Attack, CardRarity.Uncommon, 
     TargetType.AnyEnemy)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/sunder.png-cba0fd82a610011d897bb4845030b5f0.ctex";
     public override string PortraitPath => "res://.godot/imported/sunder.png-cba0fd82a610011d897bb4845030b5f0.ctex";
+
+    public override int CanonicalStarCost => 1;
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(24m, ValueProp.Move),
-        new EnergyVar(3)
+        new EnergyVar(2),
+        new StarsVar(2)
     ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(EnergyHoverTip);
@@ -32,6 +37,7 @@ public class Sunder2() : ThePrismatic2Card(3,
                 .Execute(choiceContext)).Results.SelectMany(r => r).Any(r => r.WasTargetKilled))
         {
             await PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, Owner);
+            await PlayerCmd.GainStars(DynamicVars.Stars.IntValue, Owner);
         }
     }
 

@@ -10,13 +10,17 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class BulletTime2() : ThePrismatic2Card(3, 
+public class BulletTime2() : ThePrismatic2Card(1, 
     CardType.Skill, CardRarity.Rare, 
     TargetType.Self)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/bullet_time.png-79034f0cabded6db90c8dcf59e1a468e.ctex";
     public override string PortraitPath => "res://.godot/imported/bullet_time.png-79034f0cabded6db90c8dcf59e1a468e.ctex";
+    
+    public override int CanonicalStarCost => 3;
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

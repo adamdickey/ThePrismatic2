@@ -22,7 +22,7 @@ public class WroughtInWar2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/wrought_in_war.png-fbaf5558a1b7b26aa86a5c2d5c71549c.ctex";
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(8m, ValueProp.Move),
+        new DamageVar(9m, ValueProp.Move),
         new DynamicVar("Orbs", 1m)
     ]);
 

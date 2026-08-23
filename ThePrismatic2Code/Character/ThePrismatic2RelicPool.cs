@@ -3,6 +3,7 @@ using ThePrismatic2.ThePrismatic2Code.Extensions;
 using Godot;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Relics;
+using ThePrismatic2.ThePrismatic2Code.Relics;
 
 namespace ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -17,6 +18,11 @@ public class ThePrismatic2RelicPool : CustomRelicPoolModel
     {
         RelicModel[] relicPool =
         [
+            ModelDb.Relic<SadisticDagger>(),
+            ModelDb.Relic<RealityBox>(),
+            ModelDb.Relic<BagOfDice>(),
+            ModelDb.Relic<CostlyDraw>(),
+            ModelDb.Relic<InnateRelic>(),
             ModelDb.Relic<RedSkull>(),
             ModelDb.Relic<CharonsAshes>(),
             ModelDb.Relic<Brimstone>(),

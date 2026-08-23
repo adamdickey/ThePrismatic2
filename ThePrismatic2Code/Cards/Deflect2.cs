@@ -23,7 +23,7 @@ public class Deflect2() : ThePrismatic2Card(0,
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new BlockVar(4m, ValueProp.Move),
+        new BlockVar(3m, ValueProp.Move),
         new PowerVar<DeflectPower>(1m)
         ]);
 

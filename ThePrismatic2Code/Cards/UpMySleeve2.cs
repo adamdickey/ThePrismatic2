@@ -12,7 +12,7 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class UpMySleeve2() : ThePrismatic2Card(2, 
+public class UpMySleeve2() : ThePrismatic2Card(3, 
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.Self)
 {
@@ -21,6 +21,8 @@ public class UpMySleeve2() : ThePrismatic2Card(2,
     public override string PortraitPath => "res://.godot/imported/up_my_sleeve.png-170a07df5e0e068fff13f77f6b51b0b0.ctex";
     
     private int _timesPlayedThisCombat;
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Cunning);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new CardsVar(3));
 
@@ -53,6 +55,6 @@ public class UpMySleeve2() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Cards.UpgradeValueBy(1m);
+        EnergyCost.UpgradeBy(-1);
     }
 }

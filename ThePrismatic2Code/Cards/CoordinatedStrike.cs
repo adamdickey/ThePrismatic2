@@ -28,8 +28,8 @@ public class CoordinatedStrike() : ThePrismatic2Card(1,
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.DualWield);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(7m, ValueProp.Move),
-        new OstyDamageVar(3m, ValueProp.Move)
+        new DamageVar(8m, ValueProp.Move),
+        new OstyDamageVar(4m, ValueProp.Move)
         ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -50,6 +50,6 @@ public class CoordinatedStrike() : ThePrismatic2Card(1,
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(3m);
-        DynamicVars.OstyDamage.UpgradeValueBy(2m);
+        DynamicVars.OstyDamage.UpgradeValueBy(1m);
     }
 }

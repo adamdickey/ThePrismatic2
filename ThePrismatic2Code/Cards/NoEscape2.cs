@@ -28,9 +28,10 @@ public class NoEscape2() : ThePrismatic2Card(1,
         new CalculationExtraVar(5m),
         new CalculatedVar("CalculatedDebuffs").WithMultiplier(delegate(CardModel card, Creature? target)
         {
-            int num = target?.Powers.Where(power => power.Type == PowerType.Debuff).Sum(power => power.Amount) ?? 0;
+            int num = target?.Powers.Where(power => power is { Type: PowerType.Debuff, Applier.IsPlayer: true }).Sum(power => power.Amount) ?? 0;
             decimal baseValue = card.DynamicVars["DebuffThreshold"].BaseValue;
-            return Math.Floor(num / baseValue);
+            decimal calculatedDoom = Math.Floor(num / baseValue);
+            return calculatedDoom;
         })
     ]);
 

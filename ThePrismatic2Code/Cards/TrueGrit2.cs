@@ -51,6 +51,6 @@ public class TrueGrit2() : ThePrismatic2Card(1,
     
 	protected override void OnUpgrade()
 	{
-		DynamicVars.Block.UpgradeValueBy(1m);
+		DynamicVars.Block.UpgradeValueBy(2m);
 	}
 }
