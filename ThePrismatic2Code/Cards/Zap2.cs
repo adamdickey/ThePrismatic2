@@ -23,7 +23,8 @@ public class Zap2() : ThePrismatic2Card(1,
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Channeling),
         HoverTipFactory.FromOrb<LightningOrb>(),
-        HoverTipFactory.FromOrb<MagmaOrb>()
+        HoverTipFactory.FromOrb<MagmaOrb>(),
+        HoverTipFactory.FromOrb<IronOrb>()
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -31,6 +32,7 @@ public class Zap2() : ThePrismatic2Card(1,
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
         await OrbCmd.Channel<MagmaOrb>(choiceContext, Owner);
+        await OrbCmd.Channel<IronOrb>(choiceContext, Owner);
     }
 
     protected override void OnUpgrade()

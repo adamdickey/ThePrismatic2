@@ -36,8 +36,8 @@ public class Null2() : ThePrismatic2Card(2,
     ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(6m, ValueProp.Move),
-        new OstyDamageVar(3m, ValueProp.Move),
+        new DamageVar(8m, ValueProp.Move),
+        new OstyDamageVar(4m, ValueProp.Move),
         new PowerVar<WeakPower>(1m)
     ]);
 
@@ -62,8 +62,7 @@ public class Null2() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
-        DynamicVars.OstyDamage.UpgradeValueBy(1m);
-        DynamicVars.Weak.UpgradeValueBy(1m);
+        DynamicVars.Damage.UpgradeValueBy(4m);
+        DynamicVars.OstyDamage.UpgradeValueBy(2m);
     }
 }

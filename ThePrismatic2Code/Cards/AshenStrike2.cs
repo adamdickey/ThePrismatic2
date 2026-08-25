@@ -20,14 +20,14 @@ public class AshenStrike2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/ashen_strike.png-98500cbf2542eff5b6ad2450063b8edd.ctex";
     public override string PortraitPath => "res://.godot/imported/ashen_strike.png-98500cbf2542eff5b6ad2450063b8edd.ctex";
     
-    public override int CanonicalStarCost => 1;
+    public override int CanonicalStarCost => 2;
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
     
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new CalculationBaseVar(6m),
+        new CalculationBaseVar(10m),
         new ExtraDamageVar(3m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((card, _) => PileType.Exhaust.GetPile(card.Owner).Cards.Count)
     ]);
@@ -44,6 +44,7 @@ public class AshenStrike2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
+        DynamicVars.Damage.UpgradeValueBy(4m);
         DynamicVars.ExtraDamage.UpgradeValueBy(1m);
     }
 }

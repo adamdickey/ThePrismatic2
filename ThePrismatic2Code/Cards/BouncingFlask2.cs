@@ -31,8 +31,8 @@ public class BouncingFlask2() : ThePrismatic2Card(2,
     private readonly Color _vfxTint = new Color("83eb85");
 
 	protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-		new PowerVar<PoisonPower>(3m),
-		new PowerVar<DoomPower>(3m),
+		new PowerVar<PoisonPower>(4m),
+		new PowerVar<DoomPower>(4m),
 		new RepeatVar(2)
 	]);
 

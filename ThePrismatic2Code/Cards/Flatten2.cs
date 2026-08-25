@@ -53,8 +53,9 @@ public class Flatten2() : ThePrismatic2Card(2,
     public override Task AfterCardEnteredCombat(CardModel card)
     {
         if (card != this) return Task.CompletedTask;
-        bool costlyCardPlayed = CombatManager.Instance.History.CardPlaysFinished.Any(e => e.CardPlay.Resources.EnergyValue + Math.Max(0, e.CardPlay.Resources.StarValue) >= 2 && e.CardPlay.Card.Owner == Owner && e.HappenedThisTurn(CombatState));
-        if (!costlyCardPlayed)
+        bool triggerCardPlayed = CombatManager.Instance.History.CardPlaysFinished.Any(e => e.CardPlay.Card.Owner == Owner && e.HappenedThisTurn(CombatState) &&
+            (e.CardPlay.Resources.EnergyValue + Math.Max(0, e.CardPlay.Resources.StarValue) >= 2 || e.CardPlay.Card.Tags.Contains(CardTag.OstyAttack)));
+        if (!triggerCardPlayed)
         {
             _costReduced = false;
             return Task.CompletedTask;
@@ -66,7 +67,8 @@ public class Flatten2() : ThePrismatic2Card(2,
 
     public override Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
     {
-        if (cardPlay.Card != this && cardPlay.Card.Owner == Owner && !_costReduced && cardPlay.Resources.EnergyValue + Math.Max(0, cardPlay.Resources.StarValue) >= 2)
+        if (cardPlay.Card != this && cardPlay.Card.Owner == Owner && !_costReduced &&
+            (cardPlay.Resources.EnergyValue + Math.Max(0, cardPlay.Resources.StarValue) >= 2 || cardPlay.Card.Tags.Contains(CardTag.OstyAttack)))
         {
             EnergyCost.SetThisTurn(0);
             _costReduced = true;

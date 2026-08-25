@@ -15,7 +15,7 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class SevenStars2() : ThePrismatic2Card(3, 
+public class SevenStars2() : ThePrismatic2Card(2, 
     CardType.Attack, CardRarity.Rare, 
     TargetType.AllEnemies)
 {
@@ -49,7 +49,7 @@ public class SevenStars2() : ThePrismatic2Card(3,
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-2);
+        EnergyCost.UpgradeBy(-1);
     }
     
     public override Task AfterCardEnteredCombat(CardModel card)

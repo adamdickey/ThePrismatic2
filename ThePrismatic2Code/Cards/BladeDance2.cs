@@ -25,7 +25,7 @@ public class BladeDance2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new CardsVar(2),
-        new PowerVar<Accuracy2Power>(1m)
+        new PowerVar<Accuracy2Power>(2m)
         ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<Shiv>());

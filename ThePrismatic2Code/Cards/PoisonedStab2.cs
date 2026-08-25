@@ -22,7 +22,7 @@ public class PoisonedStab2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/poisoned_stab.png-e4d139205c2f646d786f0dd475c75632.ctex";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(6m, ValueProp.Move)
+        new DamageVar(5m, ValueProp.Move)
     ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
@@ -41,6 +41,6 @@ public class PoisonedStab2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }
