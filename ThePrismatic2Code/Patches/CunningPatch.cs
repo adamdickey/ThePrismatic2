@@ -23,7 +23,9 @@ public class CunningSingleton() : CustomSingletonModel(true, false)
         }
         if (card.ExhaustOnNextPlay || card.Keywords.Contains(CardKeyword.Exhaust))
         {
-            if (CombatManager.Instance.History.Entries.OfType<CardPlayFinishedEntry>().LastOrDefault()?.CardPlay.Card == card)
+            List<CardPlayStartedEntry> entries = CombatManager.Instance.History.Entries.OfType<CardPlayStartedEntry>().ToList();
+            CardModel previousCard = entries[^2].CardPlay.Card;
+            if (previousCard == card)
             {
                 return;
             }

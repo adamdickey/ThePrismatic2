@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -22,7 +23,9 @@ public class FightThrough2() : ThePrismatic2Card(1,
     
     public override bool GainsBlock => true;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<Forget>());
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Cunning);
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<Wound>());
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(13m, ValueProp.Move));
 
@@ -31,7 +34,7 @@ public class FightThrough2() : ThePrismatic2Card(1,
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
         for (int i = 0; i < 2; i++)
         {
-            CardModel? card = CombatState?.CreateCard<Forget>(Owner);
+            CardModel? card = CombatState?.CreateCard<Wound>(Owner);
             if (card != null)
                 CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Discard, Owner));
         }

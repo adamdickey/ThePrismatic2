@@ -19,7 +19,11 @@ public class Dualcast2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/dualcast.png-4a63c960e26cfcd3bcf80f9fd2c2ccc9.ctex";
     
     public override OrbEvokeType OrbEvokeType => OrbEvokeType.Front;
+    
+    public override int CanonicalStarCost => 0;
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
+    
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.Evoke));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

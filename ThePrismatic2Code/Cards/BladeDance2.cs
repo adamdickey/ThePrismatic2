@@ -36,12 +36,15 @@ public class BladeDance2() : ThePrismatic2Card(1,
         await PowerCmd.Apply<Accuracy2Power>(choiceContext, Owner.Creature, DynamicVars["Accuracy2Power"].BaseValue, Owner.Creature, this);
         if (CombatState != null)
         {
-            await Shiv.CreateInHand(Owner, DynamicVars.Cards.IntValue, CombatState);
+            IEnumerable<CardModel> enumerable = await Shiv.CreateInHand(Owner, DynamicVars.Cards.IntValue, CombatState);
+            if (!IsUpgraded)
+            {
+                return;
+            }
+            foreach (CardModel item in enumerable)
+            {
+                CardCmd.Upgrade(item);
+            }
         }
-    }
-
-    protected override void OnUpgrade()
-    {
-        DynamicVars.Cards.UpgradeValueBy(1m);
     }
 }

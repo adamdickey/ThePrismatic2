@@ -22,7 +22,9 @@ public class ForbiddenGrimoire2() : ThePrismatic2Card(2,
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
     public override string CustomPortraitPath => "ForbiddenGrimoire.png".BigCardImagePath();
     public override string PortraitPath => "ForbiddenGrimoire.png".CardImagePath();
-    
+
+    public override bool CanBeGeneratedInCombat => false;
+
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Eternal);
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([

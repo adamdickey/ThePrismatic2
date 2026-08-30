@@ -26,7 +26,7 @@ public class ForgingStrike() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(6m, ValueProp.Move),
-        new ForgeVar(4)
+        new ForgeVar(5)
         ]);
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => HoverTipFactory.FromForge();

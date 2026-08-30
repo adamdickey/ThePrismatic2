@@ -28,14 +28,14 @@ public class Begone2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         CardModel? cardModel = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, 1), context: choiceContext, player: Owner, filter: null, source: this)).FirstOrDefault();
-        if (cardModel != null && CombatState != null)
+        if (CombatState != null)
         {
             CardModel cardModel2 = CombatState.CreateCard<MinionStrike>(Owner);
             if (IsUpgraded)
             {
                 CardCmd.Upgrade(cardModel2);
             }
-            await CardCmd.Exhaust(choiceContext, cardModel);
+            if (cardModel != null) await CardCmd.Exhaust(choiceContext, cardModel);
             await CardPileCmd.AddGeneratedCardToCombat(cardModel2, PileType.Hand, Owner);
         }
     }

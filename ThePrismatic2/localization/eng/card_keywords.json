@@ -7,10 +7,10 @@
   "THEPRISMATIC2-BLEED.title": "Bleed",
   "THEPRISMATIC2-CUNNING.description": "If this card is [gold]Exhausted[/gold] or discarded from anywhere before the end of your turn, play it for free.",
   "THEPRISMATIC2-CUNNING.title": "Cunning",
-  "THEPRISMATIC2-STARBOUND.description": "If you don't have enough Energy, use Stars instead. If you don't have enough Stars, use Energy instead.",
+  "THEPRISMATIC2-STARBOUND.description": "Stars may be used in place of Energy and Energy may be used in place of Stars when playing this card.",
   "THEPRISMATIC2-STARBOUND.title": "Starbound",
   "THEPRISMATIC2-CUNNINGTHISTURN.description": "If this card is [gold]Exhausted[/gold] or discarded from anywhere before the end of your turn, play it for free.",
   "THEPRISMATIC2-CUNNINGTHISTURN.title": "Cunning",
-  "THEPRISMATIC2-STARBOUNDTHISTURN.description": "If you don't have enough Energy, use Stars instead. If you don't have enough Stars, use Energy instead.",
+  "THEPRISMATIC2-STARBOUNDTHISTURN.description": "Stars may be used in place of Energy and Energy may be used in place of Stars when playing this card.",
   "THEPRISMATIC2-STARBOUNDTHISTURN.title": "Starbound"
 }

@@ -35,7 +35,7 @@ public class CoordinatedDefend() : ThePrismatic2Card(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play);
-        if (Osty.CheckMissingWithAnim(Owner) &&  Owner.Osty != null)
+        if (!Osty.CheckMissingWithAnim(Owner))
         {
             await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
         }

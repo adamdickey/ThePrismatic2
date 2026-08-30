@@ -13,6 +13,7 @@ using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Cards;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
+using ThePrismatic2.ThePrismatic2Code.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -49,7 +50,7 @@ public class CrushUnder2() : ThePrismatic2Card(1,
                 .WithHitFx("vfx/vfx_heavy_blunt", null, "blunt_attack.mp3")
                 .WithHitVfxSpawnedAtBase()
                 .Execute(choiceContext);
-            await PowerCmd.Apply<CrushUnderPower>(choiceContext, enemies, ((CalculatedVar)DynamicVars["CalculatedStrengthLoss"]).Calculate(cardPlay.Target), Owner.Creature, this);
+            await PowerCmd.Apply<CrushUnder2Power>(choiceContext, enemies, ((CalculatedVar)DynamicVars["CalculatedStrengthLoss"]).Calculate(cardPlay.Target), Owner.Creature, this);
         }
     }
 

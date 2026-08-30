@@ -21,8 +21,8 @@ public sealed class SparkOrb : CustomOrbModel
     public override string CustomEvokeSfx => "event:/sfx/characters/defect/defect_lightning_evoke";
     public override string CustomChannelSfx => "event:/sfx/characters/defect/defect_lightning_channel";
 
-    public override decimal PassiveVal => ModifyOrbValue(1m);
-    public override decimal EvokeVal => ModifyOrbValue(3m);
+    public override decimal PassiveVal => ModifyOrbValue(2m);
+    public override decimal EvokeVal => ModifyOrbValue(5m);
 
     public override Node2D CreateCustomSprite()
     {
@@ -32,6 +32,7 @@ public sealed class SparkOrb : CustomOrbModel
             .Instantiate<Node2D>();
         new MegaSprite(lightning.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
+        lightning.Scale = new Vector2(0.9f, 0.9f);
         container.AddChild(lightning);
         return container;
     }

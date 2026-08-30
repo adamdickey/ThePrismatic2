@@ -3,8 +3,10 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
+using ThePrismatic2.ThePrismatic2Code.Cards;
 
 namespace ThePrismatic2.ThePrismatic2Code.Powers;
 
@@ -13,6 +15,8 @@ public class TerraformingPower : ThePrismatic2Power
     public override string CustomPackedIconPath => "res://.godot/imported/focused_strike_power.png-8d20a1bfebcb38b96c2f106cd581934b.s3tc.ctex";
 
     public override string CustomBigIconPath => "res://.godot/imported/focused_strike_power.png-8d20a1bfebcb38b96c2f106cd581934b.s3tc.ctex";
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<Terraforming2>());
 
     private bool _shouldIgnoreNextInstance;
 

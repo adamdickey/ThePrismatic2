@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using ThePrismatic2.ThePrismatic2Code.Character;
+using ThePrismatic2.ThePrismatic2Code.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -28,14 +29,14 @@ public class Hotfix2() : ThePrismatic2Card(0,
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new PowerVar<FocusPower>(1m),
+        new PowerVar<FocusPower>(2m),
         new ForgeVar(5)
         ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<HotfixPower>(choiceContext, Owner.Creature, DynamicVars["FocusPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Hotfix2Power>(choiceContext, Owner.Creature, DynamicVars["FocusPower"].BaseValue, Owner.Creature, this);
         await ForgeCmd.Forge(DynamicVars.Forge.BaseValue, Owner, this);
     }
 

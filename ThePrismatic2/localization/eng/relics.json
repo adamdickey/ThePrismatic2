@@ -36,10 +36,16 @@
   "THEPRISMATIC2-BAG_OF_DICE.description": "At the start of each combat, apply [blue]{ExposedPower}[/blue] [gold]Exposed[/gold] to ALL enemies.",
   "THEPRISMATIC2-BAG_OF_DICE.flavor": "Flavor",
   "THEPRISMATIC2-BAG_OF_DICE.title": "Bag of Dice",
-  "THEPRISMATIC2-COSTLY_DRAW.description": "Whenever you play a [gold]Costly[/gold] card, draw [blue]{Cards}[/blue] {Cards:plural:card|cards}.",
-  "THEPRISMATIC2-COSTLY_DRAW.flavor": "Flavor",
-  "THEPRISMATIC2-COSTLY_DRAW.title": "Costly Draw",
-  "THEPRISMATIC2-INNATE_RELIC.description": "At the start of each combat, draw 1 additional card for each [gold]Innate[/gold] card in your Deck.",
-  "THEPRISMATIC2-INNATE_RELIC.flavor": "Flavor",
-  "THEPRISMATIC2-INNATE_RELIC.title": "Innate Relic"
+  "THEPRISMATIC2-SMITHS_ANVIL.description": "The first time you play a [gold]Costly[/gold] card each turn, [gold]Forge[/gold] [blue]{Forge:diff()}[/blue].",
+  "THEPRISMATIC2-SMITHS_ANVIL.flavor": "Flavor",
+  "THEPRISMATIC2-SMITHS_ANVIL.title": "Smith's Anvil",
+  "THEPRISMATIC2-ALARM_CLOCK.description": "At the start of each combat, draw [blue]1[/blue] additional card for each [gold]Innate[/gold] card in your [gold]Deck[/gold].",
+  "THEPRISMATIC2-ALARM_CLOCK.flavor": "Flavor",
+  "THEPRISMATIC2-ALARM_CLOCK.title": "Alarm Clock",
+  "THEPRISMATIC2-DEAD_BRANCH2.description": "Whenever you [gold]Exhaust[/gold] a card, add a random card into your [gold]Hand[/gold].",
+  "THEPRISMATIC2-DEAD_BRANCH2.flavor": "The branch of a tree from a forgotten era.",
+  "THEPRISMATIC2-DEAD_BRANCH2.title": "Dead Branch",
+  "THEPRISMATIC2-BRIMSTONE2.description": "At the start of your turn, gain [blue]{SelfStrength}[/blue] [gold]Strength[/gold] and [blue]{FocusPower}[/blue] [gold]Focus[/gold], and ALL enemies gain [blue]{EnemyStrength}[/blue] [gold]Strength[/gold].",
+  "THEPRISMATIC2-BRIMSTONE2.flavor": "Emanates an infernal heat.",
+  "THEPRISMATIC2-BRIMSTONE2.title": "Brimstone"
 }

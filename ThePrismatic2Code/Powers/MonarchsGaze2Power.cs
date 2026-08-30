@@ -3,7 +3,6 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace ThePrismatic2.ThePrismatic2Code.Powers;
@@ -21,7 +20,7 @@ public class MonarchsGaze2Power : ThePrismatic2Power
     {
         if (Owner.Player != null && (dealer == Owner || dealer == Owner.Player.Osty) && props.IsPoweredAttack())
         {
-            await PowerCmd.Apply<MonarchsGazeStrengthDownPower>(choiceContext, target, Amount, Owner, null);
+            await PowerCmd.Apply<MonarchsGaze2StrengthDownPower>(choiceContext, target, Amount, Owner, null);
         }
     }
 }

@@ -37,11 +37,11 @@ public class Seance2() : ThePrismatic2Card(1,
         foreach (CardModel item in selection)
         {
             await CardCmd.Exhaust(choiceContext, item);
-            CardModel? cardModel = CombatState?.CreateCard<Soul>(Owner);
-            if (cardModel != null)
-            {
-                CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(cardModel, PileType.Draw, Owner, CardPilePosition.Random));
-            }
+        }
+        CardModel? cardModel = CombatState?.CreateCard<Soul>(Owner);
+        if (cardModel != null)
+        {
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(cardModel, PileType.Draw, Owner, CardPilePosition.Random));
         }
     }
 

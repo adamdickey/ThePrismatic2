@@ -25,7 +25,7 @@ public class Assassinate2() : ThePrismatic2Card(0,
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(9m, ValueProp.Move),
         new PowerVar<VulnerablePower>(1m),
-        new DynamicVar("Exposed", 1m)
+        new DynamicVar("Exposed", 2m)
     ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([

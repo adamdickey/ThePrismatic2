@@ -20,11 +20,14 @@ public class Zap2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/zap.png-bd0bd069b08ff9bdf4f983f7b3d2e0b0.ctex";
     public override string PortraitPath => "res://.godot/imported/zap.png-bd0bd069b08ff9bdf4f983f7b3d2e0b0.ctex";
     
+    public override int CanonicalStarCost => 0;
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
+    
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Channeling),
         HoverTipFactory.FromOrb<LightningOrb>(),
-        HoverTipFactory.FromOrb<MagmaOrb>(),
-        HoverTipFactory.FromOrb<IronOrb>()
+        HoverTipFactory.FromOrb<MagmaOrb>()
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -32,7 +35,6 @@ public class Zap2() : ThePrismatic2Card(1,
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
         await OrbCmd.Channel<MagmaOrb>(choiceContext, Owner);
-        await OrbCmd.Channel<IronOrb>(choiceContext, Owner);
     }
 
     protected override void OnUpgrade()

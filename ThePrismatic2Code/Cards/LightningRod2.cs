@@ -10,11 +10,12 @@ using MegaCrit.Sts2.Core.Models.Orbs;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
+using ThePrismatic2.ThePrismatic2Code.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class LightningRod2() : ThePrismatic2Card(0, 
+public class LightningRod2() : ThePrismatic2Card(1, 
     CardType.Skill, CardRarity.Common, 
     TargetType.Self)
 {
@@ -22,16 +23,12 @@ public class LightningRod2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/lightning_rod.png-d80f6b5d52a0fcab8b0a05a2cee44e6b.ctex";
     public override string PortraitPath => "res://.godot/imported/lightning_rod.png-d80f6b5d52a0fcab8b0a05a2cee44e6b.ctex";
     
-    public override int CanonicalStarCost => 1;
-    
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Channeling),
         HoverTipFactory.FromOrb<LightningOrb>()
     ]);
 
     public override bool GainsBlock => true;
-    
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new BlockVar(4m, ValueProp.Move),
@@ -42,7 +39,7 @@ public class LightningRod2() : ThePrismatic2Card(0,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        await PowerCmd.Apply<LightningRodPower>(choiceContext, Owner.Creature, DynamicVars["LightningRodPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<LightningRod2Power>(choiceContext, Owner.Creature, DynamicVars["LightningRodPower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

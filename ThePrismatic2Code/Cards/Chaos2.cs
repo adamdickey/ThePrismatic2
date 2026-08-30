@@ -18,10 +18,11 @@ public class Chaos2() : ThePrismatic2Card(1,
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/chaos.png-051a84a1ecf6155535be9659976de8ef.ctex";
     public override string PortraitPath => "res://.godot/imported/chaos.png-051a84a1ecf6155535be9659976de8ef.ctex";
+
+    public override int CanonicalStarCost => 1;
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
     
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Cunning);
-    
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new RepeatVar(1));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new RepeatVar(2));
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.Channeling));
 

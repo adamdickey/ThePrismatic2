@@ -37,14 +37,7 @@ public class TeslaCoil2() : ThePrismatic2Card(0,
             {
                 foreach (var item in list)
                 {
-                    try
-                    {
-                        await OrbCmd.Passive(choiceContext, item, cardPlay.Target);
-                    }
-                    catch
-                    {
-                        await OrbCmd.Passive(choiceContext, item, null);
-                    }
+                    await OrbCmd.Passive(choiceContext, item, null);
                 }
             }
             else
@@ -52,14 +45,7 @@ public class TeslaCoil2() : ThePrismatic2Card(0,
                 var randomOrbs = list.OrderBy(_ => Random.Shared.Next()).Take(2).ToList();
                 foreach (var item in randomOrbs)
                 {
-                    try
-                    {
-                        await OrbCmd.Passive(choiceContext, item, cardPlay.Target);
-                    }
-                    catch
-                    {
-                        await OrbCmd.Passive(choiceContext, item, null);
-                    }
+                    await OrbCmd.Passive(choiceContext, item, null);
                 }
             }
             
