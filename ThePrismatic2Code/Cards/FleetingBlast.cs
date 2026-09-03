@@ -41,5 +41,6 @@ public class FleetingBlast() : ThePrismatic2Card(1,
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(9m);
+        DynamicVars["Exhaust"].UpgradeValueBy(1m);
     }
 }

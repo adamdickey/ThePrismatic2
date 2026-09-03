@@ -18,7 +18,7 @@ public class Reflex2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/reflex.png-23bd5882c5b807145eac30c31f526a8e.ctex";
     public override string PortraitPath => "res://.godot/imported/reflex.png-23bd5882c5b807145eac30c31f526a8e.ctex";
     
-    public override int CanonicalStarCost => 3;
+    public override int CanonicalStarCost => 2;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new CardsVar(2));
 

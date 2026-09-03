@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -33,7 +34,11 @@ public class Murder2() : ThePrismatic2Card(3,
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((card, _) => CombatManager.Instance.History.Entries.OfType<CardDrawnEntry>().Count(e => e.Actor == card.Owner.Creature)),
         new DynamicVar("OstyDamageBase", 0m),
         new DynamicVar("OstyDamageExtra", 1m),
-        new CustomCalculatedDamageVar("OstyDamage", ValueProp.Move).WithMultiplier((card, _) => (CombatManager.Instance.History.Entries.OfType<CardDrawnEntry>().Count(e => e.Actor == card.Owner.Creature)+1)/2)
+        // The lambda parameters are typed on purpose. CustomCalculatedDamageVar declares its own
+        // WithMultiplier overloads (RelicModel, PowerModel) which hide the inherited CardModel one,
+        // so an untyped lambda binds to the RelicModel version - it compiles, but stores the
+        // delegate where Calculate() never looks, and the var then throws when anything reads it.
+        new CustomCalculatedDamageVar("OstyDamage", ValueProp.Move).WithMultiplier((CardModel card, Creature? _) => (CombatManager.Instance.History.Entries.OfType<CardDrawnEntry>().Count(e => e.Actor == card.Owner.Creature)+1)/2)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

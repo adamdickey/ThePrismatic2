@@ -2,6 +2,7 @@
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -30,7 +31,11 @@ public class BodySlam2() : ThePrismatic2Card(1,
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((card, _) => card.Owner.Creature.Block),
         new DynamicVar("OstyDamageBase", 0m),
         new DynamicVar("OstyDamageExtra", 1m),
-        new CustomCalculatedDamageVar("OstyDamage", ValueProp.Move).FromOsty().WithMultiplier((card, _) => card.Owner.Osty?.CurrentHp ?? 0)
+        // Typed on purpose - see Murder2. CustomCalculatedDamageVar hides the inherited CardModel
+        // overload of WithMultiplier, so an untyped lambda silently binds to the RelicModel one and
+        // stores the delegate where Calculate() never reads it. This line only resolved correctly
+        // because .FromOsty() returns the base type first; typing it removes that dependency.
+        new CustomCalculatedDamageVar("OstyDamage", ValueProp.Move).FromOsty().WithMultiplier((CardModel card, Creature? _) => card.Owner.Osty?.CurrentHp ?? 0)
     ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.Block));

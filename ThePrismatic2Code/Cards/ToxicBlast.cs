@@ -22,7 +22,7 @@ public class ToxicBlast() : ThePrismatic2Card(1,
     ]);
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(18m, ValueProp.Move),
+        new DamageVar(15m, ValueProp.Move),
         new RepeatVar(3)
     ]);
 
@@ -40,6 +40,6 @@ public class ToxicBlast() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(9m);
+        DynamicVars.Damage.UpgradeValueBy(7m);
     }
 }

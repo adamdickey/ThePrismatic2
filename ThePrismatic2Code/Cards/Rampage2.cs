@@ -71,6 +71,6 @@ public class Rampage2() : ThePrismatic2Card(1,
     {
         DynamicVars["Increase"].UpgradeValueBy(4m);
         DynamicVars.OstyDamage.UpgradeValueBy(2m);
-        DynamicVars["Increase"].UpgradeValueBy(2m);
+        DynamicVars["Increase"].UpgradeValueBy(3m);
     }
 }

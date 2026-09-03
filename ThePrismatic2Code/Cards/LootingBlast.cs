@@ -18,7 +18,8 @@ public class LootingBlast() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(21m, ValueProp.Move),
-        new CardsVar(3)
+        new CardsVar(3),
+        new DynamicVar("Discard", 2m)
     ]);
 
 
@@ -29,7 +30,11 @@ public class LootingBlast() : ThePrismatic2Card(1,
             .WithHitFx("vfx/vfx_attack_slash", null, "slash_attack.mp3")
             .Execute(choiceContext);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner);
-        IEnumerable<CardModel> cardModels = await CardSelectCmd.FromHandForDiscard(choiceContext, Owner, new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, DynamicVars.Cards.IntValue), null, this);
+
+        int discardCount = DynamicVars["Discard"].IntValue;
+        if (discardCount <= 0) return;
+
+        IEnumerable<CardModel> cardModels = await CardSelectCmd.FromHandForDiscard(choiceContext, Owner, new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, discardCount), null, this);
         foreach (CardModel card in cardModels)
         {
             await CardCmd.Discard(choiceContext, card);
@@ -40,5 +45,6 @@ public class LootingBlast() : ThePrismatic2Card(1,
     {
         DynamicVars.Damage.UpgradeValueBy(9m);
         DynamicVars.Cards.UpgradeValueBy(1m);
+        DynamicVars["Discard"].UpgradeValueBy(1m);
     }
 }

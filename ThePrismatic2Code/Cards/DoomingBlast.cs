@@ -19,8 +19,8 @@ public class DoomingBlast() : ThePrismatic2Card(1,
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<DoomPower>());
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(21m, ValueProp.Move),
-        new PowerVar<DoomPower>(12m)
+        new DamageVar(6m, ValueProp.Move),
+        new PowerVar<DoomPower>(28m)
     ]);
 
 
@@ -35,7 +35,7 @@ public class DoomingBlast() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(6m);
-        DynamicVars.Doom.UpgradeValueBy(4m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Doom.UpgradeValueBy(7m);
     }
 }

@@ -1,6 +1,7 @@
-using Godot;
+﻿using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
+using ThePrismatic2.ThePrismatic2Code.Patches;
 
 namespace ThePrismatic2.ThePrismatic2Code;
 
@@ -18,5 +19,9 @@ public partial class MainFile : Node
         Harmony harmony = new(ModId);
 
         harmony.PatchAll();
+
+        AncientRelicInjection.Install(harmony);
+
+        BlockedRelics.InstallAncientBlocking(harmony);
     }
 }

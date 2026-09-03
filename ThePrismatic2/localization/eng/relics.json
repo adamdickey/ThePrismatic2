@@ -36,9 +36,9 @@
   "THEPRISMATIC2-BAG_OF_DICE.description": "At the start of each combat, apply [blue]{ExposedPower}[/blue] [gold]Exposed[/gold] to ALL enemies.",
   "THEPRISMATIC2-BAG_OF_DICE.flavor": "Flavor",
   "THEPRISMATIC2-BAG_OF_DICE.title": "Bag of Dice",
-  "THEPRISMATIC2-COSTLY_DRAW.description": "Whenever you play a [gold]Costly[/gold] card, draw [blue]{Cards}[/blue] {Cards:plural:card|cards}.",
-  "THEPRISMATIC2-COSTLY_DRAW.flavor": "Flavor",
-  "THEPRISMATIC2-COSTLY_DRAW.title": "Costly Draw",
+  "THEPRISMATIC2-COSTLY_FORGE.description": "Whenever you play a [gold]Costly[/gold] card, [gold]Forge[/gold] {Forge:diff()}.",
+  "THEPRISMATIC2-COSTLY_FORGE.flavor": "Flavor",
+  "THEPRISMATIC2-COSTLY_FORGE.title": "Costly Forge",
   "THEPRISMATIC2-INNATE_RELIC.description": "At the start of each combat, draw 1 additional card for each [gold]Innate[/gold] card in your Deck.",
   "THEPRISMATIC2-INNATE_RELIC.flavor": "Flavor",
   "THEPRISMATIC2-INNATE_RELIC.title": "Innate Relic"

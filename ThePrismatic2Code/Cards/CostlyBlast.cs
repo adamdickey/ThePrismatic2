@@ -1,7 +1,5 @@
-﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -18,10 +16,6 @@ public class CostlyBlast() : ThePrismatic2Card(2,
     public override string CustomPortraitPath => $"PrismaticBlast.png".BigCardImagePath();
     public override string PortraitPath => $"PrismaticBlast.png".CardImagePath();
 
-    private bool _costReduced;
-    
-    protected override bool ShouldGlowGoldInternal => _costReduced;
-    
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(30m, ValueProp.Move));
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Costly));
 
@@ -31,43 +25,24 @@ public class CostlyBlast() : ThePrismatic2Card(2,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
             .WithHitFx("vfx/vfx_attack_slash", null, "slash_attack.mp3")
             .Execute(choiceContext);
+
+        // Work out which cards count as Costly before touching any of them. Lowering a cost can
+        // push a card back under the threshold, so deciding as we go would make a card's fate
+        // depend on where it happened to sit in the hand.
+        List<CardModel> costlyInHand = PileType.Hand.GetPile(Owner).Cards
+            .Where(card => card != this &&
+                           card.EnergyCost.GetWithModifiers(CostModifiers.All)
+                           + Math.Max(0, card.CurrentStarCost) >= 2)
+            .ToList();
+
+        foreach (CardModel card in costlyInHand)
+        {
+            card.EnergyCost.AddUntilPlayed(-1);
+        }
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(10m);
-    }
-    
-    public override Task AfterCardEnteredCombat(CardModel card)
-    {
-        if (card != this) return Task.CompletedTask;
-        bool costlyCardPlayed = CombatManager.Instance.History.CardPlaysFinished.Any(e => e.CardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, e.CardPlay.Card.LastStarsSpent) >= 2 && e.CardPlay.Card.Owner == Owner && e.HappenedThisTurn(CombatState));
-        if (!costlyCardPlayed)
-        {
-            _costReduced = false;
-            return Task.CompletedTask;
-        }
-        EnergyCost.SetThisTurn(0);
-        _costReduced = true;
-        return Task.CompletedTask;
-    }
-
-    public override Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
-    {
-        if (cardPlay.Card != this && cardPlay.Card.Owner == Owner && !_costReduced && cardPlay.Card.EnergyCost.GetResolved() + Math.Max(0, cardPlay.Card.LastStarsSpent) >= 2)
-        {
-            EnergyCost.SetThisTurn(0);
-            _costReduced = true;
-        }
-        return Task.CompletedTask;
-    }
-    
-    public override Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
-    {
-        if (player == Owner)
-        {
-            _costReduced = false;
-        }
-        return Task.CompletedTask;
     }
 }

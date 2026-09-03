@@ -44,7 +44,7 @@ public class AshenStrike2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4m);
+        DynamicVars.Damage.UpgradeValueBy(2m);
         DynamicVars.ExtraDamage.UpgradeValueBy(1m);
     }
 }

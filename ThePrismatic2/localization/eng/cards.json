@@ -1,4 +1,4 @@
-{
+﻿{
   "THEPRISMATIC2-STRIKE_PRISMATIC.description": "Deal {Damage:diff()} damage.",
   "THEPRISMATIC2-STRIKE_PRISMATIC.title": "Strike",
   "THEPRISMATIC2-DEFEND_PRISMATIC.description": "Gain {Block:diff()} [gold]Block[/gold].",
@@ -43,7 +43,7 @@
   "THEPRISMATIC2-LOOTING_STRIKE.title": "Looting Strike",
   "THEPRISMATIC2-LOOTING_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nDraw 1 card.\nDiscard 1 card.",
   "THEPRISMATIC2-LOOTING_DEFEND.title": "Looting Defend",
-  "THEPRISMATIC2-LOOTING_BLAST.description": "Deal {Damage:diff()} damage.\nDraw {Cards:diff()} {Cards:plural:card|cards}.\nDiscard {Cards:diff()} {Cards:plural:card|cards}.",
+  "THEPRISMATIC2-LOOTING_BLAST.description": "Deal {Damage:diff()} damage.\nDraw {Cards:diff()} {Cards:plural:card|cards}.\nDiscard {Discard:diff()} {Discard:plural:card|cards}.",
   "THEPRISMATIC2-LOOTING_BLAST.title": "Looting Blast",
   "THEPRISMATIC2-CONCENTRATED_STRIKE.description": "Deal {Damage:diff()} damage.\nDiscard 1 card.",
   "THEPRISMATIC2-CONCENTRATED_STRIKE.title": "Concentrated Strike",
@@ -113,7 +113,7 @@
   "THEPRISMATIC2-COSTLY_STRIKE.title": "Costly Strike",
   "THEPRISMATIC2-COSTLY_DEFEND.description": "Gain {Block:diff()} [gold]Block[/gold].\nCosts 1 less {energyPrefix:energyIcons(1)} if you played another [gold]Costly[/gold] card this turn.",
   "THEPRISMATIC2-COSTLY_DEFEND.title": "Costly Defend",
-  "THEPRISMATIC2-COSTLY_BLAST.description": "Deal {Damage:diff()} damage.\nCosts 0 {energyPrefix:energyIcons(1)} if you played another [gold]Costly[/gold] card this turn.",
+  "THEPRISMATIC2-COSTLY_BLAST.description": "Deal {Damage:diff()} damage.\nALL [gold]Costly[/gold] cards in your [gold]Hand[/gold] cost 1 {energyPrefix:energyIcons(1)} less until played.",
   "THEPRISMATIC2-COSTLY_BLAST.title": "Costly Blast",
   "THEPRISMATIC2-FORGING_STRIKE.description": "Deal {Damage:diff()} damage.\n[gold]Forge[/gold] {Forge:diff()}.",
   "THEPRISMATIC2-FORGING_STRIKE.title": "Forging Strike",
@@ -729,7 +729,7 @@
   "THEPRISMATIC2-COSMIC_INDIFFERENCE2.description": "Gain {Block:diff()} [gold]Block[/gold].\nPut a card from your [gold]Discard Pile[/gold] on top of your [gold]Draw Pile[/gold] and [gold]Upgrade[/gold] it.",
   "THEPRISMATIC2-COSMIC_INDIFFERENCE2.selectionScreenPrompt": "Choose a card to put on top of your Draw Pile and Upgrade.",
   "THEPRISMATIC2-COSMIC_INDIFFERENCE2.title": "Cosmic Indifference",
-  "THEPRISMATIC2-PROPHESIZE2.description": "Draw {Cards:diff()} cards.\nThey gain [gold]Starbound[/gold] this turn.",
+  "THEPRISMATIC2-PROPHESIZE2.description": "Draw {Cards:diff()} {Cards:plural:card|cards}.\nDiscard {Discard:diff()} {Discard:plural:card|cards}.",
   "THEPRISMATIC2-PROPHESIZE2.title": "Prophesize",
   "THEPRISMATIC2-KINGLY_PUNCH2.description": "Deal {Damage:diff()} damage.\nWhenever you draw this card, increase its damage by {Increase:diff()} this combat.{IsOstyAlive:\n([gold]Osty[/gold] deals {OstyDamage:diff()} damage)|}",
   "THEPRISMATIC2-KINGLY_PUNCH2.title": "Kingly Punch",

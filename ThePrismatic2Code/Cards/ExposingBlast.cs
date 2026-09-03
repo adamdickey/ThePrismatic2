@@ -21,7 +21,7 @@ public class ExposingBlast() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(21m, ValueProp.Move),
-        new DynamicVar("Exposed", 6m)
+        new DynamicVar("Exposed", 99m)
     ]);
 
 
@@ -38,6 +38,6 @@ public class ExposingBlast() : ThePrismatic2Card(1,
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(9m);
-        DynamicVars["Exposed"].UpgradeValueBy(2m);
+        DynamicVars["Exposed"].UpgradeValueBy(900m);
     }
 }

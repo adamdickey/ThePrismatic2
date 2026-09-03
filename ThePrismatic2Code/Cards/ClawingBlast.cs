@@ -17,7 +17,7 @@ public class ClawingBlast() : ThePrismatic2Card(0,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(12m, ValueProp.Move),
-        new PowerVar<Accuracy2Power>(3m)
+        new PowerVar<Accuracy2Power>(4m)
         ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
