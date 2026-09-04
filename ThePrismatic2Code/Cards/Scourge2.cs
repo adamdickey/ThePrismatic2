@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using ThePrismatic2.ThePrismatic2Code.Character;
+using ThePrismatic2.ThePrismatic2Code.Orbs;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -21,14 +22,14 @@ public class Scourge2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/scourge.png-570deae0e234cde77ac157cfb3521c04.ctex";
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new PowerVar<DoomPower>(7m),
-        new PowerVar<PoisonPower>(3m),
+        new PowerVar<DoomPower>(6m),
         new CardsVar(1)
     ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<DoomPower>(),
-        HoverTipFactory.FromPower<PoisonPower>()
+        HoverTipFactory.Static(StaticHoverTip.Channeling),
+        HoverTipFactory.FromOrb<VenomOrb>()
         ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -36,14 +37,13 @@ public class Scourge2() : ThePrismatic2Card(1,
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await PowerCmd.Apply<DoomPower>(choiceContext, cardPlay.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<PoisonPower>(choiceContext, cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
+        await OrbCmd.Channel<VenomOrb>(choiceContext, Owner);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Doom.UpgradeValueBy(2m);
-        DynamicVars.Poison.UpgradeValueBy(1m);
         DynamicVars.Cards.UpgradeValueBy(1m);
     }
 }

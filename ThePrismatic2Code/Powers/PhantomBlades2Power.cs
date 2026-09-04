@@ -1,5 +1,4 @@
 ﻿using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -18,37 +17,19 @@ public class PhantomBlades2Power : ThePrismatic2Power
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        HoverTipFactory.FromKeyword(CardKeyword.Retain)
-    ]);
-
-    public override Task AfterCardEnteredCombat(CardModel card)
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Retain));
+    
+    public override bool TryModifyKeywordsInCombat(CardModel card, ISet<CardKeyword> keywords)
     {
-        if (card.EnergyCost.GetWithModifiers(CostModifiers.All) != 0)
-        {
-            return Task.CompletedTask;
-        }
-
-        if (card.Type != CardType.Attack)
-        {
-            return Task.CompletedTask;
-        }
         if (card.Owner != Owner.Player)
         {
-            return Task.CompletedTask;
+            return false;
         }
-        CardCmd.ApplyKeyword(card, CardKeyword.Retain);
-        return Task.CompletedTask;
-    }
-
-    public override Task AfterApplied(Creature? applier, CardModel? cardSource)
-    {
-        if (Owner.Player is { PlayerCombatState: not null })
-            foreach (CardModel item in Owner.Player.PlayerCombatState.AllCards.Where(c => c.EnergyCost.Canonical == 0 && c.Type == CardType.Attack))
-            {
-                CardCmd.ApplyKeyword(item, CardKeyword.Retain);
-            }
-        return Task.CompletedTask;
+        if (card.EnergyCost.GetWithModifiers(CostModifiers.All) != 0 || card.Type != CardType.Attack)
+        {
+            return false;
+        } 
+        return keywords.Add(CardKeyword.Retain);
     }
 
     public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
@@ -65,7 +46,7 @@ public class PhantomBlades2Power : ThePrismatic2Power
         {
             return 0m;
         }
-        int num = CombatManager.Instance.History.CardPlaysFinished.Count(e => e.HappenedThisTurn(CombatState) && e.CardPlay.Card.EnergyCost.GetResolved() == 0 && e.CardPlay.Card.Type == CardType.Attack && e.CardPlay.Card.Owner.Creature == Owner);
+        int num = CombatManager.Instance.History.CardPlaysFinished.Count(e => e.HappenedThisTurn(CombatState) && e.CardPlay.Resources.EnergyValue == 0 && e.CardPlay.Card.Type == CardType.Attack && e.CardPlay.Card.Owner.Creature == Owner);
         if (num > 0)
         {
             return 0m;

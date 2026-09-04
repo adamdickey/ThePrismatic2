@@ -3,8 +3,10 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
+using ThePrismatic2.ThePrismatic2Code.Cards;
 
 namespace ThePrismatic2.ThePrismatic2Code.Powers;
 
@@ -13,6 +15,8 @@ public class SetupStrike2Power : ThePrismatic2Power
     
     public override string CustomPackedIconPath => "res://.godot/imported/setup_strike_power.png-e2066869b50711336c6583b0d0f8f63f.s3tc.ctex";
     public override string CustomBigIconPath => "res://.godot/imported/setup_strike_power.png-e2066869b50711336c6583b0d0f8f63f.s3tc.ctex";
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<SetupStrike2>());
     
     private bool _shouldIgnoreNextInstance;
 

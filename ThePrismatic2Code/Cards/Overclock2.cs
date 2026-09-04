@@ -7,9 +7,11 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using ThePrismatic2.ThePrismatic2Code.Character;
+using ThePrismatic2.ThePrismatic2Code.Orbs;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -24,7 +26,11 @@ public class Overclock2() : ThePrismatic2Card(0,
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new CardsVar(2));
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<Forget>());
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.Static(StaticHoverTip.Channeling),
+        HoverTipFactory.FromOrb<MagmaOrb>(),
+        HoverTipFactory.FromCard<Burn>()
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -32,12 +38,9 @@ public class Overclock2() : ThePrismatic2Card(0,
         NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
-        for (int i = 0; i < 2; i++)
-        {
-            CardModel? card = CombatState?.CreateCard<Forget>(Owner);
-            if (card != null) CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Discard, Owner));
-        }
-        await Cmd.Wait(0.5f);
+        await OrbCmd.Channel<MagmaOrb>(choiceContext, Owner);
+        CardModel? card = CombatState?.CreateCard<Burn>(Owner);
+        if (card != null) CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Discard, Owner));
     }
 
     protected override void OnUpgrade()

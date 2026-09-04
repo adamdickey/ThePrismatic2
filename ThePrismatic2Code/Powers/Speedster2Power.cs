@@ -1,9 +1,9 @@
 ﻿using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.Models.Orbs;
 
 namespace ThePrismatic2.ThePrismatic2Code.Powers;
 
@@ -15,23 +15,27 @@ public class Speedster2Power : ThePrismatic2Power
     public override PowerType Type => PowerType.Buff;
 
     public override PowerStackType StackType => PowerStackType.Counter;
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.Static(StaticHoverTip.Channeling),
+        HoverTipFactory.FromOrb<LightningOrb>()
+    ]);
+
+    private int _cardsDrawn;
 
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
         if (!fromHandDraw && card.Owner.Creature == Owner && card.Owner.Creature.CombatState != null && card.Owner.Creature.CombatState.CurrentSide == card.Owner.Creature.Side)
         {
-            VfxCmd.PlayOnCreatureCenters(CombatState.HittableEnemies, "vfx/vfx_attack_slash");
-            SfxCmd.Play("slash_attack.mp3");
-            await CreatureCmd.Damage(choiceContext, CombatState.HittableEnemies, Amount, ValueProp.Unpowered, Owner, null);
+            _cardsDrawn++;
+            if (_cardsDrawn >= 2)
+            {
+                _cardsDrawn -= 2;
+                for (int i = 0; i < Amount; i++)
+                {
+                    if (Owner.Player != null) await OrbCmd.Channel<LightningOrb>(choiceContext, Owner.Player);
+                }
+            }
         }
-    }
-    public override async Task AfterCardGeneratedForCombat(CardModel card, Player? creator)
-    {
-        Speedster2Power speedster2Power = this;
-        if (card.Owner != speedster2Power.Owner.Player || creator != Owner.Player)
-            return;
-        VfxCmd.PlayOnCreatureCenters(CombatState.HittableEnemies, "vfx/vfx_attack_slash");
-        SfxCmd.Play("slash_attack.mp3");
-        await CreatureCmd.Damage(new ThrowingPlayerChoiceContext(), CombatState.HittableEnemies, Amount, ValueProp.Unpowered, Owner, null);
     }
 }

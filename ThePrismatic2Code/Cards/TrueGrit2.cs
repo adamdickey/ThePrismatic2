@@ -23,7 +23,7 @@ public class TrueGrit2() : ThePrismatic2Card(1,
     
     public override bool GainsBlock => true;
     
-	protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(6m, ValueProp.Move));
+	protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(7m, ValueProp.Move));
     
 	protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Exhaust));
 	
@@ -51,6 +51,6 @@ public class TrueGrit2() : ThePrismatic2Card(1,
     
 	protected override void OnUpgrade()
 	{
-		DynamicVars.Block.UpgradeValueBy(2m);
+		DynamicVars.Block.UpgradeValueBy(1m);
 	}
 }

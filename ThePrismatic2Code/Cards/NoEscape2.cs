@@ -1,4 +1,5 @@
-﻿using BaseLib.Utils;
+﻿using BaseLib.Extensions;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -10,6 +11,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using ThePrismatic2.ThePrismatic2Code.Character;
+using ThePrismatic2.ThePrismatic2Code.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -24,14 +26,27 @@ public class NoEscape2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DynamicVar("DebuffThreshold", 10m),
-        new CalculationBaseVar(10m),
-        new CalculationExtraVar(5m),
+        new DynamicVar("BaseValue", 10m),
+        new DynamicVar("ExtraValue", 5m),
+        new CalculationBaseVar(0m),
+        new CalculationExtraVar(1m),
         new CalculatedVar("CalculatedDebuffs").WithMultiplier(delegate(CardModel card, Creature? target)
         {
+            decimal calculationBase = card.IsUpgraded ? 15 : 10;
             int num = target?.Powers.Where(power => power is { Type: PowerType.Debuff, Applier.IsPlayer: true }).Sum(power => power.Amount) ?? 0;
             decimal baseValue = card.DynamicVars["DebuffThreshold"].BaseValue;
             decimal calculatedDoom = Math.Floor(num / baseValue);
-            return calculatedDoom;
+            if (target?.HasPower<ExposedPower>() ?? false)
+            {
+                calculationBase *= target.HasPower<Debilitate2Power>() ? 2m : 1.5m;
+                calculatedDoom *= target.HasPower<Debilitate2Power>() ? 2m : 1.5m;
+            }
+            if (card.Owner.HasPower<Accelerant2Power>())
+            {
+                calculationBase *= 1 + 0.01m*card.Owner.Creature.GetPowerAmount<Accelerant2Power>();
+                calculatedDoom *= 1 + 0.01m*card.Owner.Creature.GetPowerAmount<Accelerant2Power>();
+            }
+            return calculationBase + 5 * calculatedDoom;
         })
     ]);
 
@@ -40,11 +55,14 @@ public class NoEscape2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await PowerCmd.Apply<DoomPower>(choiceContext, cardPlay.Target, ((CalculatedVar)DynamicVars["CalculatedDebuffs"]).Calculate(cardPlay.Target), Owner.Creature, this);
+        int num = cardPlay.Target.Powers.Where(power => power is { Type: PowerType.Debuff, Applier.IsPlayer: true }).Sum(power => power.Amount);
+        decimal calculatedDoom = Math.Floor(num / DynamicVars["DebuffThreshold"].BaseValue);
+        decimal doomAmount = DynamicVars["BaseValue"].BaseValue + calculatedDoom*DynamicVars["ExtraValue"].BaseValue;
+        await PowerCmd.Apply<DoomPower>(choiceContext, cardPlay.Target, doomAmount, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.CalculationBase.UpgradeValueBy(5m);
+        DynamicVars["BaseValue"].UpgradeValueBy(5m);
     }
 }

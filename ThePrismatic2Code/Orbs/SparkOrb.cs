@@ -32,6 +32,7 @@ public sealed class SparkOrb : CustomOrbModel
             .Instantiate<Node2D>();
         new MegaSprite(lightning.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
+        lightning.Scale = new Vector2(0.9f, 0.9f);
         container.AddChild(lightning);
         return container;
     }

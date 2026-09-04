@@ -1,5 +1,6 @@
 ﻿using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization;
@@ -23,7 +24,7 @@ public class CardTransformReward(Player player) : Reward(player)
 
     public override bool IsPopulated => true;
 
-    public override LocString Description => new LocString("gameplay_ui", "COMBAT_REWARD_CARD_TRANSFORM");
+    public override LocString Description => new("gameplay_ui", "COMBAT_REWARD_CARD_TRANSFORM");
 
     public override void Populate()
     {
@@ -49,7 +50,9 @@ public class CardTransformReward(Player player) : Reward(player)
         CardModel? card = (await CardSelectCmd.FromDeckForTransformation(player, prefs)).FirstOrDefault();
         if (card != null)
         {
-            await CardCmd.TransformToRandom(card, Player.RunState.Rng.Niche);
+            CardPileAddResult transformCard = await CardCmd.TransformToRandom(card, Player.RunState.Rng.Niche);
+            CardCmd.PreviewCardPileAdd(transformCard);
+            Log.Debug($"Player {player.NetId} transformed {card.Id}.");
             return true;
         }
         return false;

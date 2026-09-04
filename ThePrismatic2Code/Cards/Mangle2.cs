@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
+using ThePrismatic2.ThePrismatic2Code.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -43,7 +44,7 @@ public class Mangle2() : ThePrismatic2Card(3,
             .WithHitFx("vfx/vfx_heavy_blunt", null, "heavy_attack.mp3")
             .WithHitVfxSpawnedAtBase()
             .Execute(choiceContext);
-        await PowerCmd.Apply<ManglePower>(choiceContext, cardPlay.Target, DynamicVars["StrengthLoss"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Mangle2Power>(choiceContext, cardPlay.Target, DynamicVars["StrengthLoss"].BaseValue, Owner.Creature, this);
         if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
         {
             ArgumentNullException.ThrowIfNull(cardPlay.Target);
@@ -51,7 +52,7 @@ public class Mangle2() : ThePrismatic2Card(3,
                 .WithHitFx("vfx/vfx_heavy_blunt", null, "heavy_attack.mp3")
                 .WithHitVfxSpawnedAtBase()
                 .Execute(choiceContext);
-            await PowerCmd.Apply<ManglePower>(choiceContext, cardPlay.Target, DynamicVars["StrengthLoss"].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<Mangle2Power>(choiceContext, cardPlay.Target, DynamicVars["StrengthLoss"].BaseValue, Owner.Creature, this);
         }
     }
 

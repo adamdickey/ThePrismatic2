@@ -21,11 +21,10 @@ public class Backstab2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/backstab.png-21131b76861dc392c30f12a649ab177a.ctex";
     public override string PortraitPath => "res://.godot/imported/backstab.png-21131b76861dc392c30f12a649ab177a.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[2]
-    {
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(10m, ValueProp.Move),
-        new("Exposed", 1m)
-    });
+        new DynamicVar("Exposed", 2m)
+    ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<ExposedPower>());
 
@@ -36,7 +35,7 @@ public class Backstab2() : ThePrismatic2Card(0,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target, "cardPlay.Target");
+        ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_dramatic_stab")
             .Execute(choiceContext);

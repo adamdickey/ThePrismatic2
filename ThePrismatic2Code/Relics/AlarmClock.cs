@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 
 namespace ThePrismatic2.ThePrismatic2Code.Relics;
 
-public sealed class InnateRelic: ThePrismatic2Relic
+public sealed class AlarmClock: ThePrismatic2Relic
 {
     public override RelicRarity Rarity => RelicRarity.Shop;
     //public override string PackedIconPath => "res://images/atlases/relic_atlas.sprites/burning_blood.tres";

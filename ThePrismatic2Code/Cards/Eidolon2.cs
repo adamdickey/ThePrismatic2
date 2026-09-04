@@ -21,21 +21,17 @@ public class Eidolon2() : ThePrismatic2Card(2,
     public override bool CanBeGeneratedInCombat => false;
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-	    HoverTipFactory.FromKeyword(CardKeyword.Ethereal),
-	    HoverTipFactory.FromKeyword(Extensions.Keywords.Costly)
-    ]);
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Ethereal));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
     	await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-	    IEnumerable<CardModel> enumerable = PileType.Exhaust.GetPile(Owner).Cards.Where(c => c.Id.Entry != "THEPRISMATIC2-EIDOLON2" || c.EnergyCost.GetWithModifiers(CostModifiers.All) + c.CurrentStarCost >= 2).ToList();
+	    IEnumerable<CardModel> enumerable = PileType.Exhaust.GetPile(Owner).Cards.Where(c => c.Id.Entry != "THEPRISMATIC2-EIDOLON2" && (c.Keywords.Contains(CardKeyword.Ethereal) || c.Type == CardType.Skill)).ToList();
 	    foreach (CardModel item in enumerable)
 	    {
 		    await CardCmd.AutoPlay(choiceContext, item, null);
 	    }
     }
-
     protected override void OnUpgrade()
     {
     	EnergyCost.UpgradeBy(-1);

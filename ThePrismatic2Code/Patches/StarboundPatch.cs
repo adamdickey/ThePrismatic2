@@ -28,27 +28,7 @@ public class StarboundSingleton() : CustomSingletonModel(true, false)
     public override Task AfterStarsGained(int amount, Player gainer)
     {
         if (amount <= 0) return Task.CompletedTask;
-        IEnumerable<CardModel> enumerable = gainer.PlayerCombatState?.AllCards ?? Array.Empty<CardModel>();
-        foreach (CardModel card in enumerable)
-        {
-            UpdateStarbound(card);
-        }
-        return Task.CompletedTask;
-    }
-    public override Task AfterStarsSpent(int amount, Player spender)
-    {
-        if (amount <= 0) return Task.CompletedTask;
-        IEnumerable<CardModel> enumerable = spender.PlayerCombatState?.AllCards ?? Array.Empty<CardModel>();
-        foreach (CardModel card in enumerable)
-        {
-            UpdateStarbound(card);
-        }
-        return Task.CompletedTask;
-    }
-    public override Task AfterEnergySpent(CardModel cardModel, int amount)
-    {
-        if (amount <= 0) return Task.CompletedTask;
-        IEnumerable<CardModel> enumerable = cardModel.Owner.PlayerCombatState?.AllCards ?? Array.Empty<CardModel>();
+        IEnumerable<CardModel> enumerable = PileType.Hand.GetPile(gainer).Cards;
         foreach (CardModel card in enumerable)
         {
             UpdateStarbound(card);
@@ -58,7 +38,7 @@ public class StarboundSingleton() : CustomSingletonModel(true, false)
     
     public override Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        IEnumerable<CardModel> enumerable = cardPlay.Card.Owner.PlayerCombatState?.AllCards ?? Array.Empty<CardModel>();
+        IEnumerable<CardModel> enumerable = PileType.Hand.GetPile(cardPlay.Card.Owner).Cards;
         foreach (CardModel card in enumerable)
         {
             UpdateStarbound(card);

@@ -1,5 +1,4 @@
 ﻿using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.Models;
@@ -7,10 +6,10 @@ using ThePrismatic2.ThePrismatic2Code.Extensions;
 
 namespace ThePrismatic2.ThePrismatic2Code.Powers;
 
-public class OchOFormPower : ThePrismatic2Power
+public class OchoFormPower : ThePrismatic2Power
 {
-    public override string CustomPackedIconPath => $"OchOForm.png".PowerImagePath();
-    public override string CustomBigIconPath => $"OchOForm.png".BigPowerImagePath();
+    public override string CustomPackedIconPath => "OchOForm.png".PowerImagePath();
+    public override string CustomBigIconPath => "OchOForm.png".BigPowerImagePath();
     
     public override PowerType Type => PowerType.Buff;
 
@@ -22,8 +21,8 @@ public class OchOFormPower : ThePrismatic2Power
         {
             return playCount;
         }
-        int num = CombatManager.Instance.History.CardPlaysStarted.Count(e => e.Actor == Owner && e.CardPlay.IsFirstInSeries && e.HappenedThisTurn(CombatState) && e.CardPlay.Card.EnergyCost.GetWithModifiers(CostModifiers.All) == 0);
-        if (num >= Amount || card.EnergyCost.GetWithModifiers(CostModifiers.All) > 0)
+        int num = CombatManager.Instance.History.CardPlaysStarted.Count(e => e.Actor == Owner && e.CardPlay.IsFirstInSeries && e.HappenedThisTurn(CombatState) && e.CardPlay.Resources.EnergyValue == 0);
+        if (num >= Amount || card.EnergyCost.GetAmountToSpend() != 0)
         {
             return playCount;
         }

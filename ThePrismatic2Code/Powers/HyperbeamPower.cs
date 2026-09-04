@@ -3,16 +3,20 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
+using ThePrismatic2.ThePrismatic2Code.Cards;
 using ThePrismatic2.ThePrismatic2Code.Extensions;
 
 namespace ThePrismatic2.ThePrismatic2Code.Powers;
 
 public class HyperbeamPower : ThePrismatic2Power
 {
-	public override string CustomPackedIconPath => $"Venerate.png".PowerImagePath();
-	public override string CustomBigIconPath => $"Venerate.png".BigPowerImagePath();
+	public override string CustomPackedIconPath => "Venerate.png".PowerImagePath();
+	public override string CustomBigIconPath => "Venerate.png".BigPowerImagePath();
+	
+	protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<Hyperbeam2>());
 
 	private bool _shouldIgnoreNextInstance;
 

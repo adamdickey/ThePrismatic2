@@ -21,15 +21,15 @@ public class ThePrismatic2RelicPool : CustomRelicPoolModel
             ModelDb.Relic<SadisticDagger>(),
             ModelDb.Relic<RealityBox>(),
             ModelDb.Relic<BagOfDice>(),
-            ModelDb.Relic<CostlyForge>(),
-            ModelDb.Relic<InnateRelic>(),
+            ModelDb.Relic<SmithsAnvil>(),
+            ModelDb.Relic<AlarmClock>(),
             ModelDb.Relic<RedSkull>(),
             ModelDb.Relic<CharonsAshes>(),
+            ModelDb.Relic<Brimstone>(),
             ModelDb.Relic<TwistedFunnel>(),
             ModelDb.Relic<FencingManual>(),
             ModelDb.Relic<Regalite>(),
             ModelDb.Relic<LunarPastry>(),
-            ModelDb.Relic<MiniRegent>(),
             ModelDb.Relic<FuneraryMask>(),
             ModelDb.Relic<Bookmark>(),
             ModelDb.Relic<IvoryTile>(),
@@ -39,5 +39,5 @@ public class ThePrismatic2RelicPool : CustomRelicPoolModel
             ModelDb.Relic<RunicCapacitor>()
         ];
         return relicPool;
-    }   //Note: Add boss relics via AncientRelicInjection.cs, not here. This pool is for non-boss relics only.
+    }
 }

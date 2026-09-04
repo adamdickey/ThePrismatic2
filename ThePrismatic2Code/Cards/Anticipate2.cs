@@ -22,8 +22,7 @@ public class Anticipate2() : ThePrismatic2Card(0,
     public override string PortraitPath => "res://.godot/imported/anticipate.png-42f2136f7095fe73788485df07f25453.ctex";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new PowerVar<DexterityPower>(2m),
-        new DynamicVar("Focus", 1m)
+        new PowerVar<DexterityPower>(2m)
     ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
@@ -34,9 +33,7 @@ public class Anticipate2() : ThePrismatic2Card(0,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<AnticipatePower>(choiceContext, Owner.Creature, DynamicVars.Dexterity.BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<FocusPower>(choiceContext, Owner.Creature, DynamicVars["Focus"].BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<AnticipateFocusPower>(choiceContext, Owner.Creature, DynamicVars["Focus"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Anticipate2Power>(choiceContext, Owner.Creature, DynamicVars.Dexterity.BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

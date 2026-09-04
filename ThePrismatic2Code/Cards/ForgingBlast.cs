@@ -16,8 +16,8 @@ public class ForgingBlast() : ThePrismatic2Card(1,
     public override string PortraitPath => $"PrismaticBlast.png".CardImagePath();
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(18m, ValueProp.Move),
-        new ForgeVar(15)
+        new DamageVar(21m, ValueProp.Move),
+        new ForgeVar(12)
         ]);
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => HoverTipFactory.FromForge();
