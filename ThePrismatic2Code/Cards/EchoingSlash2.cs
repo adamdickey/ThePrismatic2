@@ -21,7 +21,7 @@ public class EchoingSlash2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/echoing_slash.png-949e53ef77e71f652b2e83d444084490.ctex";
     public override string PortraitPath => "res://.godot/imported/echoing_slash.png-949e53ef77e71f652b2e83d444084490.ctex";
     
-    public override int CanonicalStarCost => 2;
+    public override int CanonicalStarCost => 1;
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(13m, ValueProp.Move));
 

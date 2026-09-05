@@ -31,6 +31,6 @@ public class StarryBlast() : ThePrismatic2Card(1,
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(9m);
-        DynamicVars.Stars.UpgradeValueBy(1m);
+        DynamicVars.Stars.UpgradeValueBy(2m);
     }
 }

@@ -15,7 +15,8 @@ public class ConcentratedBlast() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => $"PrismaticBlast.png".BigCardImagePath();
     public override string PortraitPath => $"PrismaticBlast.png".CardImagePath();
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(27m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(
+        new DamageVar(27m, ValueProp.Move));
 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)

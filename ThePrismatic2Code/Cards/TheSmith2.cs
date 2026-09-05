@@ -19,7 +19,7 @@ public class TheSmith2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/the_smith.png-a61b6999e97bf60de2237dfb87a703a5.ctex";
     public override string PortraitPath => "res://.godot/imported/the_smith.png-a61b6999e97bf60de2237dfb87a703a5.ctex";
     
-    public override int CanonicalStarCost => 4;
+    public override int CanonicalStarCost => 3;
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 

@@ -18,7 +18,7 @@ public class LootingBlast() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(21m, ValueProp.Move),
-        new CardsVar(3),
+        new CardsVar(4),
         new DynamicVar("Discard", 2m)
     ]);
 

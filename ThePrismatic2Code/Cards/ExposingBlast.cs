@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Extensions;
 using ThePrismatic2.ThePrismatic2Code.Powers;
@@ -17,11 +18,15 @@ public class ExposingBlast() : ThePrismatic2Card(1,
     public override string PortraitPath => $"PrismaticBlast.png".CardImagePath();
     
     public override bool IsBasicStrikeOrDefend => false;
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<ExposedPower>());
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromPower<VulnerablePower>(),
+        HoverTipFactory.FromPower<ExposedPower>()
+    ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(21m, ValueProp.Move),
-        new DynamicVar("Exposed", 99m)
+        new PowerVar<VulnerablePower>(3m),
+        new DynamicVar("Exposed", 3m)
     ]);
 
 
@@ -31,6 +36,7 @@ public class ExposingBlast() : ThePrismatic2Card(1,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
             .WithHitFx("vfx/vfx_attack_slash", null, "slash_attack.mp3")
             .Execute(choiceContext);
+        await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target, DynamicVars.Vulnerable.BaseValue, Owner.Creature, this);
         await PowerCmd.Apply<ExposedPower>(choiceContext, play.Target, DynamicVars["Exposed"].BaseValue, Owner.Creature, this);
         
     }
@@ -38,6 +44,6 @@ public class ExposingBlast() : ThePrismatic2Card(1,
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(9m);
-        DynamicVars["Exposed"].UpgradeValueBy(900m);
+        DynamicVars["Exposed"].UpgradeValueBy(4m);
     }
 }

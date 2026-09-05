@@ -15,7 +15,7 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class SevenStars2() : ThePrismatic2Card(2, 
+public class SevenStars2() : ThePrismatic2Card(1, 
     CardType.Attack, CardRarity.Rare, 
     TargetType.AllEnemies)
 {

@@ -24,22 +24,23 @@ public class Terraforming2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new PowerVar<FocusPower>(2m),
-        new DynamicVar("Orbs", 1m)
+        //new DynamicVar("Orbs", 1m)
         ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<FocusPower>(),
         HoverTipFactory.Static(StaticHoverTip.Channeling),
+        HoverTipFactory.FromOrb<SolarOrb>(),
         HoverTipFactory.FromOrb<MagmaOrb>()
         ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await PowerCmd.Apply<TerraformingPower>(choiceContext, Owner.Creature, DynamicVars["FocusPower"].IntValue, Owner.Creature, this);
-        for (int i = 0; i < DynamicVars["Orbs"].BaseValue; i++)
-        {
-            await OrbCmd.Channel<MagmaOrb>(choiceContext, Owner);
-        }
+        await OrbCmd.Channel<SolarOrb>(choiceContext, Owner);
+        await OrbCmd.Channel<MagmaOrb>(choiceContext, Owner);
+        //for (int i = 0; i < DynamicVars["Orbs"].BaseValue; i++){
+            //await OrbCmd.Channel<MagmaOrb>(choiceContext, Owner);}
        
     }
 

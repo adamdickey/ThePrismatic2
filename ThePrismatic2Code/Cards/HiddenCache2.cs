@@ -22,8 +22,8 @@ public class HiddenCache2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/hidden_cache.png-1252f17da7bf78ca0a5e4f07cae94d16.ctex";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new EnergyVar(1),
-        new StarsVar(1)
+        //new EnergyVar(1),
+        new StarsVar(3)
         ]);
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
@@ -35,7 +35,7 @@ public class HiddenCache2() : ThePrismatic2Card(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await OrbCmd.Channel<SolarOrb>(choiceContext, Owner);
-        await PowerCmd.Apply<EnergyNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Energy.BaseValue, Owner.Creature, this);
+        //await PowerCmd.Apply<EnergyNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Energy.BaseValue, Owner.Creature, this);
         await PowerCmd.Apply<StarNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Stars.BaseValue, Owner.Creature, this);
     }
 

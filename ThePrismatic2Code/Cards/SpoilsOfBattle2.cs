@@ -20,7 +20,7 @@ public class SpoilsOfBattle2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/spoils_of_battle.png-b5069ec2221a0488c22d8826137efc81.ctex";
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new ForgeVar(6),
+        new ForgeVar(5),
         new CardsVar(1)
     ]);
 

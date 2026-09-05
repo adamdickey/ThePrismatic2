@@ -18,7 +18,7 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class Nightmare2() : ThePrismatic2Card(1, 
+public class Nightmare2() : ThePrismatic2Card(2, 
     CardType.Skill, CardRarity.Rare, 
     TargetType.Self)
 {
@@ -26,7 +26,7 @@ public class Nightmare2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/nightmare.png-0e5e4a95f852fd9e7ba3c74f8e3c8fab.ctex";
     public override string PortraitPath => "res://.godot/imported/nightmare.png-0e5e4a95f852fd9e7ba3c74f8e3c8fab.ctex";
 
-    public override int CanonicalStarCost => 3;
+    public override int CanonicalStarCost => 1;
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlyArray<CardKeyword>([
         CardKeyword.Exhaust,

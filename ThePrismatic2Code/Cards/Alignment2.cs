@@ -19,7 +19,7 @@ public class Alignment2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/alignment.png-a063f4b99717db2f1a30064273e7c39f.ctex";
     public override string PortraitPath => "res://.godot/imported/alignment.png-a063f4b99717db2f1a30064273e7c39f.ctex";
     
-    public override int CanonicalStarCost => 2;
+    public override int CanonicalStarCost => 3;
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
     

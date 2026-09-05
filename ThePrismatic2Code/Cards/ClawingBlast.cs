@@ -16,7 +16,7 @@ public class ClawingBlast() : ThePrismatic2Card(0,
     public override string PortraitPath => $"PrismaticBlast.png".CardImagePath();
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(12m, ValueProp.Move),
+        new DamageVar(16m, ValueProp.Move),
         new PowerVar<Accuracy2Power>(4m)
         ]);
 
@@ -32,6 +32,6 @@ public class ClawingBlast() : ThePrismatic2Card(0,
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(4m);
-        DynamicVars["Accuracy2Power"].UpgradeValueBy(1m);
+        DynamicVars["Accuracy2Power"].UpgradeValueBy(2m);
     }
 }

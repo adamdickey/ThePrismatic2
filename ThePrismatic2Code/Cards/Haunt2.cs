@@ -19,7 +19,7 @@ public class Haunt2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/haunt.png-c32e8c128be52dc9819fd1bbd70bc1a8.ctex";
     public override string PortraitPath => "rres://.godot/imported/haunt.png-c32e8c128be52dc9819fd1bbd70bc1a8.ctex";
     
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new HpLossVar(4m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new HpLossVar(3m));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

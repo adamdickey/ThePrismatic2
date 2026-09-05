@@ -11,7 +11,7 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class AllForOne2() : ThePrismatic2Card(1, 
+public class AllForOne2() : ThePrismatic2Card(0, 
     CardType.Attack, CardRarity.Rare, 
     TargetType.AnyEnemy)
 {
@@ -19,7 +19,7 @@ public class AllForOne2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/all_for_one.png-62a1ab1d871453716ca6f7824b2dcf76.ctex";
     public override string PortraitPath => "res://.godot/imported/all_for_one.png-62a1ab1d871453716ca6f7824b2dcf76.ctex";
 
-    public override int CanonicalStarCost => 1;
+    public override int CanonicalStarCost => 2;
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(8m, ValueProp.Move));
     

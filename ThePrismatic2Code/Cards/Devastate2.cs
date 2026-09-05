@@ -20,7 +20,7 @@ public class Devastate2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/devastate.png-5a8afa63739e1780605788b495d7fc14.ctex";
     public override string PortraitPath => "res://.godot/imported/devastate.png-5a8afa63739e1780605788b495d7fc14.ctex";
 
-    public override int CanonicalStarCost => 4;
+    public override int CanonicalStarCost => 3;
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
     

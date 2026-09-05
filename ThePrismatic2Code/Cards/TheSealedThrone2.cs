@@ -19,7 +19,7 @@ public class TheSealedThrone2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "TheSealedThrone.png".BigCardImagePath();
     public override string PortraitPath => "TheSealedThrone.png".CardImagePath();
     
-    public override int CanonicalStarCost => 3;
+    public override int CanonicalStarCost => 2;
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 

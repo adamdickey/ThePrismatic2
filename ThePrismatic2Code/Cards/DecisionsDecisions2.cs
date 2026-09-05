@@ -19,7 +19,7 @@ public class DecisionsDecisions2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/decisions_decisions.png-dd9e5bc21a8a2958e7af67ea73867136.ctex";
     public override string PortraitPath => "res://.godot/imported/decisions_decisions.png-dd9e5bc21a8a2958e7af67ea73867136.ctex";
     
-    public override int CanonicalStarCost => 6;
+    public override int CanonicalStarCost => 4;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new CardsVar(3),

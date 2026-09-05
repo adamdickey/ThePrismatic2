@@ -14,7 +14,7 @@ using ThePrismatic2.ThePrismatic2Code.Powers;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class Speedster2() : ThePrismatic2Card(2, 
+public class Speedster2() : ThePrismatic2Card(1, 
     CardType.Power, CardRarity.Uncommon, 
     TargetType.Self)
 {

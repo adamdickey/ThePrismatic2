@@ -14,7 +14,7 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class Voltaic2() : ThePrismatic2Card(3, 
+public class Voltaic2() : ThePrismatic2Card(2, 
     CardType.Skill, CardRarity.Rare, 
     TargetType.Self)
 {
@@ -22,9 +22,16 @@ public class Voltaic2() : ThePrismatic2Card(3,
     public override string CustomPortraitPath => "res://.godot/imported/voltaic.png-cc3cfbf4de140f5c357ae3e894800e52.ctex";
     public override string PortraitPath => "res://.godot/imported/voltaic.png-cc3cfbf4de140f5c357ae3e894800e52.ctex";
 
+    public override int CanonicalStarCost => 1;
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Channeling),
         HoverTipFactory.FromOrb<LightningOrb>()
+    ]);
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlyArray<CardKeyword>([
+        CardKeyword.Exhaust,
+        Extensions.Keywords.Starbound
     ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
@@ -33,7 +40,6 @@ public class Voltaic2() : ThePrismatic2Card(3,
         new CalculatedVar("CalculatedChannels").WithMultiplier((card, _) => CombatManager.Instance.History.Entries.OfType<OrbChanneledEntry>().Count(e => e.Actor.Player == card.Owner))
     ]);
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

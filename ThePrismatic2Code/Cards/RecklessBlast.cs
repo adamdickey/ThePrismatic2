@@ -19,30 +19,49 @@ public class RecklessBlast() : ThePrismatic2Card(0,
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed));
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(20m, ValueProp.Move),
-        new HpLossVar(1m)
+        new DamageVar(8m, ValueProp.Move),
+        new SummonVar(1m),
+        new HpLossVar(1m),
+        new RepeatVar(3)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target);
-        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
+
+        // The whole card - summon, self damage and attack - runs Repeat times.
+        for (int i = 0; i < DynamicVars.Repeat.IntValue; i++)
         {
-            VfxCmd.PlayOnCreatureCenter(Owner.Osty, "vfx/vfx_bloody_impact");
-            await CreatureCmd.Damage(choiceContext, Owner.Osty, 1, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
+            // Stop early rather than summoning and bleeding for hits on a corpse.
+            if (play.Target is not { IsAlive: true }) break;
+
+            await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
+            if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
+            {
+                VfxCmd.PlayOnCreatureCenter(Owner.Osty, "vfx/vfx_bloody_impact");
+                await CreatureCmd.Damage(choiceContext, Owner.Osty, DynamicVars.HpLoss.BaseValue, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
+            }
+            else
+            {
+                VfxCmd.PlayOnCreatureCenter(Owner.Creature, "vfx/vfx_bloody_impact");
+                await CreatureCmd.Damage(choiceContext, Owner.Creature, DynamicVars.HpLoss.BaseValue, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
+            }
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
+                .WithHitFx("vfx/vfx_attack_slash", null, "slash_attack.mp3")
+                .Execute(choiceContext);
         }
-        else
+
+        // Summoning and then bleeding for the same amount leaves a freshly summoned Osty sitting
+        // on exactly 0 HP, and nothing reaps him - he stays standing and still counts as alive.
+        // Finish him off explicitly.
+        if (Owner.Osty is { CurrentHp: <= 0 } deadOsty)
         {
-            VfxCmd.PlayOnCreatureCenter(Owner.Creature, "vfx/vfx_bloody_impact");
-            await CreatureCmd.Damage(choiceContext, Owner.Creature, 1, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
+            await CreatureCmd.Kill(deadOsty, true);
         }
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
-            .WithHitFx("vfx/vfx_attack_slash", null, "slash_attack.mp3")
-            .Execute(choiceContext);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(8m);
+        DynamicVars.Repeat.UpgradeValueBy(1m);
     }
 }

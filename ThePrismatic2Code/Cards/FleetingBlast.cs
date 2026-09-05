@@ -20,7 +20,7 @@ public class FleetingBlast() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(21m, ValueProp.Move),
-        new DynamicVar("Exhaust", 2m)
+        new DynamicVar("Exhaust", 3m)
     ]);
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Exhaust));
@@ -41,6 +41,6 @@ public class FleetingBlast() : ThePrismatic2Card(1,
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(9m);
-        DynamicVars["Exhaust"].UpgradeValueBy(1m);
+        DynamicVars["Exhaust"].UpgradeValueBy(7m);
     }
 }

@@ -13,13 +13,17 @@ using ThePrismatic2.ThePrismatic2Code.Orbs;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class KnockoutBlow2() : ThePrismatic2Card(3, 
+public class KnockoutBlow2() : ThePrismatic2Card(2, 
     CardType.Attack, CardRarity.Uncommon, 
     TargetType.AnyEnemy)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/knockout_blow.png-53467956a6f5eba59f1edf391c02e5bb.ctex";
     public override string PortraitPath => "res://.godot/imported/knockout_blow.png-53467956a6f5eba59f1edf391c02e5bb.ctex";
+
+    public override int CanonicalStarCost => 1;
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(30m, ValueProp.Move),

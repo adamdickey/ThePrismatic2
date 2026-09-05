@@ -17,8 +17,8 @@ public class GhostlyBlast() : ThePrismatic2Card(1,
     public override string PortraitPath => $"PrismaticBlast.png".CardImagePath();
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(18m, ValueProp.Move),
-        new CardsVar(3)
+        new DamageVar(15m, ValueProp.Move),
+        new CardsVar(4)
     ]);
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<Soul>());
