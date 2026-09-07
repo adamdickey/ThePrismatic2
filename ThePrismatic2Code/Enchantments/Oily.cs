@@ -1,17 +1,18 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using BaseLib.Abstracts;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using ThePrismatic2.ThePrismatic2Code.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Enchantments;
 
-public sealed class Oily : EnchantmentModel
+public sealed class Oily : CustomEnchantmentModel
 {
+    protected override string CustomIconPath => "res://.godot/imported/inky.png-27b90d1ea6c2aab29a64059ea46c014c.ctex";
     public override bool HasExtraCardText => true;
 
     public override bool ShowAmount => false;

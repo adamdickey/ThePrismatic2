@@ -22,7 +22,7 @@ public class DyingStar2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/dying_star.png-7aa2b3fc590171379baa920ccb20939a.ctex";
     public override string PortraitPath => "res://.godot/imported/dying_star.png-7aa2b3fc590171379baa920ccb20939a.ctex";
 
-    public override int CanonicalStarCost => 3;
+    public override int CanonicalStarCost => 2;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(9m, ValueProp.Move),

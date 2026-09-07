@@ -262,5 +262,11 @@
   "THEPRISMATIC2-SYNCHRONIZE2_POWER.title": "Synchronize",
   "THEPRISMATIC2-LIGHTNING_ROD2_POWER.description": "At the start of the next [blue]2[/blue] turns, [gold]Channel[/gold] [blue]1[/blue] [gold]Lightning[/gold] and gain {singleStarIcon}.",
   "THEPRISMATIC2-LIGHTNING_ROD2_POWER.smartDescription": "At the start of the next {Amount:plural:turn|[blue]{}[/blue] turns}, [gold]Channel[/gold] [blue]1[/blue] [gold]Lightning[/gold] and gain {singleStarIcon}.",
-  "THEPRISMATIC2-LIGHTNING_ROD2_POWER.title": "Lightning Rod"
+  "THEPRISMATIC2-LIGHTNING_ROD2_POWER.title": "Lightning Rod",
+  "THEPRISMATIC2-REFINE_BLADE2_POWER.description": "Gain [gold]Focus[/gold] until the end of this turn.",
+  "THEPRISMATIC2-REFINE_BLADE2_POWER.smartDescription": "Gain [blue]{Amount}[/blue] [gold]Focus[/gold] until the end of this turn.",
+  "THEPRISMATIC2-REFINE_BLADE2_POWER.title": "Refine Blade",
+  "THEPRISMATIC2-HANG2_POWER.description": "All [gold]Hangs[/gold] deal [blue]2[/blue] times more damage to this enemy.",
+  "THEPRISMATIC2-HANG2_POWER.smartDescription": "All [gold]Hangs[/gold] deal [blue]{Amount}[/blue] times more damage to this enemy.",
+  "THEPRISMATIC2-HANG2_POWER.title": "Hang"
 }

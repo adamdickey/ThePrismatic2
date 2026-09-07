@@ -7,11 +7,11 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace ThePrismatic2.ThePrismatic2Code.Relics;
 
-public sealed class VividImagination: ThePrismatic2Relic
+public sealed class GemFragments: ThePrismatic2Relic
 {
     public override RelicRarity Rarity => RelicRarity.Starter;
     
-    public override RelicModel GetUpgradeReplacement() => ModelDb.Relic<VividRecall>();
+    public override RelicModel GetUpgradeReplacement() => ModelDb.Relic<PrismaticGem2>();
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("Relics", 3m));
     

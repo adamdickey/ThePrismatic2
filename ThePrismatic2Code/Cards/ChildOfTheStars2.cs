@@ -20,7 +20,7 @@ public class ChildOfTheStars2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/child_of_the_stars.png-8c1504beecb7f7d7645c450ff77b134c.ctex";
     public override string PortraitPath => "res://.godot/imported/child_of_the_stars.png-8c1504beecb7f7d7645c450ff77b134c.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("BlockForStars", 2m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("BlockForStars", 3m));
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Block),

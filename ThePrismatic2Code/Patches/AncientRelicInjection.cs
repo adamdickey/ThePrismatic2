@@ -32,14 +32,17 @@ public static class AncientRelicInjection
     {
         // EXAMPLE ENTRIES - edit freely. Character type gates the relic to that character;
         // use the two-argument overload to offer it to everyone.
-        //Add<Tanx, PrismaticChar, SadisticDagger>(Pools.Tanx);
-        //Add<Vakuu, PrismaticChar, RealityBox>(Pools.VakuuPool2);
-        Add<Orobas, PrismaticChar, DivineDestiny>(Pools.OptionPool1);
-        //Add<Orobas, PrismaticChar, Bookmark>(Pools.OptionPool1);
+        Add<Neow, PrismaticChar, Kaleidoscope2>(Pools.NeowPositive);
+        Add<Orobas, PrismaticChar, StarChild>(Pools.OptionPool1);
+        Add<Pael, PrismaticChar, PaelsSaliva>(Pools.OptionPool3);
+        Add<Tezcatara, PrismaticChar, FatefulHourglass>(Pools.OptionPool1);
+        Add<Nonupeipe, PrismaticChar, BejeweledNecklace>(Pools.Nonupeipe);
+        Add<Tanx, PrismaticChar, FlamingSword>(Pools.Tanx);
+        Add<Vakuu, PrismaticChar, GamblingDice>(Pools.VakuuPool1);
 
         // Darv is special, you have to do his differently:
-        DarvRelicInjection.Add<PrismaticChar, Brimstone>();   
-        //DarvRelicInjection.Add<PrismaticChar, RealityBox>();   
+        DarvRelicInjection.Add<PrismaticChar, Brimstone2>();   
+        DarvRelicInjection.Add<PrismaticChar, DeadBranch2>(); 
     }
 
 

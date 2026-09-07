@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
-using MegaCrit.Sts2.Core.ValueProps;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -19,8 +19,8 @@ public class CaptureSpirit2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/capture_spirit.png-dcc09a25edf0067ecaca483651dc36eb.ctex";
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(3m, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move),
-        new CardsVar(3)
+        new PowerVar<StranglePower>(2m),
+        new CardsVar(2)
     ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<Soul>());
@@ -29,7 +29,7 @@ public class CaptureSpirit2() : ThePrismatic2Card(1,
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await CreatureCmd.Damage(choiceContext, cardPlay.Target, DynamicVars.Damage, this);
+        await PowerCmd.Apply<StranglePower>(choiceContext, cardPlay.Target, DynamicVars["StranglePower"].BaseValue, Owner.Creature, this);
         if (CombatState != null)
         {
             List<Soul> cards = Soul.Create(Owner, DynamicVars.Cards.IntValue, CombatState).ToList();
@@ -39,7 +39,7 @@ public class CaptureSpirit2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(1m);
+        DynamicVars["StranglePower"].UpgradeValueBy(1m);
         DynamicVars.Cards.UpgradeValueBy(1m);
     }
 }

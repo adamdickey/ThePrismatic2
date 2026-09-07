@@ -29,17 +29,16 @@ public class Voltaic2() : ThePrismatic2Card(2,
         HoverTipFactory.FromOrb<LightningOrb>()
     ]);
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlyArray<CardKeyword>([
-        CardKeyword.Exhaust,
-        Extensions.Keywords.Starbound
-    ]);
-
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new CalculationBaseVar(0m),
         new CalculationExtraVar(1m),
         new CalculatedVar("CalculatedChannels").WithMultiplier((card, _) => CombatManager.Instance.History.Entries.OfType<OrbChanneledEntry>().Count(e => e.Actor.Player == card.Owner))
     ]);
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlyArray<CardKeyword>([
+        CardKeyword.Exhaust,
+        Extensions.Keywords.Starbound
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

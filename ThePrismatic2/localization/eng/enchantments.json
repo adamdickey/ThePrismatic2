@@ -1,5 +1,5 @@
 ﻿{
-  "OILY.description": "This card applies [blue]{WeakPower}[/blue] [gold]Weak[/gold] and [blue]{Exposed}[/blue] [gold]Exposed[/gold].",
-  "OILY.extraCardText": "Apply [blue]{WeakPower}[/blue] [gold]Weak[/gold]{TargetType:choose(AllEnemies): to ALL enemies|}.\nApply [blue]{Exposed}[/blue] [gold]Exposed[/gold]{TargetType:choose(AllEnemies): to ALL enemies|}.",
-  "OILY.title": "Oily"
+  "THEPRISMATIC2-OILY.description": "This card applies [blue]{WeakPower}[/blue] [gold]Weak[/gold] and [blue]{Exposed}[/blue] [gold]Exposed[/gold].",
+  "THEPRISMATIC2-OILY.extraCardText": "Apply [blue]{WeakPower}[/blue] [gold]Weak[/gold]{TargetType:choose(AllEnemies): to ALL enemies|}.\nApply [blue]{Exposed}[/blue] [gold]Exposed[/gold]{TargetType:choose(AllEnemies): to ALL enemies|}.",
+  "THEPRISMATIC2-OILY.title": "Oily"
 }

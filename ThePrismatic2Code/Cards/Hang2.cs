@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using ThePrismatic2.ThePrismatic2Code.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -31,7 +32,7 @@ public class Hang2() : ThePrismatic2Card(1,
         {
             num = Math.Max(0, 999999999 - powerAmount);
         }
-        await PowerCmd.Apply<HangPower>(choiceContext, cardPlay.Target, num, Owner.Creature, this);
+        await PowerCmd.Apply<Hang2Power>(choiceContext, cardPlay.Target, num, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

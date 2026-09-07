@@ -5,9 +5,9 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Cards;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -26,13 +26,10 @@ public class Hellraiser2() : ThePrismatic2Card(2,
 
     protected override IEnumerable<string> ExtraRunAssetPaths => NHellraiserVfx.AssetPaths;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => HoverTipFactory.FromForge();
-    
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new ForgeVar(6));
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<SovereignBlade>()); 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await ForgeCmd.Forge(DynamicVars.Forge.BaseValue, Owner, this);
         await PowerCmd.Apply<Hellraiser2Power>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
     }
 
