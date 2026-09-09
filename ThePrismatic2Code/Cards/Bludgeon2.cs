@@ -27,20 +27,15 @@ public class Bludgeon2() : ThePrismatic2Card(3,
         new DamageVar(27m, ValueProp.Move),
         //new DynamicVar("Orbs", 2m)
     ]);
-/*
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
             .Execute(choiceContext);
-        for (int i = 0; i < DynamicVars["Orbs"].IntValue; i++)
-        {
-            await OrbCmd.Channel<IronOrb>(choiceContext, Owner);
-        }
     }
 
-    */
     public override Task AfterCardEnteredCombat(CardModel card)
     {
         if (card != this || IsClone) return Task.CompletedTask;
