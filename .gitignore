@@ -5,3 +5,7 @@ riderModule.iml
 /_ReSharper.Caches/
 .godot/
 *.uid
+
+# Visual Studio / Rider per-user state (machine-specific, do not commit)
+.vs/
+*.user
