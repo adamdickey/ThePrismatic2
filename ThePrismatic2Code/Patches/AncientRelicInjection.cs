@@ -39,7 +39,7 @@ public static class AncientRelicInjection
 
         // Darv is special, you have to do his differently:
         DarvRelicInjection.Add<PrismaticChar, Brimstone>();   
-        //DarvRelicInjection.Add<PrismaticChar, RealityBox>();   
+        DarvRelicInjection.Add<PrismaticChar, DeadBranch2>();
     }
 
 

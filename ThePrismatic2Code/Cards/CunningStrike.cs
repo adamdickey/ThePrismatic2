@@ -25,7 +25,8 @@ public class CunningStrike() : ThePrismatic2Card(1,
     
     public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<CunningBlast>();
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(8m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(
+        new DamageVar(8m, ValueProp.Move));
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Cunning);
     

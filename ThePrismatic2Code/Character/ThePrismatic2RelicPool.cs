@@ -25,7 +25,7 @@ public class ThePrismatic2RelicPool : CustomRelicPoolModel
             ModelDb.Relic<AlarmClock>(),
             ModelDb.Relic<RedSkull>(),
             ModelDb.Relic<CharonsAshes>(),
-            ModelDb.Relic<Brimstone>(),
+            //ModelDb.Relic<Brimstone>(),   
             ModelDb.Relic<TwistedFunnel>(),
             ModelDb.Relic<FencingManual>(),
             ModelDb.Relic<Regalite>(),

@@ -25,7 +25,7 @@ public class Impervious2() : ThePrismatic2Card(2,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new BlockVar(20m, ValueProp.Move),
-        new DynamicVar("Orbs", 2m)
+        new DynamicVar("Orbs", 1m)
         ]);
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([ 

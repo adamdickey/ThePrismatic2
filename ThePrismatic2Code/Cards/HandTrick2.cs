@@ -34,11 +34,12 @@ public class HandTrick2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
-        CardModel? cardModel = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(SelectionScreenPrompt, 1), context: choiceContext, player: Owner, filter: card => card.Type == CardType.Skill && (
-            !(card.Keywords.Contains(Extensions.Keywords.Cunning) || !card.Keywords.Contains(Extensions.Keywords.CunningThisTurn)) ||
-            !(card.Keywords.Contains(Extensions.Keywords.Starbound) || !card.Keywords.Contains(Extensions.Keywords.StarboundThisTurn)) ||
-            !card.Keywords.Contains(CardKeyword.Retain)
-        ), source: this)).FirstOrDefault();
+        CardModel? cardModel = (await CardSelectCmd.FromHand(
+            context: choiceContext,
+            player: Owner,
+            prefs: new CardSelectorPrefs(SelectionScreenPrompt, 1),
+            filter: card => card.Type == CardType.Skill,
+            source: this)).FirstOrDefault();
         
         if (cardModel != null)
         {

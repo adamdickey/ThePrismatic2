@@ -25,7 +25,8 @@ public class ConcentratedStrike() : ThePrismatic2Card(1,
     
     public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<ConcentratedBlast>();
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(9m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(
+        new DamageVar(8m, ValueProp.Move));
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
