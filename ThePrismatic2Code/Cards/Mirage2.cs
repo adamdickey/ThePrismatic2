@@ -37,6 +37,6 @@ public class Mirage2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Exhaust);
+        EnergyCost.UpgradeBy(-1);
     }
 }

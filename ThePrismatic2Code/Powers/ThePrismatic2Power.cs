@@ -1,7 +1,6 @@
 ﻿using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using ThePrismatic2.ThePrismatic2Code.Extensions;
-using Godot;
 
 namespace ThePrismatic2.ThePrismatic2Code.Powers;
 

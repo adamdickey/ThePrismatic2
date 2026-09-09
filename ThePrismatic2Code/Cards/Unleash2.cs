@@ -24,13 +24,13 @@ public class Unleash2() : ThePrismatic2Card(1,
     protected override HashSet<CardTag> CanonicalTags => [CardTag.OstyAttack];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new SummonVar(1m),
-        new CalculationBaseVar(6m),
+        new SummonVar(2m),
+        new CalculationBaseVar(4m),
         new ExtraDamageVar(1m).FromOsty(),
         new CalculatedDamageVar(ValueProp.Move).FromOsty().WithMultiplier(delegate(CardModel card, Creature? _)
         {
             Creature? osty = card.Owner.Osty;
-            return osty is { IsAlive: true } ? osty.CurrentHp + 1 : 0;
+            return osty is { IsAlive: true } ? osty.CurrentHp + card.DynamicVars.Summon.BaseValue : card.DynamicVars.Summon.BaseValue;
         })
     ]);
 
@@ -50,6 +50,6 @@ public class Unleash2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.CalculationBase.UpgradeValueBy(3m);
+        DynamicVars.Summon.UpgradeValueBy(2m);
     }
 }

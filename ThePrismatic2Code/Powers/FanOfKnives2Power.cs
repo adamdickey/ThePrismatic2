@@ -23,13 +23,13 @@ public class FanOfKnives2Power : ThePrismatic2Power
         CardModel? lastPlayedCard = CombatManager.Instance.History.Entries.OfType<CardPlayFinishedEntry>().ElementAtOrDefault(^2)?.CardPlay.Card;
         if (cardPlay is { Card: { Type: CardType.Attack, TargetType: TargetType.AnyEnemy }, Resources.EnergySpent: 0 })
         {
-            if (cardPlay.Card != lastPlayedCard || !cardPlay.IsAutoPlay)
+            if ((cardPlay.Card != lastPlayedCard || !cardPlay.IsAutoPlay) && cardPlay.IsFirstInSeries)
             {
                 foreach (Creature enemy in CombatState.HittableEnemies)
                 {
                     if (enemy != cardPlay.Target)
                     {
-                        await CardCmd.AutoPlay(choiceContext, cardPlay.Card, enemy);
+                        await CardCmd.AutoPlay(choiceContext, cardPlay.Card, enemy, skipXCapture: true);
                     }
                 }
             }

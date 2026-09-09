@@ -1,7 +1,8 @@
 ﻿using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Rooms;
-using ThePrismatic2.ThePrismatic2Code.Extensions;
+using BaseLib.Common.Rewards;
+
 
 namespace ThePrismatic2.ThePrismatic2Code.Powers;
 
@@ -20,7 +21,11 @@ public class ForbiddenGrimoire2Power : ThePrismatic2Power
     {
         for (int i = 0; i < Amount; i++)
         {
-            if (Owner.Player != null) room.AddExtraReward(Owner.Player, new CardTransformReward(Owner.Player));
+            if (Owner.Player != null) room.AddExtraReward(Owner.Player, new CardTransformReward(Owner.Player)
+            {
+                Upgrade = false,
+                MaxCards = 1
+            });
         }
         return Task.CompletedTask;
     }

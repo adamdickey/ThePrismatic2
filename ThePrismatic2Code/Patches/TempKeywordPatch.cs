@@ -8,7 +8,7 @@ using ThePrismatic2.ThePrismatic2Code.Extensions;
 
 namespace ThePrismatic2.ThePrismatic2Code.Patches;
 
-public class RemoveTempKeywordSingleton() : CustomSingletonModel(true, false)
+public class RemoveTempKeywordSingleton() : CustomSingletonModel(HookType.Combat)
 {
     public override Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {

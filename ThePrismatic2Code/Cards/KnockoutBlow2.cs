@@ -22,7 +22,7 @@ public class KnockoutBlow2() : ThePrismatic2Card(2,
     public override string PortraitPath => "res://.godot/imported/knockout_blow.png-53467956a6f5eba59f1edf391c02e5bb.ctex";
 
     public override int CanonicalStarCost => 1;
-
+    
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([

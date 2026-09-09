@@ -17,9 +17,9 @@ public class BulletTime2() : ThePrismatic2Card(2,
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/bullet_time.png-79034f0cabded6db90c8dcf59e1a468e.ctex";
     public override string PortraitPath => "res://.godot/imported/bullet_time.png-79034f0cabded6db90c8dcf59e1a468e.ctex";
-    
+
     public override int CanonicalStarCost => 1;
-    
+
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

@@ -25,19 +25,18 @@ public class Zap2() : ThePrismatic2Card(0,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
     
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(
-        new DynamicVar("Orbs", 1m));
-
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Channeling),
         HoverTipFactory.FromOrb<LightningOrb>(),
         HoverTipFactory.FromOrb<MagmaOrb>()
     ]);
 
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("Lightning", 1m));
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        for (int i = 0; i < DynamicVars["Orbs"].IntValue; i++)
+        for (int i = 0; i < DynamicVars["Lightning"].IntValue; i++)
         {
             await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
         }
@@ -46,6 +45,6 @@ public class Zap2() : ThePrismatic2Card(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Orbs"].UpgradeValueBy(1m);
+        DynamicVars["Lightning"].UpgradeValueBy(1m);
     }
 }

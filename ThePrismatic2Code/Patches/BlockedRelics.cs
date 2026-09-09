@@ -27,8 +27,7 @@ public static class BlockedRelics
         ModelDb.Relic<PrismaticGem>(),
         ModelDb.Relic<Sozu>(),
         ModelDb.Relic<Ectoplasm>(),
-        ModelDb.Relic<Kaleidoscope>(),
-        // ModelDb.Relic<CrackedCore>(),
+        ModelDb.Relic<Kaleidoscope>()
     ];
 
     /// <summary>True when this relic is on the list above and this player is The Prismatic.</summary>
@@ -169,7 +168,7 @@ public static class BlockedRelics
             }
         }
 
-        // Last line of defence: catches relics an ancient names directly rather than drawing from
+        // Last line of defense: catches relics an ancient names directly rather than drawing from
         // a pool (Tanx's Tri-Boomerang, Pael's own relics, anything Darv rolled, and so on).
         MethodBase? wrapper = AccessTools.Method(typeof(AncientEventModel), "GenerateInitialOptionsWrapper");
 

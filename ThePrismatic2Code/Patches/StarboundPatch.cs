@@ -7,7 +7,7 @@ using ThePrismatic2.ThePrismatic2Code.Extensions;
 
 namespace ThePrismatic2.ThePrismatic2Code.Patches;
 
-public class StarboundSingleton() : CustomSingletonModel(true, false)
+public class StarboundSingleton() : CustomSingletonModel(HookType.Combat)
 {
     public override Task AfterEnergyReset(Player player)
     {
@@ -24,7 +24,7 @@ public class StarboundSingleton() : CustomSingletonModel(true, false)
         UpdateStarbound(card);
         return Task.CompletedTask;
     }
-    
+    /*
     public override Task AfterStarsGained(int amount, Player gainer)
     {
         if (amount <= 0) return Task.CompletedTask;
@@ -34,7 +34,7 @@ public class StarboundSingleton() : CustomSingletonModel(true, false)
             UpdateStarbound(card);
         }
         return Task.CompletedTask;
-    }
+    }*/
     
     public override Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -54,9 +54,14 @@ public class StarboundSingleton() : CustomSingletonModel(true, false)
 
     private static void UpdateStarbound(CardModel card)
     {
-        int cardEnergy = Math.Max(0, card.EnergyCost.GetWithModifiers(CostModifiers.All));
+        if (card.CombatState == null || (!card.Keywords.Contains(Keywords.Starbound) && !card.Keywords.Contains(Keywords.StarboundThisTurn))) return;
+        
+        int cardEnergy = Math.Max(0, card.EnergyCost.GetWithModifiers(CostModifiers.Local));
+        int globalCardEnergy = Math.Max(0, card.EnergyCost.GetWithModifiers(CostModifiers.All));
         int cardStars = Math.Max(0, card.GetStarCostWithModifiers());
         int cardCost = cardEnergy + cardStars;
+        if (cardCost == 0) return;
+        
         int playerEnergy = 0;
         int playerStars = 0;
         if (card.Owner.PlayerCombatState != null)
@@ -64,31 +69,34 @@ public class StarboundSingleton() : CustomSingletonModel(true, false)
             playerEnergy = card.Owner.PlayerCombatState.Energy;
             playerStars = card.Owner.PlayerCombatState.Stars;
         }
-        if (cardCost != 0 && card.CombatState != null && (card.Keywords.Contains(Keywords.Starbound) || card.Keywords.Contains(Keywords.StarboundThisTurn)))
+        if (cardEnergy != globalCardEnergy)
         {
-            if (playerStars + playerEnergy >= cardCost)
+            int energyDif =  globalCardEnergy - cardEnergy;
+            playerEnergy -= energyDif;
+        }
+        
+        if (playerStars + playerEnergy >= cardCost)
+        {
+            if (playerEnergy < cardEnergy)
             {
-                if (playerEnergy < cardEnergy)
-                {
-                    card.EnergyCost.SetThisTurnOrUntilPlayed(playerEnergy);
-                    card.SetStarCostThisTurn(cardCost - playerEnergy);
-                }
-                else if (playerStars < cardStars)
-                {
-                    card.EnergyCost.SetThisTurnOrUntilPlayed(cardCost - playerStars);
-                    card.SetStarCostThisTurn(playerStars);
-                }
-                else if (cardCost == card.EnergyCost.Canonical + card.CanonicalStarCost && playerEnergy >= card.EnergyCost.Canonical && playerStars >= card.CanonicalStarCost)
-                {
-                    card.EnergyCost.SetThisCombat(card.EnergyCost.Canonical);
-                    card.SetStarCostThisCombat(card.CanonicalStarCost);
-                }
+                card.EnergyCost.SetThisTurnOrUntilPlayed(playerEnergy);
+                card.SetStarCostThisTurn(cardCost - playerEnergy);
             }
-            else if (cardCost == card.EnergyCost.Canonical + card.CanonicalStarCost)
+            else if (playerStars < cardStars)
+            {
+                card.EnergyCost.SetThisTurnOrUntilPlayed(cardCost - playerStars);
+                card.SetStarCostThisTurn(playerStars);
+            }
+            else if (cardCost == card.EnergyCost.Canonical + card.CanonicalStarCost && playerEnergy >= card.EnergyCost.Canonical && playerStars >= card.CanonicalStarCost)
             {
                 card.EnergyCost.SetThisCombat(card.EnergyCost.Canonical);
                 card.SetStarCostThisCombat(card.CanonicalStarCost);
             }
+        }
+        else if (cardCost == card.EnergyCost.Canonical + card.CanonicalStarCost)
+        {
+            card.EnergyCost.SetThisCombat(card.EnergyCost.Canonical);
+            card.SetStarCostThisCombat(card.CanonicalStarCost);
         }
     }
 }
