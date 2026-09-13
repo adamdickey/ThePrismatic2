@@ -22,7 +22,7 @@ public class Terraforming2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/terraforming.png-d1f4412a453c4771a987281ee547c2c6.ctex";
     public override string PortraitPath => "res://.godot/imported/terraforming.png-d1f4412a453c4771a987281ee547c2c6.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<FocusPower>(2m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<FocusPower>(1m));
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<FocusPower>(),

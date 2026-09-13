@@ -268,5 +268,8 @@
   "THEPRISMATIC2-REFINE_BLADE2_POWER.title": "Refine Blade",
   "THEPRISMATIC2-HANG2_POWER.description": "All [gold]Hangs[/gold] deal [blue]2[/blue] times more damage to this enemy.",
   "THEPRISMATIC2-HANG2_POWER.smartDescription": "All [gold]Hangs[/gold] deal [blue]{Amount}[/blue] times more damage to this enemy.",
-  "THEPRISMATIC2-HANG2_POWER.title": "Hang"
+  "THEPRISMATIC2-HANG2_POWER.title": "Hang",
+  "THEPRISMATIC2-SUBROUTINE2_POWER.description": "Whenever you play a Power, gain [blue]1[/blue] {energyPrefix:energyIcons(1)} and [blue]1[/blue] Star.",
+  "THEPRISMATIC2-SUBROUTINE2_POWER.smartDescription": "Whenever you play a Power, gain {Amount:energyIcons()} and {Amount:starIcons()}.",
+  "THEPRISMATIC2-SUBROUTINE2_POWER.title": "Subroutine"
 }

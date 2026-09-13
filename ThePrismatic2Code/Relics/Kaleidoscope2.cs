@@ -1,6 +1,7 @@
 ﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -28,14 +29,30 @@ public sealed class Kaleidoscope2: ThePrismatic2Relic
         List<CardTransformation> list = new List<CardTransformation>();
         if (cardModel != null)
         {
-            CardModel card = Character.ThePrismatic2.GetRandomPrismaticStrike(); 
-            CardModel newCard = Owner.RunState.CreateCard(card, Owner);
+            CardModel strike = Character.ThePrismatic2.GetPrismaticStrikes().TakeRandom(1, Owner.RunState.Rng.Niche).First();
+            CardModel? currentStrike = Owner.Deck.Cards.FirstOrDefault(c => c.Rarity != CardRarity.Basic && c.Tags.Contains(CardTag.Strike));
+            if (currentStrike != null)
+            {
+                while (strike == currentStrike)
+                {
+                    strike = Character.ThePrismatic2.GetPrismaticStrikes().TakeRandom(1, Owner.RunState.Rng.Niche).First();
+                }
+            }
+            CardModel newCard = Owner.RunState.CreateCard(strike, Owner);
         	list.Add(new CardTransformation(cardModel, newCard));
         }
         if (cardModel2 != null)
         {
-            CardModel card2 = Character.ThePrismatic2.GetRandomPrismaticDefend(); 
-            CardModel newCard2 = Owner.RunState.CreateCard(card2, Owner);
+            CardModel defend = Character.ThePrismatic2.GetPrismaticDefends().TakeRandom(1, Owner.RunState.Rng.Niche).First();
+            CardModel? currentDefend = Owner.Deck.Cards.FirstOrDefault(c => c.Rarity != CardRarity.Basic && c.Tags.Contains(CardTag.Defend));
+            if (currentDefend != null)
+            {
+                while (defend == currentDefend)
+                {
+                    defend = Character.ThePrismatic2.GetPrismaticDefends().TakeRandom(1, Owner.RunState.Rng.Niche).First();
+                }
+            }
+            CardModel newCard2 = Owner.RunState.CreateCard(defend, Owner);
         	list.Add(new CardTransformation(cardModel2, newCard2));
         }
         await CardCmd.Transform(list, Owner.PlayerRng.Transformations);

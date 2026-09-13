@@ -4,9 +4,12 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -40,6 +43,12 @@ public class GrandFinale2() : ThePrismatic2Card(0,
     {
         if (CombatState != null)
         {
+            NGrandFinaleVfx? nGrandFinaleVfx = NGrandFinaleVfx.Create(Owner.Creature);
+            if (nGrandFinaleVfx != null)
+            {
+                NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(nGrandFinaleVfx);
+                await Cmd.Wait(NGrandFinaleVfx.totalAnticipationDuration);
+            }
             await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(choiceContext);

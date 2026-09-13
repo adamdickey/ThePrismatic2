@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace ThePrismatic2.ThePrismatic2Code.Relics;
@@ -55,7 +56,12 @@ public sealed class PaelsSaliva: ThePrismatic2Relic
             PotionsUsed++;
             if (PotionsUsed >= 2)
             {
-                if (!CombatManager.Instance.IsOverOrEnding) Flash();
+                if (Owner.RunState.CurrentRoom is { RoomType: RoomType.Monster or RoomType.Elite or RoomType.Boss } && !CombatManager.Instance.IsOverOrEnding)
+                {
+                    Flash();
+                    OrbCmd.AddSlots(Owner, 1);
+                    OrbCmd.Channel(new BlockingPlayerChoiceContext(), OrbModel.GetRandomOrb(Owner.RunState.Rng.CombatOrbGeneration).ToMutable(), Owner);
+                }
                 Orbs++;
                 InvokeDisplayAmountChanged();
                 PotionsUsed = 0;

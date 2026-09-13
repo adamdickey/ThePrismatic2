@@ -24,7 +24,10 @@ public class ForgottenRitual2() : ThePrismatic2Card(1,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new EnergyVar(3));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new EnergyVar(2),
+        new StarsVar(2)
+    ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         EnergyHoverTip,
@@ -39,10 +42,12 @@ public class ForgottenRitual2() : ThePrismatic2Card(1,
         NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, Owner);
+        await PlayerCmd.GainStars(DynamicVars.Stars.IntValue, Owner);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Energy.UpgradeValueBy(1m);
+        DynamicVars.Stars.UpgradeValueBy(1m);
     }
 }
