@@ -23,10 +23,7 @@ public class TheSealedThrone2Power : ThePrismatic2Power
         {
             return false;
         }
-        if (card.Keywords.Contains(Extensions.Keywords.StarboundThisTurn))
-        {
-            card.RemoveKeyword(Extensions.Keywords.StarboundThisTurn);
-        }
+        keywords.Remove(Extensions.Keywords.StarboundThisTurn);
         return keywords.Add(Extensions.Keywords.Starbound);
     }
     
