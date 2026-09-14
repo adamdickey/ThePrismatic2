@@ -29,12 +29,12 @@ public class ThePrismatic2 : PlaceholderCharacterModel
         ..GetRandomStartingDeck()
     ];
 
-    public static IEnumerable<CardModel> GetRandomStartingDeck()
+    private static IEnumerable<CardModel> GetRandomStartingDeck()
     {
         while (true)
         {
-            CardModel chosenStrike = GetRandomPrismaticStrike();
-            CardModel chosenDefend = GetRandomPrismaticDefend();
+            CardModel chosenStrike = GetPrismaticStrikes().TakeRandom(1, Rng.Chaotic).First();
+            CardModel chosenDefend = GetPrismaticDefends().TakeRandom(1, Rng.Chaotic).First();
             if (chosenStrike is DoomingStrike or ExposingStrike or ToxicStrike & chosenDefend is DoomingDefend or ExposingDefend or ToxicDefend)
             {
                 continue;
@@ -80,7 +80,7 @@ public class ThePrismatic2 : PlaceholderCharacterModel
         }
     }
 
-    public static CardModel GetRandomPrismaticStrike()
+    public static IEnumerable<CardModel> GetPrismaticStrikes()
     {
         List<CardModel> strikes = 
         [ModelDb.Card<ExposingStrike>(), ModelDb.Card<DoomingStrike>(), ModelDb.Card<ToxicStrike>(),
@@ -90,10 +90,11 @@ public class ThePrismatic2 : PlaceholderCharacterModel
             ModelDb.Card<RecklessStrike>(), ModelDb.Card<NecroStrike>(), ModelDb.Card<CoordinatedStrike>(),
             ModelDb.Card<StarryStrike>(), ModelDb.Card<CosmicStrike>(), ModelDb.Card<StarboundStrike>(),
             ModelDb.Card<ClawingStrike>(), ModelDb.Card<CostlyStrike>(), ModelDb.Card<ForgingStrike>()];
-        return strikes.TakeRandom(1, Rng.Chaotic).First();
+        return strikes;
+        //return strikes.TakeRandom(1, Owner.RunState.Rng.Niche).First();
     }
     
-    public static CardModel GetRandomPrismaticDefend()
+    public static IEnumerable<CardModel> GetPrismaticDefends()
     {
         List<CardModel> defends = 
         [ModelDb.Card<ExposingDefend>(), ModelDb.Card<DoomingDefend>(), ModelDb.Card<ToxicDefend>(),
@@ -103,7 +104,8 @@ public class ThePrismatic2 : PlaceholderCharacterModel
             ModelDb.Card<RecklessDefend>(), ModelDb.Card<NecroDefend>(), ModelDb.Card<CoordinatedDefend>(),
             ModelDb.Card<StarryDefend>(), ModelDb.Card<CosmicDefend>(), ModelDb.Card<StarboundDefend>(),
             ModelDb.Card<ClawingDefend>(), ModelDb.Card<CostlyDefend>(), ModelDb.Card<ForgingDefend>()];
-        return defends.TakeRandom(1, Rng.Chaotic).First();
+        return defends;
+        //return defends.TakeRandom(1, Rng.Chaotic).First();
     }
 
     public override IReadOnlyList<RelicModel> StartingRelics =>

@@ -25,7 +25,7 @@ public class PhantomBlades2Power : ThePrismatic2Power
         {
             return false;
         }
-        if (card.EnergyCost.GetWithModifiers(CostModifiers.All) != 0 || card.Type != CardType.Attack)
+        if (card.EnergyCost.GetWithModifiers(CostModifiers.All) != 0 || card.Type != CardType.Attack || card.EnergyCost.CostsX)
         {
             return false;
         } 
@@ -38,7 +38,7 @@ public class PhantomBlades2Power : ThePrismatic2Power
         {
             return 0m;
         }
-        if (cardSource == null || !(cardSource.EnergyCost.GetWithModifiers(CostModifiers.All) == 0 && cardSource.Type == CardType.Attack))
+        if (cardSource == null || !(cardSource.EnergyCost.GetWithModifiers(CostModifiers.All) == 0 && cardSource is { Type: CardType.Attack, EnergyCost.CostsX: false }))
         {
             return 0m;
         }
@@ -46,7 +46,7 @@ public class PhantomBlades2Power : ThePrismatic2Power
         {
             return 0m;
         }
-        int num = CombatManager.Instance.History.CardPlaysFinished.Count(e => e.HappenedThisTurn(CombatState) && e.CardPlay.Resources.EnergyValue == 0 && e.CardPlay.Card.Type == CardType.Attack && e.CardPlay.Card.Owner.Creature == Owner);
+        int num = CombatManager.Instance.History.CardPlaysFinished.Count(e => e.HappenedThisTurn(CombatState) && e.CardPlay.Resources.EnergyValue == 0 && e.CardPlay.Card.Type == CardType.Attack && e.CardPlay.Card.Owner.Creature == Owner && !e.CardPlay.Card.EnergyCost.CostsX);
         if (num > 0)
         {
             return 0m;

@@ -1,6 +1,7 @@
 ﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
@@ -17,13 +18,26 @@ public class TheSealedThrone2Power : ThePrismatic2Power
     public override PowerStackType StackType => PowerStackType.Counter;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Starbound));
+
+    public override Task AfterApplied(Creature? applier, CardModel? cardSource)
+    {
+        IEnumerable<CardModel> enumerable = Owner.Player?.PlayerCombatState?.AllCards ?? Array.Empty<CardModel>();
+        foreach (CardModel card in enumerable)
+        {
+            if (card.Keywords.Contains(Extensions.Keywords.StarboundThisTurn))
+            {
+                card.RemoveKeyword(Extensions.Keywords.StarboundThisTurn);
+            }
+        }
+        return Task.CompletedTask;
+    }
+    
     public override bool TryModifyKeywordsInCombat(CardModel card, ISet<CardKeyword> keywords)
     {
         if (card.Owner != Owner.Player)
         {
             return false;
         }
-        keywords.Remove(Extensions.Keywords.StarboundThisTurn);
         return keywords.Add(Extensions.Keywords.Starbound);
     }
     

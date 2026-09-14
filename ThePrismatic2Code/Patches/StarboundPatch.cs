@@ -24,20 +24,13 @@ public class StarboundSingleton() : CustomSingletonModel(HookType.Combat)
         UpdateStarbound(card);
         return Task.CompletedTask;
     }
-    /*
-    public override Task AfterStarsGained(int amount, Player gainer)
-    {
-        if (amount <= 0) return Task.CompletedTask;
-        IEnumerable<CardModel> enumerable = PileType.Hand.GetPile(gainer).Cards;
-        foreach (CardModel card in enumerable)
-        {
-            UpdateStarbound(card);
-        }
-        return Task.CompletedTask;
-    }*/
     
     public override Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        if (cardPlay.ResultPile == PileType.Hand)
+        {
+            UpdateStarbound(cardPlay.Card, true);
+        }
         IEnumerable<CardModel> enumerable = PileType.Hand.GetPile(cardPlay.Card.Owner).Cards;
         foreach (CardModel card in enumerable)
         {
@@ -48,11 +41,15 @@ public class StarboundSingleton() : CustomSingletonModel(HookType.Combat)
     
     public override Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
-        UpdateStarbound(card);
+        IEnumerable<CardModel> enumerable = PileType.Hand.GetPile(card.Owner).Cards;
+        foreach (CardModel card2 in enumerable)
+        {
+            UpdateStarbound(card2);
+        }
         return Task.CompletedTask;
     }
 
-    private static void UpdateStarbound(CardModel card)
+    private static void UpdateStarbound(CardModel card, bool permanentCostChange = false)
     {
         if (card.CombatState == null || (!card.Keywords.Contains(Keywords.Starbound) && !card.Keywords.Contains(Keywords.StarboundThisTurn))) return;
         
@@ -79,13 +76,29 @@ public class StarboundSingleton() : CustomSingletonModel(HookType.Combat)
         {
             if (playerEnergy < cardEnergy)
             {
-                card.EnergyCost.SetThisTurnOrUntilPlayed(playerEnergy);
-                card.SetStarCostThisTurn(cardCost - playerEnergy);
+                if (permanentCostChange)
+                {
+                    card.EnergyCost.SetThisCombat(playerEnergy);
+                    card.SetStarCostThisCombat(cardCost - playerEnergy);
+                }
+                else
+                {
+                    card.EnergyCost.SetThisTurnOrUntilPlayed(playerEnergy);
+                    card.SetStarCostThisTurn(cardCost - playerEnergy);
+                }
             }
             else if (playerStars < cardStars)
             {
-                card.EnergyCost.SetThisTurnOrUntilPlayed(cardCost - playerStars);
-                card.SetStarCostThisTurn(playerStars);
+                if (permanentCostChange)
+                {
+                    card.EnergyCost.SetThisCombat(cardCost - playerStars);
+                    card.SetStarCostThisCombat(playerStars);
+                }
+                else
+                {
+                    card.EnergyCost.SetThisTurnOrUntilPlayed(cardCost - playerStars);
+                    card.SetStarCostThisTurn(playerStars);
+                }
             }
             else if (cardCost == card.EnergyCost.Canonical + card.CanonicalStarCost && playerEnergy >= card.EnergyCost.Canonical && playerStars >= card.CanonicalStarCost)
             {
@@ -100,56 +113,3 @@ public class StarboundSingleton() : CustomSingletonModel(HookType.Combat)
         }
     }
 }
-    
-/*
-[HarmonyPatch(typeof(PlayerCombatState), "HasEnoughResourcesFor")]
-public static class StarboundPatch
-{
-    private static void Prefix(CardModel card, out UnplayableReason reason)
-    {
-        reason = UnplayableReason.None;
-        int cardEnergy = Math.Max(0, card.EnergyCost.GetWithModifiers(CostModifiers.All));
-        int cardStars = Math.Max(0, card.GetStarCostWithModifiers());
-        int cardCost = cardEnergy + cardStars;
-        int playerEnergy = 0;
-        int playerStars = 0;
-        if (card.Owner.PlayerCombatState != null)
-        {
-            playerEnergy = card.Owner.PlayerCombatState.Energy;
-            playerStars = card.Owner.PlayerCombatState.Stars;
-        }
-
-        if (card.CombatState == null || (!card.Keywords.Contains(Keywords.Starbound) && !card.Keywords.Contains(Keywords.StarboundThisTurn))) return;
-        if (cardCost == 0) return;
-        if (playerStars + playerEnergy >= cardCost)
-        {
-            if (playerEnergy < cardEnergy && playerEnergy + playerStars >= cardCost)
-            {
-                card.EnergyCost.SetThisTurnOrUntilPlayed(playerEnergy);
-                card.SetStarCostThisTurn(cardCost - playerEnergy);
-                return;
-            }
-            if (playerStars < cardStars && playerStars + playerEnergy >= cardCost)
-            {
-                card.EnergyCost.SetThisTurnOrUntilPlayed(cardCost - playerStars);
-                card.SetStarCostThisTurn(playerStars);
-            }
-        }
-        else
-        {
-            if (cardCost == card.EnergyCost.Canonical + card.CanonicalStarCost)
-            {
-                card.EnergyCost.SetThisCombat(card.EnergyCost.Canonical);
-                card.SetStarCostThisCombat(card.CanonicalStarCost);
-            }
-            if (Math.Max(0, card.EnergyCost.GetWithModifiers(CostModifiers.All)) > playerEnergy)
-            {
-                reason |= UnplayableReason.EnergyCostTooHigh;
-            }
-            if (Math.Max(0, card.CurrentStarCost) > playerStars)
-            {
-                reason |= UnplayableReason.StarCostTooHigh;
-            }
-        }
-    }
-}*/
