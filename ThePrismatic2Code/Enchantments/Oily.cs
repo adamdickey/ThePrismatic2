@@ -15,17 +15,17 @@ public sealed class Oily : CustomEnchantmentModel
     protected override string CustomIconPath => "res://.godot/imported/inky.png-27b90d1ea6c2aab29a64059ea46c014c.ctex";
     public override bool HasExtraCardText => true;
 
-    public override bool ShowAmount => false;
+    public override bool ShowAmount => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new PowerVar<WeakPower>(1m),
-        new DynamicVar("Exposed", 1m)
+        new PowerVar<WeakPower>(0m),
+        new DynamicVar("Exposed", 0m)
     ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<WeakPower>(),
         HoverTipFactory.FromPower<ExposedPower>()
-        ]);
+    ]);
 
     public override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay? cardPlay)
     {
@@ -48,5 +48,10 @@ public sealed class Oily : CustomEnchantmentModel
         }
         await PowerCmd.Apply<WeakPower>(choiceContext, targets, DynamicVars.Weak.BaseValue, Card.Owner.Creature, Card);
         await PowerCmd.Apply<ExposedPower>(choiceContext, targets, DynamicVars["Exposed"].BaseValue, Card.Owner.Creature, Card);
+    }
+    public override void RecalculateValues()
+    {
+        DynamicVars.Weak.BaseValue = Amount;
+        DynamicVars["Exposed"].BaseValue = Amount;
     }
 }

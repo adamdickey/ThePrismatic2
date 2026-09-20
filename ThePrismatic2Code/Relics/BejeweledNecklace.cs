@@ -1,10 +1,12 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Enchantments;
 using ThePrismatic2.ThePrismatic2Code.Cards;
 
 namespace ThePrismatic2.ThePrismatic2Code.Relics;
@@ -16,24 +18,25 @@ public sealed class BejeweledNecklace: ThePrismatic2Relic
     //protected override string PackedIconOutlinePath => "res://images/atlases/relic_outline_atlas.sprites/burning_blood.tres";
     //protected override string BigIconPath => "res://images/relics/burning_blood.png";
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        HoverTipFactory.FromCard<Hang2>(upgrade: true),
-        ..HoverTipFactory.FromEnchantment<Glam>()
-    ]);
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<CreativeAi2>());
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new CardsVar(1));
 
-    public override async Task AfterObtained()
+    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
-        List<CardPileAddResult> hangs = new List<CardPileAddResult>();
-        for (int i = 0; i < DynamicVars.Cards.IntValue; i++)
+        if (participants.Contains(Owner.Creature) && Owner.PlayerCombatState is { TurnNumber: <= 1 })
         {
-            CardModel card2 = Owner.RunState.CreateCard(ModelDb.Card<Hang2>(), Owner);
-            CardCmd.Upgrade(card2);
-            CardCmd.Enchant<Glam>(card2, 1m);
-            hangs.Add(await CardPileCmd.Add(card2, PileType.Deck));
+            Flash();
+            List<CardModel> cards = new List<CardModel>();
+            for (int i = 0; i < DynamicVars.Cards.IntValue; i++)
+            {
+                cards.Add(combatState.CreateCard<CreativeAi2>(Owner));
+            }
+            foreach (CardModel item in cards)
+            {
+                item.SetToFreeThisTurn();
+            }
+            await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Hand, Owner);
         }
-        CardCmd.PreviewCardPileAdd(hangs, 2f);
-        await Cmd.Wait(0.75f);
     }
 }

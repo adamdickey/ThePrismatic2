@@ -22,17 +22,15 @@ public class RecklessBlast() : ThePrismatic2Card(0,
         new DamageVar(8m, ValueProp.Move),
         new SummonVar(1m),
         new HpLossVar(1m),
-        new RepeatVar(3)
+        new RepeatVar(2)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target);
-
-        // The whole card - summon, self damage and attack - runs Repeat times.
-        for (int i = 0; i < DynamicVars.Repeat.IntValue; i++)
+        
+        for (int i = 0; i < DynamicVars.Repeat.IntValue+1; i++)
         {
-            // Stop early rather than summoning and bleeding for hits on a corpse.
             if (play.Target is not { IsAlive: true }) break;
 
             await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
@@ -50,10 +48,6 @@ public class RecklessBlast() : ThePrismatic2Card(0,
                 .WithHitFx("vfx/vfx_attack_slash", null, "slash_attack.mp3")
                 .Execute(choiceContext);
         }
-
-        // Summoning and then bleeding for the same amount leaves a freshly summoned Osty sitting
-        // on exactly 0 HP, and nothing reaps him - he stays standing and still counts as alive.
-        // Finish him off explicitly.
         if (Owner.Osty is { CurrentHp: <= 0 } deadOsty)
         {
             await CreatureCmd.Kill(deadOsty, true);

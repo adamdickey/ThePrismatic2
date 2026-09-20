@@ -3,7 +3,6 @@ using HarmonyLib;
 using MegaCrit.Sts2.Core.Events;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Events;
-using MegaCrit.Sts2.Core.Models.Relics;
 using ThePrismatic2.ThePrismatic2Code.Relics;
 using PrismaticChar = ThePrismatic2.ThePrismatic2Code.Character.ThePrismatic2;
 
@@ -37,7 +36,7 @@ public static class AncientRelicInjection
         Add<Pael, PrismaticChar, PaelsSaliva>(Pools.OptionPool3);
         Add<Tezcatara, PrismaticChar, FatefulHourglass>(Pools.OptionPool1);
         Add<Nonupeipe, PrismaticChar, BejeweledNecklace>(Pools.Nonupeipe);
-        Add<Tanx, PrismaticChar, FlamingSword>(Pools.Tanx);
+        Add<Tanx, PrismaticChar, SwordOfInk>(Pools.Tanx);
         Add<Vakuu, PrismaticChar, GamblingDice>(Pools.VakuuPool1);
 
         // Darv is special, you have to do his differently:

@@ -44,6 +44,6 @@ public class ExposingBlast() : ThePrismatic2Card(1,
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(9m);
-        DynamicVars["Exposed"].UpgradeValueBy(4m);
+        DynamicVars["Exposed"].UpgradeValueBy(3m);
     }
 }

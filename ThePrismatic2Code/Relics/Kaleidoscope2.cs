@@ -27,41 +27,36 @@ public sealed class Kaleidoscope2: ThePrismatic2Relic
         CardModel? cardModel = source.FirstOrDefault(c => c.Tags.Contains(CardTag.Strike));
         CardModel? cardModel2 = source.FirstOrDefault(c => c.Tags.Contains(CardTag.Defend));
         List<CardTransformation> list = new List<CardTransformation>();
-        if (cardModel != null)
+        string? strikeName = Owner.Deck.Cards.FirstOrDefault(c => c.Rarity != CardRarity.Basic && c.Tags.Contains(CardTag.Strike))?.Id.ToString();
+        string? strikeType = strikeName ?? strikeName?.Replace("Strike", "");
+        string? defendName = Owner.Deck.Cards.FirstOrDefault(c => c.Rarity != CardRarity.Basic && c.Tags.Contains(CardTag.Defend))?.Id.ToString();
+        string? defendType = defendName ?? defendName?.Replace("Defend", "");
+        if (cardModel != null && cardModel2 != null)
         {
             CardModel strike = Character.ThePrismatic2.GetPrismaticStrikes().TakeRandom(1, Owner.RunState.Rng.Niche).First();
-            CardModel? currentStrike = Owner.Deck.Cards.FirstOrDefault(c => c.Rarity != CardRarity.Basic && c.Tags.Contains(CardTag.Strike));
-            if (currentStrike != null)
+            CardModel defend = Character.ThePrismatic2.GetPrismaticDefends().TakeRandom(1, Owner.RunState.Rng.Niche).First();
+            if (strikeType != null && defendType != null)
             {
-                while (strike == currentStrike)
+                while (true)
                 {
                     strike = Character.ThePrismatic2.GetPrismaticStrikes().TakeRandom(1, Owner.RunState.Rng.Niche).First();
+                    defend = Character.ThePrismatic2.GetPrismaticDefends().TakeRandom(1, Owner.RunState.Rng.Niche).First();
+                    if (strike.Id.ToString().Contains(strikeType) || strike.Id.ToString().Contains(defendType))
+                    {
+                        continue;
+                    }
+                    if (defend.Id.ToString().Contains(strikeType) || defend.Id.ToString().Contains(defendType))
+                    {
+                        continue;
+                    }
+                    break;
                 }
             }
             CardModel newCard = Owner.RunState.CreateCard(strike, Owner);
-        	list.Add(new CardTransformation(cardModel, newCard));
-        }
-        if (cardModel2 != null)
-        {
-            CardModel defend = Character.ThePrismatic2.GetPrismaticDefends().TakeRandom(1, Owner.RunState.Rng.Niche).First();
-            CardModel? currentDefend = Owner.Deck.Cards.FirstOrDefault(c => c.Rarity != CardRarity.Basic && c.Tags.Contains(CardTag.Defend));
-            if (currentDefend != null)
-            {
-                while (defend == currentDefend)
-                {
-                    defend = Character.ThePrismatic2.GetPrismaticDefends().TakeRandom(1, Owner.RunState.Rng.Niche).First();
-                }
-            }
             CardModel newCard2 = Owner.RunState.CreateCard(defend, Owner);
-        	list.Add(new CardTransformation(cardModel2, newCard2));
+        	list.Add(new CardTransformation(cardModel, newCard));
+            list.Add(new CardTransformation(cardModel2, newCard2));
         }
         await CardCmd.Transform(list, Owner.PlayerRng.Transformations);
-        //List<CardModel> list = (await CardSelectCmd.FromDeckForTransformation(prefs: new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, DynamicVars.Cards.IntValue), player: Owner)).ToList();
-        //foreach (CardModel item in list)
-        //{
-        //    CardModel card = item.Tags.Contains(CardTag.Defend) ? Character.ThePrismatic2.GetRandomPrismaticDefend() : Character.ThePrismatic2.GetRandomPrismaticStrike();
-        //    CardModel newCard = Owner.RunState.CreateCard(card, Owner);
-        //    await CardCmd.Transform(item, newCard);
-        //}
     }
 }

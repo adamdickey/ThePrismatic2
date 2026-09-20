@@ -17,7 +17,10 @@ public class MultiCast2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/multi_cast.png-81832e5d52543e07fc0de49d16fecc10.ctex";
     public override string PortraitPath => "res://.godot/imported/multi_cast.png-81832e5d52543e07fc0de49d16fecc10.ctex";
     
+    private bool HasStarbound => Keywords.Contains(Extensions.Keywords.Starbound) || Keywords.Contains(Extensions.Keywords.StarboundThisTurn);
     protected override bool HasEnergyCostX => true;
+    
+    public override bool HasStarCostX => HasStarbound;
 
     public override OrbEvokeType OrbEvokeType => OrbEvokeType.All;
     
@@ -27,6 +30,10 @@ public class MultiCast2() : ThePrismatic2Card(0,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         int evokeCount = ResolveEnergyXValue();
+        if (HasStarbound)
+        {
+            evokeCount += ResolveStarXValue();
+        }
         if (IsUpgraded)
         {
             evokeCount++;

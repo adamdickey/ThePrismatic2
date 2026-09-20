@@ -91,7 +91,6 @@ public class ThePrismatic2 : PlaceholderCharacterModel
             ModelDb.Card<StarryStrike>(), ModelDb.Card<CosmicStrike>(), ModelDb.Card<StarboundStrike>(),
             ModelDb.Card<ClawingStrike>(), ModelDb.Card<CostlyStrike>(), ModelDb.Card<ForgingStrike>()];
         return strikes;
-        //return strikes.TakeRandom(1, Owner.RunState.Rng.Niche).First();
     }
     
     public static IEnumerable<CardModel> GetPrismaticDefends()
@@ -105,7 +104,6 @@ public class ThePrismatic2 : PlaceholderCharacterModel
             ModelDb.Card<StarryDefend>(), ModelDb.Card<CosmicDefend>(), ModelDb.Card<StarboundDefend>(),
             ModelDb.Card<ClawingDefend>(), ModelDb.Card<CostlyDefend>(), ModelDb.Card<ForgingDefend>()];
         return defends;
-        //return defends.TakeRandom(1, Rng.Chaotic).First();
     }
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
@@ -116,11 +114,7 @@ public class ThePrismatic2 : PlaceholderCharacterModel
     public override CardPoolModel CardPool => ModelDb.CardPool<ThePrismatic2CardPool>();
     public override RelicPoolModel RelicPool => ModelDb.RelicPool<ThePrismatic2RelicPool>();
     public override PotionPoolModel PotionPool => ModelDb.PotionPool<ThePrismatic2PotionPool>();
-
-    /*  PlaceholderCharacterModel will utilize placeholder basegame assets for most of your character assets until you
-        override all the other methods that define those assets.
-        These are just some of the simplest assets, given some placeholders to differentiate your character with.
-        You don't have to, but you're suggested to rename these images. */
+    
     public override Control CustomIcon
     {
         get

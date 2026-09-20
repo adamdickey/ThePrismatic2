@@ -19,7 +19,11 @@ public class Eradicate2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/eradicate.png-455875ed65fe1196e35052806aefb87d.ctex";
     public override string PortraitPath => "res://.godot/imported/eradicate.png-455875ed65fe1196e35052806aefb87d.ctex";
     
+    private bool HasStarbound => Keywords.Contains(Extensions.Keywords.Starbound) || Keywords.Contains(Extensions.Keywords.StarboundThisTurn);
+    
     protected override bool HasEnergyCostX => true;
+    
+    public override bool HasStarCostX => HasStarbound;
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Retain);
 
@@ -32,8 +36,13 @@ public class Eradicate2() : ThePrismatic2Card(0,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
+        int num = ResolveEnergyXValue();
+        if (HasStarbound)
+        {
+            num += ResolveStarXValue();
+        }
         decimal damage = DynamicVars.CalculatedDamage.BaseValue + DynamicVars.ExtraDamage.BaseValue * PileType.Hand.GetPile(Owner).Cards.Count(c => c.ShouldRetainThisTurn);
-        await DamageCmd.Attack(damage).WithHitCount(ResolveEnergyXValue()).FromCard(this)
+        await DamageCmd.Attack(damage).WithHitCount(num).FromCard(this)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

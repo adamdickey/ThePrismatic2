@@ -20,7 +20,11 @@ public class Dirge2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/dirge.png-7dfcb356163c2673892515dd1a73042e.ctex";
     public override string PortraitPath => "res://.godot/imported/dirge.png-7dfcb356163c2673892515dd1a73042e.ctex";
     
+    private bool HasStarbound => Keywords.Contains(Extensions.Keywords.Starbound) || Keywords.Contains(Extensions.Keywords.StarboundThisTurn);
+    
     protected override bool HasEnergyCostX => true;
+    
+    public override bool HasStarCostX => HasStarbound;
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
 
@@ -34,6 +38,10 @@ public class Dirge2() : ThePrismatic2Card(0,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         int xValue = ResolveEnergyXValue();
+        if (HasStarbound)
+        {
+            xValue += ResolveStarXValue();
+        }
         for (int i = 0; i < xValue; i++)
         {
             await OrbCmd.Channel<BoneOrb>(choiceContext, Owner);

@@ -17,13 +17,20 @@ public class Cascade2() : ThePrismatic2Card(-1,
     public override string CustomPortraitPath => "res://.godot/imported/cascade.png-22f4023b86c70080ddd48e144bd8cd53.ctex";
     public override string PortraitPath => "res://.godot/imported/cascade.png-22f4023b86c70080ddd48e144bd8cd53.ctex";
 
+    private bool HasStarbound => Keywords.Contains(Extensions.Keywords.Starbound) || Keywords.Contains(Extensions.Keywords.StarboundThisTurn);
     protected override bool HasEnergyCostX => true;
+    
+    public override bool HasStarCostX => HasStarbound;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         IEnumerable<CardModel> enumerable = PileType.Hand.GetPile(Owner).Cards.ToList();
         await CardCmd.Discard(choiceContext, enumerable);
         int num = ResolveEnergyXValue();
+        if (HasStarbound)
+        {
+            num += ResolveStarXValue();
+        }
         if (IsUpgraded)
         {
             num++;

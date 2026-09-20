@@ -5,11 +5,12 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
-public class Shatter2() : ThePrismatic2Card(0, 
+public class Shatter2() : ThePrismatic2Card(1, 
     CardType.Attack, CardRarity.Rare, 
     TargetType.AllEnemies)
 {
@@ -19,16 +20,20 @@ public class Shatter2() : ThePrismatic2Card(0,
     
     public override OrbEvokeType OrbEvokeType => OrbEvokeType.All;
     
-    public override int CanonicalStarCost => 1;
+    protected override bool ShouldGlowGoldInternal => !Osty.CheckMissingWithAnim(Owner);
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.OstyAttack];
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlyArray<CardKeyword>([
-        Extensions.Keywords.Starbound,
-        CardKeyword.Exhaust 
+        CardKeyword.Exhaust,
+        Extensions.Keywords.DualWield
     ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.Evoke));
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(6m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new DamageVar(6m, ValueProp.Move),
+        new OstyDamageVar(3m, ValueProp.Move)
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -42,7 +47,24 @@ public class Shatter2() : ThePrismatic2Card(0,
             for (int i = 0; i < orbCount; i++)
             {
                 await OrbCmd.EvokeNext(choiceContext, Owner, dequeue: false);
-                await OrbCmd.EvokeNext(choiceContext, Owner);
+                await OrbCmd.EvokeNext(choiceContext, Owner, dequeue: Osty.CheckMissingWithAnim(Owner));
+            }
+        }
+        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
+        {
+            if (CombatState != null)
+                await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this)
+                    .TargetingAllOpponents(CombatState)
+                    .WithHitFx("vfx/vfx_attack_slash")
+                    .Execute(choiceContext);
+            if (Owner.PlayerCombatState != null)
+            {
+                int orbCount = Owner.PlayerCombatState.OrbQueue.Orbs.Count;
+                for (int i = 0; i < orbCount; i++)
+                {
+                    await OrbCmd.EvokeNext(choiceContext, Owner, dequeue: false);
+                    await OrbCmd.EvokeNext(choiceContext, Owner);
+                }
             }
         }
     }

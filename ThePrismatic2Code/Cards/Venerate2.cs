@@ -1,8 +1,8 @@
 ﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
@@ -21,21 +21,31 @@ public class Venerate2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new StarsVar(2),
-        new DynamicVar("Evoke", 2)
+        new CardsVar(1)
     ]);
-    
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.Evoke));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await PlayerCmd.GainStars(DynamicVars.Stars.BaseValue, Owner);
-        if (Owner.PlayerCombatState is { OrbQueue.Orbs.Count: > 0 })
+        IEnumerable<CardModel> enumerable = PileType.Discard.GetPile(Owner).Cards.Where(Filter).ToList().TakeRandom(DynamicVars.Cards.IntValue, Owner.RunState.Rng.CombatCardSelection);
+        foreach (CardModel item in enumerable)
         {
-            await OrbCmd.EvokeNext(choiceContext, Owner, dequeue: false);
-            await Cmd.CustomScaledWait(0.1f, 0.25f);
-            await OrbCmd.EvokeNext(choiceContext, Owner);
+            await CardPileCmd.Add(item, PileType.Hand);
         }
+    }
+    
+    private bool Filter(CardModel card)
+    {
+        bool flag = card.EnergyCost.GetWithModifiers(CostModifiers.All) == 0 && !card.EnergyCost.CostsX;
+        bool flag2 = flag;
+        if (flag2)
+        {
+            CardType type = card.Type;
+            bool flag3 = (uint)(type - 1) <= 2u;
+            flag2 = flag3;
+        }
+        return flag2;
     }
 
     protected override void OnUpgrade()

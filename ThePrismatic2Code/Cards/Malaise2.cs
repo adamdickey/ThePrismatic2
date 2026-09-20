@@ -19,9 +19,11 @@ public class Malaise2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/malaise.png-9cc1076f2dbc72fb2bc170914ce05ebb.ctex";
     public override string PortraitPath => "res://.godot/imported/malaise.png-9cc1076f2dbc72fb2bc170914ce05ebb.ctex";
     
-    public override TargetType TargetType => TargetType.AnyEnemy;
+    private bool HasStarbound => Keywords.Contains(Extensions.Keywords.Starbound) || Keywords.Contains(Extensions.Keywords.StarboundThisTurn);
 
     protected override bool HasEnergyCostX => true;
+    
+    public override bool HasStarCostX => HasStarbound;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<StrengthPower>(),
@@ -34,6 +36,10 @@ public class Malaise2() : ThePrismatic2Card(0,
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         int powerAmount = ResolveEnergyXValue();
+        if (HasStarbound)
+        {
+            powerAmount += ResolveStarXValue();
+        }
         if (IsUpgraded)
         {
             powerAmount++;

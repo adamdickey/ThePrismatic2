@@ -2,9 +2,11 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -12,7 +14,7 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class PerfectedStrike2() : ThePrismatic2Card(1, 
+public class PerfectedStrike2() : ThePrismatic2Card(2, 
     CardType.Attack, CardRarity.Common, 
     TargetType.AnyEnemy)
 {
@@ -22,16 +24,14 @@ public class PerfectedStrike2() : ThePrismatic2Card(1,
 
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
 
-    public override int CanonicalStarCost => 1;
-    
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<SovereignBlade>());
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new CalculationBaseVar(6m),
         new ExtraDamageVar(2m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((card, _) =>
         {
-            return card.Owner.PlayerCombatState != null ? card.Owner.PlayerCombatState.AllCards.Count(c => c.Tags.Contains(CardTag.Strike)) : 0;
+            return card.Owner.PlayerCombatState != null ? card.Owner.PlayerCombatState.AllCards.Count(c => c.Tags.Contains(CardTag.Strike) || c is SovereignBlade) : 0;
         })
     ]);
 

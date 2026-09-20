@@ -18,9 +18,10 @@ public class ThePrismatic2RelicPool : CustomRelicPoolModel
     {
         RelicModel[] relicPool =
         [
-            ModelDb.Relic<SadisticDagger>(),
-            ModelDb.Relic<RealityBox>(),
             ModelDb.Relic<BagOfDice>(),
+            ModelDb.Relic<SadisticDagger>(),
+            ModelDb.Relic<ReassemblingBones>(),
+            ModelDb.Relic<RealityBox>(),
             ModelDb.Relic<SmithsAnvil>(),
             ModelDb.Relic<AlarmClock>(),
             ModelDb.Relic<RedSkull>(),

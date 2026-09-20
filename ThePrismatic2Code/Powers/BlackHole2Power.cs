@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace ThePrismatic2.ThePrismatic2Code.Powers;
@@ -15,12 +16,43 @@ public class BlackHole2Power : ThePrismatic2Power
     public override PowerType Type => PowerType.Buff;
 
     public override PowerStackType StackType => PowerStackType.Counter;
-
-    public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
+    
+    private class Data
     {
-        if (cardPlay.Card.Owner == Owner.Player && cardPlay.Card.Type == CardType.Power)
+        public readonly Dictionary<CardModel, int> PlayedCards = new();
+    }
+    
+    protected override object InitInternalData()
+    {
+        return new Data();
+    }
+    
+    public override async Task BeforeCardPlayed(CardPlay cardPlay)
+    {
+        if (cardPlay.Card.Owner.Creature != Owner)
+        {
+            return;
+        }
+        if (CombatState.CurrentSide != Owner.Side)
+        {
+            return;
+        }
+        GetInternalData<Data>().PlayedCards.Add(cardPlay.Card, 0);
+        if (cardPlay.Card.Type == CardType.Power)
         {
             await DealDamageToAllEnemies();
+        }
+    }
+    
+    public override async Task AfterCardPlayed(PlayerChoiceContext context, CardPlay cardPlay)
+    {
+        if (cardPlay.Card.Owner.Creature == Owner && GetInternalData<Data>().PlayedCards.Remove(cardPlay.Card, out var value))
+        {
+            if (value > 0)
+            {
+                Flash();
+                await CreatureCmd.Damage(new BlockingPlayerChoiceContext(), CombatState.HittableEnemies, value, ValueProp.Unpowered, Owner, null);
+            }
         }
         if (cardPlay.Resources.StarsSpent > 0 && cardPlay.Card.Owner == Owner.Player && cardPlay.IsLastInSeries)
         {

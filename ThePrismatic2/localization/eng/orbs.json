@@ -2,7 +2,7 @@
   "THEPRISMATIC2-SOLAR_ORB.description": "Orb: Gains Stars.",
   "THEPRISMATIC2-SOLAR_ORB.smartDescription": "[gold]Passive:[/gold] When [gold]Channeled[/gold],\ngain {Passive:starIcons()}.\n[gold]Evoke[/gold]: Gain {Evoke:starIcons()}.\nSolar is unaffected by [gold]Focus[/gold].",
   "THEPRISMATIC2-SOLAR_ORB.title": "Solar",
-  "THEPRISMATIC2-VENOM_ORB.description": "Orb: Applies [gold]Poison[/gold] to ALL enemies. Decreases [gold]Posion[/gold] every turn.",
+  "THEPRISMATIC2-VENOM_ORB.description": "Orb: Applies [gold]Poison[/gold] to ALL enemies. Decreases [gold]Poison[/gold] every turn.",
   "THEPRISMATIC2-VENOM_ORB.smartDescription": "[gold]Passive:[/gold] At the end of turn, apply [blue]{Passive}[/blue] [gold]Poison[/gold] to ALL enemies and reduce this orb's value by [blue]1[/blue].\n[gold]Evoke:[/gold] Apply [blue]{Evoke}[/blue] [gold]Poison[/gold] to ALL enemies.",
   "THEPRISMATIC2-VENOM_ORB.title": "Venom",
   "THEPRISMATIC2-MAGMA_ORB.description": "Orb: Gains [gold]Vigor[/gold].",

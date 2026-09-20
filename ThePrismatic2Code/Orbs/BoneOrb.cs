@@ -14,6 +14,7 @@ public sealed class BoneOrb : CustomOrbModel
 {
     public override Color DarkenedColor => new("4d4d4d");
     public override string CustomIconPath => "res://.godot/imported/dark_orb.png-5f06b12b25c362f6d903a63dbe2e565f.ctex";
+
     public override bool IncludeInRandomPool => true;
     
     public override string CustomPassiveSfx => "event:/sfx/characters/defect/defect_dark_passive";
@@ -39,7 +40,7 @@ public sealed class BoneOrb : CustomOrbModel
             .Instantiate<Node2D>();
         new MegaSprite(glass.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
-        glass.Modulate = new Color(0.65f, 0.65f, 0.65f);
+        glass.Modulate = new Color(0.75f, 0.75f, 0.75f);
         container.AddChild(glass);
         return container;
     }

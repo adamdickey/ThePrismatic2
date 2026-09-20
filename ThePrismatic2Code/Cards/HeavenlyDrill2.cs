@@ -19,7 +19,11 @@ public class HeavenlyDrill2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/heavenly_drill.png-3638716372fc9b8acc5e642b52015e3a.ctex";
     public override string PortraitPath => "res://.godot/imported/heavenly_drill.png-3638716372fc9b8acc5e642b52015e3a.ctex";
     
+    private bool HasStarbound => Keywords.Contains(Extensions.Keywords.Starbound) || Keywords.Contains(Extensions.Keywords.StarboundThisTurn);
+    
     protected override bool HasEnergyCostX => true;
+    
+    public override bool HasStarCostX => HasStarbound;
 
     protected override bool ShouldGlowGoldInternal => Owner.PlayerCombatState != null && Owner.PlayerCombatState.Energy >= DynamicVars.Energy.IntValue;
 
@@ -32,6 +36,10 @@ public class HeavenlyDrill2() : ThePrismatic2Card(0,
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         int num = ResolveEnergyXValue();
+        if (HasStarbound)
+        {
+            num += ResolveStarXValue();
+        }
         if (num >= DynamicVars.Energy.IntValue)
         {
             num *= 2;

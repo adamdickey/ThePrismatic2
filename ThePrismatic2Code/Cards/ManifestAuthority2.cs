@@ -24,7 +24,7 @@ public class ManifestAuthority2() : ThePrismatic2Card(1,
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Block),
         HoverTipFactory.Static(StaticHoverTip.Evoke)
-        ]);
+    ]);
 
     public override bool GainsBlock => true;
 

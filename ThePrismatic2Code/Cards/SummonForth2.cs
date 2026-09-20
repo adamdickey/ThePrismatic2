@@ -42,15 +42,12 @@ public class SummonForth2() : ThePrismatic2Card(1,
             var sovereignBlades = cards.ToList();
             foreach (SovereignBlade card in Owner.PlayerCombatState.AllCards.OfType<SovereignBlade>())
             {
-                CardCmd.Enchant<Oily>(card, 1);
+                if (card.Enchantment == null)
+                {
+                    CardCmd.Enchant<Oily>(card, 1);
+                }
             }
-            //IEnumerable<CardModel> costlyCards = from c in Owner.PlayerCombatState.AllCards
-                //where c.EnergyCost.GetWithModifiers(CostModifiers.All) + Math.Max(0, c.CurrentStarCost) >= 2 && c.Pile != null && c.Pile.Type != PileType.Hand
-                //select c;
-            
-            //CardModel? costlyCard = Owner.RunState.Rng.CombatCardSelection.NextItem(costlyCards);
             await CardPileCmd.Add(sovereignBlades, PileType.Hand);
-            //if (costlyCard != null) await CardPileCmd.Add(costlyCard, PileType.Hand);
         }
         
     }

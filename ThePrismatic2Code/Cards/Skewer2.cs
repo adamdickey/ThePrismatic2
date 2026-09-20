@@ -20,14 +20,22 @@ public class Skewer2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/skewer.png-9a540856a05d99a3f9260f9b4ba6ef87.ctex";
     public override string PortraitPath => "res://.godot/imported/skewer.png-9a540856a05d99a3f9260f9b4ba6ef87.ctex";
     
+    private bool HasStarbound => Keywords.Contains(Extensions.Keywords.Starbound) || Keywords.Contains(Extensions.Keywords.StarboundThisTurn);
     protected override bool HasEnergyCostX => true;
+    
+    public override bool HasStarCostX => HasStarbound;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(8m, ValueProp.Move));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(ResolveEnergyXValue()).FromCard(this)
+        int num = ResolveEnergyXValue();
+        if (HasStarbound)
+        {
+            num += ResolveStarXValue();
+        }
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(num).FromCard(this)
             .Targeting(cardPlay.Target)
             .WithHitVfxNode(t => NStabVfx.Create(t, facingEnemies: true, VfxColor.Gold))
             .Execute(choiceContext);

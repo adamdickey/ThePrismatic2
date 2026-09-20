@@ -26,16 +26,7 @@ public class CostlyBlast() : ThePrismatic2Card(2,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
             .WithHitFx("vfx/vfx_attack_slash", null, "slash_attack.mp3")
             .Execute(choiceContext);
-
-        // Work out which cards count as Costly before touching any of them. Lowering a cost can
-        // push a card back under the threshold, so deciding as we go would make a card's fate
-        // depend on where it happened to sit in the hand.
-        List<CardModel> costlyInHand = PileType.Hand.GetPile(Owner).Cards
-            .Where(card => card != this &&
-                           card.EnergyCost.GetWithModifiers(CostModifiers.All)
-                           + Math.Max(0, card.CurrentStarCost) >= 2)
-            .ToList();
-
+        List<CardModel> costlyInHand = PileType.Hand.GetPile(Owner).Cards.Where(card => card != this && card.EnergyCost.GetWithModifiers(CostModifiers.All) + Math.Max(0, card.CurrentStarCost) >= 2).ToList();
         foreach (CardModel card in costlyInHand)
         {
             card.EnergyCost.AddUntilPlayed(-1);

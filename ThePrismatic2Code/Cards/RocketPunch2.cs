@@ -12,7 +12,7 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class RocketPunch2() : ThePrismatic2Card(2, 
+public class RocketPunch2() : ThePrismatic2Card(3, 
     CardType.Attack, CardRarity.Uncommon, 
     TargetType.AnyEnemy)
 {

@@ -25,14 +25,22 @@ public class Whirlwind2() : ThePrismatic2Card(0,
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<IroncladCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/whirlwind.png-b49c0b23f88acc1b76200f6fdf223fe1.ctex";
     public override string PortraitPath => "res://.godot/imported/whirlwind.png-b49c0b23f88acc1b76200f6fdf223fe1.ctex";
+    
+    private bool HasStarbound => Keywords.Contains(Extensions.Keywords.Starbound) || Keywords.Contains(Extensions.Keywords.StarboundThisTurn);
 
     protected override bool HasEnergyCostX => true;
+
+    public override bool HasStarCostX => HasStarbound;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(5m, ValueProp.Move));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         int num = ResolveEnergyXValue();
+        if (HasStarbound)
+        {
+            num += ResolveStarXValue();
+        }
         if (num > 0)
         {
             Color color = new Color("FFFFFF80");

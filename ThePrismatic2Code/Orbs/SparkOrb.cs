@@ -1,11 +1,8 @@
 ﻿using BaseLib.Abstracts;
 using Godot;
-using MegaCrit.Sts2.Core.Assets;
-using MegaCrit.Sts2.Core.Bindings.MegaSpine;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace ThePrismatic2.ThePrismatic2Code.Orbs;
@@ -24,18 +21,7 @@ public sealed class SparkOrb : CustomOrbModel
     public override decimal PassiveVal => ModifyOrbValue(2m);
     public override decimal EvokeVal => ModifyOrbValue(5m);
 
-    public override Node2D CreateCustomSprite()
-    {
-        var container = new Node2D();
-        string lightningPath = SceneHelper.GetScenePath("orbs/orb_visuals/lightning_orb");
-        Node2D lightning = PreloadManager.Cache.GetScene(lightningPath)
-            .Instantiate<Node2D>();
-        new MegaSprite(lightning.GetNode("SpineSkeleton"))
-            .GetAnimationState().SetAnimation("idle_loop");
-        lightning.Scale = new Vector2(0.9f, 0.9f);
-        container.AddChild(lightning);
-        return container;
-    }
+    public override string CustomSpritePath => "res://scenes/orbs/orb_visuals/lightning_orb.tscn";
     
     public override async Task BeforeTurnEndOrbTrigger(PlayerChoiceContext choiceContext)
     {
