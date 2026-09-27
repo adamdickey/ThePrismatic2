@@ -43,6 +43,6 @@ public class Genesis2() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Orbs"].UpgradeValueBy(1m);
+        EnergyCost.UpgradeBy(-1);
     }
 }

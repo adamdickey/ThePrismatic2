@@ -31,7 +31,7 @@ public class GrandFinale2() : ThePrismatic2Card(0,
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(60m, ValueProp.Move),
+        new DamageVar(50m, ValueProp.Move),
         new StarsVar(1),
         new CalculationBaseVar(0m),
         new CalculationExtraVar(1m),
@@ -57,7 +57,7 @@ public class GrandFinale2() : ThePrismatic2Card(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(15m);
+        DynamicVars.Damage.UpgradeValueBy(10m);
     }
     
     public override Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)

@@ -30,23 +30,25 @@ public class Scrape2() : ThePrismatic2Card(1,
         new CardsVar(3)
     ]);
 
+    private bool _ostyPlay;
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
-        IEnumerable<CardModel> cards = (await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner)).Where(c => c.EnergyCost.GetWithModifiers(CostModifiers.Local) != 0 || c.EnergyCost.CostsX);
-        await CardCmd.Discard(choiceContext, cards);
-        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
+        if (_ostyPlay && Owner.Osty != null)
         {
-            ArgumentNullException.ThrowIfNull(cardPlay.Target);
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
-            IEnumerable<CardModel> cards2 = (await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner)).Where(c => c.EnergyCost.GetWithModifiers(CostModifiers.Local) != 0 || c.EnergyCost.CostsX);
-            await CardCmd.Discard(choiceContext, cards2);
         }
+        else
+        {
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_attack_slash")
+                .Execute(choiceContext);
+        }
+        IEnumerable<CardModel> cards = (await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner)).Where(c => c.EnergyCost.GetWithModifiers(CostModifiers.Local) != 0 || c.EnergyCost.CostsX);
+        await CardCmd.Discard(choiceContext, cards);
     }
 
     protected override void OnUpgrade()
@@ -54,5 +56,18 @@ public class Scrape2() : ThePrismatic2Card(1,
         DynamicVars.Damage.UpgradeValueBy(3m);
         DynamicVars.OstyDamage.UpgradeValueBy(2m);
         DynamicVars.Cards.UpgradeValueBy(1m);
+    }
+    
+    public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (cardPlay.Card == this && !Osty.CheckMissingWithAnim(Owner) && !_ostyPlay)
+        {
+            _ostyPlay = true;
+            await CardCmd.AutoPlay(choiceContext, this, cardPlay.Target);
+        }
+        else
+        {
+            _ostyPlay = false;
+        }
     }
 }

@@ -8,7 +8,6 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Orbs;
 using ThePrismatic2.ThePrismatic2Code.Character;
-using ThePrismatic2.ThePrismatic2Code.Orbs;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -21,14 +20,9 @@ public class Zap2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/zap.png-bd0bd069b08ff9bdf4f983f7b3d2e0b0.ctex";
     public override string PortraitPath => "res://.godot/imported/zap.png-bd0bd069b08ff9bdf4f983f7b3d2e0b0.ctex";
     
-    public override int CanonicalStarCost => 1;
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
-    
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Channeling),
-        HoverTipFactory.FromOrb<LightningOrb>(),
-        HoverTipFactory.FromOrb<MagmaOrb>()
+        HoverTipFactory.FromOrb<LightningOrb>()
     ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("Lightning", 1m));
@@ -40,7 +34,6 @@ public class Zap2() : ThePrismatic2Card(0,
         {
             await OrbCmd.Channel<LightningOrb>(choiceContext, Owner);
         }
-        await OrbCmd.Channel<MagmaOrb>(choiceContext, Owner);
     }
 
     protected override void OnUpgrade()

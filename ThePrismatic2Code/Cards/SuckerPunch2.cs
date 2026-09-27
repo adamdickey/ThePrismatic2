@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -13,7 +14,7 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class SuckerPunch2() : ThePrismatic2Card(0, 
+public class SuckerPunch2() : ThePrismatic2Card(1, 
     CardType.Attack, CardRarity.Common, 
     TargetType.AnyEnemy)
 {
@@ -21,29 +22,33 @@ public class SuckerPunch2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/sucker_punch.png-96297abda730c6f1c698c0632a0558b4.ctex";
     public override string PortraitPath => "res://.godot/imported/sucker_punch.png-96297abda730c6f1c698c0632a0558b4.ctex";
 
-    public override int CanonicalStarCost => 1;
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<WeakPower>());
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon),
+        HoverTipFactory.FromPower<WeakPower>()
+        ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(7m, ValueProp.Move),
+        new SummonVar(1),
+        new OstyDamageVar(7m, ValueProp.Move),
         new PowerVar<WeakPower>(1m)
     ]);
-    
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
-            .Execute(choiceContext);
-        await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
+        await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
+        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
+        {
+            await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this).Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
+                .Execute(choiceContext);
+            await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
+        }
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.OstyDamage.UpgradeValueBy(2m);
         DynamicVars.Weak.UpgradeValueBy(1m);
     }
 }

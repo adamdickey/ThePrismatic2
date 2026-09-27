@@ -20,7 +20,7 @@ public class Reflect2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/reflect.png-5369ecbb032754262db7b16d14900e78.ctex";
     public override string PortraitPath => "res://.godot/imported/reflect.png-5369ecbb032754262db7b16d14900e78.ctex";
     
-    public override int CanonicalStarCost => 3;
+    public override int CanonicalStarCost => 2;
 
     public override bool GainsBlock => true;
     

@@ -29,7 +29,7 @@ public class CrescentSpear2() : ThePrismatic2Card(1,
     ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new CalculationBaseVar(12m),
+        new CalculationBaseVar(10m),
         new ExtraDamageVar(2m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((card, _) =>
         {

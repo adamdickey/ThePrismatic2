@@ -35,6 +35,6 @@ public class DanseMacabre2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["DanseMacabrePower"].UpgradeValueBy(2m);
+        DynamicVars["DanseMacabrePower"].UpgradeValueBy(1m);
     }
 }

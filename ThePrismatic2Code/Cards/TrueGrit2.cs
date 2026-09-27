@@ -25,32 +25,28 @@ public class TrueGrit2() : ThePrismatic2Card(1,
     
 	protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(7m, ValueProp.Move));
     
-	protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Exhaust));
-	
-	public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Cunning);
+	protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Ethereal));
     
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
 		if (IsUpgraded)
 		{
-			CardModel? cardModel = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, 1), context: choiceContext, player: Owner, filter: null, source: this)).FirstOrDefault();
-			if (cardModel != null)
-			{
-				await CardCmd.Exhaust(choiceContext, cardModel);
-			}
+			CardModel? cardModel = (await CardSelectCmd.FromHand(choiceContext, Owner, new CardSelectorPrefs(SelectionScreenPrompt, 1), c => !c.GetKeywordsWithSources(KeywordSources.Local).Contains(CardKeyword.Ethereal), this)).FirstOrDefault();
+			cardModel?.AddKeyword(CardKeyword.Ethereal);
 			return;
 		}
 		CardPile pile = PileType.Hand.GetPile(Owner);
-		CardModel? cardModel2 = Owner.RunState.Rng.CombatCardSelection.NextItem(pile.Cards);
+		CardModel? cardModel2 = Owner.RunState.Rng.CombatCardSelection.NextItem(pile.Cards.Where(c => !c.GetKeywordsWithSources(KeywordSources.Local).Contains(CardKeyword.Ethereal)));
 		if (cardModel2 != null)
 		{
-			await CardCmd.Exhaust(choiceContext, cardModel2);
+			cardModel2.AddKeyword(CardKeyword.Ethereal);
+			CardCmd.Preview(cardModel2, 0.5f);
 		}
 	}
     
 	protected override void OnUpgrade()
 	{
-		DynamicVars.Block.UpgradeValueBy(1m);
+		DynamicVars.Block.UpgradeValueBy(2m);
 	}
 }

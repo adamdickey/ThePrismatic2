@@ -32,7 +32,7 @@ public class Comet2() : ThePrismatic2Card(0,
     public override int CanonicalStarCost => 4;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(33m, ValueProp.Move),
+        new DamageVar(30m, ValueProp.Move),
         new PowerVar<VulnerablePower>(3m),
         new PowerVar<WeakPower>(3m),
         new DynamicVar("Exposed", 3m)
@@ -66,6 +66,6 @@ public class Comet2() : ThePrismatic2Card(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(11m);
+        DynamicVars.Damage.UpgradeValueBy(10m);
     }
 }

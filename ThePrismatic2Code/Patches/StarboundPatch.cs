@@ -24,14 +24,24 @@ public class StarboundSingleton() : CustomSingletonModel(HookType.Combat)
         UpdateStarbound(card);
         return Task.CompletedTask;
     }
-    
+
+    public override Task AfterStarsGained(int amount, Player gainer)
+    {
+        IEnumerable<CardModel> enumerable = gainer.PlayerCombatState?.AllCards.Where(c => c.Pile != PileType.Play.GetPile(gainer)) ?? Array.Empty<CardModel>();
+        foreach (CardModel card in enumerable)
+        {
+            UpdateStarbound(card);
+        }
+        return Task.CompletedTask;
+    }
+
     public override Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.ResultPile == PileType.Hand)
         {
             UpdateStarbound(cardPlay.Card, true);
         }
-        IEnumerable<CardModel> enumerable = cardPlay.Card.Owner.PlayerCombatState?.AllCards ?? Array.Empty<CardModel>();
+        IEnumerable<CardModel> enumerable = cardPlay.Card.Owner.PlayerCombatState?.AllCards.Where(c => c.Pile != PileType.Play.GetPile(cardPlay.Card.Owner)) ?? Array.Empty<CardModel>();
         foreach (CardModel card in enumerable)
         {
             UpdateStarbound(card);
@@ -41,7 +51,7 @@ public class StarboundSingleton() : CustomSingletonModel(HookType.Combat)
     
     public override Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
-        IEnumerable<CardModel> enumerable = card.Owner.PlayerCombatState?.AllCards ?? Array.Empty<CardModel>();
+        IEnumerable<CardModel> enumerable = card.Owner.PlayerCombatState?.AllCards.Where(c => c.Pile != PileType.Play.GetPile(card.Owner)) ?? Array.Empty<CardModel>();
         foreach (CardModel card2 in enumerable)
         {
             UpdateStarbound(card2);
@@ -72,45 +82,47 @@ public class StarboundSingleton() : CustomSingletonModel(HookType.Combat)
             playerEnergy -= energyDif;
         }
         
-        if (cardCost == card.EnergyCost.Canonical + Math.Max(0, card.CanonicalStarCost) && playerEnergy >= card.EnergyCost.Canonical && playerStars >= Math.Max(0, card.CanonicalStarCost))
-        {
-            card.EnergyCost.SetThisCombat(card.EnergyCost.Canonical);
-            card.SetStarCostThisCombat(card.CanonicalStarCost);
-            return;
-        }
-        
         if (playerStars + playerEnergy >= cardCost)
         {
-            if (playerEnergy < cardEnergy)
-            {
-                if (permanentCostChange)
-                {
-                    card.EnergyCost.SetThisCombat(playerEnergy);
-                    card.SetStarCostThisCombat(cardCost - playerEnergy);
-                }
-                else
-                {
-                    card.EnergyCost.SetThisTurnOrUntilPlayed(playerEnergy);
-                    card.SetStarCostThisTurn(cardCost - playerEnergy);
-                }
-            }
-            else if (playerStars < cardStars)
-            {
-                if (permanentCostChange)
-                {
-                    card.EnergyCost.SetThisCombat(cardCost - playerStars);
-                    card.SetStarCostThisCombat(playerStars);
-                }
-                else
-                {
-                    card.EnergyCost.SetThisTurnOrUntilPlayed(cardCost - playerStars);
-                    card.SetStarCostThisTurn(playerStars);
-                }
-            }
-            else if (cardCost == card.EnergyCost.Canonical + Math.Max(0, card.CanonicalStarCost) && playerEnergy >= card.EnergyCost.Canonical && playerStars >= Math.Max(0, card.CanonicalStarCost))
+            int newEnergyCost = Math.Min(playerEnergy, card.EnergyCost.Canonical);
+            int newStarCost = Math.Min(playerStars, card.CanonicalStarCost);
+            if (cardCost == card.EnergyCost.Canonical + Math.Max(0, card.CanonicalStarCost) && newEnergyCost == card.EnergyCost.Canonical && newStarCost == Math.Max(0, card.CanonicalStarCost))
             {
                 card.EnergyCost.SetThisCombat(card.EnergyCost.Canonical);
                 card.SetStarCostThisCombat(card.CanonicalStarCost);
+                return;
+            }
+
+            if (newEnergyCost < card.EnergyCost.Canonical)
+            {
+                newStarCost = Math.Max(newStarCost, cardCost - playerEnergy);
+            }
+            if (newStarCost < card.CanonicalStarCost)
+            {
+                newEnergyCost = Math.Max(newEnergyCost, cardCost - playerStars);
+            }
+            if (newEnergyCost + newStarCost != cardCost)
+            {
+                int dif = cardCost - (newEnergyCost + newStarCost);
+                if (playerEnergy >= newEnergyCost + dif)
+                {
+                    newEnergyCost += dif;
+                }
+                else if (playerStars >= newStarCost + dif)
+                {
+                    newStarCost += dif;
+                }
+                else return;
+            }
+            if (permanentCostChange)
+            {
+                card.EnergyCost.SetThisCombat(newEnergyCost);
+                card.SetStarCostThisCombat(newStarCost);
+            }
+            else
+            {
+                card.EnergyCost.SetThisTurnOrUntilPlayed(newEnergyCost);
+                card.SetStarCostThisTurn(newStarCost);
             }
         }
         else if (cardCost == card.EnergyCost.Canonical + Math.Max(0, card.CanonicalStarCost))

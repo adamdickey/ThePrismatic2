@@ -25,7 +25,7 @@ public class Rattle2() : ThePrismatic2Card(1,
     protected override HashSet<CardTag> CanonicalTags => [CardTag.OstyAttack];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new OstyDamageVar(5m, ValueProp.Move),
+        new OstyDamageVar(6m, ValueProp.Move),
         new SummonVar(1m),
         new CalculationBaseVar(0m),
         new CalculationExtraVar(1m),

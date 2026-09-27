@@ -51,6 +51,5 @@ public class AstralPulse2() : ThePrismatic2Card(0,
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(2m);
-        DynamicVars["Exposed"].UpgradeValueBy(1m);
     }
 }

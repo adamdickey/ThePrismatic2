@@ -31,7 +31,7 @@ public class Flatten2() : ThePrismatic2Card(2,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new SummonVar(1m),
-        new OstyDamageVar(11m, ValueProp.Move)
+        new OstyDamageVar(12m, ValueProp.Move)
         ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Costly));

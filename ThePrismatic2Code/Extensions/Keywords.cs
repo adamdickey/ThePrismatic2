@@ -11,7 +11,7 @@ public class Keywords
     [CustomEnum] 
     public static CardKeyword Costly;
     
-    [CustomEnum, KeywordProperties(AutoKeywordPosition.Before)] 
+    [CustomEnum, KeywordProperties(AutoKeywordPosition.After)] 
     public static CardKeyword DualWield;
     
     [CustomEnum, KeywordProperties(AutoKeywordPosition.Before)] 

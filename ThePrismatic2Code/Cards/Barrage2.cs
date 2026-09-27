@@ -26,10 +26,7 @@ public class Barrage2() : ThePrismatic2Card(0,
         new DamageVar(4m, ValueProp.Move),
         new CalculationBaseVar(0m),
         new CalculationExtraVar(1m),
-        new CalculatedVar("CalculatedHits").WithMultiplier((card, _) =>
-        {
-            return card.Owner.PlayerCombatState != null ? card.Owner.PlayerCombatState.OrbQueue.Orbs.Count : 0;
-        })
+        new CalculatedVar("CalculatedHits").WithMultiplier((card, _) => card.Owner.PlayerCombatState != null ? card.Owner.PlayerCombatState.OrbQueue.Orbs.Count : 0)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

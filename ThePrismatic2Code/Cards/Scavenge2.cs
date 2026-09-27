@@ -20,6 +20,10 @@ public class Scavenge2() : ThePrismatic2Card(1,
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/scavenge.png-24bfd57882074d8358ed38e61d7d0499.ctex";
     public override string PortraitPath => "res://.godot/imported/scavenge.png-24bfd57882074d8358ed38e61d7d0499.ctex";
+
+    public override int CanonicalStarCost => 1;
+    
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         EnergyHoverTip,

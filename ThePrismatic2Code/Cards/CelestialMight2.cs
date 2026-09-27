@@ -31,24 +31,43 @@ public class CelestialMight2() : ThePrismatic2Card(2,
         new RepeatVar(4)
     ]);
 
+    private bool _ostyPlay;
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(DynamicVars.Repeat.IntValue).FromCard(this)
-            .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_starry_impact", null, "blunt_attack.mp3")
-            .Execute(choiceContext);
-        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
+        if (_ostyPlay && Owner.Osty != null)
         {
-            await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this).WithHitCount(DynamicVars.Repeat.IntValue)
+            await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this)
+                .WithHitCount(DynamicVars.Repeat.IntValue)
                 .Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_blunt")
                 .Execute(choiceContext);
+        }
+        else
+        {
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(DynamicVars.Repeat.IntValue).FromCard(this)
+                .Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_starry_impact", null, "blunt_attack.mp3")
+                .Execute(choiceContext); 
         }
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Repeat.UpgradeValueBy(1m);
+    }
+    
+    public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (cardPlay.Card == this && !Osty.CheckMissingWithAnim(Owner) && !_ostyPlay)
+        {
+            _ostyPlay = true;
+            await CardCmd.AutoPlay(choiceContext, this, cardPlay.Target);
+        }
+        else
+        {
+            _ostyPlay = false;
+        }
     }
 }

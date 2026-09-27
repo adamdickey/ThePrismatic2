@@ -41,28 +41,43 @@ public class Null2() : ThePrismatic2Card(2,
         new PowerVar<WeakPower>(1m)
     ]);
 
+    private bool _ostyPlay;
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
-        await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
-        await OrbCmd.Channel<DarkOrb>(choiceContext, Owner);
-        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
+        if (_ostyPlay && Owner.Osty != null)
         {
-            ArgumentNullException.ThrowIfNull(cardPlay.Target);
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
                 .Execute(choiceContext);
-            await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
-            await OrbCmd.Channel<DarkOrb>(choiceContext, Owner);
         }
+        else
+        {
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_attack_slash")
+                .Execute(choiceContext);
+        }
+        await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
+        await OrbCmd.Channel<DarkOrb>(choiceContext, Owner);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(4m);
         DynamicVars.OstyDamage.UpgradeValueBy(2m);
+    }
+    
+    public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (cardPlay.Card == this && !Osty.CheckMissingWithAnim(Owner) && !_ostyPlay)
+        {
+            _ostyPlay = true;
+            await CardCmd.AutoPlay(choiceContext, this, cardPlay.Target);
+        }
+        else
+        {
+            _ostyPlay = false;
+        }
     }
 }

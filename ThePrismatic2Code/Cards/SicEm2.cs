@@ -29,7 +29,7 @@ public class SicEm2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([ 
         new SummonVar(1m),
-        new OstyDamageVar(4m, ValueProp.Move),
+        new OstyDamageVar(5m, ValueProp.Move),
         new PowerVar<SicEmPower>(2m)
     ]);
 
