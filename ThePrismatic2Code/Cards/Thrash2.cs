@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -26,7 +27,10 @@ public class Thrash2() : ThePrismatic2Card(1,
 
 	protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Exhaust));
 
-	protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(4m, ValueProp.Move));
+	protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+		new SummonVar(1),
+		new OstyDamageVar(4m, ValueProp.Move)
+	]);
 
 	private decimal ExtraDamage
 	{
@@ -44,15 +48,19 @@ public class Thrash2() : ThePrismatic2Card(1,
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
 	{
 		ArgumentNullException.ThrowIfNull(cardPlay.Target);
-		await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(2).FromCard(this)
-			.Targeting(cardPlay.Target)
-			.WithHitFx("vfx/vfx_thrash")
-			.Execute(choiceContext);
+		await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
+		if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
+		{
+			await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).WithHitCount(2).FromOsty(Owner.Osty, this)
+				.Targeting(cardPlay.Target)
+				.WithHitFx("vfx/vfx_thrash")
+				.Execute(choiceContext);
+		}
 		CardPile pile = PileType.Hand.GetPile(Owner);
 		CardModel? cardModel = Owner.RunState.Rng.CombatCardSelection.NextItem(pile.Cards.Where(c => c.Type == CardType.Attack));
 		if (cardModel != null)
 		{
-			decimal damage = default(decimal);
+			decimal damage = 0;
 			if (cardModel.DynamicVars.ContainsKey("CalculatedDamage"))
 			{
 				damage = cardModel.DynamicVars.CalculatedDamage.Calculate(null);
@@ -70,7 +78,7 @@ public class Thrash2() : ThePrismatic2Card(1,
 				Log.Warn(Id.Entry + " exhausted attack card " + cardModel.Id.Entry + " that did not have an appropriate damage var!");
 			}
 			damage = Hook.ModifyDamage(Owner.RunState, Owner.Creature.CombatState, null, Owner.Creature, damage, ValueProp.Move, cardModel, ModifyDamageHookType.All, CardPreviewMode.None, out IEnumerable<AbstractModel> _);
-			DynamicVars.Damage.BaseValue += damage;
+			DynamicVars.OstyDamage.BaseValue += damage;
 			ExtraDamage += damage;
 			await CardCmd.Exhaust(choiceContext, cardModel);
 		}
@@ -79,11 +87,11 @@ public class Thrash2() : ThePrismatic2Card(1,
 	protected override void AfterDowngraded()
 	{
 		base.AfterDowngraded();
-		DynamicVars.Damage.BaseValue += ExtraDamage;
+		DynamicVars.OstyDamage.BaseValue += ExtraDamage;
 	}
 
 	protected override void OnUpgrade()
 	{
-		DynamicVars.Damage.UpgradeValueBy(2m);
+		DynamicVars.OstyDamage.UpgradeValueBy(2m);
 	}
 }

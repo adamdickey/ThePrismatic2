@@ -31,7 +31,7 @@ public class Snap2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new SummonVar(1m),
-        new OstyDamageVar(6m, ValueProp.Move)
+        new OstyDamageVar(7m, ValueProp.Move)
         ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

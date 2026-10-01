@@ -31,20 +31,23 @@ public class TwinStrike2() : ThePrismatic2Card(1,
     
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.DualWield);
 
+    private bool _ostyPlay;
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(2).FromCard(this)
-            .Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
-        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
+        if (_ostyPlay && Owner.Osty != null)
         {
-            ArgumentNullException.ThrowIfNull(cardPlay.Target);
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this)
                 .WithHitCount(2)
                 .Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_blunt")
+                .Execute(choiceContext);
+        }
+        else
+        {
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(2).FromCard(this)
+                .Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
         }
     }
@@ -53,5 +56,18 @@ public class TwinStrike2() : ThePrismatic2Card(1,
     {
         DynamicVars.Damage.UpgradeValueBy(1m);
         DynamicVars.OstyDamage.UpgradeValueBy(1m);
+    }
+    
+    public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (cardPlay.Card == this && !Osty.CheckMissingWithAnim(Owner) && !_ostyPlay)
+        {
+            _ostyPlay = true;
+            await CardCmd.AutoPlay(choiceContext, this, cardPlay.Target);
+        }
+        else
+        {
+            _ostyPlay = false;
+        }
     }
 }

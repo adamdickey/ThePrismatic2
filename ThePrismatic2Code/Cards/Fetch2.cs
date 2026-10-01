@@ -28,7 +28,7 @@ public class Fetch2() : ThePrismatic2Card(0,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new SummonVar(1m),
-        new OstyDamageVar(2m, ValueProp.Move),
+        new OstyDamageVar(3m, ValueProp.Move),
         new CardsVar(1)
     ]);
 
@@ -42,8 +42,11 @@ public class Fetch2() : ThePrismatic2Card(0,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
-        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
+        if (Osty.CheckMissingWithAnim(Owner))
+        {
+            await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
+        }
+        if (Owner.Osty != null)
         {
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
@@ -57,6 +60,6 @@ public class Fetch2() : ThePrismatic2Card(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.OstyDamage.UpgradeValueBy(2m);
+        DynamicVars.OstyDamage.UpgradeValueBy(3m);
     }
 }

@@ -29,7 +29,7 @@ public class Sacrifice2() : ThePrismatic2Card(1,
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new HpLossVar(10m),
-        new DynamicVar("Mult", 3m)
+        new DynamicVar("Mult", 4m)
         ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

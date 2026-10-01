@@ -28,14 +28,14 @@ public class Hyperbeam2() : ThePrismatic2Card(2,
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(24m, ValueProp.Move),
-        new PowerVar<StrengthPower>(2m),
+        new PowerVar<StrengthPower>(1m),
         new PowerVar<FocusPower>(2m)
     ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<StrengthPower>(),
         HoverTipFactory.FromPower<FocusPower>()
-        ]);
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -62,6 +62,7 @@ public class Hyperbeam2() : ThePrismatic2Card(2,
                     }
                 })
                 .Execute(choiceContext);
+        await PowerCmd.Apply<StrengthPower>(choiceContext, Owner.Creature, -DynamicVars.Strength.BaseValue, Owner.Creature, this);
         await PowerCmd.Apply<HyperbeamPower>(choiceContext, Owner.Creature, DynamicVars["FocusPower"].BaseValue, Owner.Creature, this);
     }
 

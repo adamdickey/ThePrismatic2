@@ -43,7 +43,7 @@ public class Scourge2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Doom.UpgradeValueBy(2m);
+        DynamicVars.Doom.UpgradeValueBy(3m);
         DynamicVars.Cards.UpgradeValueBy(1m);
     }
 }

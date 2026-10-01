@@ -36,24 +36,26 @@ public class Mangle2() : ThePrismatic2Card(3,
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<StrengthPower>());
 
+    private bool _ostyPlay;
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
-            .WithAttackerAnim(Ironclad.GetHeavyAnimIfApplicable(Owner.Character), Ironclad.GetHeavyAttackDelayIfApplicable(Owner.Character))
-            .WithHitFx("vfx/vfx_heavy_blunt", null, "heavy_attack.mp3")
-            .WithHitVfxSpawnedAtBase()
-            .Execute(choiceContext);
-        await PowerCmd.Apply<Mangle2Power>(choiceContext, cardPlay.Target, DynamicVars["StrengthLoss"].BaseValue, Owner.Creature, this);
-        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
+        if (_ostyPlay && Owner.Osty != null)
         {
-            ArgumentNullException.ThrowIfNull(cardPlay.Target);
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this).Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_heavy_blunt", null, "heavy_attack.mp3")
                 .WithHitVfxSpawnedAtBase()
                 .Execute(choiceContext);
-            await PowerCmd.Apply<Mangle2Power>(choiceContext, cardPlay.Target, DynamicVars["StrengthLoss"].BaseValue, Owner.Creature, this);
         }
+        else
+        {
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+                .WithAttackerAnim(Ironclad.GetHeavyAnimIfApplicable(Owner.Character), Ironclad.GetHeavyAttackDelayIfApplicable(Owner.Character))
+                .WithHitFx("vfx/vfx_heavy_blunt", null, "heavy_attack.mp3")
+                .WithHitVfxSpawnedAtBase()
+                .Execute(choiceContext);
+        }
+        await PowerCmd.Apply<Mangle2Power>(choiceContext, cardPlay.Target, DynamicVars["StrengthLoss"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
@@ -61,5 +63,18 @@ public class Mangle2() : ThePrismatic2Card(3,
         DynamicVars.Damage.UpgradeValueBy(4m);
         DynamicVars.OstyDamage.UpgradeValueBy(2m);
         DynamicVars["StrengthLoss"].UpgradeValueBy(4m);
+    }
+    
+    public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (cardPlay.Card == this && !Osty.CheckMissingWithAnim(Owner) && !_ostyPlay)
+        {
+            _ostyPlay = true;
+            await CardCmd.AutoPlay(choiceContext, this, cardPlay.Target);
+        }
+        else
+        {
+            _ostyPlay = false;
+        }
     }
 }

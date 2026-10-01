@@ -2,6 +2,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
@@ -22,16 +23,21 @@ public class Poke2() : ThePrismatic2Card(0,
 
     protected override HashSet<CardTag> CanonicalTags => [ CardTag.OstyAttack ];
 
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon));
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new SummonVar(1m),
-        new OstyDamageVar(5m, ValueProp.Move)
-        ]);
+        new OstyDamageVar(6m, ValueProp.Move)
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
-        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
+        if (Osty.CheckMissingWithAnim(Owner))
+        {
+            await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
+        }
+        if (Owner.Osty != null)
         {
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this).Targeting(cardPlay.Target)
                 .WithAttackerAnim("attack_poke", 0.3f)

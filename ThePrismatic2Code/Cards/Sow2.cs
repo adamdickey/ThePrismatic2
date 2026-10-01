@@ -32,20 +32,25 @@ public class Sow2() : ThePrismatic2Card(1,
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlyArray<CardKeyword>([
         CardKeyword.Retain,
         Extensions.Keywords.DualWield
-        ]);
+    ]);
+
+    private bool _ostyPlay;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (CombatState != null)
         {
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState)
-                .WithHitFx("vfx/vfx_attack_blunt", null, "heavy_attack.mp3")
-                .Execute(choiceContext);
-            if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
+            if (_ostyPlay && Owner.Osty != null)
             {
                 await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this)
                     .TargetingAllOpponents(CombatState)
-                    .WithHitFx("vfx/vfx_attack_blunt")
+                    .WithHitFx("vfx/vfx_attack_blunt", null, "heavy_attack.mp3")
+                    .Execute(choiceContext);
+            }
+            else
+            {
+                await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState)
+                    .WithHitFx("vfx/vfx_attack_blunt", null, "heavy_attack.mp3")
                     .Execute(choiceContext);
             }
         }
@@ -55,5 +60,18 @@ public class Sow2() : ThePrismatic2Card(1,
     {
         DynamicVars.Damage.UpgradeValueBy(2m);
         DynamicVars.OstyDamage.UpgradeValueBy(1m);
+    }
+    
+    public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (cardPlay.Card == this && !Osty.CheckMissingWithAnim(Owner) && !_ostyPlay)
+        {
+            _ostyPlay = true;
+            await CardCmd.AutoPlay(choiceContext, this, cardPlay.Target);
+        }
+        else
+        {
+            _ostyPlay = false;
+        }
     }
 }

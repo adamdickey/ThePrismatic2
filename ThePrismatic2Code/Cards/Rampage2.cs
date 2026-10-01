@@ -28,7 +28,9 @@ public class Rampage2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(8m, ValueProp.Move),
-        new OstyDamageVar(4m, ValueProp.Move),
+        new CalculationBaseVar(4m),
+        new ExtraDamageVar(1m),
+        new CalculatedDamageVar(ValueProp.Move).FromOsty().WithMultiplier((card, _) => card.DynamicVars["Increase"].BaseValue/2),
         new DynamicVar("Increase", 4m)
     ]);
 
@@ -42,37 +44,53 @@ public class Rampage2() : ThePrismatic2Card(1,
         }
     }
 
+    private bool _ostyPlay;
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
-        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
+        if (_ostyPlay && Owner.Osty != null)
         {
-            ArgumentNullException.ThrowIfNull(cardPlay.Target);
-            await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this).Targeting(cardPlay.Target)
+            await DamageCmd.Attack(DynamicVars.CalculatedDamage.Calculate(cardPlay.Target) - DynamicVars["Increase"].BaseValue/2)
+                .FromOsty(Owner.Osty, this)
+                .Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_blunt")
                 .Execute(choiceContext);
-            DynamicVars.Damage.BaseValue += DynamicVars["Increase"].BaseValue;
-            ExtraDamageFromPlays += DynamicVars["Increase"].BaseValue;
-            DynamicVars.OstyDamage.BaseValue = DynamicVars.Damage.BaseValue / 2;
+        }
+        else
+        {
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_attack_slash")
+                .Execute(choiceContext);
         }
         DynamicVars.Damage.BaseValue += DynamicVars["Increase"].BaseValue;
         ExtraDamageFromPlays += DynamicVars["Increase"].BaseValue;
-        DynamicVars.OstyDamage.BaseValue = DynamicVars.Damage.BaseValue / 2;
+        DynamicVars.CalculationBase.BaseValue = DynamicVars.Damage.BaseValue / 2;
     }
 
     protected override void AfterDowngraded()
     {
         base.AfterDowngraded();
         DynamicVars.Damage.BaseValue += ExtraDamageFromPlays;
-        DynamicVars.OstyDamage.BaseValue = DynamicVars.Damage.BaseValue / 2;
+        DynamicVars.CalculationBase.BaseValue = DynamicVars.Damage.BaseValue / 2;
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars["Increase"].UpgradeValueBy(4m);
-        DynamicVars.OstyDamage.UpgradeValueBy(2m);
+        DynamicVars.CalculationBase.UpgradeValueBy(2m);
+    }
+    
+    public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (cardPlay.Card == this && !Osty.CheckMissingWithAnim(Owner) && !_ostyPlay)
+        {
+            _ostyPlay = true;
+            await CardCmd.AutoPlay(choiceContext, this, cardPlay.Target);
+        }
+        else
+        {
+            _ostyPlay = false;
+        }
     }
 }

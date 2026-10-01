@@ -57,7 +57,6 @@ public class HyperbeamPower : ThePrismatic2Power
 		else
 		{
 			await PowerCmd.Apply<FocusPower>(new ThrowingPlayerChoiceContext(), target, -Sign * amount, applier, cardSource, silent: true);
-			await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), target, -Sign * amount, applier, cardSource, silent: true);
 		}
 	}
 
@@ -72,7 +71,6 @@ public class HyperbeamPower : ThePrismatic2Power
 			else
 			{
 				await PowerCmd.Apply<FocusPower>(choiceContext, Owner, -Sign * amount, applier, cardSource, silent: true);
-				await PowerCmd.Apply<StrengthPower>(choiceContext, Owner, -Sign * amount, applier, cardSource, silent: true);
 			}
 		}
 	}
@@ -84,7 +82,6 @@ public class HyperbeamPower : ThePrismatic2Power
 			Flash();
 			await PowerCmd.Remove(this);
 			await PowerCmd.Apply<FocusPower>(choiceContext, Owner, Sign * Amount, Owner, null);
-			await PowerCmd.Apply<StrengthPower>(choiceContext, Owner, Sign * Amount, Owner, null);
 		}
 	}
 }

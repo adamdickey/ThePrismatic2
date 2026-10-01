@@ -29,10 +29,7 @@ public class Rainbow2() : ThePrismatic2Card(3,
         HoverTipFactory.Static(StaticHoverTip.Channeling),
         HoverTipFactory.FromOrb<MagmaOrb>(),
         HoverTipFactory.FromOrb<SolarOrb>(),
-        HoverTipFactory.FromOrb<LightningOrb>(),
-        HoverTipFactory.FromOrb<VenomOrb>(),
-        HoverTipFactory.FromOrb<FrostOrb>(),
-        HoverTipFactory.FromOrb<DarkOrb>()
+        HoverTipFactory.FromOrb<VenomOrb>()
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

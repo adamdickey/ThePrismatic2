@@ -23,8 +23,8 @@ public class HighFive2() : ThePrismatic2Card(2,
     public override string PortraitPath => "res://.godot/imported/high_five.png-51c5895d67ec803c0055658375c1371b.ctex";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new SummonVar(2m),
-        new OstyDamageVar(10m, ValueProp.Move),
+        new SummonVar(1m),
+        new OstyDamageVar(11m, ValueProp.Move),
         new PowerVar<VulnerablePower>(2m)
     ]);
 

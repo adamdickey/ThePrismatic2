@@ -36,13 +36,12 @@ public class Murder2() : ThePrismatic2Card(3,
         new CustomCalculatedDamageVar("OstyDamage", ValueProp.Move).FromOsty().WithMultiplier((card, _) => (CombatManager.Instance.History.Entries.OfType<CardDrawnEntry>().Count(e => e.Actor == card.Owner.Creature)+1)/2)
     ]);
 
+    private bool _ostyPlay;
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this).Targeting(cardPlay.Target)
-            .WithHitFx("vfx/vfx_attack_slash")
-            .Execute(choiceContext);
-        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
+        if (_ostyPlay && Owner.Osty != null)
         {
             await DamageCmd.Attack(((CalculatedVar)DynamicVars["OstyDamage"]).Calculate(cardPlay.Target))
                 .FromOsty(Owner.Osty, this)
@@ -50,11 +49,29 @@ public class Murder2() : ThePrismatic2Card(3,
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
         }
-        
+        else
+        {
+            await DamageCmd.Attack(DynamicVars.CalculatedDamage).FromCard(this).Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_attack_slash")
+                .Execute(choiceContext);
+        }
     }
 
     protected override void OnUpgrade()
     {
         EnergyCost.UpgradeBy(-1);
+    }
+    
+    public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        if (cardPlay.Card == this && !Osty.CheckMissingWithAnim(Owner) && !_ostyPlay)
+        {
+            _ostyPlay = true;
+            await CardCmd.AutoPlay(choiceContext, this, cardPlay.Target);
+        }
+        else
+        {
+            _ostyPlay = false;
+        }
     }
 }

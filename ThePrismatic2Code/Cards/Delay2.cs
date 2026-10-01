@@ -23,8 +23,12 @@ public class Delay2() : ThePrismatic2Card(2,
     
     public override bool GainsBlock => true;
 
+    public override int CanonicalStarCost => 1;
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new BlockVar(10m, ValueProp.Move),
+        new BlockVar(12m, ValueProp.Move),
         new EnergyVar(1),
         new StarsVar(1)
     ]);

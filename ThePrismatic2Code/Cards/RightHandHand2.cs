@@ -27,13 +27,16 @@ public class RightHandHand2() : ThePrismatic2Card(0,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new SummonVar(1m),
-        new OstyDamageVar(3m, ValueProp.Move),
+        new OstyDamageVar(4m, ValueProp.Move),
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
+        if (Osty.CheckMissingWithAnim(Owner))
+        {
+            await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
+        }
         if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
         {
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this).Targeting(cardPlay.Target)
