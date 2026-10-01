@@ -29,7 +29,8 @@ public class Refract2() : ThePrismatic2Card(2,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new RepeatVar(2),
-        new DamageVar(8m, ValueProp.Move)
+        new DamageVar(9m, ValueProp.Move),
+        new StarsVar(2)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -40,6 +41,7 @@ public class Refract2() : ThePrismatic2Card(2,
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
+        await PlayerCmd.GainStars(DynamicVars.Stars.BaseValue, Owner);
         for (int i = 0; i < DynamicVars.Repeat.IntValue; i++)
         {
             await OrbCmd.Channel<GlassOrb>(choiceContext, Owner);
