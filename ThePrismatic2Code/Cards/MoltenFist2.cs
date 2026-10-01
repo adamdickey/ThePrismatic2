@@ -27,7 +27,12 @@ public class MoltenFist2() : ThePrismatic2Card(1,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Exhaust);
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(10m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new DamageVar(10m, ValueProp.Move),
+        new PowerVar<WeakPower>(1m),
+        new PowerVar<VulnerablePower>(1m),
+        new DynamicVar("Exposed", 1m)
+    ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<VulnerablePower>(),
@@ -41,21 +46,9 @@ public class MoltenFist2() : ThePrismatic2Card(1,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_molten_fist", null, "blunt_attack.mp3")
             .Execute(choiceContext);
-        int num = (cardPlay.Target.IsAlive ? cardPlay.Target.GetPowerAmount<VulnerablePower>() : 0);
-        if (num > 0)
-        {
-            await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, num, Owner.Creature, this);
-        }
-        num = (cardPlay.Target.IsAlive ? cardPlay.Target.GetPowerAmount<WeakPower>() : 0);
-        if (num > 0)
-        {
-            await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, num, Owner.Creature, this);
-        }
-        num = (cardPlay.Target.IsAlive ? cardPlay.Target.GetPowerAmount<ExposedPower>() : 0);
-        if (num > 0)
-        {
-            await PowerCmd.Apply<ExposedPower>(choiceContext, cardPlay.Target, num, Owner.Creature, this);
-        }
+        await PowerCmd.Apply<WeakPower>(choiceContext, cardPlay.Target, DynamicVars.Weak.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, DynamicVars.Vulnerable.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<ExposedPower>(choiceContext, cardPlay.Target, DynamicVars["Exposed"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

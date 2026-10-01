@@ -29,7 +29,7 @@ public class Refract2() : ThePrismatic2Card(2,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new RepeatVar(2),
-        new DamageVar(7m, ValueProp.Move)
+        new DamageVar(8m, ValueProp.Move)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

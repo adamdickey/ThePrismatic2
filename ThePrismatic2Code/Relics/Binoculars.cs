@@ -9,7 +9,7 @@ using ThePrismatic2.ThePrismatic2Code.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Relics;
 
-public sealed class BagOfDice: ThePrismatic2Relic
+public sealed class Binoculars: ThePrismatic2Relic
 {
     public override RelicRarity Rarity => RelicRarity.Common;
     //public override string PackedIconPath => "res://images/atlases/relic_atlas.sprites/burning_blood.tres";

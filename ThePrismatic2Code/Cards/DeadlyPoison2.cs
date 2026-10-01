@@ -25,11 +25,17 @@ public class DeadlyPoison2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<string> ExtraRunAssetPaths => NSmokePuffVfx.AssetPaths;
     
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<PoisonPower>(5m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new PowerVar<PoisonPower>(4m),
+        new PowerVar<DoomPower>(4m)
+    ]);
     
 	public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Cunning);
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<PoisonPower>());
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromPower<PoisonPower>(),
+        HoverTipFactory.FromPower<DoomPower>()
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -38,10 +44,12 @@ public class DeadlyPoison2() : ThePrismatic2Card(1,
     	NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
     	await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
     	await PowerCmd.Apply<PoisonPower>(choiceContext, cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
+    	await PowerCmd.Apply<DoomPower>(choiceContext, cardPlay.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
     	DynamicVars.Poison.UpgradeValueBy(2m);
+    	DynamicVars.Doom.UpgradeValueBy(2m);
     }
 }

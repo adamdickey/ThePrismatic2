@@ -20,7 +20,7 @@ public class Tracking2() : ThePrismatic2Card(2,
     public override string CustomPortraitPath => "res://.godot/imported/tracking.png-5266a65b1f84060f3cc1028ab2d2c95e.ctex";
     public override string PortraitPath => "res://.godot/imported/tracking.png-5266a65b1f84060f3cc1028ab2d2c95e.ctex";
     
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<TrackingPower>(50m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<TrackingPower>(1m));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

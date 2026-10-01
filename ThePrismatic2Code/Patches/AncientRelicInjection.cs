@@ -1,4 +1,4 @@
-using System.Reflection;
+﻿using System.Reflection;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Events;
 using MegaCrit.Sts2.Core.Models;
@@ -33,11 +33,11 @@ public static class AncientRelicInjection
         // use the two-argument overload to offer it to everyone.
         Add<Neow, PrismaticChar, Kaleidoscope2>(Pools.NeowPositive);
         Add<Orobas, PrismaticChar, StarChild>(Pools.OptionPool1);
-        Add<Pael, PrismaticChar, PaelsSaliva>(Pools.OptionPool3);
-        Add<Tezcatara, PrismaticChar, FatefulHourglass>(Pools.OptionPool1);
+        Add<Pael, PrismaticChar, PaelsHeart>(Pools.OptionPool3);
+        Add<Tezcatara, PrismaticChar, FieryCheer>(Pools.OptionPool1);
         Add<Nonupeipe, PrismaticChar, BejeweledNecklace>(Pools.Nonupeipe);
-        Add<Tanx, PrismaticChar, SwordOfInk>(Pools.Tanx);
-        Add<Vakuu, PrismaticChar, GamblingDice>(Pools.VakuuPool1);
+        Add<Tanx, PrismaticChar, BloodySabertooth>(Pools.Tanx);
+        Add<Vakuu, PrismaticChar, SnakeEyes>(Pools.VakuuPool1);
 
         // Darv is special, you have to do his differently:
         DarvRelicInjection.Add<PrismaticChar, Brimstone2>();   

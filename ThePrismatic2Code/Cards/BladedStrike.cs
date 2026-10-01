@@ -25,7 +25,8 @@ public class BladedStrike() : ThePrismatic2Card(1,
     
     public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<BladedBlast>();
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(5m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(
+        new DamageVar(4m, ValueProp.Move));
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<Shiv>());
 

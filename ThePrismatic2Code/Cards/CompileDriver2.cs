@@ -37,7 +37,7 @@ public class CompileDriver2() : ThePrismatic2Card(1,
         CardModel? cardModel = (await CardSelectCmd.FromHandForDiscard(choiceContext, Owner, new CardSelectorPrefs(CardSelectorPrefs.DiscardSelectionPrompt, 1), null, this)).FirstOrDefault();
         if (cardModel != null)
         { 
-            await CardCmd.Discard(choiceContext, cardModel);
+            await CardCmd.Exhaust(choiceContext, cardModel);
         }
     }
 

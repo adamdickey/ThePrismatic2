@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace ThePrismatic2.ThePrismatic2Code.Relics;
 
-public sealed class PaelsSaliva: ThePrismatic2Relic
+public sealed class PaelsHeart: ThePrismatic2Relic
 {
     public override RelicRarity Rarity => RelicRarity.Ancient;
     //public override string PackedIconPath => "res://images/atlases/relic_atlas.sprites/burning_blood.tres";

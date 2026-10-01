@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
-using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -18,8 +18,11 @@ public class CaptureSpirit2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/capture_spirit.png-dcc09a25edf0067ecaca483651dc36eb.ctex";
     public override string PortraitPath => "res://.godot/imported/capture_spirit.png-dcc09a25edf0067ecaca483651dc36eb.ctex";
     
+    public override bool GainsBlock => true;
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new PowerVar<StranglePower>(2m),
+        new HpLossVar(2m),
+        new BlockVar(2m, ValueProp.Move),
         new CardsVar(2)
     ]);
 
@@ -29,7 +32,8 @@ public class CaptureSpirit2() : ThePrismatic2Card(1,
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<StranglePower>(choiceContext, cardPlay.Target, DynamicVars["StranglePower"].BaseValue, Owner.Creature, this);
+        await CreatureCmd.Damage(choiceContext, cardPlay.Target, DynamicVars.HpLoss.BaseValue, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move, this);
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
         if (CombatState != null)
         {
             List<Soul> cards = Soul.Create(Owner, DynamicVars.Cards.IntValue, CombatState).ToList();
@@ -39,7 +43,8 @@ public class CaptureSpirit2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["StranglePower"].UpgradeValueBy(1m);
+        DynamicVars.HpLoss.UpgradeValueBy(1m);
+        DynamicVars.Block.UpgradeValueBy(1m);
         DynamicVars.Cards.UpgradeValueBy(1m);
     }
 }

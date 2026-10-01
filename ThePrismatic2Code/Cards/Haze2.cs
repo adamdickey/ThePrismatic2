@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using ThePrismatic2.ThePrismatic2Code.Character;
@@ -28,9 +29,13 @@ public class Haze2() : ThePrismatic2Card(3,
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Cunning);
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("Focus", 2m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new DynamicVar("Focus", 2m),
+        new PowerVar<WeakPower>(1m)
+    ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromPower<WeakPower>(),
         HoverTipFactory.Static(StaticHoverTip.Channeling),
         HoverTipFactory.FromOrb<VenomOrb>()
     ]);
@@ -42,6 +47,10 @@ public class Haze2() : ThePrismatic2Card(3,
         await Cmd.CustomScaledWait(0.2f, 0.4f);
         await PowerCmd.Apply<Haze2Power>(choiceContext, Owner.Creature, DynamicVars["Focus"].BaseValue, Owner.Creature, this);
         await OrbCmd.Channel<VenomOrb>(choiceContext, Owner);
+        if (CombatState?.HittableEnemies != null)
+        {
+            await PowerCmd.Apply<WeakPower>(choiceContext, CombatState.HittableEnemies, DynamicVars.Weak.BaseValue, Owner.Creature, this);
+        }
     }
 
     private void SpawnVfx()
@@ -63,5 +72,6 @@ public class Haze2() : ThePrismatic2Card(3,
     protected override void OnUpgrade()
     {
         DynamicVars["Focus"].UpgradeValueBy(1m);
+        //DynamicVars.Weak.UpgradeValueBy(1m);
     }
 }

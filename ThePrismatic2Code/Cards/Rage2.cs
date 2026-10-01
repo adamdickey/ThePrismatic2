@@ -20,7 +20,8 @@ public class Rage2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/rage.png-bc237c4725f1ed1077c90501d84fcc98.ctex";
     public override string PortraitPath => "res://.godot/imported/rage.png-bc237c4725f1ed1077c90501d84fcc98.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("Power", 2m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(
+        new DynamicVar("Power", 1m));
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.SummonStatic));
 

@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
+using ThePrismatic2.ThePrismatic2Code.Orbs;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -21,10 +22,16 @@ public class Hemokinesis2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/hemokinesis.png-97acd5accd58a4400c33490c4b808c57.ctex";
     public override string PortraitPath => "res://.godot/imported/hemokinesis.png-97acd5accd58a4400c33490c4b808c57.ctex";
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed));
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed),
+        HoverTipFactory.Static(StaticHoverTip.Channeling),
+        HoverTipFactory.FromOrb<MagmaOrb>()
+    ]);
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new HpLossVar(2m),
-        new DamageVar(15m, ValueProp.Move)
+        new HpLossVar(3m),
+        new DamageVar(15m, ValueProp.Move),
+        new DynamicVar("Orbs", 1m)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -41,10 +48,15 @@ public class Hemokinesis2() : ThePrismatic2Card(1,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_bloody_impact")
             .Execute(choiceContext);
+        for (int i = 0; i < DynamicVars["Orbs"].IntValue; i++)
+        {
+            await OrbCmd.Channel<MagmaOrb>(choiceContext, Owner);
+        }
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(5m);
+        DynamicVars["Orbs"].UpgradeValueBy(1m);
     }
 }

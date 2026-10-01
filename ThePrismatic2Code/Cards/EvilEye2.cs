@@ -37,7 +37,8 @@ public class EvilEye2() : ThePrismatic2Card(1,
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         VfxCmd.PlayOnCreatureCenter(Owner.Creature, "vfx/vfx_gaze");
-        int blockGains = WasCardExhaustedThisTurn || WasCardDiscardedThisTurn ? 2 : 1;
+        //int blockGains = WasCardExhaustedThisTurn || WasCardDiscardedThisTurn ? 2 : 1;
+        int blockGains = WasCardExhaustedThisTurn ? 2 : 1;
         for (int i = 0; i < blockGains; i++)
         {
             await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);

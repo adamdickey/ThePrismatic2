@@ -29,6 +29,6 @@ public class Haunt2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.HpLoss.UpgradeValueBy(2m);
+        DynamicVars.HpLoss.UpgradeValueBy(1m);
     }
 }

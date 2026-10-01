@@ -1,5 +1,6 @@
 ﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -23,6 +24,8 @@ public class Pyre2Power : ThePrismatic2Power
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("Magma", 0m));
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>(new IHoverTip[3]
     {
         HoverTipFactory.ForEnergy(this),
@@ -30,11 +33,17 @@ public class Pyre2Power : ThePrismatic2Power
         HoverTipFactory.FromOrb<MagmaOrb>()
     });
 
+    public override Task AfterApplied(Creature? applier, CardModel? cardSource)
+    {
+        DynamicVars["Magma"].BaseValue += cardSource?.DynamicVars["Magma"].BaseValue ?? 1m;
+        return Task.CompletedTask;
+    }
+
     public override async Task AfterEnergyReset(Player player)
     {
         if (player == Owner.Player)
         {
-            for (int i = 0; i < Amount; i++)
+            for (int i = 0; i < DynamicVars["Magma"].IntValue; i++)
             {
                 await OrbCmd.Channel<MagmaOrb>(new ThrowingPlayerChoiceContext(), Owner.Player);
             }

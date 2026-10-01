@@ -22,7 +22,16 @@ public class Havoc2() : ThePrismatic2Card(1,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        CardCmd.ApplyKeyword(PileType.Draw.GetPile(Owner).Cards.FirstOrDefault() ?? throw new InvalidOperationException(), CardKeyword.Ethereal);
+        if (!PileType.Draw.GetPile(Owner).Cards.Any())
+        {
+            await CardPileCmd.ShuffleIfNecessary(choiceContext, Owner);
+        }
+        CardModel? topCard = PileType.Draw.GetPile(Owner).Cards.FirstOrDefault();
+        if (topCard == null)
+        {
+            return;
+        }
+        CardCmd.ApplyKeyword(topCard, CardKeyword.Ethereal);
         await CardPileCmd.AutoPlayFromDrawPile(choiceContext, Owner, 1, CardPilePosition.Top, forceExhaust: false);
     }
 

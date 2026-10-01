@@ -8,7 +8,7 @@ using ThePrismatic2.ThePrismatic2Code.Cards;
 
 namespace ThePrismatic2.ThePrismatic2Code.Relics;
 
-public sealed class FatefulHourglass: ThePrismatic2Relic
+public sealed class FieryCheer: ThePrismatic2Relic
 {
     public override RelicRarity Rarity => RelicRarity.Ancient;
     //public override string PackedIconPath => "res://images/atlases/relic_atlas.sprites/burning_blood.tres";

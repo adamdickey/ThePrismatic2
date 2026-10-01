@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace ThePrismatic2.ThePrismatic2Code.Relics;
 
-public sealed class SmithsAnvil: ThePrismatic2Relic
+public sealed class NoblesAnvil: ThePrismatic2Relic
 {
     public override RelicRarity Rarity => RelicRarity.Rare;
     //public override string PackedIconPath => "res://images/atlases/relic_atlas.sprites/burning_blood.tres";

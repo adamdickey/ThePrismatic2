@@ -25,7 +25,10 @@ public class Pyre2() : ThePrismatic2Card(2,
     public override string CustomPortraitPath => "res://.godot/imported/pyre.png-1a39ac5d1be3a8418f22769ccb32b45f.ctex";
     public override string PortraitPath => "res://.godot/imported/pyre.png-1a39ac5d1be3a8418f22769ccb32b45f.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new EnergyVar(1));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new EnergyVar(1),
+        new DynamicVar("Magma", 1m)
+    ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         EnergyHoverTip,
@@ -47,6 +50,6 @@ public class Pyre2() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars["Magma"].UpgradeValueBy(1m);
     }
 }

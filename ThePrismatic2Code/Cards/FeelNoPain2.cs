@@ -21,7 +21,7 @@ public class FeelNoPain2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/feel_no_pain.png-cf0cd4b93d214d57a730de8275ac2f1c.ctex";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DynamicVar("Power", 3m),
+        new DynamicVar("Power", 4m),
         new RepeatVar(3) 
     ]);
 

@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Relics;
 
-public sealed class ReassemblingBones: ThePrismatic2Relic
+public sealed class EternalBones: ThePrismatic2Relic
 {
     public override RelicRarity Rarity => RelicRarity.Uncommon;
     //public override string PackedIconPath => "res://images/atlases/relic_atlas.sprites/burning_blood.tres";
