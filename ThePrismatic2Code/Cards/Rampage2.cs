@@ -49,23 +49,24 @@ public class Rampage2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        if (_ostyPlay && Owner.Osty != null)
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
+        DynamicVars.Damage.BaseValue += DynamicVars["Increase"].BaseValue;
+        ExtraDamageFromPlays += DynamicVars["Increase"].BaseValue;
+        DynamicVars.CalculationBase.BaseValue = DynamicVars.Damage.BaseValue / 2;
+        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
         {
+            ArgumentNullException.ThrowIfNull(cardPlay.Target);
             await DamageCmd.Attack(DynamicVars.CalculatedDamage.Calculate(cardPlay.Target) - DynamicVars["Increase"].BaseValue/2)
                 .FromOsty(Owner.Osty, this)
                 .Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_blunt")
                 .Execute(choiceContext);
+            DynamicVars.Damage.BaseValue += DynamicVars["Increase"].BaseValue;
+            ExtraDamageFromPlays += DynamicVars["Increase"].BaseValue;
+            DynamicVars.CalculationBase.BaseValue = DynamicVars.Damage.BaseValue / 2;
         }
-        else
-        {
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
-                .WithHitFx("vfx/vfx_attack_slash")
-                .Execute(choiceContext);
-        }
-        DynamicVars.Damage.BaseValue += DynamicVars["Increase"].BaseValue;
-        ExtraDamageFromPlays += DynamicVars["Increase"].BaseValue;
-        DynamicVars.CalculationBase.BaseValue = DynamicVars.Damage.BaseValue / 2;
     }
 
     protected override void AfterDowngraded()
@@ -78,7 +79,6 @@ public class Rampage2() : ThePrismatic2Card(1,
     protected override void OnUpgrade()
     {
         DynamicVars["Increase"].UpgradeValueBy(4m);
-        DynamicVars.CalculationBase.UpgradeValueBy(2m);
     }
     
     public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)

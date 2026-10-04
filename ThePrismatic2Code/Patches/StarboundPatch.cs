@@ -81,12 +81,21 @@ public class StarboundSingleton() : CustomSingletonModel(HookType.Combat)
             int energyDif =  globalCardEnergy - cardEnergy;
             playerEnergy -= energyDif;
         }
+
+        if (card.Pile != PileType.Hand.GetPile(card.Owner) && card.Pile != PileType.Play.GetPile(card.Owner) && 
+            cardCost == card.EnergyCost.Canonical + Math.Max(0, card.CanonicalStarCost))
+        {
+            card.EnergyCost.SetThisCombat(card.EnergyCost.Canonical);
+            card.SetStarCostThisCombat(card.CanonicalStarCost);
+            return;
+        }
         
         if (playerStars + playerEnergy >= cardCost)
         {
             int newEnergyCost = Math.Min(playerEnergy, card.EnergyCost.Canonical);
-            int newStarCost = Math.Min(playerStars, card.CanonicalStarCost);
-            if (cardCost == card.EnergyCost.Canonical + Math.Max(0, card.CanonicalStarCost) && newEnergyCost == card.EnergyCost.Canonical && newStarCost == Math.Max(0, card.CanonicalStarCost))
+            int newStarCost = Math.Min(playerStars, Math.Max(0, card.CanonicalStarCost));
+            if (cardCost == card.EnergyCost.Canonical + Math.Max(0, card.CanonicalStarCost) &&
+                newEnergyCost == card.EnergyCost.Canonical && newStarCost == Math.Max(0, card.CanonicalStarCost))
             {
                 card.EnergyCost.SetThisCombat(card.EnergyCost.Canonical);
                 card.SetStarCostThisCombat(card.CanonicalStarCost);

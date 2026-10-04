@@ -25,7 +25,6 @@ public class BubbleBubble2() : ThePrismatic2Card(1,
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/bubble_bubble.png-125cb0b9a1c0e99d59d54aa37df57c4f.ctex";
     public override string PortraitPath => "res://.godot/imported/bubble_bubble.png-125cb0b9a1c0e99d59d54aa37df57c4f.ctex";
-
     protected override bool ShouldGlowGoldInternal => CombatState?.HittableEnemies.Any(e => e.Powers.Any(power => power.Type == PowerType.Debuff)) ?? false;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
@@ -44,21 +43,26 @@ public class BubbleBubble2() : ThePrismatic2Card(1,
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         NCreature? nCreature = NCombatRoom.Instance?.GetCreatureNode(cardPlay.Target);
-        if (nCreature != null)
-        {
-            NGaseousImpactVfx? child = NGaseousImpactVfx.Create(nCreature.VfxSpawnPosition, new Color("83eb85"));
-            NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
-        }
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        
         int debuffCount = cardPlay.Target.Powers.Count(power => power.Type == PowerType.Debuff);
-        if (debuffCount == 1)
+        switch (debuffCount)
         {
-            await PowerCmd.Apply<DoomPower>(choiceContext, cardPlay.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this);
-        }
-        else if (debuffCount > 1)
-        {
-            await PowerCmd.Apply<PoisonPower>(choiceContext, cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
+            case 1:
+                if (nCreature != null)
+                {
+                    NGaseousImpactVfx? child = NGaseousImpactVfx.Create(nCreature.VfxSpawnPosition, new Color("83eb85"));
+                    NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
+                }
+                await PowerCmd.Apply<DoomPower>(choiceContext, cardPlay.Target, DynamicVars.Doom.BaseValue, Owner.Creature, this);
+                break;
+            case > 1:
+                if (nCreature != null)
+                {
+                    NGaseousImpactVfx? child = NGaseousImpactVfx.Create(nCreature.VfxSpawnPosition, new Color("83eb85"));
+                    NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
+                }
+                await PowerCmd.Apply<PoisonPower>(choiceContext, cardPlay.Target, DynamicVars.Poison.BaseValue, Owner.Creature, this);
+                break;
         }
     }
 

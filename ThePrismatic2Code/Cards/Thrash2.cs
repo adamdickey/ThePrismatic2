@@ -23,6 +23,8 @@ public class Thrash2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/thrash.png-cf3e2f34b99087c931de4b5b1a14c3c8.ctex";
     public override string PortraitPath => "res://.godot/imported/thrash.png-cf3e2f34b99087c931de4b5b1a14c3c8.ctex";
     
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.OstyAttack];
+    
     private decimal _extraDamage;
 
 	protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Exhaust));

@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
@@ -26,17 +27,24 @@ public class TimesUp2() : ThePrismatic2Card(2,
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<DoomPower>());
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new PowerVar<DoomPower>(20m),
-        new DynamicVar("BigDoom", 100m)
+        new DamageVar(20m, ValueProp.Move),
+        new RepeatVar(4)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
         int debuffCount = cardPlay.Target.Powers.Count(power => power.Type == PowerType.Debuff);
-        decimal doom = debuffCount >= 4 ? DynamicVars["BigDoom"].BaseValue : DynamicVars.Doom.BaseValue;
-        await PowerCmd.Apply<DoomPower>(choiceContext, cardPlay.Target, doom, Owner.Creature, this);
+        decimal hitCount = debuffCount >= 4 ? DynamicVars.Repeat.BaseValue : 0;
+        for (int i = 0; i < hitCount; i++)
+        {
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+                .WithHitFx("vfx/vfx_attack_slash")
+                .Execute(choiceContext);
+        }
     }
 
     protected override void OnUpgrade()

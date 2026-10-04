@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Cards;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -39,7 +40,7 @@ public class CloakAndDagger2() : ThePrismatic2Card(1,
             if (CombatState != null) await Shiv.CreateInHand(Owner, CombatState);
             await Cmd.Wait(0.25f);
         }
-        await PlayerCmd.GainStars(DynamicVars.Stars.BaseValue, Owner);
+        await PowerCmd.Apply<StarNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Stars.BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

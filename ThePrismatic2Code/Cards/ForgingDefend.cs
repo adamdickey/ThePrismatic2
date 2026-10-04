@@ -12,8 +12,8 @@ public class ForgingDefend() : ThePrismatic2Card(1,
     CardType.Skill, CardRarity.None,
     TargetType.Self)
 {
-    public override string CustomPortraitPath => $"PrismaticDefend.png".BigCardImagePath();
-    public override string PortraitPath => $"PrismaticDefend.png".CardImagePath();
+    public override string CustomPortraitPath => "PrismaticDefend.png".BigCardImagePath();
+    public override string PortraitPath => "PrismaticDefend.png".CardImagePath();
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
     
     public override bool IsBasicStrikeOrDefend => false;
@@ -24,7 +24,7 @@ public class ForgingDefend() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new BlockVar(5m, ValueProp.Move),
-        new ForgeVar(5)
+        new ForgeVar(4)
         ]);
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => HoverTipFactory.FromForge();

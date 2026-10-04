@@ -22,13 +22,12 @@ public class Tracking2Power : ThePrismatic2Power
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.ReplayStatic));
 
-    private bool Active => CombatState?.HittableEnemies.Any(e => e.Powers.Count(power => power.Type == PowerType.Debuff) >= 2) ?? false;
+    private bool Active => CombatState.HittableEnemies.Any(e => e.Powers.Count(power => power.Type == PowerType.Debuff) >= 2);
 
     private void Sync()
     {
         bool active = Active;
-        _replay.Sync(Owner.Player?.PlayerCombatState?.AllCards ?? Array.Empty<CardModel>(),
-            card => active && card.Type == CardType.Attack, Amount);
+        _replay.Sync(Owner.Player?.PlayerCombatState?.AllCards ?? Array.Empty<CardModel>(),card => active && card.Type == CardType.Attack, Amount);
     }
 
     public override Task AfterApplied(Creature? applier, CardModel? cardSource)

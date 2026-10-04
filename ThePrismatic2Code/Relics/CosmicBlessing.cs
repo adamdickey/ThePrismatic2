@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.Rooms;
 
 namespace ThePrismatic2.ThePrismatic2Code.Relics;
 
-public sealed class StarChild: ThePrismatic2Relic
+public sealed class CosmicBlessing: ThePrismatic2Relic
 {
     public override RelicRarity Rarity => RelicRarity.Ancient;
     //public override string PackedIconPath => "res://images/atlases/relic_atlas.sprites/burning_blood.tres";

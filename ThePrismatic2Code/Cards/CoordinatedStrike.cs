@@ -15,8 +15,8 @@ public class CoordinatedStrike() : ThePrismatic2Card(1,
     CardType.Attack, CardRarity.None,
     TargetType.AnyEnemy), ITranscendenceCard
 {
-    public override string CustomPortraitPath => $"PrismaticStrike.png".BigCardImagePath();
-    public override string PortraitPath => $"PrismaticStrike.png".CardImagePath();
+    public override string CustomPortraitPath => "PrismaticStrike.png".BigCardImagePath();
+    public override string PortraitPath => "PrismaticStrike.png".CardImagePath();
     
     public override bool IsBasicStrikeOrDefend => false;
     

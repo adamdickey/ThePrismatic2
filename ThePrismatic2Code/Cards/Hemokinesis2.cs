@@ -30,7 +30,7 @@ public class Hemokinesis2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new HpLossVar(3m),
-        new DamageVar(15m, ValueProp.Move),
+        new DamageVar(13m, ValueProp.Move),
         new DynamicVar("Orbs", 1m)
     ]);
 
@@ -57,6 +57,5 @@ public class Hemokinesis2() : ThePrismatic2Card(1,
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(5m);
-        DynamicVars["Orbs"].UpgradeValueBy(1m);
     }
 }

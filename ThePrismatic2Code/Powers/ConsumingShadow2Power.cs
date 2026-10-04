@@ -21,12 +21,15 @@ public class ConsumingShadow2Power : ThePrismatic2Power
 
     public override async Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
-        if (side == Owner.Side && Owner.Player is { PlayerCombatState: not null } && Owner.Player.PlayerCombatState.OrbQueue.Orbs.Count != 0)
+        if (side == Owner.Side && Owner.Player is { PlayerCombatState: not null })
         {
-            for (int i = 0; i < Amount; i++)
+            if (Owner.Player.PlayerCombatState.OrbQueue.Orbs.Count != 0)
             {
-                await OrbCmd.EvokeLast(choiceContext, Owner.Player);
-                await Cmd.Wait(0.25f);
+                for (int i = 0; i < Amount; i++)
+                {
+                    await OrbCmd.EvokeLast(choiceContext, Owner.Player);
+                    await Cmd.Wait(0.25f);
+                } 
             }
             await DoomPower.DoomKill(DoomPower.GetDoomedCreatures(CombatState.HittableEnemies));
         }

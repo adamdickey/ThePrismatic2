@@ -25,14 +25,14 @@ public class SwordSage2Power : ThePrismatic2Power
         HoverTipFactory.Static(StaticHoverTip.ReplayStatic)
     ]);
 
-    private static bool IsCostly(CardModel card)
+    private static bool IsCostlyAttack(CardModel card)
     {
-        return card.EnergyCost.GetWithModifiers(CostModifiers.All) + Math.Max(0, card.CurrentStarCost) >= 2;
+        return card.EnergyCost.GetWithModifiers(CostModifiers.All) + Math.Max(0, card.CurrentStarCost) >= 2 && card.Type == CardType.Attack;
     }
 
     private void Sync()
     {
-        _replay.Sync(Owner.Player?.PlayerCombatState?.AllCards ?? Array.Empty<CardModel>(), IsCostly, Amount);
+        _replay.Sync(Owner.Player?.PlayerCombatState?.AllCards ?? Array.Empty<CardModel>(), IsCostlyAttack, Amount);
     }
 
     public override Task AfterApplied(Creature? applier, CardModel? cardSource)

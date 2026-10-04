@@ -2,6 +2,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
@@ -20,7 +21,12 @@ public class Predator2() : ThePrismatic2Card(2,
     public override string CustomPortraitPath => "res://.godot/imported/predator.png-ff68983646c52d3fca59777f979e53e6.ctex";
     public override string PortraitPath => "res://.godot/imported/predator.png-ff68983646c52d3fca59777f979e53e6.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(15m, ValueProp.Move));
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromCard<Soul>(true));
+
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new DamageVar(15m, ValueProp.Move),
+        new CardsVar(1)
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -30,8 +36,12 @@ public class Predator2() : ThePrismatic2Card(2,
             .Execute(choiceContext);
         if (CombatState != null)
         {
-            List<Soul> list = Soul.Create(Owner, 2, CombatState).ToList();
-            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(list, PileType.Draw, Owner, CardPilePosition.Random));
+            List<Soul> cards = Soul.Create(Owner, DynamicVars.Cards.IntValue, CombatState).ToList();
+            foreach (Soul card in cards)
+            {
+                CardCmd.Upgrade(card);
+            }
+            CardCmd.PreviewCardPileAdd(await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Draw, Owner, CardPilePosition.Top));
         }
     }
 

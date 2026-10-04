@@ -1,8 +1,6 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -24,12 +22,11 @@ public class Bully2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/bully.png-4dfc6b5d2d20ce38614b8ba082aa152b.ctex";
     public override string PortraitPath => "res://.godot/imported/bully.png-4dfc6b5d2d20ce38614b8ba082aa152b.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>(new DynamicVar[3]
-    {
-        new CalculationBaseVar(4m),
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new CalculationBaseVar(5m),
         new ExtraDamageVar(2m),
-        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel _, Creature? target) => (target?.GetPowerAmount<VulnerablePower>()+target?.GetPowerAmount<WeakPower>()+target?.GetPowerAmount<ExposedPower>()) ?? 0)
-    });
+        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((_, target) => target?.GetPowerAmount<VulnerablePower>()+target?.GetPowerAmount<WeakPower>()+target?.GetPowerAmount<ExposedPower>() ?? 0)
+    ]);
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<VulnerablePower>());
 
@@ -43,6 +40,7 @@ public class Bully2() : ThePrismatic2Card(0,
 
     protected override void OnUpgrade()
     {
+        DynamicVars.CalculationBase.UpgradeValueBy(1m);
         DynamicVars.ExtraDamage.UpgradeValueBy(1m);
     }
 }

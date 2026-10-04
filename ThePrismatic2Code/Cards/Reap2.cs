@@ -18,11 +18,9 @@ public class Reap2() : ThePrismatic2Card(3,
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/reap.png-e4ffbdae7991268a1d2e5971010912e2.ctex";
     public override string PortraitPath => "res://.godot/imported/reap.png-e4ffbdae7991268a1d2e5971010912e2.ctex";
-
-    //private bool _costReduced;
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new CalculationBaseVar(25m),
-        new ExtraDamageVar(5m),
+        new CalculationBaseVar(24m),
+        new ExtraDamageVar(8m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((card, _) => PileType.Hand.GetPile(card.Owner).Cards.Any(c => c.ShouldRetainThisTurn && c != card) ? 1 : 0)
     ]);
 
@@ -38,8 +36,8 @@ public class Reap2() : ThePrismatic2Card(3,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.CalculationBase.UpgradeValueBy(5m);
-        DynamicVars.ExtraDamage.UpgradeValueBy(1m);
+        DynamicVars.CalculationBase.UpgradeValueBy(6m);
+        DynamicVars.ExtraDamage.UpgradeValueBy(2m);
     }
     /*
     public override Task AfterCardEnteredCombat(CardModel card)

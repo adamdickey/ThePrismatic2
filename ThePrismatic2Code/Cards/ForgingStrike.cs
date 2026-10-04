@@ -14,8 +14,8 @@ public class ForgingStrike() : ThePrismatic2Card(1,
     CardType.Attack, CardRarity.None,
     TargetType.AnyEnemy), ITranscendenceCard
 {
-    public override string CustomPortraitPath => $"PrismaticStrike.png".BigCardImagePath();
-    public override string PortraitPath => $"PrismaticStrike.png".CardImagePath();
+    public override string CustomPortraitPath => "PrismaticStrike.png".BigCardImagePath();
+    public override string PortraitPath => "PrismaticStrike.png".CardImagePath();
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
     
     public override bool IsBasicStrikeOrDefend => false;
@@ -26,7 +26,7 @@ public class ForgingStrike() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(6m, ValueProp.Move),
-        new ForgeVar(5)
+        new ForgeVar(4)
         ]);
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => HoverTipFactory.FromForge();

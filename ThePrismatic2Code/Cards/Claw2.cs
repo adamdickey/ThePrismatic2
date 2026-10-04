@@ -37,7 +37,6 @@ public class Claw2() : ThePrismatic2Card(0,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(1m);
-        DynamicVars["Accuracy2Power"].UpgradeValueBy(1m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

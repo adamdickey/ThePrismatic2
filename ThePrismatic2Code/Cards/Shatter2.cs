@@ -35,32 +35,39 @@ public class Shatter2() : ThePrismatic2Card(1,
         new OstyDamageVar(3m, ValueProp.Move)
     ]);
 
-    private bool _ostyPlay;
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (CombatState != null)
-            if (_ostyPlay && Owner.Osty != null)
+        {
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this)
+                .TargetingAllOpponents(CombatState)
+                .WithHitFx("vfx/vfx_attack_slash")
+                .Execute(choiceContext);
+            if (Owner.PlayerCombatState != null)
+            {
+                int orbCount = Owner.PlayerCombatState.OrbQueue.Orbs.Count;
+                for (int i = 0; i < orbCount; i++)
+                {
+                    await OrbCmd.EvokeNext(choiceContext, Owner, dequeue: false);
+                    await OrbCmd.EvokeNext(choiceContext, Owner, dequeue: Osty.CheckMissingWithAnim(Owner));
+                }
+            }
+
+            if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
             {
                 await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this)
                     .TargetingAllOpponents(CombatState)
                     .WithHitFx("vfx/vfx_attack_slash")
                     .Execute(choiceContext);
-            }
-            else
-            {
-                await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this)
-                    .TargetingAllOpponents(CombatState)
-                    .WithHitFx("vfx/vfx_attack_slash")
-                    .Execute(choiceContext);  
-            }
-        if (Owner.PlayerCombatState != null)
-        {
-            int orbCount = Owner.PlayerCombatState.OrbQueue.Orbs.Count;
-            for (int i = 0; i < orbCount; i++)
-            {
-                await OrbCmd.EvokeNext(choiceContext, Owner, dequeue: false);
-                await OrbCmd.EvokeNext(choiceContext, Owner, dequeue: _ostyPlay || Osty.CheckMissingWithAnim(Owner));
+                if (Owner.PlayerCombatState != null)
+                {
+                    int orbCount = Owner.PlayerCombatState.OrbQueue.Orbs.Count;
+                    for (int i = 0; i < orbCount; i++)
+                    {
+                        await OrbCmd.EvokeNext(choiceContext, Owner, dequeue: false);
+                        await OrbCmd.EvokeNext(choiceContext, Owner);
+                    }
+                }
             }
         }
     }
@@ -68,18 +75,5 @@ public class Shatter2() : ThePrismatic2Card(1,
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(4m);
-    }
-    
-    public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-    {
-        if (cardPlay.Card == this && !Osty.CheckMissingWithAnim(Owner) && !_ostyPlay)
-        {
-            _ostyPlay = true;
-            await CardCmd.AutoPlay(choiceContext, this, cardPlay.Target);
-        }
-        else
-        {
-            _ostyPlay = false;
-        }
     }
 }

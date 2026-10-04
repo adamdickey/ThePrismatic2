@@ -12,9 +12,9 @@ namespace ThePrismatic2.ThePrismatic2Code.Relics;
 public sealed class Binoculars: ThePrismatic2Relic
 {
     public override RelicRarity Rarity => RelicRarity.Common;
-    //public override string PackedIconPath => "res://images/atlases/relic_atlas.sprites/burning_blood.tres";
-    //protected override string PackedIconOutlinePath => "res://images/atlases/relic_outline_atlas.sprites/burning_blood.tres";
-    //protected override string BigIconPath => "res://images/relics/burning_blood.png";
+    public override string PackedIconPath => "ThePrismatic2/images/relics/Binoculars.png";
+    protected override string PackedIconOutlinePath => "ThePrismatic2/images/relics/Binoculars_Outline.png";
+    protected override string BigIconPath => "ThePrismatic2/images/relics/big/Binoculars.png";
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<ExposedPower>(2m));
 

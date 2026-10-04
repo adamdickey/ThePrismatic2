@@ -27,29 +27,24 @@ public class Sow2() : ThePrismatic2Card(1,
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(7m, ValueProp.Move),
         new OstyDamageVar(3m, ValueProp.Move)
-        ]);
+    ]);
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlyArray<CardKeyword>([
         CardKeyword.Retain,
         Extensions.Keywords.DualWield
     ]);
 
-    private bool _ostyPlay;
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (CombatState != null)
         {
-            if (_ostyPlay && Owner.Osty != null)
+            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState)
+                .WithHitFx("vfx/vfx_attack_blunt", null, "heavy_attack.mp3")
+                .Execute(choiceContext);
+            if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
             {
                 await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this)
                     .TargetingAllOpponents(CombatState)
-                    .WithHitFx("vfx/vfx_attack_blunt", null, "heavy_attack.mp3")
-                    .Execute(choiceContext);
-            }
-            else
-            {
-                await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState)
                     .WithHitFx("vfx/vfx_attack_blunt", null, "heavy_attack.mp3")
                     .Execute(choiceContext);
             }
@@ -60,18 +55,5 @@ public class Sow2() : ThePrismatic2Card(1,
     {
         DynamicVars.Damage.UpgradeValueBy(2m);
         DynamicVars.OstyDamage.UpgradeValueBy(1m);
-    }
-    
-    public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-    {
-        if (cardPlay.Card == this && !Osty.CheckMissingWithAnim(Owner) && !_ostyPlay)
-        {
-            _ostyPlay = true;
-            await CardCmd.AutoPlay(choiceContext, this, cardPlay.Target);
-        }
-        else
-        {
-            _ostyPlay = false;
-        }
     }
 }

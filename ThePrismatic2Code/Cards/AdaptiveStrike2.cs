@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
-public class AdaptiveStrike2() : ThePrismatic2Card(2, 
+public class AdaptiveStrike2() : ThePrismatic2Card(1, 
     CardType.Attack, CardRarity.Rare, 
     TargetType.AnyEnemy)
 {
@@ -17,7 +17,9 @@ public class AdaptiveStrike2() : ThePrismatic2Card(2,
     public override string PortraitPath => "res://.godot/imported/adaptive_strike.png-75332133bedbfcfb09f93ca3279b16f0.ctex";
     
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
-    
+
+    public override int CanonicalStarCost => 1;
+
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Starbound);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(16m, ValueProp.Move));

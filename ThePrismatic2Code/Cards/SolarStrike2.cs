@@ -31,7 +31,7 @@ public class SolarStrike2() : ThePrismatic2Card(1,
     ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(8m, ValueProp.Move),
+        new DamageVar(6m, ValueProp.Move),
         new PowerVar<VulnerablePower>(1m),
         new DynamicVar("Orbs", 1m)
     ]);
@@ -48,7 +48,7 @@ public class SolarStrike2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(1m);
         DynamicVars.Vulnerable.UpgradeValueBy(1m);
     }
 }

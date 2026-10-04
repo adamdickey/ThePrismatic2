@@ -30,11 +30,11 @@ public class Outbreak2() : ThePrismatic2Card(3,
     ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new PowerVar<PoisonPower>(9m),
-        new PowerVar<DoomPower>(20m),
-        new PowerVar<WeakPower>(3m),
-        new PowerVar<VulnerablePower>(3m),
-        new DynamicVar("Exposed", 3m)
+        new PowerVar<PoisonPower>(5m),
+        new PowerVar<DoomPower>(12m),
+        new PowerVar<WeakPower>(2m),
+        new PowerVar<VulnerablePower>(2m),
+        new DynamicVar("Exposed", 2m)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -52,6 +52,10 @@ public class Outbreak2() : ThePrismatic2Card(3,
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars.Poison.UpgradeValueBy(1m);
+        DynamicVars.Doom.UpgradeValueBy(3m);
+        DynamicVars.Vulnerable.UpgradeValueBy(1m);
+        DynamicVars.Weak.UpgradeValueBy(1m);
+        DynamicVars["Exposed"].UpgradeValueBy(1m);
     }
 }

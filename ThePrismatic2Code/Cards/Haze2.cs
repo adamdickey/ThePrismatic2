@@ -19,15 +19,13 @@ using ThePrismatic2.ThePrismatic2Code.Powers;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class Haze2() : ThePrismatic2Card(3, 
+public class Haze2() : ThePrismatic2Card(2, 
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.AllEnemies)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/haze.png-5aa9d2c9549ea2b0f9f025b4fd0d9364.ctex";
     public override string PortraitPath => "res://.godot/imported/haze.png-5aa9d2c9549ea2b0f9f025b4fd0d9364.ctex";
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Cunning);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DynamicVar("Focus", 2m),
@@ -72,6 +70,6 @@ public class Haze2() : ThePrismatic2Card(3,
     protected override void OnUpgrade()
     {
         DynamicVars["Focus"].UpgradeValueBy(1m);
-        //DynamicVars.Weak.UpgradeValueBy(1m);
+        DynamicVars.Weak.UpgradeValueBy(1m);
     }
 }

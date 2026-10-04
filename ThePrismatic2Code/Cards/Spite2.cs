@@ -33,49 +33,33 @@ public class Spite2() : ThePrismatic2Card(0,
         new RepeatVar(2)
     ]);
 
-    private bool _ostyPlay;
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         int hitCount = !LostHpThisTurn(Owner.Creature) ? 1 : DynamicVars.Repeat.IntValue;
-        if (_ostyPlay && Owner.Osty != null)
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(hitCount).FromCard(this)
+            .Targeting(cardPlay.Target)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext); 
+        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
         {
+            hitCount = !LostHpThisTurn(Owner.Creature) ? 1 : DynamicVars.Repeat.IntValue;
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this)
                 .WithHitCount(hitCount)
                 .Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_blunt")
                 .Execute(choiceContext);
         }
-        else
-        {
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(hitCount).FromCard(this)
-                .Targeting(cardPlay.Target)
-                .WithHitFx("vfx/vfx_attack_slash")
-                .Execute(choiceContext); 
-        }
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Repeat.UpgradeValueBy(1m);
+        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.OstyDamage.UpgradeValueBy(2m);
     }
 
     private static bool LostHpThisTurn(Creature creature)
     {
         return CombatManager.Instance.History.Entries.OfType<DamageReceivedEntry>().Any(e => e.HappenedThisTurn(creature.CombatState) && (e.Receiver == creature || e.Receiver == creature.Player?.Osty) && e.Result.UnblockedDamage > 0);
-    }
-    
-    public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-    {
-        if (cardPlay.Card == this && !Osty.CheckMissingWithAnim(Owner) && !_ostyPlay)
-        {
-            _ostyPlay = true;
-            await CardCmd.AutoPlay(choiceContext, this, cardPlay.Target);
-        }
-        else
-        {
-            _ostyPlay = false;
-        }
     }
 }

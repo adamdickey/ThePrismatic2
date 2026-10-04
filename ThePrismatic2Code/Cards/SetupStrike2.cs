@@ -36,7 +36,9 @@ public class SetupStrike2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(8m, ValueProp.Move),
-        new OstyDamageVar(4m, ValueProp.Move),
+        new CalculationBaseVar(4m),
+        new ExtraDamageVar(1m),
+        new CalculatedDamageVar(ValueProp.Move).FromOsty().WithMultiplier((card, _) => card.DynamicVars.Strength.BaseValue),
         new PowerVar<StrengthPower>(2m)
     ]);
 
@@ -50,7 +52,9 @@ public class SetupStrike2() : ThePrismatic2Card(1,
         if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
         {
             ArgumentNullException.ThrowIfNull(cardPlay.Target);
-            await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this).Targeting(cardPlay.Target)
+            await DamageCmd.Attack(DynamicVars.CalculatedDamage.Calculate(cardPlay.Target) - DynamicVars.Strength.BaseValue)
+                .FromOsty(Owner.Osty, this)
+                .Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_blunt")
                 .Execute(choiceContext);
             await PowerCmd.Apply<SetupStrike2Power>(choiceContext, Owner.Creature, DynamicVars.Strength.BaseValue, Owner.Creature, this);
@@ -60,7 +64,6 @@ public class SetupStrike2() : ThePrismatic2Card(1,
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(2m);
-        DynamicVars.OstyDamage.UpgradeValueBy(1m);
-        //DynamicVars.Strength.UpgradeValueBy(1m);
+        DynamicVars.CalculationBase.UpgradeValueBy(1m);
     }
 }

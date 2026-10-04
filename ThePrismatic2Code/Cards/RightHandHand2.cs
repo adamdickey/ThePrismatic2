@@ -23,7 +23,10 @@ public class RightHandHand2() : ThePrismatic2Card(0,
     
     protected override HashSet<CardTag> CanonicalTags => [CardTag.OstyAttack];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Costly));
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon),
+        HoverTipFactory.FromKeyword(Extensions.Keywords.Costly)
+    ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new SummonVar(1m),

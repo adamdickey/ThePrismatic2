@@ -2,6 +2,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
@@ -20,31 +21,24 @@ public class Strangle2() : ThePrismatic2Card(1,
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/strangle.png-35d5e3e015a34b5be7fd395f7d75ef54.ctex";
     public override string PortraitPath => "res://.godot/imported/strangle.png-35d5e3e015a34b5be7fd395f7d75ef54.ctex";
-    
-    protected override bool ShouldGlowGoldInternal => !Osty.CheckMissingWithAnim(Owner);
     protected override HashSet<CardTag> CanonicalTags => [CardTag.OstyAttack];
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.DualWield);
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon));
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(6m, ValueProp.Move),
-        new OstyDamageVar(3m, ValueProp.Move),
+        new SummonVar(1),
+        new OstyDamageVar(8m, ValueProp.Move),
         new PowerVar<StranglePower>(2m)
     ]);
-
-    private bool _ostyPlay;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        if (_ostyPlay && Owner.Osty != null)
+        await OstyCmd.Summon(choiceContext, Owner, DynamicVars.Summon.BaseValue, this);
+        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
         {
-            await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this).Targeting(cardPlay.Target)
-                .WithHitFx("vfx/vfx_attack_slash")
-                .Execute(choiceContext);
-        }
-        else
-        {
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
+            await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this)
+                .Targeting(cardPlay.Target)
                 .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
         }
@@ -53,20 +47,7 @@ public class Strangle2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4m);
         DynamicVars.OstyDamage.UpgradeValueBy(2m);
-    }
-    
-    public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-    {
-        if (cardPlay.Card == this && !Osty.CheckMissingWithAnim(Owner) && !_ostyPlay)
-        {
-            _ostyPlay = true;
-            await CardCmd.AutoPlay(choiceContext, this, cardPlay.Target);
-        }
-        else
-        {
-            _ostyPlay = false;
-        }
+        DynamicVars["StranglePower"].UpgradeValueBy(1m);
     }
 }

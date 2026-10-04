@@ -7,7 +7,7 @@ using ThePrismatic2.ThePrismatic2Code.Extensions;
 namespace ThePrismatic2.ThePrismatic2Code.Relics;
 
 [Pool(typeof(ThePrismatic2RelicPool))]
-public abstract class ThePrismatic2Relic : CustomRelicModel
+public abstract class ThePrismatic2Relic() : CustomRelicModel(false)
 {
     public override string PackedIconPath => $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".RelicImagePath();
 

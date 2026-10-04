@@ -32,7 +32,7 @@ public static class AncientRelicInjection
         // EXAMPLE ENTRIES - edit freely. Character type gates the relic to that character;
         // use the two-argument overload to offer it to everyone.
         Add<Neow, PrismaticChar, Kaleidoscope2>(Pools.NeowPositive);
-        Add<Orobas, PrismaticChar, StarChild>(Pools.OptionPool1);
+        Add<Orobas, PrismaticChar, CosmicBlessing>(Pools.OptionPool1);
         Add<Pael, PrismaticChar, PaelsHeart>(Pools.OptionPool3);
         Add<Tezcatara, PrismaticChar, FieryCheer>(Pools.OptionPool1);
         Add<Nonupeipe, PrismaticChar, BejeweledNecklace>(Pools.Nonupeipe);

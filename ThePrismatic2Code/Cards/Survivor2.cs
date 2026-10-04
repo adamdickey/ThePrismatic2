@@ -38,7 +38,10 @@ public class Survivor2() : ThePrismatic2Card(1,
             if (cardModel.Type is CardType.Status or CardType.Curse)
             {
                 await CardCmd.Exhaust(choiceContext, cardModel);
-                await CardPileCmd.Draw(choiceContext, 1, Owner);
+                if (IsUpgraded)
+                {
+                    await CardPileCmd.Draw(choiceContext, 1, Owner);
+                }
             }
             else
             {

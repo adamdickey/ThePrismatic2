@@ -20,6 +20,8 @@ public class KinglyPunch2() : ThePrismatic2Card(1,
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<RegentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/kingly_punch.png-bfbe779c7e14356cbd01448a01163db0.ctex";
     public override string PortraitPath => "res://.godot/imported/kingly_punch.png-bfbe779c7e14356cbd01448a01163db0.ctex";
+    
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.OstyAttack];
 
     private decimal _extraDamage;
 

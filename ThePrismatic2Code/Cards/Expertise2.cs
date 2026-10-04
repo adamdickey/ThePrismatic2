@@ -30,7 +30,6 @@ public class Expertise2() : ThePrismatic2Card(1,
         foreach (CardModel card in cards)
         {
             card.GiveSingleTurnRetain();
-            CardCmd.Upgrade(card);
         }
     }
 

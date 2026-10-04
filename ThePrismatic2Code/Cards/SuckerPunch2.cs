@@ -21,6 +21,8 @@ public class SuckerPunch2() : ThePrismatic2Card(1,
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/sucker_punch.png-96297abda730c6f1c698c0632a0558b4.ctex";
     public override string PortraitPath => "res://.godot/imported/sucker_punch.png-96297abda730c6f1c698c0632a0558b4.ctex";
+    
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.OstyAttack];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon),
@@ -29,7 +31,7 @@ public class SuckerPunch2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new SummonVar(1),
-        new OstyDamageVar(7m, ValueProp.Move),
+        new OstyDamageVar(8m, ValueProp.Move),
         new PowerVar<WeakPower>(1m)
     ]);
 
