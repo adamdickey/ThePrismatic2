@@ -27,7 +27,7 @@ public class Invoke2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new StarsVar(1),
-        new SummonVar(1m),
+        new SummonVar(2m),
         new EnergyVar(2)
     ]);
 

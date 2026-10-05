@@ -46,6 +46,7 @@ public class DoomingDefend() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(3m);
+        DynamicVars.Block.UpgradeValueBy(2m);
+        DynamicVars.Doom.UpgradeValueBy(2m);
     }
 }

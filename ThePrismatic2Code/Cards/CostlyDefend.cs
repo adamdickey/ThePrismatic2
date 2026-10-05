@@ -39,7 +39,7 @@ public class CostlyDefend() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(3m);
+        DynamicVars.Block.UpgradeValueBy(4m);
     }
     
     public override Task AfterCardEnteredCombat(CardModel card)

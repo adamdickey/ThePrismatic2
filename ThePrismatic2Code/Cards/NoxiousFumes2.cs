@@ -12,15 +12,13 @@ using ThePrismatic2.ThePrismatic2Code.Powers;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class NoxiousFumes2() : ThePrismatic2Card(1, 
+public class NoxiousFumes2() : ThePrismatic2Card(2, 
     CardType.Power, CardRarity.Uncommon, 
     TargetType.Self)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/noxious_fumes.png-41ac213c85c82724e5fb506f4fe36194.ctex";
     public override string PortraitPath => "res://.godot/imported/noxious_fumes.png-41ac213c85c82724e5fb506f4fe36194.ctex";
-
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Ethereal);
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Channeling),
         HoverTipFactory.FromOrb<VenomOrb>()
@@ -34,6 +32,6 @@ public class NoxiousFumes2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Ethereal);
+        EnergyCost.UpgradeBy(-1);
     }
 }

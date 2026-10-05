@@ -44,6 +44,33 @@ public class Veilpiercer2Power : ThePrismatic2Power
         modifiedCost = 0;
         return true;
     }
+    
+    public override bool TryModifyStarCost(CardModel card, decimal originalCost, out decimal modifiedCost)
+    {
+        modifiedCost = originalCost;
+        if (card.Owner.Creature != Owner)
+        {
+            return false;
+        }
+        if (!(card.Keywords.Contains(CardKeyword.Ethereal) || card.Keywords.Contains(Extensions.Keywords.Cunning) || card.Keywords.Contains(Extensions.Keywords.CunningThisTurn)))
+        {
+            return false;
+        }
+
+        bool flag = card.Pile?.Type switch
+        {
+            PileType.Hand or PileType.Play => true,
+            _ => false
+        };
+        if (!flag)
+        {
+            return false;
+        }
+        modifiedCost = 0;
+        return true;
+    }
+    
+    
 
     public override async Task BeforeCardPlayed(CardPlay cardPlay)
     {

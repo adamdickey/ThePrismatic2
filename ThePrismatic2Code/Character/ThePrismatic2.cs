@@ -59,7 +59,11 @@ public class ThePrismatic2 : PlaceholderCharacterModel
             {
                 continue;
             }
-            if (chosenStrike is ClawingStrike or CostlyStrike or ForgingStrike & chosenDefend is ClawingDefend or CostlyDefend or ForgingDefend)
+            if (chosenStrike is ClawingStrike or FeralStrike & chosenDefend is ClawingDefend or FeralDefend)
+            {
+                continue;
+            }
+            if (chosenStrike is CostlyStrike or ForgingStrike & chosenDefend is CostlyDefend or ForgingDefend)
             {
                 continue;
             }
@@ -89,7 +93,8 @@ public class ThePrismatic2 : PlaceholderCharacterModel
             ModelDb.Card<ToxicStrike>(), ModelDb.Card<CosmicStrike>(), ModelDb.Card<LoopingStrike>(),
             ModelDb.Card<RecklessStrike>(), ModelDb.Card<NecroStrike>(), ModelDb.Card<CoordinatedStrike>(),
             ModelDb.Card<StarryStrike>(), ModelDb.Card<CosmicStrike>(), ModelDb.Card<StarboundStrike>(),
-            ModelDb.Card<ClawingStrike>(), ModelDb.Card<CostlyStrike>(), ModelDb.Card<ForgingStrike>()];
+            ModelDb.Card<ClawingStrike>(), ModelDb.Card<FeralStrike>(),
+            ModelDb.Card<CostlyStrike>(), ModelDb.Card<ForgingStrike>()];
         return strikes;
     }
     
@@ -102,7 +107,8 @@ public class ThePrismatic2 : PlaceholderCharacterModel
             ModelDb.Card<ToxicDefend>(), ModelDb.Card<CosmicDefend>(), ModelDb.Card<LoopingDefend>(),
             ModelDb.Card<RecklessDefend>(), ModelDb.Card<NecroDefend>(), ModelDb.Card<CoordinatedDefend>(),
             ModelDb.Card<StarryDefend>(), ModelDb.Card<CosmicDefend>(), ModelDb.Card<StarboundDefend>(),
-            ModelDb.Card<ClawingDefend>(), ModelDb.Card<CostlyDefend>(), ModelDb.Card<ForgingDefend>()];
+            ModelDb.Card<ClawingDefend>(), ModelDb.Card<FeralDefend>(),
+            ModelDb.Card<CostlyDefend>(), ModelDb.Card<ForgingDefend>()];
         return defends;
     }
 

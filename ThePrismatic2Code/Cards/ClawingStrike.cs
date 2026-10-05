@@ -14,8 +14,8 @@ public class ClawingStrike() : ThePrismatic2Card(1,
     CardType.Attack, CardRarity.None,
     TargetType.AnyEnemy), ITranscendenceCard
 {
-    public override string CustomPortraitPath => $"PrismaticStrike.png".BigCardImagePath();
-    public override string PortraitPath => $"PrismaticStrike.png".CardImagePath();
+    public override string CustomPortraitPath => "PrismaticStrike.png".BigCardImagePath();
+    public override string PortraitPath => "PrismaticStrike.png".CardImagePath();
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
     
     public override bool IsBasicStrikeOrDefend => false;
@@ -24,7 +24,10 @@ public class ClawingStrike() : ThePrismatic2Card(1,
     
     public override bool CanBeGeneratedInCombat => false;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(8m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new DamageVar(8m, ValueProp.Move),
+        new PowerVar<Accuracy2Power>(1m)
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
@@ -32,11 +35,12 @@ public class ClawingStrike() : ThePrismatic2Card(1,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
             .WithHitFx("vfx/vfx_attack_slash", null, "slash_attack.mp3")
             .Execute(choiceContext);
-        await PowerCmd.Apply<Accuracy2Power>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<Accuracy2Power>(choiceContext, Owner.Creature, DynamicVars["Accuracy2Power"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars["Accuracy2Power"].UpgradeValueBy(1m);
     }
 }

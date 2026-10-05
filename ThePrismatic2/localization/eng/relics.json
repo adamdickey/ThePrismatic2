@@ -1,5 +1,5 @@
 {
-  "THEPRISMATIC2-ALARM_CLOCK.description": "At the start of each combat, draw [blue]1[/blue] additional card for each [gold]Innate[/gold] card in your [gold]Deck[/gold].",
+  "THEPRISMATIC2-ALARM_CLOCK.description": "At the start of each combat, draw [blue]{Cards:diff()}[/blue] additional cards for each [gold]Innate[/gold] card in your [gold]Deck[/gold].",
   "THEPRISMATIC2-ALARM_CLOCK.flavor": "Flavor",
   "THEPRISMATIC2-ALARM_CLOCK.title": "Alarm Clock",
   "THEPRISMATIC2-BEJEWELED_NECKLACE.description": "At the start of each combat, add [blue]{Cards:diff()}[/blue] [gold]Creative AI[/gold] into your [gold]Hand[/gold]. It's free to play this turn.",

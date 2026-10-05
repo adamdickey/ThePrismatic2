@@ -36,6 +36,7 @@ public class StarryDefend() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(3m);
+        DynamicVars.Block.UpgradeValueBy(1m);
+        DynamicVars.Stars.UpgradeValueBy(1m);
     }
 }

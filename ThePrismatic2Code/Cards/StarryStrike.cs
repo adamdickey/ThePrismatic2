@@ -40,6 +40,7 @@ public class StarryStrike() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(1m);
+        DynamicVars.Stars.UpgradeValueBy(1m);
     }
 }

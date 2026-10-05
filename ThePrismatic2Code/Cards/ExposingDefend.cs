@@ -43,6 +43,7 @@ public class ExposingDefend() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(3m);
+        DynamicVars.Block.UpgradeValueBy(2m);
+        DynamicVars["Exposed"].UpgradeValueBy(1m);
     }
 }

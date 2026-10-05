@@ -34,29 +34,16 @@ public class Melancholy2() : ThePrismatic2Card(3,
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
     }
-
-    public override Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented, float deathAnimLength)
-    {
-        if (wasRemovalPrevented)
-        {
-            return Task.CompletedTask;
-        }
-        CardPile? pile = Pile;
-        if (pile == null || !pile.IsCombatPile)
-        {
-            return Task.CompletedTask;
-        }
-        EnergyCost.AddThisCombat(-DynamicVars.Energy.IntValue);
-        return Task.CompletedTask;
-    }
     
-    public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public override Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if ((target == Owner.Creature || target == Owner.Osty) && result.UnblockedDamage > 0 && CombatState != null && CombatState.CurrentSide == Owner.Creature.Side)
+        if ((target == Owner.Creature || target == Owner.Osty) && result.UnblockedDamage > 0 && CombatState != null)
         {
             EnergyCost.AddThisCombat(-DynamicVars.Energy.IntValue);
         }
+        return Task.CompletedTask;
     }
+    
     protected override void OnUpgrade()
     {
         DynamicVars.Block.UpgradeValueBy(4m);

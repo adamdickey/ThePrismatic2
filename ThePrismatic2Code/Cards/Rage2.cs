@@ -20,15 +20,14 @@ public class Rage2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/rage.png-bc237c4725f1ed1077c90501d84fcc98.ctex";
     public override string PortraitPath => "res://.godot/imported/rage.png-bc237c4725f1ed1077c90501d84fcc98.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(
-        new DynamicVar("Power", 1m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("Power", 1m));
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.SummonStatic));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<Rage2Power>(choiceContext, Owner.Creature, DynamicVars["Power"].BaseValue, Owner.Creature, this);
+        (await PowerCmd.Apply<Rage2Power>(choiceContext, Owner.Creature, DynamicVars["Power"].BaseValue, Owner.Creature, this))?.IncrementBlock();
     }
 
     protected override void OnUpgrade()

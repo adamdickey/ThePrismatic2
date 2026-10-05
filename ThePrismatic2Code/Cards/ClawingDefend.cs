@@ -12,8 +12,8 @@ public class ClawingDefend() : ThePrismatic2Card(1,
     CardType.Skill, CardRarity.None,
     TargetType.Self)
 {
-    public override string CustomPortraitPath => $"PrismaticDefend.png".BigCardImagePath();
-    public override string PortraitPath => $"PrismaticDefend.png".CardImagePath();
+    public override string CustomPortraitPath => "PrismaticDefend.png".BigCardImagePath();
+    public override string PortraitPath => "PrismaticDefend.png".CardImagePath();
     
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
     
@@ -23,17 +23,21 @@ public class ClawingDefend() : ThePrismatic2Card(1,
     
     public override bool GainsBlock => true;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new BlockVar(7m, ValueProp.Move));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new BlockVar(7m, ValueProp.Move),
+        new PowerVar<Accuracy2Power>(1m)
+    ]);
     
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play);
-        await PowerCmd.Apply<Accuracy2Power>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<Accuracy2Power>(choiceContext, Owner.Creature, DynamicVars["Accuracy2Power"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(3m);
+        DynamicVars.Block.UpgradeValueBy(2m);
+        DynamicVars["Accuracy2Power"].UpgradeValueBy(1m);
     }
 }

@@ -12,7 +12,7 @@ using ThePrismatic2.ThePrismatic2Code.Character;
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
 [Pool(typeof(ThePrismatic2CardPool))]
-public class UpMySleeve2() : ThePrismatic2Card(3, 
+public class UpMySleeve2() : ThePrismatic2Card(2, 
     CardType.Skill, CardRarity.Uncommon, 
     TargetType.Self)
 {
