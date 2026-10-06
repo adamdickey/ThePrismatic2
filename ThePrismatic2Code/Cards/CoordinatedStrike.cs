@@ -32,22 +32,17 @@ public class CoordinatedStrike() : ThePrismatic2Card(1,
         new OstyDamageVar(4m, ValueProp.Move)
     ]);
 
-    private bool _ostyPlay;
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target);
-        if (_ostyPlay && Owner.Osty != null)
+        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
+            .WithHitFx("vfx/vfx_attack_slash")
+            .Execute(choiceContext);
+        if (!Osty.CheckMissingWithAnim(Owner) && Owner.Osty != null)
         {
             await DamageCmd.Attack(DynamicVars.OstyDamage.BaseValue).FromOsty(Owner.Osty, this)
                 .Targeting(play.Target)
                 .WithHitFx("vfx/vfx_attack_blunt")
-                .Execute(choiceContext);
-        }
-        else
-        {
-            await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
-                .WithHitFx("vfx/vfx_attack_slash")
                 .Execute(choiceContext);
         }
     }
@@ -56,18 +51,5 @@ public class CoordinatedStrike() : ThePrismatic2Card(1,
     {
         DynamicVars.Damage.UpgradeValueBy(3m);
         DynamicVars.OstyDamage.UpgradeValueBy(1m);
-    }
-    
-    public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-    {
-        if (cardPlay.Card == this && !Osty.CheckMissingWithAnim(Owner) && !_ostyPlay)
-        {
-            _ostyPlay = true;
-            await CardCmd.AutoPlay(choiceContext, this, cardPlay.Target);
-        }
-        else
-        {
-            _ostyPlay = false;
-        }
     }
 }
