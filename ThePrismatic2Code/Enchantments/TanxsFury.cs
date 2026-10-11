@@ -10,7 +10,7 @@ using ThePrismatic2.ThePrismatic2Code.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Enchantments;
 
-public sealed class TanxsSoul : CustomEnchantmentModel
+public sealed class TanxsFury : CustomEnchantmentModel
 {
     private const decimal DebuffPerStack = 3m;
     private const decimal ForgePerStack = 20m;
@@ -26,14 +26,14 @@ public sealed class TanxsSoul : CustomEnchantmentModel
         new DynamicVar("Exposed", 0m),
         new ForgeVar(0)
     ]);
-
+/*
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<WeakPower>(),
         HoverTipFactory.FromPower<VulnerablePower>(),
         HoverTipFactory.FromPower<ExposedPower>(),
         ..HoverTipFactory.FromForge()
     ]);
-
+*/
     public override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay? cardPlay)
     {
         IReadOnlyList<Creature> targets;

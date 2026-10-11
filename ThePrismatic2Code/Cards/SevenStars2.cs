@@ -23,9 +23,11 @@ public class SevenStars2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/seven_stars.png-410c481a54e211f8e73bcf56c7f8c7d0.ctex";
     public override string PortraitPath => "res://.godot/imported/seven_stars.png-410c481a54e211f8e73bcf56c7f8c7d0.ctex";
 
-    public override int CanonicalStarCost => 7;
+    private const int PrintedStarCost = 7;
 
-    private List<Type> _orbsChanneled = new();
+    private readonly List<Type> _orbsChanneled = new();
+
+    public override int CanonicalStarCost => Math.Max(0, PrintedStarCost - _orbsChanneled.Count);
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.Channeling));
     
@@ -62,6 +64,7 @@ public class SevenStars2() : ThePrismatic2Card(1,
         {
             return Task.CompletedTask;
         }
+        _orbsChanneled.Clear();
         foreach (OrbChanneledEntry orb in CombatManager.Instance.History.Entries.OfType<OrbChanneledEntry>())
         {
             Type orbType = orb.Orb.GetType();
@@ -70,22 +73,23 @@ public class SevenStars2() : ThePrismatic2Card(1,
                 _orbsChanneled.Add(orbType);
             }
         }
-        SetStarCostThisCombat(CurrentStarCost - _orbsChanneled.Count);
+        SetStarCostThisCombat(CanonicalStarCost);
         return Task.CompletedTask;
     }
     
     public override Task AfterOrbChanneled(PlayerChoiceContext choiceContext, Player player, OrbModel orb)
     {
-        Type orbType = orb.GetType();
-        foreach (Type orbChanneled in _orbsChanneled)
+        if (player != Owner)
         {
-            if (orbType == orbChanneled)
-            {
-                return Task.CompletedTask;
-            }
+            return Task.CompletedTask;
+        }
+        Type orbType = orb.GetType();
+        if (_orbsChanneled.Contains(orbType))
+        {
+            return Task.CompletedTask;
         }
         _orbsChanneled.Add(orbType);
-        SetStarCostThisCombat(CurrentStarCost - 1);
+        SetStarCostThisCombat(CanonicalStarCost);
         return Task.CompletedTask;
     }
 }

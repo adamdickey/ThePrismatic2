@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.Events;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Events;
 using MegaCrit.Sts2.Core.Models.Relics;
 using MegaCrit.Sts2.Core.Random;
 using MegaCrit.Sts2.Core.Runs;
@@ -22,12 +23,13 @@ public static class BlockedRelics
     /// </summary>
     private static IEnumerable<RelicModel> BlockedForPrismatic() =>
     [
-        // Examples - delete or replace these:
+        // Deleted relics these:
         ModelDb.Relic<SeaGlass>(),
         ModelDb.Relic<PrismaticGem>(),
         ModelDb.Relic<Sozu>(),
         ModelDb.Relic<Ectoplasm>(),
-        ModelDb.Relic<Kaleidoscope>()
+        ModelDb.Relic<Kaleidoscope>(),
+        ModelDb.Relic<Cauldron>(),
     ];
 
     /// <summary>True when this relic is on the list above and this player is The Prismatic.</summary>
@@ -229,12 +231,30 @@ public static class BlockedRelics
     }
 
     /// <summary>
-    /// Runs after an ancient has settled on the options it wants to show, and drops any blocked
+    /// Ancients whose offered slots each come from a different pool, listed slot by slot. A
+    /// replacement for a blocked relic is drawn from its slot's pool, so the order is always
+    /// Pool 1 relic -> Pool 2 relic -> Pool 3 relic. Ancients not listed here (Tanx, Nonupeipe,
+    /// Darv) draw every slot from one shared pool, so any of their relics fits any slot.
+    /// </summary>
+    private static readonly Dictionary<Type, string[]> SlotPools = new()
+    {
+        [typeof(Orobas)] = [AncientRelicInjection.Pools.OptionPool1, AncientRelicInjection.Pools.OptionPool2, AncientRelicInjection.Pools.OptionPool3],
+        [typeof(Pael)] = [AncientRelicInjection.Pools.OptionPool1, AncientRelicInjection.Pools.OptionPool2, AncientRelicInjection.Pools.OptionPool3],
+        [typeof(Tezcatara)] = [AncientRelicInjection.Pools.OptionPool1, AncientRelicInjection.Pools.OptionPool2, AncientRelicInjection.Pools.OptionPool3],
+        [typeof(Vakuu)] = [AncientRelicInjection.Pools.VakuuPool1, AncientRelicInjection.Pools.VakuuPool2, AncientRelicInjection.Pools.VakuuPool3],
+        // Neow offers two positives, then the curse last.
+        [typeof(Neow)] = [AncientRelicInjection.Pools.NeowPositive, AncientRelicInjection.Pools.NeowPositive, AncientRelicInjection.Pools.NeowCurses],
+    };
+
+    /// <summary>
+    /// Runs after an ancient has settled on the options it wants to show, and replaces any blocked
     /// relic still standing. This is what catches relics an ancient names directly instead of
-    /// drawing from a pool, where there was no pool to filter.
+    /// drawing from a pool, where there was no pool to filter (Orobas's Sea Glass and Prismatic
+    /// Gem, for example).
     ///
-    /// Dropping an option on its own would leave the ancient showing two choices, so every drop is
-    /// topped back up from that same ancient's own relics - see <see cref="TopUp"/>.
+    /// Each blocked option is swapped out in place, from the pool that slot was drawn from, so the
+    /// slot order is kept - see <see cref="PickReplacement"/>. Only when nothing at all is left to
+    /// replace it with is the option dropped.
     /// </summary>
     public static void SafetyNetPostfix(AncientEventModel __instance, ref IReadOnlyList<EventOption> __result)
     {
@@ -243,23 +263,28 @@ public static class BlockedRelics
 
         try
         {
-            List<EventOption> kept = __result.Where(option => !IsBlocked(option?.Relic)).ToList();
-            int missing = __result.Count - kept.Count;
-            if (missing == 0) return;
+            List<EventOption?> options = [..__result];
+            int replaced = 0;
+            int dropped = 0;
 
-            // Rarities of what we removed, so replacements are like for like.
-            List<RelicRarity> wanted = __result
-                .Where(option => IsBlocked(option?.Relic))
-                .Select(option => option!.Relic!.Rarity)
-                .ToList();
+            for (int slot = 0; slot < options.Count; slot++)
+            {
+                EventOption? blocked = options[slot];
+                if (!IsBlocked(blocked?.Relic)) continue;
 
-            TopUp(__instance, kept, missing, wanted);
+                EventOption? replacement = PickReplacement(__instance, slot, blocked!.Relic!.Rarity, options);
+                options[slot] = replacement;
+
+                if (replacement is null) dropped++;
+                else replaced++;
+            }
+
+            if (replaced == 0 && dropped == 0) return;
 
             MainFile.Logger.Info(
-                $"{__instance.GetType().Name}: replaced {missing} blocked relic option(s), " +
-                $"now offering {kept.Count}.");
+                $"{__instance.GetType().Name}: replaced {replaced} and dropped {dropped} blocked relic option(s).");
 
-            __result = kept;
+            __result = options.OfType<EventOption>().ToList();
         }
         catch (Exception e)
         {
@@ -268,45 +293,71 @@ public static class BlockedRelics
     }
 
     /// <summary>
-    /// Fills the holes left by blocked options using relics the same ancient could have offered
-    /// anyway, so the player still sees three choices.
+    /// Picks a stand-in for the blocked option in <paramref name="slot"/>, preferring the rarity of
+    /// what it replaces and never duplicating an option already on offer.
     ///
-    /// AllPossibleOptions is every relic that ancient can hand out, and it has already had blocked
-    /// relics filtered out of it by <see cref="PoolPostfix"/>, so it is a safe source. Replacements
-    /// prefer the rarity of whatever they are standing in for, and never duplicate an option that
-    /// is already on offer.
+    /// The candidates are the slot's own pool when the ancient is in <see cref="SlotPools"/>, and
+    /// AllPossibleOptions otherwise (or if that pool has nothing left). Both have already had blocked
+    /// relics filtered out by <see cref="PoolPostfix"/> and our added relics put in by
+    /// <see cref="AncientRelicInjection"/>, since reading them goes through the patched getters.
     /// </summary>
-    private static void TopUp(AncientEventModel ancient, List<EventOption> kept, int missing,
-                              List<RelicRarity> wanted)
+    private static EventOption? PickReplacement(AncientEventModel ancient, int slot, RelicRarity rarity,
+                                                List<EventOption?> offered)
     {
-        List<EventOption> candidates;
+        List<EventOption> candidates = Usable(ancient, SlotPool(ancient, slot), offered);
+
+        if (candidates.Count == 0)
+        {
+            if (SlotPools.ContainsKey(ancient.GetType()))
+            {
+                MainFile.Logger.Warn(
+                    $"{ancient.GetType().Name}: slot {slot + 1}'s pool has nothing left to offer, " +
+                    "replacing from the ancient's other relics instead.");
+            }
+
+            candidates = Usable(ancient, AllPossible(ancient), offered);
+        }
+
+        if (candidates.Count == 0) return null;
+
+        List<EventOption> sameRarity = candidates.Where(o => o.Relic!.Rarity == rarity).ToList();
+        return ancient.Rng.NextItem(sameRarity.Count > 0 ? sameRarity : candidates);
+    }
+
+    private static List<EventOption> Usable(AncientEventModel ancient, IEnumerable<EventOption> options,
+                                            List<EventOption?> offered)
+        => options
+            .Where(option => option?.Relic is not null && !IsBlocked(option.Relic))
+            .Where(option => ancient is not Neow || option.Relic!.IsAllowedAtNeow(ancient.Owner!))
+            .Where(option => !offered.Any(o => o?.Relic is not null && o.Relic.Id == option.Relic!.Id))
+            .ToList();
+
+    private static IEnumerable<EventOption> SlotPool(AncientEventModel ancient, int slot)
+    {
+        if (!SlotPools.TryGetValue(ancient.GetType(), out string[]? pools) || slot >= pools.Length) return [];
 
         try
         {
-            candidates = (ancient.AllPossibleOptions ?? []).ToList();
+            return AccessTools.Property(ancient.GetType(), pools[slot])?.GetValue(ancient)
+                as IEnumerable<EventOption> ?? [];
+        }
+        catch (Exception e)
+        {
+            MainFile.Logger.Error($"Could not read {ancient.GetType().Name}.{pools[slot]}: {e}");
+            return [];
+        }
+    }
+
+    private static IEnumerable<EventOption> AllPossible(AncientEventModel ancient)
+    {
+        try
+        {
+            return (ancient.AllPossibleOptions ?? []).ToList();
         }
         catch (Exception e)
         {
             MainFile.Logger.Error($"Could not read {ancient.GetType().Name}.AllPossibleOptions: {e}");
-            return;
-        }
-
-        candidates = candidates
-            .Where(option => option?.Relic is not null && !IsBlocked(option.Relic))
-            .Where(option => !kept.Any(k => k.Relic is not null && k.Relic.Id == option.Relic!.Id))
-            .ToList();
-
-        for (int i = 0; i < missing && candidates.Count > 0; i++)
-        {
-            RelicRarity rarity = i < wanted.Count ? wanted[i] : RelicRarity.None;
-
-            List<EventOption> sameRarity = candidates.Where(o => o.Relic!.Rarity == rarity).ToList();
-            EventOption? pick = ancient.Rng.NextItem(sameRarity.Count > 0 ? sameRarity : candidates);
-
-            if (pick?.Relic is null) break;
-
-            kept.Add(pick);
-            candidates.RemoveAll(o => o.Relic!.Id == pick.Relic.Id);
+            return [];
         }
     }
 }

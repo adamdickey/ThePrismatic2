@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using ThePrismatic2.ThePrismatic2Code.Extensions;
 
@@ -55,6 +56,22 @@ public static class CunningGlow
 {
     public static void Prefix(PlayerChoiceContext context, Player player, ref CardSelectorPrefs prefs, Func<CardModel, bool>? filter, AbstractModel source)
     {
-        prefs.ShouldGlowGold = c => c.Keywords.Contains(Keywords.Cunning) || c.Keywords.Contains(Keywords.CunningThisTurn);
+        if (!IsDiscardOrExhaustPrompt(prefs.Prompt))
+        {
+            return;
+        }
+        prefs.ShouldGlowGold = HasCunning;
+    }
+
+    private static bool HasCunning(CardModel card)
+    {
+        return card.Keywords.Contains(Keywords.Cunning) || card.Keywords.Contains(Keywords.CunningThisTurn);
+    }
+
+    private static bool IsDiscardOrExhaustPrompt(LocString prompt)
+    {
+        string text = prompt.ToString();
+        return text == CardSelectorPrefs.DiscardSelectionPrompt.ToString()
+            || text == CardSelectorPrefs.ExhaustSelectionPrompt.ToString();
     }
 }

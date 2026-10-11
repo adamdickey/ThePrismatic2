@@ -18,6 +18,8 @@ public class FleetingBlast() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => $"PrismaticBlast.png".BigCardImagePath();
     public override string PortraitPath => $"PrismaticBlast.png".CardImagePath();
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Ethereal);
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(21m, ValueProp.Move),
         new DynamicVar("Exhaust", 2m)

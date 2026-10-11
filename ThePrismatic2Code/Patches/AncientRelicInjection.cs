@@ -20,9 +20,10 @@ namespace ThePrismatic2.ThePrismatic2Code.Patches;
 /// Register relics in <see cref="RegisterRelics"/>; see <see cref="Pools"/> for the
 /// property name each ancient uses. Darv has no pools and is handled by
 /// <see cref="DarvRelicInjection"/>, which this class installs alongside its own patches.
+///
+/// Each pool feeds one slot, so a relic added to e.g. <see cref="Pools.OptionPool1"/> is only ever
+/// offered first. When a blocked relic is replaced, <see cref="BlockedRelics"/> keeps that order.
 /// </summary>
-/// 
-/// Todo ensure that all relics are in the right order, ie no archaic tooth in second slot of orobas
 public static class AncientRelicInjection
 {
 
@@ -32,7 +33,7 @@ public static class AncientRelicInjection
         // EXAMPLE ENTRIES - edit freely. Character type gates the relic to that character;
         // use the two-argument overload to offer it to everyone.
         Add<Neow, PrismaticChar, Kaleidoscope2>(Pools.NeowPositive);
-        Add<Orobas, PrismaticChar, CosmicBlessing>(Pools.OptionPool1);
+        Add<Orobas, PrismaticChar, StarChild>(Pools.OptionPool1);
         Add<Pael, PrismaticChar, PaelsHeart>(Pools.OptionPool3);
         Add<Tezcatara, PrismaticChar, FieryCheer>(Pools.OptionPool1);
         Add<Nonupeipe, PrismaticChar, BejeweledNecklace>(Pools.Nonupeipe);

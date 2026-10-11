@@ -22,7 +22,7 @@ public class DrainPower2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/drain_power.png-2a1cf297725158673f88fd6e3a6f1a34.ctex";
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Bleed);
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new HpLossVar(2m),
+        new HpLossVar(1m),
         new DamageVar(12m, ValueProp.Move),
         new CardsVar(2)
     ]);

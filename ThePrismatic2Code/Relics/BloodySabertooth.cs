@@ -17,12 +17,12 @@ public sealed class BloodySabertooth: ThePrismatic2Relic
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         ..HoverTipFactory.FromForge(),
-        ..HoverTipFactory.FromEnchantment<TanxsSoul>(DynamicVars["Soul"].IntValue)
+        ..HoverTipFactory.FromEnchantment<TanxsFury>(DynamicVars["Fury"].IntValue)
     ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new ForgeVar(20),
-        new DynamicVar("Soul", 1)
+        new DynamicVar("Fury", 1)
     ]);
 
     public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
@@ -35,7 +35,7 @@ public sealed class BloodySabertooth: ThePrismatic2Relic
             {
                 if (card is SovereignBlade)
                 {
-                    CardCmd.Enchant<TanxsSoul>(card, DynamicVars["Soul"].BaseValue);
+                    CardCmd.Enchant<TanxsFury>(card, DynamicVars["Fury"].BaseValue);
                 }
             }
         }

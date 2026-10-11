@@ -39,7 +39,7 @@ public class ThePrismatic2RelicPool : CustomRelicPoolModel
             ModelDb.Relic<RingRemnant>(),
             ModelDb.Relic<SadisticDagger>(),
             ModelDb.Relic<SnakeEyes>(),
-            ModelDb.Relic<CosmicBlessing>(),
+            ModelDb.Relic<StarChild>(),
             ModelDb.Relic<RedSkull>(),
             ModelDb.Relic<CharonsAshes>(),
             ModelDb.Relic<TwistedFunnel>(),

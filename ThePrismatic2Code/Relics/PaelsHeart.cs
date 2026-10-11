@@ -23,6 +23,8 @@ public sealed class PaelsHeart: ThePrismatic2Relic
     
     public override int DisplayAmount => Orbs;
 
+    private const int MaxOrbs = 10;
+
     private int _potionsUsed;
 
     private int _orbs;
@@ -34,7 +36,7 @@ public sealed class PaelsHeart: ThePrismatic2Relic
         set
         {
             AssertMutable();
-            _orbs = value;
+            _orbs = Math.Min(value, MaxOrbs);
         }
     }
     
@@ -51,7 +53,7 @@ public sealed class PaelsHeart: ThePrismatic2Relic
     
     public override Task AfterPotionUsed(PotionModel potion, Creature? target)
     {
-        if (potion.Owner == Owner)
+        if (potion.Owner == Owner && Orbs < MaxOrbs)
         {
             PotionsUsed++;
             if (PotionsUsed >= 2)
