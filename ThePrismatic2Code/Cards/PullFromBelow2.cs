@@ -22,10 +22,7 @@ public class PullFromBelow2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/pull_from_below.png-bad56d56f2fe706d80e91c2bab75c766.ctex";
     public override string PortraitPath => "res://.godot/imported/pull_from_below.png-bad56d56f2fe706d80e91c2bab75c766.ctex";
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        HoverTipFactory.FromKeyword(CardKeyword.Ethereal),
-        HoverTipFactory.FromKeyword(Extensions.Keywords.Costly)
-        ]);
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Ethereal));
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(4m, ValueProp.Move),

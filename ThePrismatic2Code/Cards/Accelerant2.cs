@@ -19,16 +19,16 @@ public class Accelerant2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/accelerant.png-880614f6ed1cd4d533608da0e80ba9de.ctex";
     public override string PortraitPath => "res://.godot/imported/accelerant.png-880614f6ed1cd4d533608da0e80ba9de.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("Debuff", 1m));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<Accelerant2Power>(1m));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<Accelerant2Power>(choiceContext, Owner.Creature, DynamicVars["Debuff"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Accelerant2Power>(choiceContext, Owner.Creature, DynamicVars["Accelerant2Power"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Debuff"].UpgradeValueBy(1m);
+        DynamicVars["Accelerant2Power"].UpgradeValueBy(1m);
     }
 }

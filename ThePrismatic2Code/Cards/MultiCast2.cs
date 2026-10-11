@@ -23,8 +23,6 @@ public class MultiCast2() : ThePrismatic2Card(0,
     public override bool HasStarCostX => HasStarbound;
 
     public override OrbEvokeType OrbEvokeType => OrbEvokeType.All;
-    
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Cunning);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -38,10 +36,17 @@ public class MultiCast2() : ThePrismatic2Card(0,
         {
             evokeCount++;
         }
-        for (int i = 0; i < evokeCount; i++)
+        if (Owner.PlayerCombatState != null)
         {
-            await OrbCmd.EvokeNext(choiceContext, Owner, i == evokeCount - 1);
-            await Cmd.Wait(0.25f);
+            int orbCount = Owner.PlayerCombatState.OrbQueue.Orbs.Count;
+            for (int i = 0; i < orbCount; i++)
+            {
+                for (int j = 0; j < evokeCount; j++)
+                {
+                    await OrbCmd.EvokeNext(choiceContext, Owner, j == evokeCount - 1);
+                    await Cmd.Wait(0.25f);
+                }
+            }
         }
     }
 }

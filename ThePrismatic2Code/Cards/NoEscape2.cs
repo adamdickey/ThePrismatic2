@@ -1,5 +1,4 @@
-﻿using BaseLib.Extensions;
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -40,11 +39,6 @@ public class NoEscape2() : ThePrismatic2Card(1,
             {
                 calculationBase *= target.HasPower<Debilitate2Power>() ? 2m : 1.5m;
                 calculatedDoom *= target.HasPower<Debilitate2Power>() ? 2m : 1.5m;
-            }
-            if (card.Owner.HasPower<Accelerant2Power>())
-            {
-                calculationBase *= 1 + 0.01m*card.Owner.Creature.GetPowerAmount<Accelerant2Power>();
-                calculatedDoom *= 1 + 0.01m*card.Owner.Creature.GetPowerAmount<Accelerant2Power>();
             }
             return calculationBase + 5 * calculatedDoom;
         })

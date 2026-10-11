@@ -3,7 +3,6 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using ThePrismatic2.ThePrismatic2Code.Powers;
@@ -15,7 +14,7 @@ public sealed class TanxsFury : CustomEnchantmentModel
     private const decimal DebuffPerStack = 3m;
     private const decimal ForgePerStack = 20m;
 
-    protected override string CustomIconPath => "res://.godot/imported/inky.png-27b90d1ea6c2aab29a64059ea46c014c.ctex";
+    protected override string CustomIconPath => "res://.godot/imported/tanx.png-d5407b70924498540f8a10e9153dfbd1.bptc.ctex";
     public override bool HasExtraCardText => true;
 
     public override bool ShowAmount => false;

@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
+using MegaCrit.Sts2.Core.Models.Monsters;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -37,7 +38,16 @@ public class Melancholy2() : ThePrismatic2Card(3,
     
     public override Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        if ((target == Owner.Creature || target == Owner.Osty) && result.UnblockedDamage > 0 && CombatState != null)
+        if (target == Owner.Creature && result.UnblockedDamage > 0)
+        {
+            EnergyCost.AddThisCombat(-DynamicVars.Energy.IntValue);
+        }
+        return Task.CompletedTask;
+    }
+    
+    public override Task AfterCurrentHpChanged(Creature creature, decimal delta)
+    {
+        if (!(delta >= 0m) && creature.Monster is Osty && creature.PetOwner == Owner)
         {
             EnergyCost.AddThisCombat(-DynamicVars.Energy.IntValue);
         }

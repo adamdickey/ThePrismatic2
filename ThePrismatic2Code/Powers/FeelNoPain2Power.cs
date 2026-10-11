@@ -25,4 +25,12 @@ public class FeelNoPain2Power : ThePrismatic2Power
             await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered, null);
         }
     }
+    
+    public override async Task AfterCardDiscarded(PlayerChoiceContext choiceContext, CardModel card)
+    {
+        if (card.Owner.Creature == Owner && !card.VisualCardPool.IsColorless)
+        { 
+            await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Unpowered, null);
+        }
+    }
 }

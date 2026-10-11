@@ -27,7 +27,7 @@ public class Dismantle2() : ThePrismatic2Card(1,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        int hitCount = 1 + cardPlay.Target.Powers.Count(power => power.Type == PowerType.Debuff);
+        int hitCount = 1 + cardPlay.Target.Powers.Count(power => power is { Type: PowerType.Debuff, Applier.IsPlayer: true });
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).WithHitCount(hitCount).FromCard(this)
             .Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_blunt", null, "heavy_attack.mp3")

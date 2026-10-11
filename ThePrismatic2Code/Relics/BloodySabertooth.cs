@@ -14,6 +14,9 @@ namespace ThePrismatic2.ThePrismatic2Code.Relics;
 public sealed class BloodySabertooth: ThePrismatic2Relic
 {
     public override RelicRarity Rarity => RelicRarity.Ancient;
+    //public override string PackedIconPath => "res://images/atlases/relic_atlas.sprites/burning_blood.tres";
+    //protected override string PackedIconOutlinePath => "res://images/atlases/relic_outline_atlas.sprites/burning_blood.tres";
+    //protected override string BigIconPath => "res://images/relics/burning_blood.png";
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         ..HoverTipFactory.FromForge(),

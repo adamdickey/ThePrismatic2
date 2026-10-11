@@ -24,11 +24,14 @@ public class Bully2() : ThePrismatic2Card(0,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new CalculationBaseVar(5m),
-        new ExtraDamageVar(2m),
-        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((_, target) => target?.GetPowerAmount<VulnerablePower>()+target?.GetPowerAmount<WeakPower>()+target?.GetPowerAmount<ExposedPower>() ?? 0)
+        new ExtraDamageVar(3m),
+        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((_, target) => target?.GetPowerAmount<VulnerablePower>()+target?.GetPowerAmount<ExposedPower>() ?? 0)
     ]);
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<VulnerablePower>());
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromPower<VulnerablePower>(),
+        HoverTipFactory.FromPower<ExposedPower>()
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

@@ -1,10 +1,10 @@
-{
+﻿{
   "THEPRISMATIC2-OILY.description": "This card applies [blue]{WeakPower}[/blue] [gold]Weak[/gold] and [blue]{Exposed}[/blue] [gold]Exposed[/gold].",
   "THEPRISMATIC2-OILY.extraCardText": "Apply [blue]{WeakPower}[/blue] [gold]Weak[/gold]{TargetType:choose(AllEnemies): to ALL enemies|}.\nApply [blue]{Exposed}[/blue] [gold]Exposed[/gold]{TargetType:choose(AllEnemies): to ALL enemies|}.",
   "THEPRISMATIC2-OILY.title": "Oily",
-  "THEPRISMATIC2-STARBOUND.description": "",
+  "THEPRISMATIC2-STARBOUND.description": "This card has [gold]Starbound[/gold].",
   "THEPRISMATIC2-STARBOUND.title": "Starbound",
-  "THEPRISMATIC2-TANXS_FURY.description": "This card applies [blue]{WeakPower}[/blue] [gold]Weak[/gold], [blue]{VulnerablePower}[/blue] [gold]Vulnerable[/gold] and [blue]{Exposed}[/blue] [gold]Exposed[/gold], then [gold]Forge[/gold] [blue]{Forge}[/blue].",
-  "THEPRISMATIC2-TANXS_FURY.extraCardText": "Apply [blue]{WeakPower}[/blue] [gold]Weak[/gold]{TargetType:choose(AllEnemies): to ALL enemies|}.\nApply [blue]{VulnerablePower}[/blue] [gold]Vulnerable[/gold]{TargetType:choose(AllEnemies): to ALL enemies|}.\nApply [blue]{Exposed}[/blue] [gold]Exposed[/gold]{TargetType:choose(AllEnemies): to ALL enemies|}.\n[gold]Forge[/gold] [blue]{Forge}[/blue].",
+  "THEPRISMATIC2-TANXS_FURY.description": "[gold]Forge[/gold] [blue]{Forge}[/blue], then apply [blue]{WeakPower}[/blue] [gold]Weak[/gold], [blue]{VulnerablePower}[/blue] [gold]Vulnerable[/gold], and [blue]{Exposed}[/blue] [gold]Exposed[/gold].",
+  "THEPRISMATIC2-TANXS_FURY.extraCardText": "[gold]Forge[/gold] [blue]{Forge}[/blue].\nApply [blue]{WeakPower}[/blue] [gold]Weak[/gold]{TargetType:choose(AllEnemies): to ALL enemies|}.\nApply [blue]{VulnerablePower}[/blue] [gold]Vulnerable[/gold]{TargetType:choose(AllEnemies): to ALL enemies|}.\nApply [blue]{Exposed}[/blue] [gold]Exposed[/gold]{TargetType:choose(AllEnemies): to ALL enemies|}.",
   "THEPRISMATIC2-TANXS_FURY.title": "Tanx's Fury"
 }

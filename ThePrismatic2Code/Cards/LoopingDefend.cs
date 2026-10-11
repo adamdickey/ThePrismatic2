@@ -24,25 +24,38 @@ public class LoopingDefend() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new BlockVar(6m, ValueProp.Move),
-        new RepeatVar(2)
-        ]);
+        new DynamicVar("Orbs", 2m),
+        new RepeatVar(1)
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play);
-        if (Owner.PlayerCombatState != null && Owner.PlayerCombatState.OrbQueue.Orbs.Count != 0)
+        if (Owner.PlayerCombatState != null)
         {
-            for (int i = 0; i < DynamicVars.Repeat.IntValue; i++)
+            if (Owner.PlayerCombatState.OrbQueue.Orbs.Count >= 1)
             {
-                await OrbCmd.Passive(choiceContext, Owner.PlayerCombatState.OrbQueue.Orbs[0], null);
-                await Cmd.Wait(0.25f);
+                for (int i = 0; i < DynamicVars.Repeat.IntValue; i++)
+                {
+                    await OrbCmd.Passive(choiceContext, Owner.PlayerCombatState.OrbQueue.Orbs[0], null);
+                    await Cmd.Wait(0.25f);
+                }
+            }
+            if (Owner.PlayerCombatState.OrbQueue.Orbs.Count >= 2)
+            {
+                for (int i = 0; i < DynamicVars.Repeat.IntValue; i++)
+                {
+                    await OrbCmd.Passive(choiceContext, Owner.PlayerCombatState.OrbQueue.Orbs[1], null);
+                    await Cmd.Wait(0.25f);
+                }
             }
         }
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(3m);
+        DynamicVars.Block.UpgradeValueBy(1m);
+        DynamicVars.Repeat.UpgradeValueBy(1m);
     }
 }

@@ -22,7 +22,7 @@ public class Tracking2Power : ThePrismatic2Power
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.ReplayStatic));
 
-    private bool Active => CombatState.HittableEnemies.Any(e => e.Powers.Count(power => power.Type == PowerType.Debuff) >= 2);
+    private bool Active => CombatState.HittableEnemies.Any(e => e.Powers.Count(power => power is { Type: PowerType.Debuff, Applier.IsPlayer: true }) >= 2);
 
     private void Sync()
     {

@@ -3,11 +3,9 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
 
@@ -24,8 +22,6 @@ public class TimesUp2() : ThePrismatic2Card(2,
 
     protected override bool ShouldGlowGoldInternal => CombatState?.HittableEnemies.Any(e => e.Powers.Count(power => power.Type == PowerType.Debuff) >= 4) ?? false;
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<DoomPower>());
-
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(20m, ValueProp.Move),
         new RepeatVar(4)
@@ -37,7 +33,7 @@ public class TimesUp2() : ThePrismatic2Card(2,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(cardPlay.Target)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
-        int debuffCount = cardPlay.Target.Powers.Count(power => power.Type == PowerType.Debuff);
+        int debuffCount = cardPlay.Target.Powers.Count(power => power is { Type: PowerType.Debuff, Applier.IsPlayer: true });
         decimal hitCount = debuffCount >= 4 ? DynamicVars.Repeat.BaseValue : 0;
         for (int i = 0; i < hitCount; i++)
         {
