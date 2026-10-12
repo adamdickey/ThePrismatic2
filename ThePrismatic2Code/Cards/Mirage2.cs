@@ -1,6 +1,7 @@
 ﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -27,7 +28,20 @@ public class Mirage2() : ThePrismatic2Card(1,
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new CalculationBaseVar(8m),
         new CalculationExtraVar(8m),
-        new CalculatedBlockVar(ValueProp.Move).WithMultiplier((card, _) => card.CombatState?.Enemies.Where(c => c.IsAlive).Sum(c => c.Powers.Count(power => power.Type == PowerType.Debuff)) ?? 0)
+        new CalculatedBlockVar(ValueProp.Move).WithMultiplier(delegate(CardModel card, Creature? _)
+        {
+            if (card.CombatState?.Enemies == null) return 0;
+            List<ModelId> uniqueDebuffs = [];
+            foreach (Creature enemy in card.CombatState.Enemies)
+            {
+                var debuffs = enemy.Powers.Where(power => power is { Type: PowerType.Debuff, Applier.IsPlayer: true }).ToList();
+                foreach (var debuff in debuffs.Where(debuff => !uniqueDebuffs.Contains(debuff.Id)))
+                {
+                    uniqueDebuffs.Add(debuff.Id);
+                }
+            }
+            return uniqueDebuffs.Count;
+        })
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

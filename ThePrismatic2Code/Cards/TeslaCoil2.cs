@@ -20,9 +20,9 @@ public class TeslaCoil2() : ThePrismatic2Card(0,
     public override string PortraitPath => "res://.godot/imported/tesla_coil.png-1a3be4ec7ac2ecaa46db0f4a60a01990.ctex";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(3m, ValueProp.Move),
-        new RepeatVar(2)
-        ]);
+        new DamageVar(4m, ValueProp.Move),
+        new RepeatVar(1)
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -32,28 +32,28 @@ public class TeslaCoil2() : ThePrismatic2Card(0,
             .Execute(choiceContext);
         if (Owner.PlayerCombatState != null)
         {
-            List<OrbModel> list = Owner.PlayerCombatState.OrbQueue.Orbs.ToList(); 
-            if (list.Count <= DynamicVars.Repeat.BaseValue)
+            if (Owner.PlayerCombatState.OrbQueue.Orbs.Count >= 1)
             {
-                foreach (var item in list)
+                for (int i = 0; i < DynamicVars.Repeat.IntValue; i++)
                 {
-                    await OrbCmd.Passive(choiceContext, item, null);
+                    await OrbCmd.Passive(choiceContext, Owner.PlayerCombatState.OrbQueue.Orbs[0], null);
+                    await Cmd.Wait(0.25f);
                 }
             }
-            else
+            if (Owner.PlayerCombatState.OrbQueue.Orbs.Count >= 2)
             {
-                var randomOrbs = list.OrderBy(_ => Random.Shared.Next()).Take(2).ToList();
-                foreach (var item in randomOrbs)
+                for (int i = 0; i < DynamicVars.Repeat.IntValue; i++)
                 {
-                    await OrbCmd.Passive(choiceContext, item, null);
+                    await OrbCmd.Passive(choiceContext, Owner.PlayerCombatState.OrbQueue.Orbs[1], null);
+                    await Cmd.Wait(0.25f);
                 }
             }
-            
         }
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(1m);
+        DynamicVars.Repeat.UpgradeValueBy(1m);
     }
 }

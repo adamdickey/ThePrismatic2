@@ -1,5 +1,4 @@
 ﻿using BaseLib.Abstracts;
-using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 
@@ -7,18 +6,19 @@ namespace ThePrismatic2.ThePrismatic2Code.Enchantments;
 
 public sealed class Starbound : CustomEnchantmentModel
 {
-    protected override string CustomIconPath => "res://.godot/imported/inky.png-27b90d1ea6c2aab29a64059ea46c014c.ctex";
+    protected override string CustomIconPath => "res://.godot/imported/energy_star.png-c2b438593c00931cfb9a396d3aafe9a9.ctex";
 
-    public override bool ShowAmount => false;
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Starbound));
-
-    public override bool TryModifyKeywordsInCombat(CardModel card, ISet<CardKeyword> keywords)
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromKeyword(Extensions.Keywords.Starbound)
+    ]);
+    
+    public override bool CanEnchant(CardModel card)
     {
-        if (card.Enchantment is not Starbound)
-        {
-            return false;
-        }
-        return keywords.Add(Extensions.Keywords.Starbound);
+        return !card.Keywords.Contains(Extensions.Keywords.Starbound);
+    }
+
+    protected override void OnEnchant()
+    {
+        Card.AddKeyword(Extensions.Keywords.Starbound);
     }
 }

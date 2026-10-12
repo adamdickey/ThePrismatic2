@@ -25,7 +25,7 @@ public class Cruelty2Power : ThePrismatic2Power
         {
             return 1m;
         }
-        int numDebuffs = target.Powers.Count(power => power.Type == PowerType.Debuff);
+        int numDebuffs = target.Powers.Count(power => power is { Type: PowerType.Debuff, Applier.IsPlayer: true });
         return 1m + numDebuffs*Amount / 100m;
 
     }

@@ -27,7 +27,7 @@ public class Scrape2() : ThePrismatic2Card(1,
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(7m, ValueProp.Move),
         new OstyDamageVar(3m, ValueProp.Move),
-        new CardsVar(3)
+        new CardsVar(4)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

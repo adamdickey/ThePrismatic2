@@ -55,6 +55,6 @@ public class UpMySleeve2() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        DynamicVars.Cards.UpgradeValueBy(1m);
     }
 }

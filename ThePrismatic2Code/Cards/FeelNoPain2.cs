@@ -20,10 +20,7 @@ public class FeelNoPain2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/feel_no_pain.png-cf0cd4b93d214d57a730de8275ac2f1c.ctex";
     public override string PortraitPath => "res://.godot/imported/feel_no_pain.png-cf0cd4b93d214d57a730de8275ac2f1c.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DynamicVar("Power", 4m),
-        new RepeatVar(3) 
-    ]);
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<FeelNoPain2Power>(3m));
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
@@ -32,11 +29,11 @@ public class FeelNoPain2() : ThePrismatic2Card(1,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await PowerCmd.Apply<FeelNoPain2Power>(choiceContext, Owner.Creature, DynamicVars["Power"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<FeelNoPain2Power>(choiceContext, Owner.Creature, DynamicVars["FeelNoPain2Power"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Power"].UpgradeValueBy(1m);
+        DynamicVars["FeelNoPain2Power"].UpgradeValueBy(1m);
     }
 }

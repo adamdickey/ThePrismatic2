@@ -21,6 +21,8 @@ public class Breakthrough2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/breakthrough.png-15f9858efd375fd35ec77efcf6373bda.ctex";
     public override string PortraitPath => "res://.godot/imported/breakthrough.png-15f9858efd375fd35ec77efcf6373bda.ctex";
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Cunning);
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed));
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(9m, ValueProp.Move),

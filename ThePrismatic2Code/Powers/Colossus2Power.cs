@@ -35,7 +35,7 @@ public class Colossus2Power : ThePrismatic2Power
         {
             return 1m;
         }
-        int numDebuffs = dealer.Powers.Count(power => power.TypeForCurrentAmount == PowerType.Debuff);
+        int numDebuffs = dealer.Powers.Count(power => power is { TypeForCurrentAmount: PowerType.Debuff, Applier.IsPlayer: true });
         return Math.Max(0m, 1m - 0.01m*DynamicVars["DamageDecrease"].BaseValue*numDebuffs);
     }
 

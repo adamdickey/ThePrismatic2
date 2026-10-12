@@ -16,8 +16,8 @@ public class NecroStrike() : ThePrismatic2Card(1,
     CardType.Attack, CardRarity.None,
     TargetType.AnyEnemy), ITranscendenceCard
 {
-    public override string CustomPortraitPath => $"PrismaticStrike.png".BigCardImagePath();
-    public override string PortraitPath => $"PrismaticStrike.png".CardImagePath();
+    public override string CustomPortraitPath => "PrismaticStrike.png".BigCardImagePath();
+    public override string PortraitPath => "PrismaticStrike.png".CardImagePath();
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike, CardTag.OstyAttack];
     
     public override bool IsBasicStrikeOrDefend => false;
@@ -49,6 +49,7 @@ public class NecroStrike() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.OstyDamage.UpgradeValueBy(3m);
+        DynamicVars.OstyDamage.UpgradeValueBy(2m);
+        DynamicVars.Summon.UpgradeValueBy(1m);
     }
 }
