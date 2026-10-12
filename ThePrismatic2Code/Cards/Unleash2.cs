@@ -51,6 +51,6 @@ public class Unleash2() : ThePrismatic2Card(1,
     protected override void OnUpgrade()
     {
         DynamicVars.Summon.UpgradeValueBy(1m);
-        DynamicVars.OstyDamage.UpgradeValueBy(2m);
+        DynamicVars.CalculationBase.UpgradeValueBy(2m);
     }
 }
