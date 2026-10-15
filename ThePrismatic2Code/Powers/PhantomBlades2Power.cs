@@ -19,16 +19,31 @@ public class PhantomBlades2Power : ThePrismatic2Power
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Retain));
     
+    // Cost hooks (e.g. Veilpiercer2Power) read card.Keywords, which re-enters this hook. Guard against infinite recursion.
+    [ThreadStatic] private static bool _checkingCost;
+
     public override bool TryModifyKeywordsInCombat(CardModel card, ISet<CardKeyword> keywords)
     {
-        if (card.Owner != Owner.Player)
+        if (_checkingCost || card.Owner != Owner.Player)
         {
             return false;
         }
-        if (card.EnergyCost.GetWithModifiers(CostModifiers.All) != 0 || card.Type != CardType.Attack || card.EnergyCost.CostsX)
+        if (card.Type != CardType.Attack || card.EnergyCost.CostsX)
         {
             return false;
-        } 
+        }
+        _checkingCost = true;
+        try
+        {
+            if (card.EnergyCost.GetWithModifiers(CostModifiers.All) != 0)
+            {
+                return false;
+            }
+        }
+        finally
+        {
+            _checkingCost = false;
+        }
         return keywords.Add(CardKeyword.Retain);
     }
 
