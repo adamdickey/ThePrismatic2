@@ -15,8 +15,8 @@ public class CostlyDefend() : ThePrismatic2Card(2,
     CardType.Skill, CardRarity.None,
     TargetType.Self)
 {
-    public override string CustomPortraitPath => $"PrismaticDefend.png".BigCardImagePath();
-    public override string PortraitPath => $"PrismaticDefend.png".CardImagePath();
+    public override string CustomPortraitPath => "PrismaticDefend.png".BigCardImagePath();
+    public override string PortraitPath => "PrismaticDefend.png".CardImagePath();
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
     
     public override bool IsBasicStrikeOrDefend => false;
@@ -39,7 +39,7 @@ public class CostlyDefend() : ThePrismatic2Card(2,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(4m);
+        DynamicVars.Block.UpgradeValueBy(3m);
     }
     
     public override Task AfterCardEnteredCombat(CardModel card)

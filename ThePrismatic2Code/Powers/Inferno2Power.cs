@@ -1,10 +1,10 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+﻿using BaseLib.Extensions;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Helpers;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Monsters;
@@ -16,17 +16,17 @@ namespace ThePrismatic2.ThePrismatic2Code.Powers;
 
 public class Inferno2Power : ThePrismatic2Power
 {
-    
     public override string CustomPackedIconPath => "res://.godot/imported/inferno_power.png-688562ad1f0eac4c8a606e5843a12d1b.s3tc.ctex";
     public override string CustomBigIconPath => "res://.godot/imported/inferno_power.png-688562ad1f0eac4c8a606e5843a12d1b.s3tc.ctex";
 
     public override PowerType Type => PowerType.Buff;
 
     public override PowerStackType StackType => PowerStackType.Counter;
-    
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed));
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar("SelfDamage", 0m, ValueProp.Unblockable | ValueProp.Unpowered));
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new DamageVar("SelfDamage", 0m, ValueProp.Unblockable | ValueProp.Unpowered),
+        new HpLossVar(0m).WithTooltip("BLEED_DYNAMIC")
+    ]);
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
@@ -81,5 +81,6 @@ public class Inferno2Power : ThePrismatic2Power
     {
         AssertMutable();
         DynamicVars["SelfDamage"].BaseValue++;
+        DynamicVars.HpLoss.BaseValue++;
     }
 }

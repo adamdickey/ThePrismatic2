@@ -12,8 +12,8 @@ public class ClawingBlast() : ThePrismatic2Card(0,
     CardType.Attack, CardRarity.Ancient,
     TargetType.AnyEnemy)
 {
-    public override string CustomPortraitPath => $"PrismaticBlast.png".BigCardImagePath();
-    public override string PortraitPath => $"PrismaticBlast.png".CardImagePath();
+    public override string CustomPortraitPath => "PrismaticBlast.png".BigCardImagePath();
+    public override string PortraitPath => "PrismaticBlast.png".CardImagePath();
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(16m, ValueProp.Move),

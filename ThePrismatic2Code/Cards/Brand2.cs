@@ -1,4 +1,5 @@
-﻿using BaseLib.Utils;
+﻿using BaseLib.Extensions;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -27,14 +28,13 @@ public class Brand2() : ThePrismatic2Card(0,
     public override string PortraitPath => "res://.godot/imported/brand.png-01334706eb3eb94488272bbcf82bdbe7.ctex";
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed),
         HoverTipFactory.FromKeyword(CardKeyword.Exhaust),
         HoverTipFactory.FromPower<StrengthPower>(),
         HoverTipFactory.FromPower<CalcifyPower>()
     ]);
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new HpLossVar(1m),
+        new HpLossVar(1m).WithTooltip("BLEED_DYNAMIC"),
         new PowerVar<StrengthPower>(1m),
         new PowerVar<CalcifyPower>(1m)
     ]);

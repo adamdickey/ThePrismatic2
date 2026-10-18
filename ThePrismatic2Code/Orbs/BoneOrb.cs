@@ -13,7 +13,7 @@ namespace ThePrismatic2.ThePrismatic2Code.Orbs;
 public sealed class BoneOrb : CustomOrbModel
 {
     public override Color DarkenedColor => new("4d4d4d");
-    public override string CustomIconPath => "res://.godot/imported/dark_orb.png-5f06b12b25c362f6d903a63dbe2e565f.ctex";
+    public override string CustomIconPath => "ThePrismatic2/images/orbs/BoneOrb.png";
 
     public override bool IncludeInRandomPool => true;
     
@@ -33,7 +33,6 @@ public sealed class BoneOrb : CustomOrbModel
         new MegaSprite(dark.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
         dark.Modulate = new Color(0.15f, 0.15f, 0.15f);
-        dark.Scale = new Vector2(1.1f, 1.1f);
         container.AddChild(dark);
         string glassPath = SceneHelper.GetScenePath("orbs/orb_visuals/glass_orb");
         Node2D glass = PreloadManager.Cache.GetScene(glassPath)
@@ -41,6 +40,7 @@ public sealed class BoneOrb : CustomOrbModel
         new MegaSprite(glass.GetNode("SpineSkeleton"))
             .GetAnimationState().SetAnimation("idle_loop");
         glass.Modulate = new Color(0.75f, 0.75f, 0.75f);
+        glass.Scale = new Vector2(0.95f, 0.95f);
         container.AddChild(glass);
         return container;
     }

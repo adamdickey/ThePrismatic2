@@ -114,7 +114,7 @@ public class ThePrismatic2 : PlaceholderCharacterModel
 
     public override IReadOnlyList<RelicModel> StartingRelics =>
     [
-        ModelDb.Relic<GemFragments>()
+        ModelDb.Relic<FracturedGem>()
     ];
 
     public override CardPoolModel CardPool => ModelDb.CardPool<ThePrismatic2CardPool>();

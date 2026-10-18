@@ -20,7 +20,7 @@ public class Dismantle2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/dismantle.png-77949299fe0992ea6455964b08284672.ctex";
     public override string PortraitPath => "res://.godot/imported/dismantle.png-77949299fe0992ea6455964b08284672.ctex";
     
-    protected override bool ShouldGlowGoldInternal => CombatState?.HittableEnemies.Any(e => e.Powers.Any(power => power.Type == PowerType.Debuff)) ?? false;
+    protected override bool ShouldGlowGoldInternal => CombatState?.HittableEnemies.Any(e => e.Powers.Any(power => power is { Type: PowerType.Debuff, Applier.IsPlayer: true })) ?? false;
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DamageVar(6m, ValueProp.Move));
 

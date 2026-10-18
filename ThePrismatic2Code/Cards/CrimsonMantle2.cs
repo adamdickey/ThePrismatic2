@@ -1,4 +1,5 @@
-﻿using BaseLib.Utils;
+﻿using BaseLib.Extensions;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -22,12 +23,12 @@ public class CrimsonMantle2() : ThePrismatic2Card(1,
     public override string CustomPortraitPath => "res://.godot/imported/crimson_mantle.png-cb20729b9d0652f51a70c751335d2512.ctex";
     public override string PortraitPath => "res://.godot/imported/crimson_mantle.png-cb20729b9d0652f51a70c751335d2512.ctex";
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new PowerVar<CrimsonMantlePower>(7m));
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        HoverTipFactory.Static(StaticHoverTip.Block),
-        HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed)
+    protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
+        new PowerVar<CrimsonMantlePower>(7m),
+        new HpLossVar(1m).WithTooltip("BLEED_DYNAMIC")
     ]);
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.Block));
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

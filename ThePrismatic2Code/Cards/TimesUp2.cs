@@ -20,7 +20,7 @@ public class TimesUp2() : ThePrismatic2Card(2,
     public override string CustomPortraitPath => "res://.godot/imported/times_up.png-714b702fd2a54f37beb2080e183f0173.ctex";
     public override string PortraitPath => "res://.godot/imported/times_up.png-714b702fd2a54f37beb2080e183f0173.ctex";
 
-    protected override bool ShouldGlowGoldInternal => CombatState?.HittableEnemies.Any(e => e.Powers.Count(power => power.Type == PowerType.Debuff) >= 4) ?? false;
+    protected override bool ShouldGlowGoldInternal => CombatState?.HittableEnemies.Any(e => e.Powers.Count(power => power is { Type: PowerType.Debuff, Applier.IsPlayer: true }) >= 4) ?? false;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new DamageVar(20m, ValueProp.Move),

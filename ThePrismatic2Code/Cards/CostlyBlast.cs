@@ -13,8 +13,8 @@ public class CostlyBlast() : ThePrismatic2Card(2,
     CardType.Attack, CardRarity.Ancient,
     TargetType.AnyEnemy)
 {
-    public override string CustomPortraitPath => $"PrismaticBlast.png".BigCardImagePath();
-    public override string PortraitPath => $"PrismaticBlast.png".CardImagePath();
+    public override string CustomPortraitPath => "PrismaticBlast.png".BigCardImagePath();
+    public override string PortraitPath => "PrismaticBlast.png".CardImagePath();
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Costly));
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(

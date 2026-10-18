@@ -15,8 +15,8 @@ public class FleetingBlast() : ThePrismatic2Card(1,
     CardType.Attack, CardRarity.Ancient,
     TargetType.AnyEnemy)
 {
-    public override string CustomPortraitPath => $"PrismaticBlast.png".BigCardImagePath();
-    public override string PortraitPath => $"PrismaticBlast.png".CardImagePath();
+    public override string CustomPortraitPath => "PrismaticBlast.png".BigCardImagePath();
+    public override string PortraitPath => "PrismaticBlast.png".CardImagePath();
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(CardKeyword.Ethereal);
 

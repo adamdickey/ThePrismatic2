@@ -13,7 +13,7 @@ public sealed class DeadBranch2: ThePrismatic2Relic
     public override RelicRarity Rarity => RelicRarity.Ancient;
     public override string PackedIconPath => "ThePrismatic2/images/relics/DeadBranch.png";
     protected override string PackedIconOutlinePath => "ThePrismatic2/images/relics/DeadBranch_Outline.png";
-    protected override string BigIconPath => "ThePrismatic2/images/relics/DeadBranch.png";
+    protected override string BigIconPath => "ThePrismatic2/images/relics/big/DeadBranch.png";
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Exhaust));
 

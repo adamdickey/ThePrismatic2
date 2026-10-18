@@ -44,8 +44,6 @@ public class Rampage2() : ThePrismatic2Card(1,
         }
     }
 
-    private bool _ostyPlay;
-
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
@@ -79,18 +77,5 @@ public class Rampage2() : ThePrismatic2Card(1,
     protected override void OnUpgrade()
     {
         DynamicVars["Increase"].UpgradeValueBy(4m);
-    }
-    
-    public override async Task AfterCardPlayedLate(PlayerChoiceContext choiceContext, CardPlay cardPlay)
-    {
-        if (cardPlay.Card == this && !Osty.CheckMissingWithAnim(Owner) && !_ostyPlay)
-        {
-            _ostyPlay = true;
-            await CardCmd.AutoPlay(choiceContext, this, cardPlay.Target);
-        }
-        else
-        {
-            _ostyPlay = false;
-        }
     }
 }

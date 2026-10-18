@@ -13,8 +13,8 @@ public class CoordinatedBlast() : ThePrismatic2Card(1,
     CardType.Attack, CardRarity.Ancient,
     TargetType.AnyEnemy)
 {
-    public override string CustomPortraitPath => $"PrismaticBlast.png".BigCardImagePath();
-    public override string PortraitPath => $"PrismaticBlast.png".CardImagePath();
+    public override string CustomPortraitPath => "PrismaticBlast.png".BigCardImagePath();
+    public override string PortraitPath => "PrismaticBlast.png".CardImagePath();
     
     protected override bool ShouldGlowGoldInternal => !Osty.CheckMissingWithAnim(Owner);
     protected override HashSet<CardTag> CanonicalTags => [CardTag.OstyAttack];

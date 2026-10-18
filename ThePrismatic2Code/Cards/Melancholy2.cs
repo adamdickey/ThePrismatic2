@@ -38,6 +38,11 @@ public class Melancholy2() : ThePrismatic2Card(3,
     
     public override Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
+        CardPile? pile = Pile;
+        if (pile is not { IsCombatPile: true })
+        {
+            return Task.CompletedTask;
+        }
         if (target == Owner.Creature && result.UnblockedDamage > 0)
         {
             EnergyCost.AddThisCombat(-DynamicVars.Energy.IntValue);
@@ -47,7 +52,12 @@ public class Melancholy2() : ThePrismatic2Card(3,
     
     public override Task AfterCurrentHpChanged(Creature creature, decimal delta)
     {
-        if (!(delta >= 0m) && creature.Monster is Osty && creature.PetOwner == Owner)
+        CardPile? pile = Pile;
+        if (pile is not { IsCombatPile: true })
+        {
+            return Task.CompletedTask;
+        }
+        if (delta < 0 && creature.Monster is Osty && creature.PetOwner == Owner)
         {
             EnergyCost.AddThisCombat(-DynamicVars.Energy.IntValue);
         }
