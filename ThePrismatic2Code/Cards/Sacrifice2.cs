@@ -28,7 +28,7 @@ public class Sacrifice2() : ThePrismatic2Card(1,
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed));
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new HpLossVar(10m),
+        new HpLossVar(8m),
         new DynamicVar("Mult", 4m)
         ]);
 

@@ -50,7 +50,7 @@ public class Strangle2() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4m);
-        DynamicVars.OstyDamage.UpgradeValueBy(2m);
+        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.OstyDamage.UpgradeValueBy(1m);
     }
 }

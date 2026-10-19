@@ -22,11 +22,11 @@ public class AstralPulse2() : ThePrismatic2Card(0,
     public override string CustomPortraitPath => "res://.godot/imported/astral_pulse.png-a69b5d778043f6e4e3263725673a435f.ctex";
     public override string PortraitPath => "res://.godot/imported/astral_pulse.png-a69b5d778043f6e4e3263725673a435f.ctex";
     
-    public override int CanonicalStarCost => 3;
+    public override int CanonicalStarCost => 2;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new DamageVar(8m, ValueProp.Move),
-        new DynamicVar("Exposed", 2m)
+        new DamageVar(6m, ValueProp.Move),
+        new DynamicVar("Exposed", 1m)
     ]);
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromPower<ExposedPower>());
