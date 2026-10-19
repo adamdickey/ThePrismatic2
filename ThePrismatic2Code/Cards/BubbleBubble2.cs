@@ -36,10 +36,7 @@ public class BubbleBubble2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new PowerVar<PoisonPower>(3m),
-        new PowerVar<DoomPower>(3m),
-        new CalculationBaseVar(0m),
-        new CalculationExtraVar(1m),
-        new CalculatedVar("CalculatedDebuffs").WithMultiplier((card, target) => target != null ? card.DynamicVars["PoisonPower"].IntValue*target.Powers.Count(power => power is { Type: PowerType.Debuff, Applier.IsPlayer: true }) : 0)
+        new PowerVar<DoomPower>(3m)
     ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

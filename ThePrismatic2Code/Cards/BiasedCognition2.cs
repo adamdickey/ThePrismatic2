@@ -19,8 +19,8 @@ public class BiasedCognition2() : ThePrismatic2Card(1,
     TargetType.Self)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<DefectCardPool>();
-    public override string CustomPortraitPath => $"BiasedCognition.png".BigCardImagePath();
-    public override string PortraitPath => $"BiasedCognition.png".CardImagePath();
+    public override string CustomPortraitPath => "BiasedCognition.png".BigCardImagePath();
+    public override string PortraitPath => "BiasedCognition.png".CardImagePath();
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.FromPower<FocusPower>(),

@@ -17,9 +17,9 @@ namespace ThePrismatic2.ThePrismatic2Code.Relics;
 public sealed class StarChild: ThePrismatic2Relic
 {
     public override RelicRarity Rarity => RelicRarity.Ancient;
-    //public override string PackedIconPath => "res://images/atlases/relic_atlas.sprites/burning_blood.tres";
-    //protected override string PackedIconOutlinePath => "res://images/atlases/relic_outline_atlas.sprites/burning_blood.tres";
-    //protected override string BigIconPath => "res://images/relics/burning_blood.png";
+    public override string PackedIconPath => "ThePrismatic2/images/relics/StarChild.png";
+    protected override string PackedIconOutlinePath => "ThePrismatic2/images/relics/StarChild_Outline.png";
+    protected override string BigIconPath => "ThePrismatic2/images/relics/big/StarChild.png";
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         ..HoverTipFactory.FromEnchantment<Starbound>()

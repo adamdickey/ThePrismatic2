@@ -15,8 +15,8 @@ public class ConcentratedStrike() : ThePrismatic2Card(1,
     CardType.Attack, CardRarity.None,
     TargetType.AnyEnemy), ITranscendenceCard
 {
-    public override string CustomPortraitPath => $"PrismaticStrike.png".BigCardImagePath();
-    public override string PortraitPath => $"PrismaticStrike.png".CardImagePath();
+    public override string CustomPortraitPath => "PrismaticStrike.png".BigCardImagePath();
+    public override string PortraitPath => "PrismaticStrike.png".CardImagePath();
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
     
     public override bool IsBasicStrikeOrDefend => false;

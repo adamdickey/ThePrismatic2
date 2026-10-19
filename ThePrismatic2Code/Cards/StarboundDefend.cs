@@ -12,8 +12,8 @@ public class StarboundDefend() : ThePrismatic2Card(0,
     CardType.Skill, CardRarity.None,
     TargetType.Self)
 {
-    public override string CustomPortraitPath => $"PrismaticDefend.png".BigCardImagePath();
-    public override string PortraitPath => $"PrismaticDefend.png".CardImagePath();
+    public override string CustomPortraitPath => "PrismaticDefend.png".BigCardImagePath();
+    public override string PortraitPath => "PrismaticDefend.png".CardImagePath();
 
     public override int CanonicalStarCost => 1;
     

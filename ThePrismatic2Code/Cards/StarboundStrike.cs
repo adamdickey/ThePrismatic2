@@ -14,8 +14,8 @@ public class StarboundStrike() : ThePrismatic2Card(0,
     CardType.Attack, CardRarity.None,
     TargetType.AnyEnemy), ITranscendenceCard
 {
-    public override string CustomPortraitPath => $"PrismaticStrike.png".BigCardImagePath();
-    public override string PortraitPath => $"PrismaticStrike.png".CardImagePath();
+    public override string CustomPortraitPath => "PrismaticStrike.png".BigCardImagePath();
+    public override string PortraitPath => "PrismaticStrike.png".CardImagePath();
 
     public override int CanonicalStarCost => 1;
     

@@ -1,3 +1,4 @@
 {
-  
+  "BLEED_DYNAMIC.description": "[gold]Osty[/gold] loses [blue]{HpLoss}[/blue] HP if he is alive, otherwise you lose [blue]{HpLoss}[/blue] HP.",
+  "BLEED_DYNAMIC.title": "Bleed {HpLoss}"
 }

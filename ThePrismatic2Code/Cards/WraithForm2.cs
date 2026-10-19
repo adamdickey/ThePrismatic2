@@ -19,8 +19,8 @@ public class WraithForm2() : ThePrismatic2Card(3,
     TargetType.Self)
 {
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<SilentCardPool>();
-    public override string CustomPortraitPath => $"WraithForm.png".BigCardImagePath();
-    public override string PortraitPath => $"WraithForm.png".CardImagePath();
+    public override string CustomPortraitPath => "WraithForm.png".BigCardImagePath();
+    public override string PortraitPath => "WraithForm.png".CardImagePath();
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new PowerVar<IntangiblePower>(2m),

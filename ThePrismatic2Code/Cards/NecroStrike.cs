@@ -49,7 +49,6 @@ public class NecroStrike() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.OstyDamage.UpgradeValueBy(2m);
-        DynamicVars.Summon.UpgradeValueBy(1m);
+        DynamicVars.OstyDamage.UpgradeValueBy(3m);
     }
 }

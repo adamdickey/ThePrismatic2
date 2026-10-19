@@ -8,9 +8,9 @@ namespace ThePrismatic2.ThePrismatic2Code.Relics;
 public sealed class RealityBox: ThePrismatic2Relic
 {
     public override RelicRarity Rarity => RelicRarity.Rare;
-    //public override string PackedIconPath => "res://images/atlases/relic_atlas.sprites/burning_blood.tres";
-    //protected override string PackedIconOutlinePath => "res://images/atlases/relic_outline_atlas.sprites/burning_blood.tres";
-    //protected override string BigIconPath => "res://images/relics/burning_blood.png";
+    public override string PackedIconPath => "ThePrismatic2/images/relics/RealityBox.png";
+    protected override string PackedIconOutlinePath => "ThePrismatic2/images/relics/RealityBox_Outline.png";
+    protected override string BigIconPath => "ThePrismatic2/images/relics/big/RealityBox.png";
 
     public override Task AfterCardGeneratedForCombat(CardModel card, Player? creator)
     {

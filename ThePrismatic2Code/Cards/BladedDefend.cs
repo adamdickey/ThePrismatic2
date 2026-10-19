@@ -13,8 +13,8 @@ public class BladedDefend() : ThePrismatic2Card(1,
     CardType.Skill, CardRarity.None,
     TargetType.Self)
 {
-    public override string CustomPortraitPath => $"PrismaticDefend.png".BigCardImagePath();
-    public override string PortraitPath => $"PrismaticDefend.png".CardImagePath();
+    public override string CustomPortraitPath => "PrismaticDefend.png".BigCardImagePath();
+    public override string PortraitPath => "PrismaticDefend.png".CardImagePath();
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Defend];
     
     public override bool IsBasicStrikeOrDefend => false;

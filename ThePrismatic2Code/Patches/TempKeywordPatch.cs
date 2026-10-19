@@ -25,14 +25,14 @@ public class RemoveTempKeywordSingleton() : CustomSingletonModel(HookType.Combat
                 if (card.Keywords.Contains(Keywords.StarboundThisTurn))
                 {
                     card.RemoveKeyword(Keywords.StarboundThisTurn);
-                    if (card.EnergyCost.GetWithModifiers(CostModifiers.All) + card.GetStarCostWithModifiers() == card.EnergyCost.Canonical + card.CanonicalStarCost)
+                    if (card.EnergyCost.GetWithModifiers(CostModifiers.Local) + card.GetStarCostWithModifiers() == card.EnergyCost.Canonical + card.CanonicalStarCost)
                     {
                         card.EnergyCost.SetThisCombat(card.EnergyCost.Canonical);
                         card.SetStarCostThisCombat(card.CanonicalStarCost);
                     }
                     else if (card.CanonicalStarCost == -1)
                     {
-                        card.EnergyCost.SetThisCombat(card.EnergyCost.GetWithModifiers(CostModifiers.All) + card.GetStarCostWithModifiers());
+                        card.EnergyCost.SetThisCombat(card.EnergyCost.GetWithModifiers(CostModifiers.Local) + card.GetStarCostWithModifiers());
                         card.SetStarCostThisCombat(card.CanonicalStarCost);
                     }
                 }

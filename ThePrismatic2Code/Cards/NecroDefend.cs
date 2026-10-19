@@ -41,7 +41,6 @@ public class NecroDefend() : ThePrismatic2Card(1,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(1m);
-        DynamicVars.Summon.UpgradeValueBy(1m);
+        DynamicVars.Block.UpgradeValueBy(3m);
     }
 }

@@ -18,6 +18,9 @@ public class Reap2() : ThePrismatic2Card(3,
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/reap.png-e4ffbdae7991268a1d2e5971010912e2.ctex";
     public override string PortraitPath => "res://.godot/imported/reap.png-e4ffbdae7991268a1d2e5971010912e2.ctex";
+
+    protected override bool ShouldGlowGoldInternal => PileType.Hand.GetPile(Owner).Cards.Any(c => c.ShouldRetainThisTurn && c != this);
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
         new CalculationBaseVar(24m),
         new ExtraDamageVar(8m),

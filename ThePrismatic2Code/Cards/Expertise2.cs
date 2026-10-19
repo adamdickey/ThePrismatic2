@@ -21,7 +21,10 @@ public class Expertise2() : ThePrismatic2Card(1,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new CardsVar(2));
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.FromKeyword(CardKeyword.Retain));
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
+        HoverTipFactory.FromKeyword(CardKeyword.Retain),
+        HoverTipFactory.FromKeyword(Extensions.Keywords.Starbound)
+    ]);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -30,6 +33,10 @@ public class Expertise2() : ThePrismatic2Card(1,
         foreach (CardModel card in cards)
         {
             card.GiveSingleTurnRetain();
+            if (!card.Keywords.Contains(Extensions.Keywords.Starbound) && !card.Keywords.Contains(Extensions.Keywords.StarboundThisTurn))
+            {
+                card.AddKeyword(Extensions.Keywords.StarboundThisTurn);
+            }
         }
     }
 

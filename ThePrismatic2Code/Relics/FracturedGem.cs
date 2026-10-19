@@ -7,9 +7,12 @@ using MegaCrit.Sts2.Core.Saves.Runs;
 
 namespace ThePrismatic2.ThePrismatic2Code.Relics;
 
-public sealed class GemFragments: ThePrismatic2Relic
+public sealed class FracturedGem: ThePrismatic2Relic
 {
     public override RelicRarity Rarity => RelicRarity.Starter;
+    public override string PackedIconPath => "ThePrismatic2/images/relics/FracturedGem.png";
+    protected override string PackedIconOutlinePath => "ThePrismatic2/images/relics/FracturedGem_Outline.png";
+    protected override string BigIconPath => "ThePrismatic2/images/relics/big/FracturedGem.png";
     
     public override RelicModel GetUpgradeReplacement() => ModelDb.Relic<PrismaticGem2>();
     

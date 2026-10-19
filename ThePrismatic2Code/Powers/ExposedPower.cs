@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using ThePrismatic2.ThePrismatic2Code.Extensions;
 
 namespace ThePrismatic2.ThePrismatic2Code.Powers;
 
@@ -14,6 +15,8 @@ namespace ThePrismatic2.ThePrismatic2Code.Powers;
 public class ExposedPower : ThePrismatic2Power
 {
 
+    public override string CustomPackedIconPath => "Exposed.png".PowerImagePath();
+    public override string CustomBigIconPath => "Exposed.png".BigPowerImagePath();
     public override PowerType Type => PowerType.Debuff;
 
     public override PowerStackType StackType => PowerStackType.Counter;

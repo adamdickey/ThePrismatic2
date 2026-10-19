@@ -1,4 +1,5 @@
-﻿using BaseLib.Utils;
+﻿using BaseLib.Extensions;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -23,12 +24,11 @@ public class ColdSnap2() : ThePrismatic2Card(1,
     public override string PortraitPath => "res://.godot/imported/cold_snap.png-dae83e0c99ed64415701baf52faef36b.ctex";
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-	    new HpLossVar(1m),
+	    new HpLossVar(1m).WithTooltip("BLEED_DYNAMIC"),
 	    new DamageVar(8m, ValueProp.Move) 
     ]);
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([ 
-	    HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed),
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
 	    HoverTipFactory.Static(StaticHoverTip.Channeling),
     	HoverTipFactory.FromOrb<FrostOrb>()
     ]);

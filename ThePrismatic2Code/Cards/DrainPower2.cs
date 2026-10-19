@@ -1,4 +1,5 @@
-﻿using BaseLib.Utils;
+﻿using BaseLib.Extensions;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Extensions;
@@ -20,9 +21,9 @@ public class DrainPower2() : ThePrismatic2Card(1,
     public override CardPoolModel VisualCardPool => ModelDb.CardPool<NecrobinderCardPool>();
     public override string CustomPortraitPath => "res://.godot/imported/drain_power.png-2a1cf297725158673f88fd6e3a6f1a34.ctex";
     public override string PortraitPath => "res://.godot/imported/drain_power.png-2a1cf297725158673f88fd6e3a6f1a34.ctex";
-    public override IEnumerable<CardKeyword> CanonicalKeywords => new _003C_003Ez__ReadOnlySingleElementList<CardKeyword>(Extensions.Keywords.Bleed);
+
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new HpLossVar(1m),
+        new HpLossVar(1m).WithTooltip("BLEED_DYNAMIC"),
         new DamageVar(12m, ValueProp.Move),
         new CardsVar(2)
     ]);

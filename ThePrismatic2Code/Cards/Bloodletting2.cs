@@ -1,4 +1,5 @@
-﻿using BaseLib.Utils;
+﻿using BaseLib.Extensions;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -24,14 +25,11 @@ public class Bloodletting2() : ThePrismatic2Card(0,
     public override string PortraitPath => "res://.godot/imported/bloodletting.png-17a835f72296388ba15ba2d58d05294d.ctex";
     
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlyArray<DynamicVar>([
-        new HpLossVar(3m),
+        new HpLossVar(3m).WithTooltip("BLEED_DYNAMIC"),
         new EnergyVar(2)
     ]);
     
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
-        EnergyHoverTip, 
-        HoverTipFactory.FromKeyword(Extensions.Keywords.Bleed)
-    ]);
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(EnergyHoverTip);
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {

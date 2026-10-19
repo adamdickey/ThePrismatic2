@@ -1,5 +1,4 @@
-﻿using MegaCrit.Sts2.Core.CardSelection;
-using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -14,8 +13,8 @@ public class CunningBlast() : ThePrismatic2Card(1,
     CardType.Attack, CardRarity.Ancient,
     TargetType.AnyEnemy)
 {
-    public override string CustomPortraitPath => $"PrismaticBlast.png".BigCardImagePath();
-    public override string PortraitPath => $"PrismaticBlast.png".CardImagePath();
+    public override string CustomPortraitPath => "PrismaticBlast.png".BigCardImagePath();
+    public override string PortraitPath => "PrismaticBlast.png".CardImagePath();
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(
         new DamageVar(21m, ValueProp.Move));
