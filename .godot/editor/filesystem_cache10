@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1792949873
+::res://::1792950025
 --y__InlineArray5.cs::CSharpScript::3570799051358789074::1784241515::0::1::::<><><>0<>0<><>::
 --z__ReadOnlyArray.cs::CSharpScript::5039665906173620467::1784241515::0::1::::<><><>0<>0<><>::
 --z__ReadOnlyList.cs::CSharpScript::8904202520235795513::1784241515::0::1::::<><><>0<>0<><>::
@@ -619,7 +619,7 @@ MagmaOrb.cs::CSharpScript::8185489555630507057::1792452380::0::1::::<><><>0<>0<>
 SolarOrb.cs::CSharpScript::8614441810568736271::1792452380::0::1::::<><><>0<>0<><>::
 SparkOrb.cs::CSharpScript::4600608214307113314::1789942856::0::1::::<><><>0<>0<><>::
 VenomOrb.cs::CSharpScript::4833566443326058340::1792452380::0::1::::<><><>0<>0<><>::
-::res://ThePrismatic2Code/Patches/::1792949486
+::res://ThePrismatic2Code/Patches/::1792950013
 AncientRelicInjection.cs::CSharpScript::5625465479008479135::1791738611::0::1::::<><><>0<>0<><>::
 BaseGameRelicNames.txt::TextFile::-1::1787688519::0::1::::<><><>0<>0<><>::
 BlockedRelics.cs::CSharpScript::5149099763605868455::1791738610::0::1::::<><><>0<>0<><>::
@@ -627,7 +627,6 @@ CardPreviewGuard.cs::CSharpScript::7372395485929866133::1788321705::0::1::::<><>
 CunningPatch.cs::CSharpScript::7875229426701535710::1791737816::0::1::::<><><>0<>0<><>::
 DarvRelicInjection.cs::CSharpScript::6437035350307400936::1787688916::0::1::::<><><>0<>0<><>::
 DeathPreventionLogger.cs::CSharpScript::1024916224094362225::1788639717::0::1::::<><><>0<>0<><>::
-StarboundCostDiagnostic.cs::CSharpScript::4926818131896585424::1792949449::0::1::::<><><>0<>0<><>::
 StarboundPatch.cs::CSharpScript::5535029759349913698::1792949833::0::1::::<><><>0<>0<><>::
 TempKeywordPatch.cs::CSharpScript::4114832345804533026::1792452380::0::1::::<><><>0<>0<><>::
 ::res://ThePrismatic2Code/Potions/::1787623527
