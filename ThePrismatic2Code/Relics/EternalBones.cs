@@ -11,9 +11,9 @@ namespace ThePrismatic2.ThePrismatic2Code.Relics;
 public sealed class EternalBones: ThePrismatic2Relic
 {
     public override RelicRarity Rarity => RelicRarity.Uncommon;
-    //public override string PackedIconPath => "res://images/atlases/relic_atlas.sprites/burning_blood.tres";
-    //protected override string PackedIconOutlinePath => "res://images/atlases/relic_outline_atlas.sprites/burning_blood.tres";
-    //protected override string BigIconPath => "res://images/relics/burning_blood.png";
+    public override string PackedIconPath => "ThePrismatic2/images/relics/EternalBones.png";
+    protected override string PackedIconOutlinePath => "ThePrismatic2/images/relics/EternalBones_Outline.png";
+    protected override string BigIconPath => "ThePrismatic2/images/relics/big/EternalBones.png";
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.SummonDynamic, DynamicVars.Summon));
 

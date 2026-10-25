@@ -36,20 +36,6 @@ public class Melancholy2() : ThePrismatic2Card(3,
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, cardPlay);
     }
     
-    public override Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
-    {
-        CardPile? pile = Pile;
-        if (pile is not { IsCombatPile: true })
-        {
-            return Task.CompletedTask;
-        }
-        if (target == Owner.Creature && result.UnblockedDamage > 0)
-        {
-            EnergyCost.AddThisCombat(-DynamicVars.Energy.IntValue);
-        }
-        return Task.CompletedTask;
-    }
-    
     public override Task AfterCurrentHpChanged(Creature creature, decimal delta)
     {
         CardPile? pile = Pile;

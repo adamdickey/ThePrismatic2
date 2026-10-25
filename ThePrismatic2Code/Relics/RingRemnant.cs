@@ -7,9 +7,9 @@ namespace ThePrismatic2.ThePrismatic2Code.Relics;
 public sealed class RingRemnant: ThePrismatic2Relic
 {
     public override RelicRarity Rarity => RelicRarity.Starter;
-    public override string PackedIconPath => "res://images/atlases/relic_atlas.sprites/ring_of_the_snake.tres";
-    protected override string PackedIconOutlinePath => "res://images/atlases/relic_outline_atlas.sprites/ring_of_the_snake.tres";
-    protected override string BigIconPath => "res://images/relics/ring_of_the_snake.png";
+    public override string PackedIconPath => "ThePrismatic2/images/relics/RingRemnant.png";
+    protected override string PackedIconOutlinePath => "ThePrismatic2/images/relics/RingRemnant_Outline.png";
+    protected override string BigIconPath => "ThePrismatic2/images/relics/big/RingRemnant.png";
 
     public override decimal ModifyHandDraw(Player player, decimal count)
     {

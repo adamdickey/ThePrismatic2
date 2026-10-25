@@ -11,9 +11,9 @@ namespace ThePrismatic2.ThePrismatic2Code.Relics;
 public sealed class MiniPlanet: ThePrismatic2Relic
 {
     public override RelicRarity Rarity => RelicRarity.Rare;
-    //public override string PackedIconPath => "ThePrismatic2/images/relics/AlarmClock.png";
-    //protected override string PackedIconOutlinePath => "ThePrismatic2/images/relics/AlarmClock_Outline.png";
-    //protected override string BigIconPath => "ThePrismatic2/images/relics/big/AlarmClock.png";
+    public override string PackedIconPath => "ThePrismatic2/images/relics/MiniPlanet.png";
+    protected override string PackedIconOutlinePath => "ThePrismatic2/images/relics/MiniPlanet_Outline.png";
+    protected override string BigIconPath => "ThePrismatic2/images/relics/big/MiniPlanet.png";
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlyArray<IHoverTip>([
         HoverTipFactory.Static(StaticHoverTip.Channeling),

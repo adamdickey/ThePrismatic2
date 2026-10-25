@@ -13,9 +13,9 @@ public sealed class CoreRemnant: ThePrismatic2Relic
 {
 
     public override RelicRarity Rarity => RelicRarity.Starter;
-    public override string PackedIconPath => "res://images/atlases/relic_atlas.sprites/cracked_core.tres";
-    protected override string PackedIconOutlinePath => "res://images/atlases/relic_outline_atlas.sprites/cracked_core.tres";
-    protected override string BigIconPath => "res://images/relics/cracked_core.png";
+    public override string PackedIconPath => "ThePrismatic2/images/relics/CoreRemnant.png";
+        protected override string PackedIconOutlinePath => "ThePrismatic2/images/relics/CoreRemnant_Outline.png";
+        protected override string BigIconPath => "ThePrismatic2/images/relics/big/CoreRemnant.png";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new DynamicVar("Lightning", 1m));
 

@@ -8,9 +8,9 @@ namespace ThePrismatic2.ThePrismatic2Code.Relics;
 public sealed class DivineRemnant: ThePrismatic2Relic
 {
     public override RelicRarity Rarity => RelicRarity.Starter;
-    public override string PackedIconPath => "res://images/atlases/relic_atlas.sprites/divine_right.tres";
-    protected override string PackedIconOutlinePath => "res://images/atlases/relic_outline_atlas.sprites/divine_right.tres";
-    protected override string BigIconPath => "res://images/relics/divine_right.png";
+    public override string PackedIconPath => "ThePrismatic2/images/relics/DivineRemnant.png";
+    protected override string PackedIconOutlinePath => "ThePrismatic2/images/relics/DivineRemnant_Outline.png";
+    protected override string BigIconPath => "ThePrismatic2/images/relics/big/DivineRemnant.png";
 
     protected override IEnumerable<DynamicVar> CanonicalVars => new _003C_003Ez__ReadOnlySingleElementList<DynamicVar>(new StarsVar(1));
 

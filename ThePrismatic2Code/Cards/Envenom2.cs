@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
 using ThePrismatic2.ThePrismatic2Code.Character;
+using ThePrismatic2.ThePrismatic2Code.Powers;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -30,7 +31,7 @@ public class Envenom2() : ThePrismatic2Card(2,
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<EnvenomPower>(choiceContext, Owner.Creature, DynamicVars["EnvenomPower"].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<Envenom2Power>(choiceContext, Owner.Creature, DynamicVars["EnvenomPower"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
