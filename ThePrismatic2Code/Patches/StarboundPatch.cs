@@ -59,12 +59,17 @@ public class StarboundSingleton() : CustomSingletonModel(HookType.Combat)
         return Task.CompletedTask;
     }
 
+    public static void Refresh(CardModel card) => UpdateStarbound(card);
+
+    // EnergyCost.Canonical is the printed cost and ignores upgrades (e.g. a -1 energy upgrade), so use the unmodified base.
+    private static int BaseEnergyCost(CardModel card) => card.EnergyCost.GetWithModifiers(CostModifiers.None);
+
     private static void UpdateStarbound(CardModel card, bool permanentCostChange = false)
     {
         if (card.CombatState == null || (!card.Keywords.Contains(Keywords.Starbound) && !card.Keywords.Contains(Keywords.StarboundThisTurn))) return;
         
         int cardEnergy = Math.Max(0, card.EnergyCost.GetWithModifiers(CostModifiers.Local));
-        int cardStars = Math.Max(0, card.GetStarCostWithModifiers());
+        int cardStars = Math.Max(0, card.CurrentStarCost);
         int cardCost = cardEnergy + cardStars;
         if (cardCost == 0) return;
         
@@ -72,26 +77,26 @@ public class StarboundSingleton() : CustomSingletonModel(HookType.Combat)
         int playerStars = card.Owner.PlayerCombatState?.Stars ?? 0;
 
         if (card.Pile != PileType.Hand.GetPile(card.Owner) && card.Pile != PileType.Play.GetPile(card.Owner) && 
-            cardCost == card.EnergyCost.Canonical + Math.Max(0, card.CanonicalStarCost))
+            cardCost == BaseEnergyCost(card) + Math.Max(0, card.CanonicalStarCost))
         {
-            card.EnergyCost.SetThisCombat(card.EnergyCost.Canonical);
+            card.EnergyCost.SetThisCombat(BaseEnergyCost(card));
             card.SetStarCostThisCombat(card.CanonicalStarCost);
             return;
         }
         
         if (playerStars + playerEnergy >= cardCost)
         {
-            int newEnergyCost = Math.Min(playerEnergy, card.EnergyCost.Canonical);
+            int newEnergyCost = Math.Min(playerEnergy, BaseEnergyCost(card));
             int newStarCost = Math.Min(playerStars, Math.Max(0, card.CanonicalStarCost));
-            if (cardCost == card.EnergyCost.Canonical + Math.Max(0, card.CanonicalStarCost) &&
-                newEnergyCost == card.EnergyCost.Canonical && newStarCost == Math.Max(0, card.CanonicalStarCost))
+            if (cardCost == BaseEnergyCost(card) + Math.Max(0, card.CanonicalStarCost) &&
+                newEnergyCost == BaseEnergyCost(card) && newStarCost == Math.Max(0, card.CanonicalStarCost))
             {
-                card.EnergyCost.SetThisCombat(card.EnergyCost.Canonical);
+                card.EnergyCost.SetThisCombat(BaseEnergyCost(card));
                 card.SetStarCostThisCombat(card.CanonicalStarCost);
                 return;
             }
 
-            if (newEnergyCost < card.EnergyCost.Canonical)
+            if (newEnergyCost < BaseEnergyCost(card))
             {
                 newStarCost = Math.Max(newStarCost, cardCost - playerEnergy);
             }
@@ -102,6 +107,7 @@ public class StarboundSingleton() : CustomSingletonModel(HookType.Combat)
             if (newEnergyCost + newStarCost != cardCost)
             {
                 int dif = cardCost - (newEnergyCost + newStarCost);
+                if (dif < 0) return;
                 if (playerEnergy >= newEnergyCost + dif)
                 {
                     newEnergyCost += dif;
@@ -123,9 +129,9 @@ public class StarboundSingleton() : CustomSingletonModel(HookType.Combat)
                 card.SetStarCostThisTurn(newStarCost);
             }
         }
-        else if (cardCost == card.EnergyCost.Canonical + Math.Max(0, card.CanonicalStarCost))
+        else if (cardCost == BaseEnergyCost(card) + Math.Max(0, card.CanonicalStarCost))
         {
-            card.EnergyCost.SetThisCombat(card.EnergyCost.Canonical);
+            card.EnergyCost.SetThisCombat(BaseEnergyCost(card));
             card.SetStarCostThisCombat(card.CanonicalStarCost);
         }
     }

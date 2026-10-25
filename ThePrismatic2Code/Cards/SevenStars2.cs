@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
 using ThePrismatic2.ThePrismatic2Code.Character;
+using ThePrismatic2.ThePrismatic2Code.Patches;
 
 namespace ThePrismatic2.ThePrismatic2Code.Cards;
 
@@ -25,9 +26,17 @@ public class SevenStars2() : ThePrismatic2Card(1,
 
     private const int PrintedStarCost = 7;
 
-    private readonly List<Type> _orbsChanneled = new();
+    private int _appliedStarCost = -1;
 
-    public override int CanonicalStarCost => Math.Max(0, PrintedStarCost - _orbsChanneled.Count);
+    // Derived from combat history rather than stored on the card: MemberwiseClone shares reference-type fields
+    // between the canonical, deck and combat copies, which made the discount leak out of combat.
+    public override int CanonicalStarCost => CombatState == null ? PrintedStarCost : Math.Max(0, PrintedStarCost - UniqueOrbTypesChanneled());
+
+    private int UniqueOrbTypesChanneled() => CombatManager.Instance.History.Entries.OfType<OrbChanneledEntry>()
+        .Where(e => e.Actor.Player == Owner)
+        .Select(e => e.Orb.GetType())
+        .Distinct()
+        .Count();
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips => new _003C_003Ez__ReadOnlySingleElementList<IHoverTip>(HoverTipFactory.Static(StaticHoverTip.Channeling));
     
@@ -56,40 +65,30 @@ public class SevenStars2() : ThePrismatic2Card(1,
     
     public override Task AfterCardEnteredCombat(CardModel card)
     {
-        if (card != this)
+        if (card != this || IsClone)
         {
             return Task.CompletedTask;
         }
-        if (IsClone)
-        {
-            return Task.CompletedTask;
-        }
-        _orbsChanneled.Clear();
-        foreach (OrbChanneledEntry orb in CombatManager.Instance.History.Entries.OfType<OrbChanneledEntry>())
-        {
-            Type orbType = orb.Orb.GetType();
-            if (!_orbsChanneled.Contains(orbType))
-            {
-                _orbsChanneled.Add(orbType);
-            }
-        }
-        SetStarCostThisCombat(CanonicalStarCost);
+        ResetCost();
         return Task.CompletedTask;
     }
     
     public override Task AfterOrbChanneled(PlayerChoiceContext choiceContext, Player player, OrbModel orb)
     {
-        if (player != Owner)
+        if (player != Owner || CanonicalStarCost == _appliedStarCost)
         {
             return Task.CompletedTask;
         }
-        Type orbType = orb.GetType();
-        if (_orbsChanneled.Contains(orbType))
-        {
-            return Task.CompletedTask;
-        }
-        _orbsChanneled.Add(orbType);
-        SetStarCostThisCombat(CanonicalStarCost);
+        ResetCost();
         return Task.CompletedTask;
+    }
+
+    // Drop any Starbound energy/star split made for the old total, then let Starbound re-split the new total.
+    private void ResetCost()
+    {
+        _appliedStarCost = CanonicalStarCost;
+        EnergyCost.SetThisCombat(EnergyCost.GetWithModifiers(CostModifiers.None));
+        SetStarCostThisCombat(_appliedStarCost);
+        StarboundSingleton.Refresh(this);
     }
 }
